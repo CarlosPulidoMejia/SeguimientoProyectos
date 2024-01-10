@@ -6,7 +6,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "FrontMigracionWeb": {
+    "SeguimientoProyectos": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -81,10 +81,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "FrontMigracionWeb:build:production"
+              "browserTarget": "SeguimientoProyectos:build:production"
             },
             "development": {
-              "browserTarget": "FrontMigracionWeb:build:development",
+              "browserTarget": "SeguimientoProyectos:build:development",
 	      "port": 4400
             }
           },
@@ -93,7 +93,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "FrontMigracionWeb:build"
+            "browserTarget": "SeguimientoProyectos:build"
           }
         },
         "test": {
@@ -117,5 +117,5 @@
       }
     }
   },
-  "defaultProject": "FrontMigracionWeb"
+  "defaultProject": "SeguimientoProyectos"
 }
