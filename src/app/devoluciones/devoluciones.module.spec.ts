@@ -1,4 +1,4 @@
-import { DevolucionesModule } from './proyecto.module';
+import { DevolucionesModule } from './devoluciones.module';
 
 describe('DevolucionesModule', () => {
   let devolucionesModule: DevolucionesModule;
