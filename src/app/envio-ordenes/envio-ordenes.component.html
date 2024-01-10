@@ -1,0 +1,393 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-3 offset-md-3">
+                    <div class="form-floating">
+                      <select class="form-select" id="floatingSelect" [(ngModel)]="selectedEnvio" name="envio"
+                        (change)="EnvioCatalogo()">
+                        <option [ngValue]="0">{{detalleCatalogo}}</option>
+                        <option *ngFor="let envio of listaEsc" [ngValue]="envio.idEscenario">
+                          {{envio.nombreEscenario}}</option>
+                      </select>
+                      <label for="floatingSelect">Escenarios</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--Fin escenarios-->
+
+        <div class="row mt-3">
+          <!--Conexion-->
+          <div class="col-6">
+            <div class="card">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-3" hidden>
+                    <div class="form-floating">
+                      <input type="text" class="form-control" id="idDatasource" placeholder="ID" [(ngModel)]="idBase">
+                      <label for="idDatasource">ID</label>
+                    </div>
+                  </div>
+
+                  <div class="col-3">
+                    <div class="form-floating">
+                      <input type="text" class="form-control" id="ipDatasource" placeholder="IP" [(ngModel)]="ipBase" disabled>
+                      <label for="ipDatasource">IP</label>
+                    </div>
+                  </div>
+
+                  <div class="col-4">
+                    <div class="form-floating">
+                      <input type="text" class="form-control" id="baseDatasource" placeholder="base"
+                        [(ngModel)]="nombreBase" disabled>
+                      <label for="baseDatasource">BASE</label>
+                    </div>
+                  </div>
+
+                  <div class="col-2">
+                    <div class="form-floating">
+                      <input type="text" class="form-control" id="puertoDatasource" placeholder="Puerto"
+                        [(ngModel)]="portBase" disabled>
+                      <label for="puertoDatasource">Puerto</label>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <!--Fin conexion-->
+          <!--Firmador-->
+          <div class="col-6">
+            <div class="card">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-3" hidden>
+                    <div class="form-floating">
+                      <input type="text" class="form-control" id="idFirmador" placeholder="ID" [(ngModel)]="idFirma"
+                        disabled>
+                      <label for="idFirmador">ID</label>
+                    </div>
+                  </div>
+
+                  <div class="col-3">
+                    <div class="form-floating">
+                      <input type="text" class="form-control" id="ipFirmador" placeholder="IP" [(ngModel)]="ipFirma"
+                        disabled>
+                      <label for="ipFirmador">IP</label>
+                    </div>
+                  </div>
+
+                  <div class="col-3">
+                    <div class="form-floating">
+                      <input type="text" class="form-control" id="puertoFirmador" placeholder="Puerto"
+                        [(ngModel)]="portFirma" disabled>
+                      <label for="puertoFirmador">Puerto</label>
+                    </div>
+                  </div>
+
+                  <div class="col-2">
+                    <div class="form-check form-switch mt-3">
+                      <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault"
+                        [(ngModel)]="isCheckedFirmador" (change)="consultaModulo()">
+
+                      <label class="form-check-label" for="flexSwitchCheckDefault">Firmar</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--Fin Firmador-->
+
+        </div>
+        <!--Fin Row-->
+
+        <div class="row mt-3">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-body">
+                <h6 class="card-title">DETALLES</h6>
+                <div class="row">
+
+                  <div class="col-1">
+                    <div class="form-floating">
+                      <input type="number" class="form-control" id="cantidadOrdenes" [(ngModel)]="cantidadOrdenes"
+                        placeholder="Cantidad">
+                      <label for="cantidadOrdenes">Cantidad</label>
+                    </div>
+                  </div>
+                  <div class="col-2">
+                    <div class="form-floating">
+                      <select class="form-select" id="floatingSelect" [(ngModel)]="selectedTipoPago" (change)="consultaModulo()">
+                        <option *ngFor="let tpago of listaPago" [ngValue]="tpago">
+                          {{tpago.clave + "-" + tpago.descripcion}}</option>
+                      </select>
+                      <label for="floatingSelect">Tipo Pago</label>
+                    </div>
+                  </div>
+                  <div class="col-1">
+                    <div class="form-floating">
+                      <input type="number" class="form-control" id="montoOrden" placeholder="Monto"
+                        [(ngModel)]="montoOrden">
+                      <label for="montoOrden">Monto</label>
+                    </div>
+                  </div>
+
+                  <div class="col-3">
+                    <div class="form-floating">
+                      <input type="text" class="form-control" id="conceptoOrden" placeholder="Concepto"
+                        [(ngModel)]="conceptoOrden">
+                      <label for="conceptoOrden">Concepto</label>
+                    </div>
+                  </div>
+                  <div class="col-1">
+                    <div class="form-floating">
+                      <input type="text" class="form-control" id="moduloOrden" placeholder="Modulo"
+                        [(ngModel)]="modulo">
+                      <label for="moduloOrden">Modulo</label>
+                    </div>
+                  </div>
+                  <div class="col-1">
+                    <div class="form-floating">
+                      <input type="number" class="form-control" id="segundos" placeholder="Seg." [(ngModel)]="segundos">
+                      <label for="segundos">Segundos</label>
+                    </div>
+                  </div>
+                  <!--<div class="col-1">
+                              <div class="form-check form-switch mt-3">
+                                  <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault"
+                                      [(ngModel)]="isCheckedRegistro">
+                                  <label class="form-check-label"
+                                      for="flexSwitchCheckDefault">Registro</label>
+                              </div>
+                          </div>-->
+                  <div class="col-1">
+                    <div class="form-check form-switch mt-3">
+                      <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault"
+                        [(ngModel)]="isCheckedAmpliado" (change)="consultaModulo()">
+                      <label class="form-check-label" for="flexSwitchCheckDefault">Ampliado</label>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--Fin detalle-->
+
+        <div class="row mt-3">
+          <div class="col-6">
+            <div class="card">
+              <div class="card-body">
+                <h6 class="card-title">ORDENANTE</h6>
+                <div class="row">
+                  <div class="col-3">
+                    <div class="form-floating">
+                      <input type="text" class="form-control" placeholder="Banco" [(ngModel)]="claveBase">
+                      <label for="blabelBanco">Banco</label>
+                    </div>
+                  </div>
+
+                  <div class="col-3">
+                    <div class="form-floating">
+                      <input type="text" class="form-control" id="bTipoCuenta" placeholder="Tipo Cuenta"
+                        [(ngModel)]="OTipoCuenta">
+                      <label for="bTipoCuenta">Tipo Cuenta</label>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="form-floating">
+                      <input type="text" class="form-control" placeholder="Cuenta" [(ngModel)]="OCuenta">
+                      <label for="blabelCuenta">Cuenta</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mt-2">
+                  <div class="col-6">
+                    <div class="form-floating">
+                      <input type="text" class="form-control" placeholder="Nombre" [(ngModel)]="ONombre">
+                      <label for="bNombre">Nombre</label>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="form-floating">
+                      <input type="text" class="form-control" placeholder="RFC" [(ngModel)]="ORFC">
+                      <label for="blabelRFC">RFC</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="card-body" *ngIf="datosPir">
+                <h6 class="card-title">ORDENANTE INDIRECTO</h6>
+                <div class="row">
+                  <!--<div class="col-3">
+                    <div class="form-floating">
+                      <input type="text" class="form-control" placeholder="Banco" [(ngModel)]="claveBase">
+                      <label for="blabelBanco">Banco</label>
+                    </div>
+                  </div>-->
+
+                  <div class="col-3">
+                    <div class="form-floating">
+                      <input type="text" class="form-control" id="bTipoCuenta" placeholder="Tipo Cuenta"
+                        [(ngModel)]="OTipoCuentaPIR">
+                      <label for="bTipoCuenta">Tipo Cuenta</label>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="form-floating">
+                      <input type="text" class="form-control" placeholder="Cuenta" [(ngModel)]="OCuentaPIR">
+                      <label for="blabelCuenta">Cuenta</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mt-2">
+                  <div class="col-6">
+                    <div class="form-floating">
+                      <input type="text" class="form-control" placeholder="Nombre" [(ngModel)]="ONombrePIR">
+                      <label for="bNombre">Nombre</label>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="form-floating">
+                      <input type="text" class="form-control" placeholder="RFC" [(ngModel)]="ORFCPIR">
+                      <label for="blabelRFC">RFC</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            
+          </div>
+
+          <div class="col-6">
+            <div class="card">
+              <div class="card-body">
+                <h6 class="card-title">BENEFICIARIO</h6>
+
+                <div class="row">
+                  <div class="col-3">
+                    <div class="form-floating">
+                      <input type="text" class="form-control" id="benBanco" placeholder="Banco" [(ngModel)]="BBanco">
+                      <label for="benBanco">Banco</label>
+                    </div>
+                  </div>
+
+                  <div class="col-3">
+                    <div class="form-floating">
+                      <input type="text" class="form-control" id="bTipoCuenta" placeholder="Tipo Cuenta"
+                        [(ngModel)]="BTipoCuenta">
+                      <label for="bTipoCuenta">Tipo Cuenta</label>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="form-floating">
+                      <input type="text" class="form-control" id="benCuenta" placeholder="Cuenta" [(ngModel)]="BCuenta">
+                      <label for="benCuenta">Cuenta</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mt-2">
+                  <div class="col-6">
+                    <div class="form-floating">
+                      <input type="text" class="form-control" placeholder="Nombre" [(ngModel)]="BNombre">
+                      <label for="bNombre">Nombre</label>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="form-floating">
+                      <input type="text" class="form-control" id="benRFC" placeholder="RFC" [(ngModel)]="BRFC">
+                      <label for="benRFC">RFC</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-3">
+
+          <div class="col-2">
+            <button type="button" class="btn btn-success" (click)="generarOrdenes()">Enviar Orden <i class="fad fa-money-bill-alt"></i></button>
+          </div>
+
+<!--
+          <div class="col-2">
+            <button type="button" class="btn btn-success" (click)="generarOrdenesPIR()">Enviar Orden pir <i class="fad fa-money-bill-alt"></i></button>
+          </div>-->
+
+        </div>
+
+
+        
+
+      </div>
+      
+      
+
+    </div>
+
+    <!--Envio registros Carga masiva-->
+    <br>
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <h6 class="card-title">Carga masiva</h6>
+            <div class="row">
+
+              <!--<div class="row mt-4">
+                <div class="col-3">
+                    <label for="formFile" class="form-label"><i class="fa fa-certificate"
+                            style="--fa-primary-color: rgb(37, 80,81);"></i> Ingresar
+                        archivos (.env - .liq  - .req)</label>
+                    <input class="form-control" type="file" id="formFile" (change)="selectFile($event)">
+                </div>
+
+                <div class="col-3">
+                  <br>
+                  <button class="btn btn-success" (click)="btnValidacionContingencia()">Validar archivos</button>
+              </div>
+
+            </div>-->
+
+            <br>
+              <div class="row mt-3">
+                <div class="col-3">
+                  <label class="btn btn-default p-0">
+                    <input class="form-control" type="file" multiple (change)="selectFiles($event)" />
+                  </label>
+                </div>
+
+                <div class="col-4">
+                  <button class="btn btn-success btn-sm" [disabled]="!selectedFiles" (click)="sendCargaMasiva()">
+                    Generar carga masiva
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Fin Conexion-->
+    </div>
+    <!--Fin carga masiva-->
+    
+  </div>

@@ -1,0 +1,177 @@
+<div class="row">
+    <div class="col-12 mb-5">
+        <div class="card">
+            <div class="card-body">
+                <!--Conexion-->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title">CONEXION</h6>
+                                <div class="row">
+                                    <div class="col-4">
+                                        <div class="form-floating">
+                                            <select class="form-select" (change)="selectBase()" id="floatingSelect"
+                                                [(ngModel)]="catBases" name="datasource">
+                                                <option *ngFor="let base of listaBase" [ngValue]="base.id_Datasource">
+                                                    {{base.nombre_Base}}</option>
+                                            </select>
+                                            <label for="floatingSelect">Conexion</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-3" hidden>
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="idDatasource" placeholder="ID"
+                                                [(ngModel)]="id_Data">
+                                            <label for="idDatasource">ID</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-3">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="ipDatasource" placeholder="IP"
+                                                [(ngModel)]="ip_Data" disabled>
+                                            <label for="ipDatasource">IP</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-3">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="baseDatasource"
+                                                placeholder="base" [(ngModel)]="name_Data" disabled>
+                                            <label for="baseDatasource">BASE</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-2">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="puertoDatasource"
+                                                placeholder="Puerto" [(ngModel)]="port_Data" disabled>
+                                            <label for="puertoDatasource">Puerto</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Fin Conexion-->
+
+                <!--Certificados-->
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title">Certificados</h6>
+                                <div class="row">
+
+                                    <div class="col-3">
+                                        <label for="formFile" class="form-label"><i class="fa fa-certificate"
+                                                style="--fa-primary-color: rgb(37, 80,81);"></i> Archivo .cer</label>
+                                        <input type="file" class="form-control" accept=".cer"
+                                            (change)="changeListener($any($event).target.files);">
+                                    </div>
+
+                                    <div class="col-3">
+                                        <label for="formFile" class="form-label"><i class="fa fa-certificate"
+                                                style="--fa-primary-color: rgb(37, 80,81);"></i> Archivo .cve</label>
+                                        <input class="form-control" type="file" id="formFile" accept=".cve"
+                                            (change)="changeListener($any($event).target.files);">
+                                    </div>
+
+                                    <div class="col-3">
+                                        <label for="formFile" class="form-label"><i class="fa fa-certificate"
+                                                style="--fa-primary-color: rgb(37, 80,81);"></i> Archivo .crt</label>
+                                        <input class="form-control" type="file" id="formFile" accept=".crt"
+                                            (change)="changeListener($any($event).target.files);">
+                                    </div>
+
+                                    <div class="col-2">
+                                        <label for="formFile" class="form-label"><i class="fa fa-key"
+                                                style="--fa-primary-color: rgb(255, 238, 0); --fa-secondary-color: rgb(255, 238, 0);"></i>
+                                            Password</label>
+                                        <input class="form-control" type="text" id="formFile"
+                                            [(ngModel)]="fraseSeguridad">
+                                    </div>
+
+                                    <div class="col-1">
+                                        <button type="button" class="btn btn-success btn-circle btn-xl"
+                                            (click)="getCDAS();">
+                                            <i class="fa fa-search fa-spin"
+                                                style="--fa-primary-color: rgb(255, 255, 255); --fa-secondary-color: rgb(255, 238, 0);"></i>
+                                        </button>
+
+                                    </div>
+
+                                    <div class="col-2">
+                                        <label for="formFile" class="form-label"><i class="fa fa-key"
+                                                style="--fa-primary-color: rgb(255, 238, 0); --fa-secondary-color: rgb(255, 238, 0);"></i>
+                                            Orp Inicio</label>
+                                        <input class="form-control" type="text" id="formNumIni"
+                                            [(ngModel)]="orpNumIni">
+                                    </div>
+
+                                    <div class="col-2">
+                                        <label for="formFile" class="form-label"><i class="fa fa-key"
+                                                style="--fa-primary-color: rgb(255, 238, 0); --fa-secondary-color: rgb(255, 238, 0);"></i>
+                                            Orp Fin</label>
+                                        <input class="form-control" type="text" id="formNumFin"
+                                            [(ngModel)]="orpNumFin">
+                                    </div>
+
+                                    <div class="col-2">
+                                        <div class="form-floating">
+                                            <br>
+                                            <select class="form-select" id="floatingSelect" [(ngModel)]="tipoBusqueda"
+                                                name="tipoOperacion">
+                                                <option value="N">Normal</option>
+                                                <option value="H">Historicos</option>
+                                            </select>
+                                            <label for="floatingSelect">Tipo busqueda:</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Fin Certificados-->
+
+                <!--Tabla-->
+                <div class="row mt-5">
+                    <div class="col-12">
+
+                        <div class="table-responsive">
+                            <table class="table" id="tablacda">
+                                <thead class="table-success">
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Nombre Archivo</th>
+                                        <th scope="col">Descargar</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr *ngFor="let archivo of archivos">
+                                        <th scope="row">{{archivo.numero}}</th>
+                                        <td>{{archivo.fileName}}</td>
+                                        <td>
+                                            <button type="button" class="btn btn-success"
+                                                (click)="descargarArchivo(archivo.fileName)"><i
+                                                    class="fad fa-download"></i> Descargar</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!--Fin Tabla-->
+                
+
+            </div>
+        </div>
+    </div>
+</div>

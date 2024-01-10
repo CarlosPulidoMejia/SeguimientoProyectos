@@ -1,0 +1,254 @@
+<div class="row">
+  <div class="col-12 mb-5">
+    <div class="card">
+      <div class="card-body">
+        <!--Conexion-->
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-body">
+                <h6 class="card-title">CONEXION</h6>
+                <div class="row">
+                  <div class="col-4">
+                    <div class="form-floating">
+                      <select class="form-select" (change)="selectBase()" id="floatingSelect" [(ngModel)]="catBases"
+                        name="datasource">
+                        <option *ngFor="let base of listaBase" [ngValue]="base.id_Datasource">
+                          {{base.nombre_Base}}</option>
+                      </select>
+                      <label for="floatingSelect">Conexion</label>
+                    </div>
+                  </div>
+
+                  <div class="col-3" hidden>
+                    <div class="form-floating">
+                      <input type="text" class="form-control" id="idDatasource" placeholder="ID" [(ngModel)]="id_Data">
+                      <label for="idDatasource">ID</label>
+                    </div>
+                  </div>
+
+                  <div class="col-3">
+                    <div class="form-floating">
+                      <input type="text" class="form-control" id="ipDatasource" placeholder="IP" [(ngModel)]="ip_Data"
+                        disabled>
+                      <label for="ipDatasource">IP</label>
+                    </div>
+                  </div>
+
+                  <div class="col-3">
+                    <div class="form-floating">
+                      <input type="text" class="form-control" id="baseDatasource" placeholder="base"
+                        [(ngModel)]="name_Data" disabled>
+                      <label for="baseDatasource">BASE</label>
+                    </div>
+                  </div>
+
+                  <div class="col-2">
+                    <div class="form-floating">
+                      <input type="text" class="form-control" id="puertoDatasource" placeholder="Puerto"
+                        [(ngModel)]="port_Data" disabled>
+                      <label for="puertoDatasource">Puerto</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--Fin Conexion-->
+
+        <!--Parametros-->
+        <div class="row mt-3">
+          <div class="col-12">
+              <div class="card">
+                  <div class="card-body">
+                      <h6 class="card-title">BUSQUEDA</h6>
+                      <div class="row">
+
+                          <div class="col-3">
+                              <div class="form-floating">
+                                  <select class="form-select" id="floatingSelect" [(ngModel)]="selectedtipo"
+                                      name="tipoOperacion" (change)="catTipoRetorno()">
+                                      <option *ngFor="let tipo of listaPagoDev" [ngValue]="tipo.clave">
+                                        {{tipo.clave}} - {{tipo.descripcion}}</option>
+                                  </select>
+                                  <label for="floatingSelect">Tipo</label>
+                              </div>
+                          </div>
+
+                          <div class="col-2">
+                              <div class="form-floating">
+                                  <select class="form-select" id="floatingSelect"
+                                      [(ngModel)]="selectedTipoPago" name="tipoOperacion">
+                                      <option *ngFor="let pago of listaPago" [ngValue]="pago">
+                                          {{pago.clave + "-" + pago.descripcion}}</option>
+                                  </select>
+                                  <label for="floatingSelect">Tipo Pago</label>
+                              </div>
+                          </div>
+
+
+
+
+                          <div class="col-1">
+                              <div class="form-floating">
+                                  <input type="text" class="form-control" id="nRegistros"
+                                      placeholder="Numero de Registros" [(ngModel)]="numRegistros">
+                                  <label for="nRegistros">N.Registros</label>
+                              </div>
+                          </div>
+
+
+
+                          <div class="col-2">
+                              <div class="form-floating">
+                                  <input type="text" class="form-control" id="concepto" placeholder="concepto"
+                                      [(ngModel)]="concepto">
+                                  <label for="concepto">Concepto</label>
+                              </div>
+                          </div>
+
+                          <div class="col-4">
+                              <div class="form-floating">
+                                  <select class="form-select" id="floatingSelect" [(ngModel)]="instancia"
+                                      name="tipoOperacion">
+                                      <option value="0">Instancia A</option>
+                                      <option value="1">Instancia B</option>
+                                      <option value="2">Contingencia A</option>
+                                      <option value="3">Contingencia B</option>
+                                  </select>
+                                  <label for="floatingSelect">Instancia</label>
+                              </div>
+                          </div>
+                      </div>
+                      <!--fIN PRIMER FILA-->
+
+
+                      <div class="row mt-3">
+                          <div class="col-2">
+                              <div class="form-floating">
+                                  <input type="date" class="form-control" id="fecInicio"
+                                      placeholder="Fecha Inicio" [(ngModel)]="selectedDateInicio" [disabled]="habilitarFecha ? true : null">
+                                  <label for="fecInicio">Fecha Inicio</label>
+                              </div>
+                          </div>
+
+                          <div class="col-2">
+                              <div class="form-floating">
+                                  <input type="date" class="form-control" id="fecFin" placeholder="Fecha Fin"
+                                      [(ngModel)]="selectedDateFin" [disabled]="habilitarFecha ? true : false">
+                                  <label for="fecFin">Fecha Fin</label>
+                              </div>
+                          </div>
+
+                          <div class="col-2">
+                              <div class="form-floating">
+                                  <input type="text" class="form-control" id="orpnumero"
+                                      [(ngModel)]="orpNumeroDev">
+                                  <label for="fecFin">Orp_Numero</label>
+                              </div>
+                          </div>
+
+                          <div class="col-2">
+                              <div class="form-floating">
+                                  <input type="text" class="form-control" id="orpnumero"
+                                      [(ngModel)]="montoDev">
+                                  <label for="fecFin">Monto</label>
+                              </div>
+                          </div>
+
+                          <div class="col-1">
+                              <button type="button" class="btn btn-success btn-circle btn-xl"
+                                  (click)="getOrdenesDevolucion()">
+                                  <i class="fa fa-search fa-spin"
+                                      style="--fa-primary-color: rgb(255, 255, 255); --fa-secondary-color: rgb(255, 238, 0);"></i>
+                              </button>
+                          </div>
+
+                          <div class="col-1">
+                            <br>
+                            <button type="button" class="btn btn-warning"
+                                (click)="getOrdenesDevolucionVarios()">
+                                Buscar varios
+                            </button>
+                        </div>
+
+                          <div class="col-2">
+                              <br>
+                              <button class="btn btn-success" (click)="chkDevoluciones()">Retornar</button>
+                          </div>
+                      </div>
+                      <!--Fin segunda fila-->
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!--Fin Parametros-->
+
+      <br>
+                <input type="checkbox" [(ngModel)]="selectedAll" (change)="selectAll();" />Seleccionar todo
+                <div class="row mt-5">
+                    <div class="col-12">
+
+                        <div class="table-responsive">
+                            <table class="table" id="tablaDevoluciones">
+                                <thead class="table-success">
+                                    <tr>
+                                        <th scope="col">
+                                            Select
+                                        </th>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Numero</th>
+                                        <th scope="col">T.Pago</th>
+                                        <th scope="col">Monto</th>
+                                        <th scope="col">Clave Rastreo</th>
+                                        <th scope="col">Concepto</th>
+                                        <th scope="col">Emisor</th>
+                                        <th scope="col">Ordenante</th>
+                                        <th scope="col">TC-O</th>
+                                        <th scope="col">Receptor</th>
+                                        <th scope="col">Beneficiario</th>
+                                        <th scope="col">TC-B</th>
+                                        <th scope="col">Fecha</th>
+                                        <th scope="col">Instancia</th>
+                                        <th scope="col">Paquete</th>
+                                        <!--<th scope="col">Tipo Devolucion</th>
+                                        <th scope="col">Devolver</th>-->
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr *ngFor="let orden of listaDevolucion;let i=index;">
+                                        <td scope="row">
+                                            <input type="checkbox" value="{{orden.row}}"
+                                                [(ngModel)]="listaDevolucion[i].seleccion">
+                                        </td>
+                                        <th scope="row">{{orden.row}}</th>
+                                        <td>{{orden.numero}}</td>
+                                        <td>{{orden.tipoPago}}</td>
+                                        <td><input type="text" value={{orden.cantidad}} [(ngModel)]="listaDevolucion[i].cantidad" size="5"></td>
+                                        <td>{{orden.claveRastreo}}</td>
+                                        <td>{{orden.conceptoPago}}</td>
+                                        <td>{{orden.institucionEmisora}}</td>
+                                        <td>{{orden.cuentaOrdenante}}</td>
+                                        <td>{{orden.tipoCuentaOrdenante}}</td>
+                                        <td>{{orden.institucionReceptora}}</td>
+                                        <td>{{orden.cuentaBeneficiaria}}</td>
+                                        <td>{{orden.tipoCuentaBeneficiaria}}</td>
+                                        <td>{{orden.fecha}}</td>
+                                        <td>{{orden.instancia}}</td>
+                                        <td>{{orden.paquete}}</td>
+                                    </tr>
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!--Fin Tabla-->
+
+      </div>
+    </div>
+  </div>
+</div>
