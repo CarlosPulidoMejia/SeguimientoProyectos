@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { CertificacionesModule } from './certificaciones/certificaciones.module';
 import { HttpClientModule } from '@angular/common/http';
 import { EnvioOrdenesModule } from './envio-ordenes/envio-ordenes.module';
-import { DevolucionesModule } from './devoluciones/devoluciones.module';
+import { DevolucionesModule } from './proyecto/devoluciones.module';
 import { CdaModule } from './cda/cda.module';
 
 @NgModule({

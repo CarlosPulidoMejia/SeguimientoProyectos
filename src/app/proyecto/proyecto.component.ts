@@ -11,10 +11,10 @@ declare const $: any;
 
 @Component({
   selector: 'app-devoluciones',
-  templateUrl: './devoluciones.component.html',
-  styleUrls: ['./devoluciones.component.css']
+  templateUrl: './proyecto.component.html',
+  styleUrls: ['./proyecto.component.css']
 })
-export class DevolucionesComponent implements OnInit {
+export class ProyectoBauComponent implements OnInit {
 
   listaBase: Base[];
   listaPago: TipoPago[];

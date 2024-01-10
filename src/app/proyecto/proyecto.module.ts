@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DevolucionesComponent } from './devoluciones.component';
+import { ProyectoBauComponent } from './proyecto.component';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [DevolucionesComponent],
+  declarations: [ProyectoBauComponent],
   imports: [
     FormsModule,
     CommonModule
