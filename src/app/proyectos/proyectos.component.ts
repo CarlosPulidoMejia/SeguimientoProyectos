@@ -6,6 +6,7 @@ import { TipoPago } from '../clases/pagos/Pagos';
 import { DatosService } from '../servicios/datos/datos.service';
 import { ProyectoBauService } from '../servicios/proyectos/proyectos.service';
 import { PagosService } from '../servicios/pagos/pagos.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';  
 
 declare const $: any;
 
@@ -68,6 +69,15 @@ export class ProyectosBauComponent implements OnInit {
   enviarListaDevolucion: listaProyectos[];
   sendListaDevolucion: any;
   selectedAll: any;
+  //CPM
+  ocultar: boolean;
+  habilitarBoton: boolean;
+
+  public name = new FormControl('', Validators.required);
+  
+  public newForm = new FormGroup({
+    name: this.name
+  });
 
   constructor(private datosService: DatosService, private pagosService: PagosService, private proyectoBauService: ProyectoBauService) { }
 
@@ -75,8 +85,27 @@ export class ProyectosBauComponent implements OnInit {
     this.listaBD();
     this.getPagosDevolucion();
     this.habilitarFecha = true;
+    this.ocultar = true;
+    this.habilitarBoton = false;
+    console.log(this.orpNumeroDev);
+    this.habilitar();
   }
 
+  showData() {
+    return (this.ocultar = false);
+  }
+
+  hideData() {
+    return (this.ocultar = true);
+  }
+
+  habilitar(){
+    if(this.orpNumeroDev == undefined)
+    {
+      this.habilitarBoton = true;
+    }
+  }
+  
 
   listaBD() {
     console.log("Bases Id")
