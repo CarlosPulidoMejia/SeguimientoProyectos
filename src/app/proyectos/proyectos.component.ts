@@ -6,7 +6,6 @@ import { TipoPago } from '../clases/pagos/Pagos';
 import { DatosService } from '../servicios/datos/datos.service';
 import { ProyectoBauService } from '../servicios/proyectos/proyectos.service';
 import { PagosService } from '../servicios/pagos/pagos.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';  
 
 declare const $: any;
 
@@ -72,23 +71,29 @@ export class ProyectosBauComponent implements OnInit {
   //CPM
   ocultar: boolean;
   habilitarBoton: boolean;
+  nombreProyecto: string;
+  tipoProyecto: string;
+  responsable: string;
+  fechaInicioProyecto: any;
+  fechaFinProyecto: any;
+  documentacion: string;
+  claseBoton: string
 
-  public name = new FormControl('', Validators.required);
+  constructor( private proyectoBauService: ProyectoBauService) {    }
   
-  public newForm = new FormGroup({
-    name: this.name
-  });
-
-  constructor(private datosService: DatosService, private pagosService: PagosService, private proyectoBauService: ProyectoBauService) { }
-
   ngOnInit() {
-    this.listaBD();
-    this.getPagosDevolucion();
+    //this.listaBD();
+    //this.getPagosDevolucion();
+    this.nombreProyecto = "";
+    this.tipoProyecto = "";
+    this.responsable = "";
+    this.documentacion = "";
     this.habilitarFecha = true;
     this.ocultar = true;
     this.habilitarBoton = false;
-    console.log(this.orpNumeroDev);
     this.habilitar();
+    this.Repetir();
+    
   }
 
   showData() {
@@ -100,14 +105,25 @@ export class ProyectosBauComponent implements OnInit {
   }
 
   habilitar(){
-    if(this.orpNumeroDev == undefined)
+    this.habilitarBoton = false;
+    this.claseBoton = 'btn btn-secondary mt-3';
+    if(this.nombreProyecto != "" && this.tipoProyecto != "" && this.responsable != "" && this.documentacion != "")
     {
+      this.claseBoton = 'btn btn-success mt-3';
       this.habilitarBoton = true;
     }
   }
-  
 
-  listaBD() {
+  Repetir() {
+    setInterval(() => this.habilitar(), 1000);
+  }
+  
+  agregarProyecto(){
+    console.log('Agregar Proyecto', this.nombreProyecto, this.tipoProyecto, this.responsable, this.documentacion, this.fechaInicioProyecto, this.fechaFinProyecto );
+    
+  }
+
+  /*listaBD() {
     console.log("Bases Id")
     this.datosService.listaBase().subscribe({
       next: (data) => {
@@ -119,9 +135,9 @@ export class ProyectosBauComponent implements OnInit {
         console.log(e)
       }
     })
-  }
+  }*/
 
-  getPagosDevolucion() {
+  /*getPagosDevolucion() {
     this.pagosService.getAllPagos().subscribe({
       next: (data) => {
         this.listaPago = data;
@@ -135,7 +151,7 @@ export class ProyectosBauComponent implements OnInit {
         console.log(e)
       }
     })
-  }
+  }*/
 
   selectBase() {
     let baseId = this.listaBase.find(x => x.id_Datasource === this.catBases)

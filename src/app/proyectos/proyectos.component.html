@@ -12,30 +12,44 @@
                                     <div class="col-2">
                                         <div class="form-floating">
                                             <input type="text" class="form-control" id="proyectobau"
-                                                [(ngModel)]="orpNumeroDev"  />
+                                                [(ngModel)]="nombreProyecto"  />
                                             <label for="fecFin">Proyecto - BAU</label>
                                         </div>
                                     </div>
 
                                     <div class="col-2">
                                         <div class="form-floating">
-                                            <select class="form-select" (change)="selectBase()" id="floatingSelect"
-                                                [(ngModel)]="catBases" name="datasource">
+                                            <!--<select class="form-select" (change)="selectBase()" id="floatingSelect"
+                                                [(ngModel)]="tipoProyecto" name="datasource">
                                                 <option *ngFor="let base of listaBase" [ngValue]="base.id_Datasource">
                                                     {{ base.nombre_Base }}
                                                 </option>
-                                            </select>
+                                            </select>-->
+                                            <select class="form-select" id="floatingSelect" [(ngModel)]="tipoProyecto"
+                                            name="tipoOperacion">
+                                            <option value="0">Instancia A</option>
+                                            <option value="1">Instancia B</option>
+                                            <option value="2">Contingencia A</option>
+                                            <option value="3">Contingencia B</option>
+                                        </select>
                                             <label for="floatingSelect">Tipo Proy - BAU</label>
                                         </div>
                                     </div>
 
                                     <div class="col-2">
                                         <div class="form-floating">
-                                            <select class="form-select" (change)="selectBase()" id="floatingSelect"
-                                                [(ngModel)]="catBases" name="datasource">
+                                            <!--<select class="form-select" (change)="selectBase()" id="floatingSelect"
+                                                [(ngModel)]="responsable" name="datasource">
                                                 <option *ngFor="let base of listaBase" [ngValue]="base.id_Datasource">
                                                     {{ base.nombre_Base }}
                                                 </option>
+                                            </select>-->
+                                            <select class="form-select" id="floatingSelect" [(ngModel)]="responsable"
+                                                name="tipoOperacion">
+                                                <option value="0">Instancia A</option>
+                                                <option value="1">Instancia B</option>
+                                                <option value="2">Contingencia A</option>
+                                                <option value="3">Contingencia B</option>
                                             </select>
                                             <label for="floatingSelect">Responsable(s)</label>
                                         </div>
@@ -46,7 +60,7 @@
                                             <!--<input type="date" class="form-control" id="fecInicio"
                                             placeholder="Fecha Inicio" [(ngModel)]="selectedDateInicio" [disabled]="habilitarFecha ? true : null">-->
                                             <input type="date" class="form-control" id="fecInicio"
-                                                placeholder="Fecha Inicio" [(ngModel)]="selectedDateInicio" />
+                                                placeholder="Fecha Inicio" [(ngModel)]="fechaInicioProyecto" />
                                             <label for="fecInicio">Fecha Inicio</label>
                                         </div>
                                     </div>
@@ -57,14 +71,14 @@
                                                 [(ngModel)]="selectedDateFin"
                                                 [disabled]="habilitarFecha ? true : false" />-->
                                             <input type="date" class="form-control" id="fecFin" placeholder="Fecha Fin"
-                                            [(ngModel)]="selectedDateFin"/>
+                                            [(ngModel)]="fechaFinProyecto"/>
                                             <label for="fecFin">Fecha Fin</label>
                                         </div>
                                     </div>
 
-                                    <div class="col-1">
+                                    <div class="col-2">
                                         <div class="form-floating">
-                                            <select class="form-select" id="floatingSelect" [(ngModel)]="instancia"
+                                            <select class="form-select" id="floatingSelect" [(ngModel)]="documentacion"
                                                 name="tipoOperacion">
                                                 <option value="0">Instancia A</option>
                                                 <option value="1">Instancia B</option>
@@ -76,7 +90,7 @@
                                     </div>
 
                                     <div class="col-1 ">
-                                        <button class="btn btn-success mt-3"  [disabled]="habilitarBoton ? true : false" >
+                                        <button (click)="agregarProyecto()" class="" [ngClass]="claseBoton"  [disabled]="habilitarBoton ? false : true" >
                                             Agregar
                                         </button>
                                     </div>
