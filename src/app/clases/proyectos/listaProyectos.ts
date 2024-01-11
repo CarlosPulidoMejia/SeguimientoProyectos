@@ -1,4 +1,4 @@
-export class listaDevoluciones{
+export class listaProyectos{
     row:any;
     numero:any;
     tipoPago:any;

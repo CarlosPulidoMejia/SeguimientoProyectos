@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { Base } from '../clases/baseDatos/base';
-import { listaDevoluciones } from '../clases/devoluciones/listaDevoluciones';
+import { listaProyectos } from '../clases/proyectos/listaProyectos';
 import { TipoPago } from '../clases/pagos/Pagos';
 import { DatosService } from '../servicios/datos/datos.service';
-import { DevolucionesService } from '../servicios/devoluciones/devoluciones.service';
+import { ProyectoBauService } from '../servicios/proyectos/proyectos.service';
 import { PagosService } from '../servicios/pagos/pagos.service';
 
 declare const $: any;
 
 @Component({
-  selector: 'app-devoluciones',
-  templateUrl: './devoluciones.component.html',
-  styleUrls: ['./devoluciones.component.css']
+  selector: 'app-proyecto',
+  templateUrl: './proyectos.component.html',
+  styleUrls: ['./proyectos.component.css']
 })
-export class DevolucionesComponent implements OnInit {
+export class ProyectosBauComponent implements OnInit {
 
   listaBase: Base[];
   listaPago: TipoPago[];
@@ -58,18 +58,18 @@ export class DevolucionesComponent implements OnInit {
   /******
    * Datatable
    */
-  listaDevolucion: listaDevoluciones[];
+  listaProyectos: listaProyectos[];
 
   /****
    * Aplicar retornos
    */
 
   selectedAct: any;
-  enviarListaDevolucion: listaDevoluciones[];
+  enviarListaDevolucion: listaProyectos[];
   sendListaDevolucion: any;
   selectedAll: any;
 
-  constructor(private datosService: DatosService, private pagosService: PagosService, private devolucionesService: DevolucionesService) { }
+  constructor(private datosService: DatosService, private pagosService: PagosService, private proyectoBauService: ProyectoBauService) { }
 
   ngOnInit() {
     this.listaBD();
@@ -169,10 +169,10 @@ export class DevolucionesComponent implements OnInit {
       allowOutsideClick: false
     });
 
-    this.devolucionesService.getDevoluciones(this.requestBusqueda).subscribe(data => {
+    this.proyectoBauService.getProyectos(this.requestBusqueda).subscribe(data => {
       console.log(data)
 
-      this.listaDevolucion = data;
+      this.listaProyectos = data;
 
       $('#tablaDevoluciones').dataTable().fnDestroy();
 
@@ -211,13 +211,13 @@ export class DevolucionesComponent implements OnInit {
   }
 
   selectAll() {
-    for (var i = 0; i < this.listaDevolucion.length; i++) {
-      this.listaDevolucion[i].seleccion = this.selectedAll;
+    for (var i = 0; i < this.listaProyectos.length; i++) {
+      this.listaProyectos[i].seleccion = this.selectedAll;
     }
   }
 
   chkDevoluciones() {
-    this.selectedAct = this.listaDevolucion.filter(value => {
+    this.selectedAct = this.listaProyectos.filter(value => {
       return value.seleccion
     });
 
@@ -244,7 +244,7 @@ export class DevolucionesComponent implements OnInit {
       allowOutsideClick: false
     });
 
-    this.devolucionesService.postListaDevoluciones(this.sendListaDevolucion).subscribe({
+    this.proyectoBauService.postListaProyectos(this.sendListaDevolucion).subscribe({
       next: (data) => {
         Swal.fire({
           position: 'center',
@@ -303,7 +303,7 @@ export class DevolucionesComponent implements OnInit {
     }, 1);
 
     this.enviarListaDevolucion.forEach(dtx => {
-      this.listaDevolucion = this.listaDevolucion.filter(item => item.numero !== dtx.numero)
+      this.listaProyectos = this.listaProyectos.filter(item => item.numero !== dtx.numero)
     })
   }
 
@@ -344,10 +344,10 @@ export class DevolucionesComponent implements OnInit {
       allowOutsideClick: false
     });
 
-    this.devolucionesService.getDevolucionesVarios(this.requestBusqueda).subscribe({
+    this.proyectoBauService.getDevolucionesVarios(this.requestBusqueda).subscribe({
       next: (data) => {
 
-        this.listaDevolucion = data;
+        this.listaProyectos = data;
 
         $('#tablaDevoluciones').dataTable().fnDestroy();
 

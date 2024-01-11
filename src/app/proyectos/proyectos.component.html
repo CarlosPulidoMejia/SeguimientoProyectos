@@ -218,15 +218,15 @@
                                 </thead>
                                 <tbody>
 
-                                    <tr *ngFor="let orden of listaDevolucion;let i=index;">
+                                    <tr *ngFor="let orden of listaProyectos;let i=index;">
                                         <td scope="row">
                                             <input type="checkbox" value="{{orden.row}}"
-                                                [(ngModel)]="listaDevolucion[i].seleccion">
+                                                [(ngModel)]="listaProyectos[i].seleccion">
                                         </td>
                                         <th scope="row">{{orden.row}}</th>
                                         <td>{{orden.numero}}</td>
                                         <td>{{orden.tipoPago}}</td>
-                                        <td><input type="text" value={{orden.cantidad}} [(ngModel)]="listaDevolucion[i].cantidad" size="5"></td>
+                                        <td><input type="text" value={{orden.cantidad}} [(ngModel)]="listaProyectos[i].cantidad" size="5"></td>
                                         <td>{{orden.claveRastreo}}</td>
                                         <td>{{orden.conceptoPago}}</td>
                                         <td>{{orden.institucionEmisora}}</td>
