@@ -123,6 +123,16 @@ export class ProyectosBauComponent implements OnInit {
     
   }
 
+  guardarCambio(){
+    console.log('Guardar Cambio');
+    
+  }
+
+  cerrarSemana(){
+    console.log('Cerrar Semana');
+    
+  }
+
   /*listaBD() {
     console.log("Bases Id")
     this.datosService.listaBase().subscribe({
