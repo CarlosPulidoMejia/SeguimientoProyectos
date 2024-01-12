@@ -8,7 +8,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h6 class="card-title">Agregar Proyecto</h6>
-                                <div class="row" *ngIf="ocultar == false">
+                                <div class="row"  *ngIf="ocultar == false">
                                     <div class="col-2">
                                         <div class="form-floating">
                                             <input type="text" class="form-control" id="proyectobau"
@@ -27,10 +27,10 @@
                                             </select>-->
                                             <select class="form-select" id="floatingSelect" [(ngModel)]="tipoProyecto"
                                                 name="tipoOperacion">
-                                                <option value="0">Instancia A</option>
-                                                <option value="1">Instancia B</option>
-                                                <option value="2">Contingencia A</option>
-                                                <option value="3">Contingencia B</option>
+                                                <option value="1">Tipo 1</option>
+                                                <option value="2">Tipo 2</option>
+                                                <option value="3">Tipo 3</option>
+                                                <option value="4">Tipo 4</option>
                                             </select>
                                             <label for="floatingSelect">Tipo Proy - BAU</label>
                                         </div>
@@ -46,10 +46,10 @@
                                             </select>-->
                                             <select class="form-select" id="floatingSelect" [(ngModel)]="responsable"
                                                 name="tipoOperacion">
-                                                <option value="0">Instancia A</option>
-                                                <option value="1">Instancia B</option>
-                                                <option value="2">Contingencia A</option>
-                                                <option value="3">Contingencia B</option>
+                                                <option value="1">Responsable 1</option>
+                                                <option value="2">Responsable 2</option>
+                                                <option value="3">Responsable 3</option>
+                                                <option value="4">Responsable 4</option>
                                             </select>
                                             <label for="floatingSelect">Responsable(s)</label>
                                         </div>
@@ -80,10 +80,10 @@
                                         <div class="form-floating">
                                             <select class="form-select" id="floatingSelect" [(ngModel)]="documentacion"
                                                 name="tipoOperacion">
-                                                <option value="0">Instancia A</option>
-                                                <option value="1">Instancia B</option>
-                                                <option value="2">Contingencia A</option>
-                                                <option value="3">Contingencia B</option>
+                                                <option value="1">Documentación 1</option>
+                                                <option value="2">Documentación 2</option>
+                                                <option value="3">Documentación 3</option>
+                                                <option value="4">Documentación 4</option>
                                             </select>
                                             <label for="floatingSelect">Documentación</label>
                                         </div>
@@ -249,6 +249,7 @@
 
                 <br />
                 <!--<input type="checkbox" [(ngModel)]="selectedAll" (change)="selectAll()" />Seleccionar todo-->
+                <!-- Inicio Tabla -->
                 <div class="row mt-5">
                     <div class="col-12">
                         <div class="table-responsive">
@@ -270,7 +271,33 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let orden of listaProyectos; let i = index">
+                                    <tr>
+                                        <td scope="row" hidden>
+                                            <input type="checkbox"/>
+                                        </td>
+                                        <td>PROY-607 Migración de Cartera Propia al SAH</td>
+                                        <th>Killer</th>
+                                        <td>Marco Ruiz</td>
+                                        <td>
+                                            <input type="text" class="form-control" size="1" />
+                                        </td>
+                                        <td>29/11/202</td>
+                                        <td>15/11/2023</td>
+                                        <td>Desarrollo</td>
+                                        <td>Desfasado</td>
+                                        <td></td>
+                                        <td>71%</td>
+                                        <td>Plan Proyecto</td>
+                                        <td>
+                                            <button (click)="cerrarSemana()" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
+                                                ...
+                                            </button>
+                                            <button (click)="cerrarSemana()" class="btn btn-primary mx-2" data-toggle="modal" data-target="#exampleModalComentariosSubdireccion">
+                                                ...
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <!--<tr *ngFor="let orden of listaProyectos; let i = index">
                                         <td scope="row">
                                             <input type="checkbox" value="{{ orden.row }}"
                                                 [(ngModel)]="listaProyectos[i].seleccion" />
@@ -293,7 +320,7 @@
                                         <td>{{ orden.fecha }}</td>
                                         <td>{{ orden.instancia }}</td>
                                         <td>{{ orden.paquete }}</td>
-                                    </tr>
+                                    </tr>-->
                                 </tbody>
                             </table>
                         </div>
@@ -302,7 +329,7 @@
                         <button (click)="guardarCambio()" class="btn btn-primary">
                             Guardar Cambio
                         </button>
-                        <button (click)="cerrarSemana()" class="btn btn-success mx-3" data-toggle="modal" data-target="#exampleModalComentarios">
+                        <button (click)="cerrarSemana()" class="btn btn-success buttonM" data-toggle="modal" data-target="#exampleModalComentarios">
                             Cerrar Seman
                         </button>
                     </div>
@@ -313,17 +340,197 @@
     </div>
 </div>
 
-<!-- Modal Comentarios -->
-<div class="modal fade" id="exampleModalComentarios" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Modal Comentarios Gerencia-->
+<div class="modal fade" id="exampleModalComentariosGerencia" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div _ngcontent-fhe-c21="" class="modal-content">
             <div _ngcontent-fhe-c21="" class="modal-header">
-                <h5 _ngcontent-fhe-c21="" id="exampleModalLabel" class="modal-title">Comentarios</h5>
+                <h5 _ngcontent-fhe-c21="" id="exampleModalLabel" class="modal-title">Comentarios Gerencia</h5>
                 <button _ngcontent-fhe-c21="" type="button" data-dismiss="modal" aria-label="Close" class="close border">
                     <span _ngcontent-fhe-c21="" aria-hidden="true">×</span>
                 </button>
             </div>
             <div _ngcontent-fhe-c21="" class="modal-body"><br _ngcontent-fhe-c21="">
+                <div _ngcontent-fhe-c21="">
+                    <!-- Comentarios -->
+                    <div _ngcontent-fhe-c21="" class="row mt-6">
+                        <div _ngcontent-fhe-c21="" class="col-12">
+                            <div _ngcontent-fhe-c21="" class="card">
+                                <div _ngcontent-fhe-c21="" class="card-body">
+                                    <h6 _ngcontent-fhe-c21="" class="card-title">Comentarios (Fundamentos de estado):</h6>
+                                    <div _ngcontent-fhe-c21="" class="row">
+                                        <div _ngcontent-fhe-c21="" class="col-12">
+                                            <div _ngcontent-fhe-c21="" class="form-floating">
+                                                <textarea _ngcontent-fhe-c21="" type="text" id="idDatasource" placeholder="ID" value="1"
+                                                    class="form-control ng-valid ng-dirty ng-touched" style="height: 120px;" >
+                                                </textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br _ngcontent-fhe-c21="">
+                    <!-- Documentar avance en JIRA -->
+                    <!--<div _ngcontent-fhe-c21="" class="row mt-6">
+                        <div _ngcontent-fhe-c21="" class="col-12">
+                            <div _ngcontent-fhe-c21="" class="card">
+                                <div _ngcontent-fhe-c21="" class="card-body">
+                                    <h6 _ngcontent-fhe-c21="" class="card-title">Documentar avance en JIRA | Atención ToDo, semana anterior:</h6>
+                                    <div _ngcontent-fhe-c21="" class="row">
+                                        Semana Anterior 
+                                        <div _ngcontent-fhe-c21="" class="col-6">
+                                            <div _ngcontent-fhe-c21="" class="form-floating">
+                                                <textarea _ngcontent-fhe-c21="" type="text" id="bBanco" placeholder="Banco" value="40150"
+                                                    class="form-control ng-untouched ng-pristine ng-valid" style="height: 140px;" disabled="">
+                                                </textarea>
+                                                <label _ngcontent-fhe-c21="">ToDo Semana Anterior</label>
+                                            </div>
+                                        </div>
+                                        Avances ToDo
+                                        <div _ngcontent-fhe-c21="" class="col-6">
+                                            <div _ngcontent-fhe-c21="" class="form-floating">
+                                                <textarea _ngcontent-fhe-c21="" type="text" id="bCuenta" 
+                                                    class="form-control ng-untouched ng-pristine ng-valid" style="height: 144px;" >
+                                                </textarea>
+                                                <label _ngcontent-fhe-c21="">Avances sobre ToDo</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
+                    <div _ngcontent-fhe-c21="" class="row mt-6">
+                        <div _ngcontent-fhe-c21="" class="col-12">
+                            <div _ngcontent-fhe-c21="" class="card">
+                                <div _ngcontent-fhe-c21="" class="card-body" style="height: 200px;">
+                                    <h6 _ngcontent-fhe-c21="" class="card-title">Documentar avance en JIRA | Atención ToDo, semana anterior:
+                                    </h6>
+                                    <div class="row" _ngcontent-fhe-c21="">
+                                        <div _ngcontent-fhe-c21="" class="col-12" style="height: 170px;">
+                                            <div _ngcontent-fhe-c21="" class="form-floating"
+                                                style="overflow-x: hidden; overflow-y: auto; height: 8em;">
+                                                <table _ngcontent-wrk-c21="" class="table">
+                                                    <thead class="table-success" _ngcontent-wrk-c21="">
+                                                        <tr _ngcontent-wrk-c21="">
+                                                            <th _ngcontent-wrk-c21="">Tarea</th>
+                                                            <th _ngcontent-wrk-c21="">Comentario</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Tarea 1</td>
+                                                            <td _ngcontent-wrk-c21=""><input _ngcontent-fhe-c21="" type="text"
+                                                                    id="idDatasource" placeholder="ID" value="1"
+                                                                    class="form-control ng-valid ng-dirty ng-touched"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Tarea 1</td>
+                                                            <td _ngcontent-wrk-c21=""><input _ngcontent-fhe-c21="" type="text"
+                                                                    id="idDatasource" placeholder="ID" value="1"
+                                                                    class="form-control ng-valid ng-dirty ng-touched"></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br _ngcontent-fhe-c21="">
+                    <!-- ToDo -->
+                    <!--<div _ngcontent-fhe-c21="" class="row mt-6">
+                        <div _ngcontent-fhe-c21="" class="col-12">
+                            <div _ngcontent-fhe-c21="" class="card">
+                                <div _ngcontent-fhe-c21="" class="card-body">
+                                    <h6 _ngcontent-fhe-c21="" class="card-title">ToDo:</h6>
+                                    <div _ngcontent-fhe-c21="" class="row">
+                                        <div _ngcontent-fhe-c21="" class="col-12">
+                                            <div _ngcontent-fhe-c21="" class="form-floating">
+                                                <textarea _ngcontent-fhe-c21="" type="text" id="idDatasource" placeholder="ID" value="1"
+                                                    class="form-control ng-valid ng-dirty ng-touched" style="height: 120px;" >
+                                                </textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
+                    <div _ngcontent-fhe-c21="" class="row mt-6">
+                        <div _ngcontent-fhe-c21="" class="col-12">
+                            <div _ngcontent-fhe-c21="" class="card">
+                                <div _ngcontent-fhe-c21="" class="card-body">
+                                    <h6 _ngcontent-fhe-c21="" class="card-title">ToDo</h6>
+                                    <div _ngcontent-fhe-c21="" class="row">
+                                        <div _ngcontent-fhe-c21="" class="col-12">
+                                            <div _ngcontent-fhe-c21="" class="form-floating"
+                                                style="overflow-x: hidden; overflow-y: auto; height: 5em;"><input _ngcontent-fhe-c21=""
+                                                    type="text" id="idDatasource" placeholder="ID" value="1"
+                                                    class="form-control ng-valid ng-dirty ng-touched"><input _ngcontent-fhe-c21=""
+                                                    type="text" id="idDatasource" placeholder="ID" value="1"
+                                                    class="form-control ng-valid ng-dirty ng-touched"><input _ngcontent-fhe-c21=""
+                                                    type="text" id="idDatasource" placeholder="ID" value="1"
+                                                    class="form-control ng-valid ng-dirty ng-touched"></div>
+                                        </div>
+                                    </div>
+                                    <button data-toggle="modal" data-target="#exampleModalAddTarea" _ngcontent-fhe-c21="" type="button" data-dismiss="modal" class="btn btn-success mt-2">
+                                        +
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br _ngcontent-fhe-c21="">
+                    <!-- Observaciones Subdirección -->
+                    <div _ngcontent-fhe-c21=""  class="row mt-6">
+                        <div _ngcontent-fhe-c21="" class="col-12">
+                            <div _ngcontent-fhe-c21="" class="card">
+                                <div _ngcontent-fhe-c21="" class="card-body">
+                                    <h6 _ngcontent-fhe-c21="" class="card-title">Observaciones Subdirección</h6>
+                                    <div _ngcontent-fhe-c21="" class="row">
+                                        <div _ngcontent-fhe-c21="" class="col-12">
+                                            <div _ngcontent-fhe-c21="" class="form-floating">
+                                                <textarea _ngcontent-fhe-c21="" type="text" id="idDatasource" placeholder="ID" value="1"
+                                                    class="form-control ng-valid ng-dirty ng-touched" style="height: 120px;" disabled>
+                                                </textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Botones Modal-->
+            <div _ngcontent-fhe-c21="" class="modal-footer">
+                <button _ngcontent-fhe-c21="" type="button" data-dismiss="modal" class="btn btn-secondary">
+                    Cerrar
+                </button>
+                <button _ngcontent-fhe-c21="" type="button" class="btn btn-primary">
+                    Guardar Comentarios
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Comentarios Subdirección-->
+<div class="modal fade" id="exampleModalComentariosSubdireccion"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document" >
+        <div _ngcontent-fhe-c21="" class="modal-content">
+            <div _ngcontent-fhe-c21="" class="modal-header">
+                <h5 _ngcontent-fhe-c21="" id="exampleModalLabel" class="modal-title">Comentarios Subdirección</h5>
+                <button _ngcontent-fhe-c21="" type="button" data-dismiss="modal" aria-label="Close" class="close border">
+                    <span _ngcontent-fhe-c21="" aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div _ngcontent-fhe-c21="" class="modal-body" style="overflow-x: hidden; overflow-y: auto;  height: 60em;">
+                <br _ngcontent-fhe-c21="">
                 <div _ngcontent-fhe-c21="">
                     <!-- Comentarios -->
                     <div _ngcontent-fhe-c21="" class="row mt-6">
@@ -349,28 +556,62 @@
                     <div _ngcontent-fhe-c21="" class="row mt-6">
                         <div _ngcontent-fhe-c21="" class="col-12">
                             <div _ngcontent-fhe-c21="" class="card">
-                                <div _ngcontent-fhe-c21="" class="card-body">
-                                    <h6 _ngcontent-fhe-c21="" class="card-title">Documentar avance en JIRA | Atención ToDo, semana anterior:</h6>
-                                    <div _ngcontent-fhe-c21="" class="row">
-                                        <!-- Semana Anterior -->
-                                        <div _ngcontent-fhe-c21="" class="col-6">
-                                            <div _ngcontent-fhe-c21="" class="form-floating">
-                                                <textarea _ngcontent-fhe-c21="" type="text" id="bBanco" placeholder="Banco" value="40150"
-                                                    class="form-control ng-untouched ng-pristine ng-valid" style="height: 140px;" disabled="">
-                                                </textarea>
-                                                <label _ngcontent-fhe-c21="">ToDo Semana Anterior</label>
-                                            </div>
-                                        </div>
-                                        <!-- Avances ToDo -->
-                                        <div _ngcontent-fhe-c21="" class="col-6">
-                                            <div _ngcontent-fhe-c21="" class="form-floating">
-                                                <textarea _ngcontent-fhe-c21="" type="text" id="bCuenta" 
-                                                    class="form-control ng-untouched ng-pristine ng-valid" style="height: 144px;" disabled="">
-                                                </textarea>
-                                                <label _ngcontent-fhe-c21="">Avances sobre ToDo</label>
+                                <div _ngcontent-fhe-c21="" class="card-body" style="height: 200px;">
+                                    <h6 _ngcontent-fhe-c21="" class="card-title">Documentar avance en JIRA | Atención ToDo, semana anterior:
+                                    </h6>
+                                    <div class="row" _ngcontent-fhe-c21="">
+                                        <div _ngcontent-fhe-c21="" class="col-12" style="height: 170px;">
+                                            <div _ngcontent-fhe-c21="" class="form-floating"
+                                                style="overflow-x: hidden; overflow-y: auto; height: 8em;">
+                                                <table _ngcontent-wrk-c21="" class="table">
+                                                    <thead class="table-success" _ngcontent-wrk-c21="">
+                                                        <tr _ngcontent-wrk-c21="">
+                                                            <th _ngcontent-wrk-c21="">Tarea</th>
+                                                            <th _ngcontent-wrk-c21="">Comentario</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Tarea 1</td>
+                                                            <td _ngcontent-wrk-c21=""><input disabled _ngcontent-fhe-c21="" type="text"
+                                                                    id="idDatasource" placeholder="ID" value="1"
+                                                                    class="form-control ng-valid ng-dirty ng-touched"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Tarea 1</td>
+                                                            <td _ngcontent-wrk-c21=""><input disabled _ngcontent-fhe-c21="" type="text"
+                                                                    id="idDatasource" placeholder="ID" value="1"
+                                                                    class="form-control ng-valid ng-dirty ng-touched"></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br _ngcontent-fhe-c21="">
+                    <!-- ToDo -->
+                    <div _ngcontent-fhe-c21="" class="row mt-6">
+                        <div _ngcontent-fhe-c21="" class="col-12">
+                            <div _ngcontent-fhe-c21="" class="card">
+                                <div _ngcontent-fhe-c21="" class="card-body">
+                                    <h6 _ngcontent-fhe-c21="" class="card-title">ToDo</h6>
+                                    <div _ngcontent-fhe-c21="" class="row">
+                                        <div _ngcontent-fhe-c21="" class="col-12">
+                                            <div _ngcontent-fhe-c21="" class="form-floating"
+                                                style="overflow-x: hidden; overflow-y: auto; height: 5em;"><input disabled _ngcontent-fhe-c21=""
+                                                    type="text" id="idDatasource" placeholder="ID" value="1"
+                                                    class="form-control ng-valid ng-dirty ng-touched"><input disabled _ngcontent-fhe-c21=""
+                                                    type="text" id="idDatasource" placeholder="ID" value="1"
+                                                    class="form-control ng-valid ng-dirty ng-touched"><input disabled _ngcontent-fhe-c21=""
+                                                    type="text" id="idDatasource" placeholder="ID" value="1"
+                                                    class="form-control ng-valid ng-dirty ng-touched"></div>
+                                        </div>
+                                    </div>
+                                    <button _ngcontent-fhe-c21="" type="button" data-dismiss="modal" class="btn btn-success mt-2">+</button>
                                 </div>
                             </div>
                         </div>
@@ -437,6 +678,51 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="exampleModalAddTarea" style="height: 420px;"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document" >
+        <div _ngcontent-fhe-c21="" class="modal-content">
+            <div _ngcontent-fhe-c21="" class="modal-header">
+                <h5 _ngcontent-fhe-c21="" id="exampleModalLabel" class="modal-title">Agregar Tarea</h5>
+                <button _ngcontent-fhe-c21="" type="button" data-dismiss="modal" aria-label="Close" class="close border">
+                    <span _ngcontent-fhe-c21="" aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div _ngcontent-fhe-c21="" class="modal-body" style="overflow-x: hidden; overflow-y: auto;  height: 60em;">
+                <br _ngcontent-fhe-c21="">
+                <div _ngcontent-fhe-c21="">
+                    <!-- Comentarios -->
+                    <div _ngcontent-fhe-c21="" class="row mt-6">
+                        <div _ngcontent-fhe-c21="" class="col-12">
+                            <div _ngcontent-fhe-c21="" class="card">
+                                <div _ngcontent-fhe-c21="" class="card-body">
+                                    <h6 _ngcontent-fhe-c21="" class="card-title">Descripción:</h6>
+                                    <div _ngcontent-fhe-c21="" class="row">
+                                        <div _ngcontent-fhe-c21="" class="col-12">
+                                            <div _ngcontent-fhe-c21="" class="form-floating">
+                                                <textarea _ngcontent-fhe-c21="" type="text" id="idDatasource" placeholder="ID" value="1"
+                                                    class="form-control ng-valid ng-dirty ng-touched" style="height: 120px;">
+                                                </textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br _ngcontent-fhe-c21="">
+                </div>
+                <button _ngcontent-fhe-c21="" type="button" data-dismiss="modal" class="btn btn-secondary">
+                    Cerrar
+                </button>
+                <button _ngcontent-fhe-c21="" type="button" class="btn btn-primary mx-2">
+                    Guardar Tarea
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <style>
     .right {
         justify-content: flex-end;
@@ -446,5 +732,8 @@
         right: 0;
         top: center;
         margin-right: 10px;
+    }
+    .buttonM {
+        margin-left: 5px;
     }
 </style>

@@ -43,6 +43,7 @@ export class ProyectosBauComponent implements OnInit {
    * Consultar
    */
   requestBusqueda: any;
+  requestAgregar: any;
 
   //Datos
   numRegistros: any = 100;
@@ -119,7 +120,49 @@ export class ProyectosBauComponent implements OnInit {
   }
   
   agregarProyecto(){
-    console.log('Agregar Proyecto', this.nombreProyecto, this.tipoProyecto, this.responsable, this.documentacion, this.fechaInicioProyecto, this.fechaFinProyecto );
+    console.log( this.nombreProyecto, this.tipoProyecto, this.responsable, this.documentacion, this.fechaInicioProyecto, this.fechaFinProyecto );
+    
+    Swal.fire({
+      title: "Agregando Proyecto...",
+      text: "Espere un momento",
+      imageUrl: "../../assets/progress.gif",
+      imageWidth: 160,
+      imageHeight: 160,
+      showConfirmButton: false,
+      allowOutsideClick: false
+    });
+
+    this.requestAgregar = {
+      proyecto: this.nombreProyecto,
+      tipoProyecto: this.tipoProyecto,
+      responsable: this.responsable,
+      fechaInicio: this.fechaInicioProyecto,
+      fechaFin: this.fechaFinProyecto,
+      tipoDoc: this.documentacion
+    }
+    this.proyectoBauService.postAgregarProyectos(this.requestAgregar).subscribe(
+      data => {
+        console.log(data)
+        console.log("Complete function triggered.")
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Proyecto agregado correctamente',
+          showConfirmButton: false
+        })
+      },
+      err => {
+        console.log(err)
+        console.log("Complete function triggered.")
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'No se pudo agregar el proyecto',
+          showConfirmButton: false
+        })
+      },
+      () => {}
+    );
     
   }
 
