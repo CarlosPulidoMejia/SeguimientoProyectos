@@ -94,6 +94,7 @@ export class ProyectosBauComponent implements OnInit {
     this.habilitarBoton = false;
     this.habilitar();
     this.Repetir();
+    this.getAllProyectos();
     
   }
 
@@ -174,6 +175,18 @@ export class ProyectosBauComponent implements OnInit {
   cerrarSemana(){
     console.log('Cerrar Semana');
     
+  }
+
+  getAllProyectos(){
+    this.proyectoBauService.getAllProyectos().subscribe(
+      data => {
+        console.log(data)
+      },
+      err => {
+          console.log(err)
+      },
+      () => {}
+    );
   }
 
   /*listaBD() {

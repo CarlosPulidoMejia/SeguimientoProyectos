@@ -24,6 +24,10 @@ export class ProyectoBauService {
     return this.httpClient.post(`${global.URL_API}guardarproyecto`,proyecto);
   }
 
+  getAllProyectos(){
+    return this.httpClient.get(`${global.URL_API}listaproyectos`)
+  }
+
   getDevolucionesVarios(devolucion:any):Observable<listaProyectos[]>{
     return this.httpClient.post<listaProyectos[]>(`${global.URL_API}api/bim/retornos/`,devolucion);
   }

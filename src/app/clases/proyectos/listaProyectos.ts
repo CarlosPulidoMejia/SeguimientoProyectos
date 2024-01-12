@@ -17,3 +17,7 @@ export class listaProyectos{
     pagoDev:string;
     paquete:number;
 }
+export class listasProyectos{
+    proyectoResponse:any;
+    detalleProyectoResponse:any;
+}
