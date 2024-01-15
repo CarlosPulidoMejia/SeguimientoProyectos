@@ -180,12 +180,14 @@ export class ProyectosBauComponent implements OnInit {
   getAllProyectos(){
     this.proyectoBauService.getAllProyectos().subscribe(
       data => {
-        console.log(data)
-      },
+        this.listaProyectos = data;
+        console.log(this.listaProyectos);
+        
+      }
+      ,
       err => {
-          console.log(err)
+        console.log(err)
       },
-      () => {}
     );
   }
 
@@ -321,13 +323,13 @@ export class ProyectosBauComponent implements OnInit {
 
   }
 
-  selectAll() {
+  /*selectAll() {
     for (var i = 0; i < this.listaProyectos.length; i++) {
       this.listaProyectos[i].seleccion = this.selectedAll;
     }
-  }
+  }*/
 
-  chkDevoluciones() {
+  /*chkDevoluciones() {
     this.selectedAct = this.listaProyectos.filter(value => {
       return value.seleccion
     });
@@ -376,7 +378,7 @@ export class ProyectosBauComponent implements OnInit {
           showConfirmButton: false
         })
       }
-    })
+    })*/
     //this.listaDevolucion = this.listaDevolucion.filter(x => x.numero === this.enviarListaDevolucion.filter(d => d.numero));
 
 
@@ -397,9 +399,9 @@ export class ProyectosBauComponent implements OnInit {
     //console.log(this.listaDevolucion)
 
 
-  }
+  //}
 
-  limpiarTablas() {
+  /*limpiarTablas() {
     this.selectedAll = false;
     $('#tablaDevoluciones').dataTable().fnDestroy();
 
@@ -416,13 +418,13 @@ export class ProyectosBauComponent implements OnInit {
     this.enviarListaDevolucion.forEach(dtx => {
       this.listaProyectos = this.listaProyectos.filter(item => item.numero !== dtx.numero)
     })
-  }
+  }*/
 
   /**********
    * 25/04/2023 
    * Realizar varios retornos
    */
-  getOrdenesDevolucionVarios() {
+  /*getOrdenesDevolucionVarios() {
 
     if (this.selectedtipo == "17" || this.selectedtipo == "23") {
       this.tipoPagoDevolucion = "Normal"
@@ -492,6 +494,6 @@ export class ProyectosBauComponent implements OnInit {
         console.log(e)
       }
     })
-  }
+  }*/
 
 }

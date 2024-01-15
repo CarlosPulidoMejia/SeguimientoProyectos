@@ -24,8 +24,8 @@ export class ProyectoBauService {
     return this.httpClient.post(`${global.URL_API}guardarproyecto`,proyecto);
   }
 
-  getAllProyectos(){
-    return this.httpClient.get(`${global.URL_API}listaproyectos`)
+  getAllProyectos(): Observable<listaProyectos[]>{
+    return this.httpClient.get<listaProyectos[]>(`${global.URL_API}listaproyectos`)
   }
 
   getDevolucionesVarios(devolucion:any):Observable<listaProyectos[]>{

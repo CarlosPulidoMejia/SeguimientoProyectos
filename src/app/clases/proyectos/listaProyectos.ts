@@ -1,4 +1,4 @@
-export class listaProyectos{
+/*export class listaProyectos{
     row:any;
     numero:any;
     tipoPago:any;
@@ -16,8 +16,8 @@ export class listaProyectos{
     seleccion!:boolean;
     pagoDev:string;
     paquete:number;
-}
-export class listasProyectos{
-    proyectoResponse:any;
+}*/
+export class listaProyectos{
     detalleProyectoResponse:any;
+    proyectoResponse: any;
 }

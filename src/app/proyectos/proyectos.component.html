@@ -227,17 +227,12 @@
 
                                     <div class="col-1">
                                         <br />
-                                        <button type="button" class="btn btn-warning"
-                                            (click)="getOrdenesDevolucionVarios()">
-                                            Buscar varios
-                                        </button>
+                                        
                                     </div>
 
                                     <div class="col-2">
                                         <br />
-                                        <button class="btn btn-success" (click)="chkDevoluciones()">
-                                            Retornar
-                                        </button>
+                                        
                                     </div>
                                 </div>
                                 <!--Fin segunda fila-->
@@ -271,23 +266,35 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    <tr *ngFor="let proyecto of listaProyectos; let i = index">
                                         <td scope="row" hidden>
                                             <input type="checkbox"/>
                                         </td>
-                                        <td>PROY-607 Migración de Cartera Propia al SAH</td>
-                                        <th>Killer</th>
+                                        <td>{{ proyecto.proyectoResponse.proyecto }}</td>
+                                        <th>{{ proyecto.detalleProyectoResponse.tipoProyecto}}</th>
                                         <td>Marco Ruiz</td>
                                         <td>
-                                            <input type="text" class="form-control" size="1" />
+                                            <input type="text" class="form-control" size="1" 
+                                                value="{{ proyecto.detalleProyectoResponse.hrsatencion }}" 
+                                            />
                                         </td>
-                                        <td>29/11/202</td>
-                                        <td>15/11/2023</td>
-                                        <td>Desarrollo</td>
-                                        <td>Desfasado</td>
-                                        <td></td>
+                                        <td>
+                                            <input type="date" class="form-control" size="1"
+                                                value="proyecto.detalleProyectoResponse.fechaInicio"
+                                                
+                                            />
+                                        </td>
+                                        <td>
+                                            <input type="date" class="form-control" size="1"
+                                                value="proyecto.detalleProyectoResponse.fechaFin"
+                                                
+                                            />
+                                        </td>
+                                        <td>{{ proyecto.detalleProyectoResponse.faseProy }}</td>
+                                        <td>{{ proyecto.detalleProyectoResponse.estadoProy }}</td>
+                                        <td>{{ proyecto.detalleProyectoResponse.dependenciaProy }}</td>
                                         <td>71%</td>
-                                        <td>Plan Proyecto</td>
+                                        <td>{{ proyecto.detalleProyectoResponse.docProy }}</td>
                                         <td>
                                             <button (click)="cerrarSemana()" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
                                                 ...
