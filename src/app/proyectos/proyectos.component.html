@@ -270,17 +270,17 @@
                                         <td scope="row" hidden>
                                             <input type="checkbox"/>
                                         </td>
-                                        <td>{{ proyecto.proyectoResponse.proyecto }}</td>
+                                        <td>{{ proyecto.proyectoResponse.proyecto  }}</td>
                                         <th>{{ proyecto.detalleProyectoResponse.tipoProyecto}}</th>
                                         <td>Marco Ruiz</td>
                                         <td>
                                             <input type="text" class="form-control" size="1" 
-                                                value="{{ proyecto.detalleProyectoResponse.hrsatencion }}" 
+                                                value="{{ proyecto.detalleProyectoResponse.hrsatencion  }}" 
                                             />
                                         </td>
                                         <td>
                                             <input type="date" class="form-control" size="1"
-                                                value="proyecto.detalleProyectoResponse.fechaInicio"
+                                                [value]="proyecto.detalleProyectoResponse.fechaInicio "
                                                 
                                             />
                                         </td>
