@@ -248,7 +248,7 @@
                 <div class="row mt-5">
                     <div class="col-12">
                         <div class="table-responsive">
-                            <table class="table" id="tablaDevoluciones">
+                            <table class="table" id="tablaProyectos">
                                 <thead class="table-success">
                                     <tr>
                                         <th scope="col">Proyecto - BAU</th>
@@ -270,36 +270,70 @@
                                         <td scope="row" hidden>
                                             <input type="checkbox"/>
                                         </td>
-                                        <td>{{ proyecto.proyectoResponse.proyecto  }}</td>
-                                        <th>{{ proyecto.detalleProyectoResponse.tipoProyecto}}</th>
-                                        <td>Marco Ruiz</td>
+                                        <td>{{ proyecto.proyectoResponse.proyecto  | uppercase }}</td>
+                                        <th>{{ proyecto.detalleProyectoResponse.tipoProyecto  | uppercase}}</th>
+                                        <td>MARCO RUIZ</td>
                                         <td>
-                                            <input type="text" class="form-control" size="1" 
-                                                value="{{ proyecto.detalleProyectoResponse.hrsatencion  }}" 
+                                            <input type="text" class="form-control"  size="0" 
+                                                [value]="proyecto.detalleProyectoResponse.hrsAtencion" 
                                             />
                                         </td>
                                         <td>
                                             <input type="date" class="form-control" size="1"
                                                 [value]="proyecto.detalleProyectoResponse.fechaInicio "
-                                                
                                             />
                                         </td>
                                         <td>
                                             <input type="date" class="form-control" size="1"
-                                                value="proyecto.detalleProyectoResponse.fechaFin"
-                                                
+                                                [value]="proyecto.detalleProyectoResponse.fechaFin"
                                             />
                                         </td>
-                                        <td>{{ proyecto.detalleProyectoResponse.faseProy }}</td>
-                                        <td>{{ proyecto.detalleProyectoResponse.estadoProy }}</td>
-                                        <td>{{ proyecto.detalleProyectoResponse.dependenciaProy }}</td>
-                                        <td>71%</td>
-                                        <td>{{ proyecto.detalleProyectoResponse.docProy }}</td>
                                         <td>
-                                            <button (click)="cerrarSemana()" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
+                                            <select class="form-select" id="floatingSelect" [(ngModel)]="faseProyecto"
+                                                name="tipoOperacion">
+                                                <option value="1">{{ proyecto.detalleProyectoResponse.faseProy }}</option>
+                                                <option value="2">Tipo 2</option>
+                                                <option value="3">Tipo 3</option>
+                                                <option value="4">Tipo 4</option>
+                                            </select>
+                                        </td>
+                                        <td>    
+                                            <select class="form-select" id="floatingSelect" [(ngModel)]="estadoProy" name="tipoOperacion">
+                                                <option value="1">{{ proyecto.detalleProyectoResponse.estadoProy  | uppercase }}</option>
+                                                <option value="2">Tipo 2</option>
+                                                <option value="3">Tipo 3</option>
+                                                <option value="4">Tipo 4</option>
+                                            </select>
+                                            
+                                        </td>
+                                        <td>
+                                            <select class="form-select" id="floatingSelect" [(ngModel)]="dependenciaProy" name="tipoOperacion">
+                                                <option [value]=" proyecto.detalleProyectoResponse.estadoProy  | uppercase ">{{ proyecto.detalleProyectoResponse.dependenciaProy  | uppercase }}</option>
+                                                <option value="2">Tipo 2</option>
+                                                <option value="3">Tipo 3</option>
+                                                <option value="4">Tipo 4</option>
+                                            </select>
+                                            
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control"  size="0" 
+                                                [value]="proyecto.detalleProyectoResponse.hrsAtencion" 
+                                            />
+                                        </td>
+                                        <td>
+                                            <select class="form-select" id="floatingSelect" [(ngModel)]="docProy" name="tipoOperacion">
+                                                <option [value]=" proyecto.detalleProyectoResponse.estadoProy  | uppercase ">{{ proyecto.detalleProyectoResponse.docProy  | uppercase }}</option>
+                                                <option value="2">Tipo 2</option>
+                                                <option value="3">Tipo 3</option>
+                                                <option value="4">Tipo 4</option>
+                                            </select>
+
+                                        </td>
+                                        <td>
+                                            <button (click)="cerrarSemana()" class="btn btn-success" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
                                                 ...
                                             </button>
-                                            <button (click)="cerrarSemana()" class="btn btn-primary mx-2" data-toggle="modal" data-target="#exampleModalComentariosSubdireccion">
+                                            <button (click)="cerrarSemana()" class="btn btn-success mx-2" data-toggle="modal" data-target="#exampleModalComentariosSubdireccion">
                                                 ...
                                             </button>
                                         </td>
@@ -386,7 +420,7 @@
                                 <div _ngcontent-fhe-c21="" class="card-body">
                                     <h6 _ngcontent-fhe-c21="" class="card-title">Documentar avance en JIRA | Atención ToDo, semana anterior:</h6>
                                     <div _ngcontent-fhe-c21="" class="row">
-                                        Semana Anterior 
+                                        
                                         <div _ngcontent-fhe-c21="" class="col-6">
                                             <div _ngcontent-fhe-c21="" class="form-floating">
                                                 <textarea _ngcontent-fhe-c21="" type="text" id="bBanco" placeholder="Banco" value="40150"
@@ -395,11 +429,11 @@
                                                 <label _ngcontent-fhe-c21="">ToDo Semana Anterior</label>
                                             </div>
                                         </div>
-                                        Avances ToDo
+                                        
                                         <div _ngcontent-fhe-c21="" class="col-6">
                                             <div _ngcontent-fhe-c21="" class="form-floating">
                                                 <textarea _ngcontent-fhe-c21="" type="text" id="bCuenta" 
-                                                    class="form-control ng-untouched ng-pristine ng-valid" style="height: 144px;" >
+                                                    class="form-control ng-untouched ng-pristine ng-valid" style="height: 140px;" >
                                                 </textarea>
                                                 <label _ngcontent-fhe-c21="">Avances sobre ToDo</label>
                                             </div>
@@ -560,6 +594,35 @@
                     </div>
                     <br _ngcontent-fhe-c21="">
                     <!-- Documentar avance en JIRA -->
+                    <!--<div _ngcontent-fhe-c21="" class="row mt-6">
+                        <div _ngcontent-fhe-c21="" class="col-12">
+                            <div _ngcontent-fhe-c21="" class="card">
+                                <div _ngcontent-fhe-c21="" class="card-body">
+                                    <h6 _ngcontent-fhe-c21="" class="card-title">Documentar avance en JIRA | Atención ToDo, semana anterior:</h6>
+                                    <div _ngcontent-fhe-c21="" class="row">
+                                        
+                                        <div _ngcontent-fhe-c21="" class="col-6">
+                                            <div _ngcontent-fhe-c21="" class="form-floating">
+                                                <textarea _ngcontent-fhe-c21="" type="text" id="bBanco" placeholder="Banco" value="40150"
+                                                    class="form-control ng-untouched ng-pristine ng-valid" style="height: 140px;" disabled="">
+                                                </textarea>
+                                                <label _ngcontent-fhe-c21="">ToDo Semana Anterior</label>
+                                            </div>
+                                        </div>
+                                        
+                                        <div _ngcontent-fhe-c21="" class="col-6">
+                                            <div _ngcontent-fhe-c21="" class="form-floating">
+                                                <textarea _ngcontent-fhe-c21="" type="text" id="bCuenta" 
+                                                    class="form-control ng-untouched ng-pristine ng-valid" style="height: 140px;" disabled>
+                                                </textarea>
+                                                <label _ngcontent-fhe-c21="">Avances sobre ToDo</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
                     <div _ngcontent-fhe-c21="" class="row mt-6">
                         <div _ngcontent-fhe-c21="" class="col-12">
                             <div _ngcontent-fhe-c21="" class="card">
@@ -601,6 +664,24 @@
                     </div>
                     <br _ngcontent-fhe-c21="">
                     <!-- ToDo -->
+                    <!--<div _ngcontent-fhe-c21="" class="row mt-6">
+                        <div _ngcontent-fhe-c21="" class="col-12">
+                            <div _ngcontent-fhe-c21="" class="card">
+                                <div _ngcontent-fhe-c21="" class="card-body">
+                                    <h6 _ngcontent-fhe-c21="" class="card-title">ToDo:</h6>
+                                    <div _ngcontent-fhe-c21="" class="row">
+                                        <div _ngcontent-fhe-c21="" class="col-12">
+                                            <div _ngcontent-fhe-c21="" class="form-floating">
+                                                <textarea _ngcontent-fhe-c21="" type="text" id="idDatasource" placeholder="ID" value="1"
+                                                    class="form-control ng-valid ng-dirty ng-touched" style="height: 120px;" disabled>
+                                                </textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
                     <div _ngcontent-fhe-c21="" class="row mt-6">
                         <div _ngcontent-fhe-c21="" class="col-12">
                             <div _ngcontent-fhe-c21="" class="card">

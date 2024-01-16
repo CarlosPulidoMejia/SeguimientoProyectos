@@ -78,7 +78,12 @@ export class ProyectosBauComponent implements OnInit {
   fechaInicioProyecto: any;
   fechaFinProyecto: any;
   documentacion: string;
-  claseBoton: string
+  claseBoton: string;
+  faseProyecto: any;
+  estadoProy: any;
+  dependenciaProy: any;
+  docProy: any;
+  hrsAtencion: any;
 
   constructor( private proyectoBauService: ProyectoBauService) {    }
   
@@ -178,17 +183,46 @@ export class ProyectosBauComponent implements OnInit {
   }
 
   getAllProyectos(){
-    this.proyectoBauService.getAllProyectos().subscribe(
-      data => {
+    this.proyectoBauService.getAllProyectos().subscribe({
+      next: (data) => {
         this.listaProyectos = data;
         console.log(this.listaProyectos);
         
-      }
-      ,
-      err => {
-        console.log(err)
+        $('#tablaProyectos').dataTable().fnDestroy();
+
+
+        $('#tablaProyectos tbody').on('click', 'tr', function () {
+          $(this).toggleClass('selected');
+        });
+
+        setTimeout(() => {
+          $('#tablaProyectos').DataTable({
+            language: {
+              url: '//cdn.datatables.net/plug-ins/1.11.3/i18n/es-mx.json'
+            },
+            pageLength: 10,
+            responsive: true
+          });
+        }, 1);
       },
-    );
+      error: (e) => {
+
+        console.log(e)
+      }
+      /*data => {
+        this.listaProyectos = data;
+        console.log(this.listaProyectos);
+
+        $('#tablaProyectos').dataTable().fnDestroy();
+
+
+        $('#tablaProyectos tbody').on('click', 'tr', function () {
+          $(this).toggleClass('selected');
+        });
+        
+      },*/
+
+    });
   }
 
   /*listaBD() {
