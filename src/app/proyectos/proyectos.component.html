@@ -25,14 +25,14 @@
                                                     {{ base.nombre_Base }}
                                                 </option>
                                             </select>-->
-                                            <select class="form-select" id="floatingSelect" [(ngModel)]="tipoProyecto"
-                                                name="tipoOperacion">
+                                            <select class="form-select" id="tipoProyecto" [(ngModel)]="tipoProyecto"
+                                                name="tipoProyecto">
                                                 <option value="1">Tipo 1</option>
                                                 <option value="2">Tipo 2</option>
                                                 <option value="3">Tipo 3</option>
                                                 <option value="4">Tipo 4</option>
                                             </select>
-                                            <label for="floatingSelect">Tipo Proy - BAU</label>
+                                            <label for="tipoProyecto">Tipo Proy - BAU</label>
                                         </div>
                                     </div>
 
@@ -44,14 +44,14 @@
                                                     {{ base.nombre_Base }}
                                                 </option>
                                             </select>-->
-                                            <select class="form-select" id="floatingSelect" [(ngModel)]="responsable"
-                                                name="tipoOperacion">
+                                            <select class="form-select" id="responsable" [(ngModel)]="responsable"
+                                                name="responsable">
                                                 <option value="1">Responsable 1</option>
                                                 <option value="2">Responsable 2</option>
                                                 <option value="3">Responsable 3</option>
                                                 <option value="4">Responsable 4</option>
                                             </select>
-                                            <label for="floatingSelect">Responsable(s)</label>
+                                            <label for="responsable">Responsable(s)</label>
                                         </div>
                                     </div>
 
@@ -78,14 +78,14 @@
 
                                     <div class="col-2">
                                         <div class="form-floating">
-                                            <select class="form-select" id="floatingSelect" [(ngModel)]="documentacion"
-                                                name="tipoOperacion">
+                                            <select class="form-select" id="documentacion" [(ngModel)]="documentacion"
+                                                name="documentacion">
                                                 <option value="1">Documentación 1</option>
                                                 <option value="2">Documentación 2</option>
                                                 <option value="3">Documentación 3</option>
                                                 <option value="4">Documentación 4</option>
                                             </select>
-                                            <label for="floatingSelect">Documentación</label>
+                                            <label for="documentacion">Documentación</label>
                                         </div>
                                     </div>
 
@@ -267,11 +267,8 @@
                                 </thead>
                                 <tbody>
                                     <tr *ngFor="let proyecto of listaProyectos; let i = index">
-                                        <td scope="row" hidden>
-                                            <input type="checkbox"/>
-                                        </td>
-                                        <td>{{ proyecto.proyectoResponse.proyecto  | uppercase }}</td>
-                                        <th>{{ proyecto.detalleProyectoResponse.tipoProyecto  | uppercase}}</th>
+                                        <th scope="row">{{ proyecto.proyectoResponse.proyecto  | uppercase }}</th>
+                                        <td>{{ proyecto.detalleProyectoResponse.tipoProyecto  | uppercase}}</td>
                                         <td>MARCO RUIZ</td>
                                         <td>
                                             <input type="text" class="form-control"  size="0" 
@@ -321,13 +318,16 @@
                                             />
                                         </td>
                                         <td>
-                                            <select class="form-select" id="floatingSelect" [(ngModel)]="docProy" name="tipoOperacion">
-                                                <option [value]=" proyecto.detalleProyectoResponse.estadoProy  | uppercase ">{{ proyecto.detalleProyectoResponse.docProy  | uppercase }}</option>
+                                            <!--<select class="form-select" id="docProy" [(ngModel)]="docProy" name="docProy" >
+                                                <option value="{{proyecto.detalleProyectoResponse.docProy}}" >{{ proyecto.detalleProyectoResponse.docProy  | uppercase }}</option>
                                                 <option value="2">Tipo 2</option>
                                                 <option value="3">Tipo 3</option>
                                                 <option value="4">Tipo 4</option>
+                                            </select>  -->
+                                            <select name="" id="docProy" class="form-select" ngModel="{{listaProyectos[i].detalleProyectoResponse.docProy}}" >
+                                                <option value="" >{{ proyecto.detalleProyectoResponse.docProy }}</option>
+                                                <option value="1">1</option>
                                             </select>
-
                                         </td>
                                         <td>
                                             <button (click)="cerrarSemana()" class="btn btn-success" data-toggle="modal" data-target="#exampleModalComentariosGerencia">

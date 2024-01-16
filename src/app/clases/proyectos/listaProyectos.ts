@@ -20,4 +20,5 @@
 export class listaProyectos{
     detalleProyectoResponse:any;
     proyectoResponse: any;
+    seleccion!:boolean;
 }

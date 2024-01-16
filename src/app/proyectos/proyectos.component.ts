@@ -44,6 +44,7 @@ export class ProyectosBauComponent implements OnInit {
    */
   requestBusqueda: any;
   requestAgregar: any;
+  requestGuardar: any;
 
   //Datos
   numRegistros: any = 100;
@@ -156,6 +157,11 @@ export class ProyectosBauComponent implements OnInit {
           title: 'Proyecto agregado correctamente',
           showConfirmButton: false
         })
+        this.nombreProyecto = "";
+        this.tipoProyecto = "";
+        this.responsable = "";
+        this.documentacion = "";
+        this.getAllProyectos();
       },
       err => {
         console.log(err)
@@ -171,9 +177,12 @@ export class ProyectosBauComponent implements OnInit {
     );
     
   }
-
+  
   guardarCambio(){
-    console.log('Guardar Cambio');
+    this.requestGuardar = {
+      documentacion: this.docProy,
+    }
+    console.log('Guardar Cambio', this.requestGuardar);
     
   }
 
@@ -181,6 +190,7 @@ export class ProyectosBauComponent implements OnInit {
     console.log('Cerrar Semana');
     
   }
+
 
   getAllProyectos(){
     this.proyectoBauService.getAllProyectos().subscribe({
