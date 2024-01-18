@@ -22,12 +22,17 @@ export class listaProyectos{
     proyectoResponse: any;
     seleccion!:boolean;
 }
-export class listatipoDocumentacion{
+export class listaTipoDocumentacion{
     idDocumentacion:any;
     documentacion:any;
 }
 
-export class listatipoProyecto{
+export class listaTipoProyecto{
     idTipoProyecto: any;
     tipoProyecto: any;
+}
+
+export class listaTipoFase{
+    idFase: any;
+    fase: any;
 }

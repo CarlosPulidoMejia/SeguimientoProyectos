@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { Base } from '../clases/baseDatos/base';
-import { listaProyectos,listatipoDocumentacion, listatipoProyecto } from '../clases/proyectos/listaProyectos';
+import { listaProyectos,listaTipoDocumentacion, listaTipoProyecto,listaTipoFase } from '../clases/proyectos/listaProyectos';
 import { TipoPago } from '../clases/pagos/Pagos';
 import { DatosService } from '../servicios/datos/datos.service';
 import { ProyectoBauService } from '../servicios/proyectos/proyectos.service';
@@ -58,11 +58,12 @@ export class ProyectosBauComponent implements OnInit {
   tipoPagoDevolucion: string;
 
   /******
-   * Datatable
+   * Listas
    */
   listaProyectos: listaProyectos[];
-  listatipoDocumentacion: listatipoDocumentacion[];
-  listatipoProyecto: listatipoProyecto[];
+  listatipoDocumentacion: listaTipoDocumentacion[];
+  listatipoProyecto: listaTipoProyecto[];
+  listatipoFase: listaTipoFase[];
 
   selectedAct: any;
   enviarListaDevolucion: listaProyectos[];
@@ -100,6 +101,7 @@ export class ProyectosBauComponent implements OnInit {
     this.getAllProyectos();
     this.getTipoDocumentacion();
     this.getTipoProyecto();
+    this.getTipoFase();
   }
 
   showData() {
@@ -206,6 +208,17 @@ export class ProyectosBauComponent implements OnInit {
         this.listatipoDocumentacion = data;
         console.log(this.listatipoDocumentacion);
         
+      },
+      err => {
+        console.log(err)
+      }
+    )
+  }
+
+  getTipoFase(){
+    this.proyectoBauService.getTipoFase().subscribe(
+      data => {
+        this.listatipoFase = data;
       },
       err => {
         console.log(err)
