@@ -25,12 +25,10 @@
                                                     {{ base.nombre_Base }}
                                                 </option>
                                             </select>-->
-                                            <select class="form-select" id="tipoProyecto" [(ngModel)]="tipoProyecto"
-                                                name="tipoProyecto">
-                                                <option value="1">Tipo 1</option>
-                                                <option value="2">Tipo 2</option>
-                                                <option value="3">Tipo 3</option>
-                                                <option value="4">Tipo 4</option>
+                                            <select class="form-select" id="tipoProyecto" [(ngModel)]="tipoProyecto" name="tipoProyecto">
+                                                <option *ngFor="let tipoProyecto of listatipoProyecto" [ngValue]="tipoProyecto.idTipoProyecto">
+                                                    {{ tipoProyecto.tipoProyecto }}
+                                                </option>
                                             </select>
                                             <label for="tipoProyecto">Tipo Proy - BAU</label>
                                         </div>

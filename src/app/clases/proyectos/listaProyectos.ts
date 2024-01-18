@@ -28,5 +28,6 @@ export class listatipoDocumentacion{
 }
 
 export class listatipoProyecto{
-
+    idTipoProyecto: any;
+    tipoProyecto: any;
 }
