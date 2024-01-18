@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { Base } from '../clases/baseDatos/base';
-import { listaProyectos,listaDocumentacion } from '../clases/proyectos/listaProyectos';
+import { listaProyectos,listatipoDocumentacion } from '../clases/proyectos/listaProyectos';
 import { TipoPago } from '../clases/pagos/Pagos';
 import { DatosService } from '../servicios/datos/datos.service';
 import { ProyectoBauService } from '../servicios/proyectos/proyectos.service';
@@ -61,7 +61,7 @@ export class ProyectosBauComponent implements OnInit {
    * Datatable
    */
   listaProyectos: listaProyectos[];
-  listaDocumentacion: listaDocumentacion[];
+  listatipoDocumentacion: listatipoDocumentacion[];
 
   selectedAct: any;
   enviarListaDevolucion: listaProyectos[];
@@ -125,7 +125,7 @@ export class ProyectosBauComponent implements OnInit {
   agregarProyecto(){
     console.log( this.nombreProyecto, this.tipoProyecto, this.responsable, this.documentacion, this.fechaInicioProyecto, this.fechaFinProyecto );
     
-    Swal.fire({
+    /*Swal.fire({
       title: "Agregando Proyecto...",
       text: "Espere un momento",
       imageUrl: "../../assets/progress.gif",
@@ -170,7 +170,7 @@ export class ProyectosBauComponent implements OnInit {
         })
       },
       () => {}
-    );
+    );*/
     
   }
   
@@ -190,8 +190,8 @@ export class ProyectosBauComponent implements OnInit {
   getTipoDocumentacion(){
     this.proyectoBauService.getTipoDocumentacion().subscribe(
       data => {
-        this.listaDocumentacion = data;
-        console.log(this.listaDocumentacion);
+        this.listatipoDocumentacion = data;
+        console.log(this.listatipoDocumentacion);
         
       },
       err => {
