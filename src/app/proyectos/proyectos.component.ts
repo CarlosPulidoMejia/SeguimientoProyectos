@@ -76,7 +76,7 @@ export class ProyectosBauComponent implements OnInit {
   responsable: string;
   fechaInicioProyecto: any;
   fechaFinProyecto: any;
-  documentacion: string;
+  tipoDocumentacion: number;
   claseBoton: string;
   faseProyecto: any;
   estadoProy: any;
@@ -84,13 +84,14 @@ export class ProyectosBauComponent implements OnInit {
   docProy: any;
   hrsAtencion: any;
 
+
   constructor( private proyectoBauService: ProyectoBauService) {    }
   
   ngOnInit() {
     this.nombreProyecto = "";
     this.tipoProyecto = "";
     this.responsable = "";
-    this.documentacion = "";
+    this.tipoDocumentacion = 1;
     this.habilitarFecha = true;
     this.ocultar = true;
     this.habilitarBoton = false;
@@ -99,7 +100,6 @@ export class ProyectosBauComponent implements OnInit {
     this.getAllProyectos();
     this.getTipoDocumentacion();
     this.getTipoProyecto();
-    
   }
 
   showData() {
@@ -113,7 +113,7 @@ export class ProyectosBauComponent implements OnInit {
   habilitar(){
     this.habilitarBoton = false;
     this.claseBoton = 'btn btn-secondary mt-3';
-    if(this.nombreProyecto != "" && this.tipoProyecto != "" && this.responsable != "" && this.documentacion != "")
+    if(this.nombreProyecto != "" && this.tipoProyecto != "" && this.responsable != "" && this.tipoDocumentacion != 1)
     {
       this.claseBoton = 'btn btn-success mt-3';
       this.habilitarBoton = true;
@@ -125,9 +125,9 @@ export class ProyectosBauComponent implements OnInit {
   }
   
   agregarProyecto(){
-    console.log( this.nombreProyecto, this.tipoProyecto, this.responsable, this.documentacion, this.fechaInicioProyecto, this.fechaFinProyecto );
+    console.log( this.nombreProyecto, this.tipoProyecto, this.responsable, this.tipoDocumentacion, this.fechaInicioProyecto, this.fechaFinProyecto );
     
-    /*Swal.fire({
+    Swal.fire({
       title: "Agregando Proyecto...",
       text: "Espere un momento",
       imageUrl: "../../assets/progress.gif",
@@ -143,7 +143,7 @@ export class ProyectosBauComponent implements OnInit {
       responsable: this.responsable,
       fechaInicio: this.fechaInicioProyecto,
       fechaFin: this.fechaFinProyecto,
-      tipoDoc: this.documentacion
+      tipoDoc: this.tipoDocumentacion
     }
     this.proyectoBauService.postAgregarProyectos(this.requestAgregar).subscribe(
       data => {
@@ -158,7 +158,7 @@ export class ProyectosBauComponent implements OnInit {
         this.nombreProyecto = "";
         this.tipoProyecto = "";
         this.responsable = "";
-        this.documentacion = "";
+        this.tipoDocumentacion = 1;
         this.getAllProyectos();
       },
       err => {
@@ -172,7 +172,7 @@ export class ProyectosBauComponent implements OnInit {
         })
       },
       () => {}
-    );*/
+    );
     
   }
   
@@ -204,6 +204,8 @@ export class ProyectosBauComponent implements OnInit {
     this.proyectoBauService.getTipoDocumentacion().subscribe(
       data => {
         this.listatipoDocumentacion = data;
+        console.log(this.listatipoDocumentacion);
+        
       },
       err => {
         console.log(err)

@@ -53,12 +53,23 @@
                                         </div>
                                     </div>
 
+                                    <div class="col-2">
+                                        <div class="form-floating">
+                                            <select class="form-select" id="documentacion" [(ngModel)]="tipoDocumentacion" name="documentacion">
+                                                <option *ngFor="let tipoDoc of listatipoDocumentacion" [ngValue]="tipoDoc.idDocumentacion">
+                                                {{ tipoDoc.documentacion | uppercase }}
+                                                </option>
+                                            </select>
+                                            <label for="documentacion">Documentación</label>
+                                        </div>
+                                    </div>
+
                                     <div class="col-1">
                                         <div class="form-floating">
                                             <!--<input type="date" class="form-control" id="fecInicio"
                                             placeholder="Fecha Inicio" [(ngModel)]="selectedDateInicio" [disabled]="habilitarFecha ? true : null">-->
                                             <input type="date" class="form-control" id="fecInicio"
-                                                placeholder="Fecha Inicio" [(ngModel)]="fechaInicioProyecto" />
+                                                placeholder="Fecha Inicio" [(ngModel)]="fechaInicioProyecto"  [disabled]="tipoDocumentacion == 1 || tipoDocumentacion == 2"/>
                                             <label for="fecInicio">Fecha Inicio</label>
                                         </div>
                                     </div>
@@ -69,19 +80,8 @@
                                                 [(ngModel)]="selectedDateFin"
                                                 [disabled]="habilitarFecha ? true : false" />-->
                                             <input type="date" class="form-control" id="fecFin" placeholder="Fecha Fin"
-                                                [(ngModel)]="fechaFinProyecto" />
+                                                [(ngModel)]="fechaFinProyecto" [disabled]="tipoDocumentacion == 1 || tipoDocumentacion == 2"/>
                                             <label for="fecFin">Fecha Fin</label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-2">
-                                        <div class="form-floating">
-                                            <select class="form-select" id="documentacion" [(ngModel)]="documentacion" name="documentacion">
-                                                <option *ngFor="let tipoDoc of listatipoDocumentacion" [ngValue]="tipoDoc.idDocumentacion">
-                                                {{ tipoDoc.documentacion | uppercase }}
-                                                </option>
-                                            </select>
-                                            <label for="documentacion">Documentación</label>
                                         </div>
                                     </div>
 
