@@ -27,7 +27,7 @@
                                             </select>-->
                                             <select class="form-select" id="tipoProyecto" [(ngModel)]="tipoProyecto" name="tipoProyecto">
                                                 <option *ngFor="let tipoProyecto of listatipoProyecto" [ngValue]="tipoProyecto.idTipoProyecto">
-                                                    {{ tipoProyecto.tipoProyecto }}
+                                                    {{ tipoProyecto.tipoProyecto | uppercase }}
                                                 </option>
                                             </select>
                                             <label for="tipoProyecto">Tipo Proy - BAU</label>
@@ -68,9 +68,11 @@
                                         <div class="form-floating">
                                             <!--<input type="date" class="form-control" id="fecInicio"
                                             placeholder="Fecha Inicio" [(ngModel)]="selectedDateInicio" [disabled]="habilitarFecha ? true : null">-->
-                                            <input type="date" class="form-control" id="fecInicio"
-                                                placeholder="Fecha Inicio" [(ngModel)]="fechaInicioProyecto"  [disabled]="tipoDocumentacion == 1 || tipoDocumentacion == 2"/>
+                                            <input type="date" class="form-control" id="fecInicio" placeholder="Fecha Inicio" 
+                                            [(ngModel)]="fechaInicioProyecto" [disabled]="tipoDocumentacion == 1 || tipoDocumentacion == 2"
+                                            [ngClass]="{'border-danger': bordeFechas}"/>
                                             <label for="fecInicio">Fecha Inicio</label>
+                                            <p *ngIf="bordeFechas" class="text-sm-center text-danger">Campo obligatorio</p>
                                         </div>
                                     </div>
 
@@ -79,9 +81,12 @@
                                             <!--<input type="date" class="form-control" id="fecFin" placeholder="Fecha Fin"
                                                 [(ngModel)]="selectedDateFin"
                                                 [disabled]="habilitarFecha ? true : false" />-->
-                                            <input type="date" class="form-control" id="fecFin" placeholder="Fecha Fin"
-                                                [(ngModel)]="fechaFinProyecto" [disabled]="tipoDocumentacion == 1 || tipoDocumentacion == 2"/>
+                                            <input type="date" id="fecFin" class="form-control" placeholder="Fecha Fin"
+                                                [(ngModel)]="fechaFinProyecto" [disabled]="tipoDocumentacion == 1 || tipoDocumentacion == 2"
+                                                [ngClass]="{'border-danger': bordeFechas}"/>
                                             <label for="fecFin">Fecha Fin</label>
+                                            <p *ngIf="bordeFechas" class="text-sm-center text-danger">Campo obligatorio</p>
+                                            <p *ngIf="fechasMal" class="text-sm-start text-danger">Fecha Fin no puede ser menor a Fecha Inicio</p>
                                         </div>
                                     </div>
 

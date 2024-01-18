@@ -74,6 +74,8 @@ export class ProyectosBauComponent implements OnInit {
   //CPM
   ocultar: boolean;
   habilitarBoton: boolean;
+  bordeFechas: boolean;
+  fechasMal: boolean;
   nombreProyecto: string;
   tipoProyecto: string;
   responsable: string;
@@ -98,6 +100,8 @@ export class ProyectosBauComponent implements OnInit {
     this.habilitarFecha = true;
     this.ocultar = true;
     this.habilitarBoton = false;
+    this.bordeFechas = false;
+    this.fechasMal = false;
     this.habilitar();
     this.Repetir();
     this.getAllProyectos();
@@ -122,7 +126,7 @@ export class ProyectosBauComponent implements OnInit {
     if(this.nombreProyecto != "" && this.tipoProyecto != "" && this.responsable != "" && this.tipoDocumentacion != 1)
     {
       this.claseBoton = 'btn btn-success mt-3';
-      this.habilitarBoton = true;
+      this.habilitarBoton = true;     
     }
   }
 
@@ -132,54 +136,64 @@ export class ProyectosBauComponent implements OnInit {
   
   agregarProyecto(){
     console.log( this.nombreProyecto, this.tipoProyecto, this.responsable, this.tipoDocumentacion, this.fechaInicioProyecto, this.fechaFinProyecto );
-    
-    Swal.fire({
-      title: "Agregando Proyecto...",
-      text: "Espere un momento",
-      imageUrl: "../../assets/progress.gif",
-      imageWidth: 160,
-      imageHeight: 160,
-      showConfirmButton: false,
-      allowOutsideClick: false
-    });
-
-    this.requestAgregar = {
-      proyecto: this.nombreProyecto,
-      tipoProyecto: this.tipoProyecto,
-      responsable: this.responsable,
-      fechaInicio: this.fechaInicioProyecto,
-      fechaFin: this.fechaFinProyecto,
-      tipoDoc: this.tipoDocumentacion
+    if(this.tipoDocumentacion > 2  && this.fechaInicioProyecto == undefined  && this.fechaFinProyecto == undefined )
+    {
+      this.bordeFechas = true;
+    }else{
+      this.bordeFechas = false;
+      if(this.fechaInicioProyecto > this.fechaFinProyecto)
+      {
+        this.fechasMal = true;
+      }else{
+        this.fechasMal = false;
+        Swal.fire({
+          title: "Agregando Proyecto...",
+          text: "Espere un momento",
+          imageUrl: "../../assets/progress.gif",
+          imageWidth: 160,
+          imageHeight: 160,
+          showConfirmButton: false,
+          allowOutsideClick: false
+        });
+      
+        this.requestAgregar = {
+          proyecto: this.nombreProyecto,
+          tipoProyecto: this.tipoProyecto,
+          responsable: this.responsable,
+          fechaInicio: this.fechaInicioProyecto,
+          fechaFin: this.fechaFinProyecto,
+          tipoDoc: this.tipoDocumentacion
+        }
+        this.proyectoBauService.postAgregarProyectos(this.requestAgregar).subscribe(
+          data => {
+            console.log(data)
+            console.log("Complete function triggered.")
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Proyecto agregado correctamente',
+              showConfirmButton: false
+            })
+            this.nombreProyecto = "";
+            this.tipoProyecto = "";
+            this.responsable = "";
+            this.tipoDocumentacion = 1;
+            this.getAllProyectos();
+          },
+          err => {
+            console.log(err)
+            console.log("Complete function triggered.")
+            Swal.fire({
+              position: 'center',
+              icon: 'error',
+              title: 'No se pudo agregar el proyecto',
+              showConfirmButton: false
+            })
+          },
+          () => {}
+        );
+      }
     }
-    this.proyectoBauService.postAgregarProyectos(this.requestAgregar).subscribe(
-      data => {
-        console.log(data)
-        console.log("Complete function triggered.")
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'Proyecto agregado correctamente',
-          showConfirmButton: false
-        })
-        this.nombreProyecto = "";
-        this.tipoProyecto = "";
-        this.responsable = "";
-        this.tipoDocumentacion = 1;
-        this.getAllProyectos();
-      },
-      err => {
-        console.log(err)
-        console.log("Complete function triggered.")
-        Swal.fire({
-          position: 'center',
-          icon: 'error',
-          title: 'No se pudo agregar el proyecto',
-          showConfirmButton: false
-        })
-      },
-      () => {}
-    );
-    
   }
   
   guardarCambio(){
