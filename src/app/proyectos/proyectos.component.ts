@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { Base } from '../clases/baseDatos/base';
-import { listaProyectos } from '../clases/proyectos/listaProyectos';
+import { listaProyectos,listaDocumentacion } from '../clases/proyectos/listaProyectos';
 import { TipoPago } from '../clases/pagos/Pagos';
 import { DatosService } from '../servicios/datos/datos.service';
 import { ProyectoBauService } from '../servicios/proyectos/proyectos.service';
@@ -61,10 +61,7 @@ export class ProyectosBauComponent implements OnInit {
    * Datatable
    */
   listaProyectos: listaProyectos[];
-
-  /****
-   * Aplicar retornos
-   */
+  listaDocumentacion: listaDocumentacion[];
 
   selectedAct: any;
   enviarListaDevolucion: listaProyectos[];
@@ -89,8 +86,6 @@ export class ProyectosBauComponent implements OnInit {
   constructor( private proyectoBauService: ProyectoBauService) {    }
   
   ngOnInit() {
-    //this.listaBD();
-    //this.getPagosDevolucion();
     this.nombreProyecto = "";
     this.tipoProyecto = "";
     this.responsable = "";
@@ -101,6 +96,7 @@ export class ProyectosBauComponent implements OnInit {
     this.habilitar();
     this.Repetir();
     this.getAllProyectos();
+    this.getTipoDocumentacion();
     
   }
 
@@ -191,6 +187,18 @@ export class ProyectosBauComponent implements OnInit {
     
   }
 
+  getTipoDocumentacion(){
+    this.proyectoBauService.getTipoDocumentacion().subscribe(
+      data => {
+        this.listaDocumentacion = data;
+        console.log(this.listaDocumentacion);
+        
+      },
+      err => {
+        console.log(err)
+      }
+    )
+  }
 
   getAllProyectos(){
     this.proyectoBauService.getAllProyectos().subscribe({
@@ -219,19 +227,6 @@ export class ProyectosBauComponent implements OnInit {
 
         console.log(e)
       }
-      /*data => {
-        this.listaProyectos = data;
-        console.log(this.listaProyectos);
-
-        $('#tablaProyectos').dataTable().fnDestroy();
-
-
-        $('#tablaProyectos tbody').on('click', 'tr', function () {
-          $(this).toggleClass('selected');
-        });
-        
-      },*/
-
     });
   }
 

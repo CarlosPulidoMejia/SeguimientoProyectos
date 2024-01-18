@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { listaProyectos } from 'src/app/clases/proyectos/listaProyectos';
+import { listaProyectos,listaDocumentacion } from 'src/app/clases/proyectos/listaProyectos';
 
 import * as global from '../../globals';
 
@@ -11,6 +11,14 @@ import * as global from '../../globals';
 export class ProyectoBauService {
 
   constructor(private httpClient: HttpClient) { }
+
+  getAllProyectos(): Observable<listaProyectos[]>{
+    return this.httpClient.get<listaProyectos[]>(`${global.URL_API}listaproyectos`)
+  }
+
+  getTipoDocumentacion(): Observable<listaDocumentacion[]>{
+    return this.httpClient.get<listaDocumentacion[]>(`${global.URL_API}tipoDocumentacion`)
+  }
 
   getProyectos(devolucion:any):Observable<listaProyectos[]>{
     return this.httpClient.post<listaProyectos[]>(`${global.URL_API}bim/mw/devoluciones/`,devolucion);
@@ -22,10 +30,6 @@ export class ProyectoBauService {
 
   postAgregarProyectos(proyecto:any){
     return this.httpClient.post(`${global.URL_API}guardarproyecto`,proyecto);
-  }
-
-  getAllProyectos(): Observable<listaProyectos[]>{
-    return this.httpClient.get<listaProyectos[]>(`${global.URL_API}listaproyectos`)
   }
 
   getDevolucionesVarios(devolucion:any):Observable<listaProyectos[]>{

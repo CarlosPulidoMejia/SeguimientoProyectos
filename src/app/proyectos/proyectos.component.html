@@ -78,12 +78,10 @@
 
                                     <div class="col-2">
                                         <div class="form-floating">
-                                            <select class="form-select" id="documentacion" [(ngModel)]="documentacion"
-                                                name="documentacion">
-                                                <option value="1">Documentación 1</option>
-                                                <option value="2">Documentación 2</option>
-                                                <option value="3">Documentación 3</option>
-                                                <option value="4">Documentación 4</option>
+                                            <select class="form-select" id="documentacion" [(ngModel)]="documentacion" name="documentacion">
+                                                <option *ngFor="let tipoDoc of listaDocumentacion" [ngValue]="tipoDoc.idDocumentacion">
+                                                {{ tipoDoc.documentacion | uppercase }}
+                                                </option>
                                             </select>
                                             <label for="documentacion">Documentación</label>
                                         </div>
