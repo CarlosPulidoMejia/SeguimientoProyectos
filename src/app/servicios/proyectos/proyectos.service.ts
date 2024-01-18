@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { listaProyectos,listaTipoDocumentacion,listaTipoProyecto, listaTipoFase } from 'src/app/clases/proyectos/listaProyectos';
+import { listaProyectos,listaTipoDocumentacion,listaTipoProyecto, listaTipoFase, listaTipoEstado } from 'src/app/clases/proyectos/listaProyectos';
 
 import * as global from '../../globals';
 
@@ -27,7 +27,10 @@ export class ProyectoBauService {
   getTipoFase(): Observable<listaTipoFase[]>{
     return this.httpClient.get<listaTipoFase[]>(`${global.URL_API}tipoFase`)
   }
-
+  
+  getTipoEstado(): Observable<listaTipoEstado[]>{
+    return this.httpClient.get<listaTipoEstado[]>(`${global.URL_API}tipoEstado`)
+  }
 
 
 
