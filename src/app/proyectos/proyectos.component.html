@@ -295,12 +295,9 @@
                                         </td>
                                         <td>
                                             <select class="form-select" id="floatingSelect" [(ngModel)]="dependenciaProy" name="tipoOperacion">
-                                                <option [value]=" proyecto.detalleProyectoResponse.estadoProy  | uppercase ">{{ proyecto.detalleProyectoResponse.dependenciaProy  | uppercase }}</option>
-                                                <option value="2">Tipo 2</option>
-                                                <option value="3">Tipo 3</option>
-                                                <option value="4">Tipo 4</option>
+                                                <option [value]=" proyecto.detalleProyectoResponse.dependenciaProy  | uppercase ">{{ proyecto.detalleProyectoResponse.dependenciaProy  | uppercase }}</option>
+                                                <option *ngFor="let dependencia of listatipoDependencia" [ngValue]="dependencia.idDependencia">{{ dependencia.tipoDependencia }}</option>
                                             </select>
-                                            
                                         </td>
                                         <td>
                                             <input type="text" class="form-control"  size="0" 

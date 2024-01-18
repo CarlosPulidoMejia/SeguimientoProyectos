@@ -22,3 +22,8 @@ export class listaTipoEstado{
     idTipoEstado: any;
     tipoEstado: any;
 }
+
+export class listaTipoDependencia{
+    idDependencia: any;
+    tipoDependencia: any;
+}
