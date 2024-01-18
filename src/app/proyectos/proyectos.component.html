@@ -305,15 +305,11 @@
                                             />
                                         </td>
                                         <td>
-                                            <!--<select class="form-select" id="docProy" [(ngModel)]="docProy" name="docProy" >
-                                                <option value="{{proyecto.detalleProyectoResponse.docProy}}" >{{ proyecto.detalleProyectoResponse.docProy  | uppercase }}</option>
-                                                <option value="2">Tipo 2</option>
-                                                <option value="3">Tipo 3</option>
-                                                <option value="4">Tipo 4</option>
-                                            </select>  -->
                                             <select name="" id="docProy" class="form-select" ngModel="{{listaProyectos[i].detalleProyectoResponse.docProy}}" >
                                                 <option value="" >{{ proyecto.detalleProyectoResponse.docProy }}</option>
-                                                <option value="1">1</option>
+                                                <option *ngFor="let documentacion of listatipoDocumentacion" [ngValue]="documentacion.idDocumentacion">
+                                                    {{ documentacion.documentacion }}
+                                                </option>
                                             </select>
                                         </td>
                                         <td>
