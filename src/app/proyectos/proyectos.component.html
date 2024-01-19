@@ -119,130 +119,6 @@
                 </div>
                 <!--Fin Conexion-->
 
-                <!--Parametros-->
-                <div class="row mt-3" hidden>
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h6 class="card-title">BUSQUEDA</h6>
-                                <div class="row">
-                                    <div class="col-3">
-                                        <div class="form-floating">
-                                            <select class="form-select" id="floatingSelect" [(ngModel)]="selectedtipo"
-                                                name="tipoOperacion" (change)="catTipoRetorno()">
-                                                <option *ngFor="let tipo of listaPagoDev" [ngValue]="tipo.clave">
-                                                    {{ tipo.clave }} - {{ tipo.descripcion }}
-                                                </option>
-                                            </select>
-                                            <label for="floatingSelect">Tipo</label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-2">
-                                        <div class="form-floating">
-                                            <select class="form-select" id="floatingSelect"
-                                                [(ngModel)]="selectedTipoPago" name="tipoOperacion">
-                                                <option *ngFor="let pago of listaPago" [ngValue]="pago">
-                                                    {{ pago.clave + "-" + pago.descripcion }}
-                                                </option>
-                                            </select>
-                                            <label for="floatingSelect">Tipo Pago</label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-1">
-                                        <div class="form-floating">
-                                            <input type="text" class="form-control" id="nRegistros"
-                                                placeholder="Numero de Registros" [(ngModel)]="numRegistros" />
-                                            <label for="nRegistros">N.Registros</label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-2">
-                                        <div class="form-floating">
-                                            <input type="text" class="form-control" id="concepto" placeholder="concepto"
-                                                [(ngModel)]="concepto" />
-                                            <label for="concepto">Concepto</label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-4">
-                                        <div class="form-floating">
-                                            <select class="form-select" id="floatingSelect" [(ngModel)]="instancia"
-                                                name="tipoOperacion">
-                                                <option value="0">Instancia A</option>
-                                                <option value="1">Instancia B</option>
-                                                <option value="2">Contingencia A</option>
-                                                <option value="3">Contingencia B</option>
-                                            </select>
-                                            <label for="floatingSelect">Instancia</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--fIN PRIMER FILA-->
-
-                                <div class="row mt-3">
-                                    <div class="col-2">
-                                        <div class="form-floating">
-                                            <input type="date" class="form-control" id="fecInicio"
-                                                placeholder="Fecha Inicio" [(ngModel)]="selectedDateInicio"
-                                                [disabled]="habilitarFecha ? true : null" />
-                                            <label for="fecInicio">Fecha Inicio</label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-2">
-                                        <div class="form-floating">
-                                            <input type="date" class="form-control" id="fecFin" placeholder="Fecha Fin"
-                                                [(ngModel)]="selectedDateFin"
-                                                [disabled]="habilitarFecha ? true : false" />
-                                            <label for="fecFin">Fecha Fin</label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-2">
-                                        <div class="form-floating">
-                                            <input type="text" class="form-control" id="orpnumero"
-                                                [(ngModel)]="orpNumeroDev" />
-                                            <label for="fecFin">Orp_Numero</label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-2">
-                                        <div class="form-floating">
-                                            <input type="text" class="form-control" id="orpnumero"
-                                                [(ngModel)]="montoDev" />
-                                            <label for="fecFin">Monto</label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-1">
-                                        <button type="button" class="btn btn-success btn-circle btn-xl"
-                                            (click)="getOrdenesDevolucion()">
-                                            <i class="fa fa-search fa-spin" style="
-                          --fa-primary-color: rgb(255, 255, 255);
-                          --fa-secondary-color: rgb(255, 238, 0);
-                        "></i>
-                                        </button>
-                                    </div>
-
-                                    <div class="col-1">
-                                        <br />
-                                        
-                                    </div>
-
-                                    <div class="col-2">
-                                        <br />
-                                        
-                                    </div>
-                                </div>
-                                <!--Fin segunda fila-->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--Fin Parametros-->
-
                 <br />
                 <!--<input type="checkbox" [(ngModel)]="selectedAll" (change)="selectAll()" />Seleccionar todo-->
                 <!-- Inicio Tabla -->
@@ -255,10 +131,10 @@
                                         <th scope="col">Proyecto - BAU</th>
                                         <th scope="col">Tipo de Proyecto</th>
                                         <th scope="col">Responsable(s)</th>
-                                        <th scope="col">Hrs de atención al día</th>
+                                        <th scope="col">Hrs al día</th>
                                         <th scope="col">Fecha Incio</th>
                                         <th scope="col">Fecha Fin</th>
-                                        <th scope="col">Fase</th>
+                                        <th scope="col">Fase del Proyecto</th>
                                         <th scope="col">Estado del Proyecto</th>
                                         <th scope="col">Dependencias</th>
                                         <th scope="col">% de Avance</th>
@@ -287,75 +163,44 @@
                                             />
                                         </td>
                                         <td>
-                                            <select class="form-select" id="floatingSelect" [(ngModel)]="faseProyecto" name="tipoOperacion">
-                                                <option value="">{{ proyecto.detalleProyectoResponse.faseProy }}</option>
-                                                <option *ngFor="let fase of listatipoFase" [ngValue]="fase.idFase">{{ fase.fase }}</option>
+                                            <select class="form-select" id="faseProyecto"  [(ngModel)]="proyecto.detalleProyectoResponse.faseProy" (ngModelChange)="modelChangeFase($event)">
+                                                <option *ngFor="let fase of listatipoFase" [ngValue]="fase.fase">{{ fase.fase | uppercase }}</option>
                                             </select>
                                         </td>
                                         <td>    
-                                            <select class="form-select" id="floatingSelect" [(ngModel)]="estadoProy" name="tipoOperacion">
-                                                <option value="">{{ proyecto.detalleProyectoResponse.estadoProy  | uppercase }}</option>
-                                                <option *ngFor="let estado of listatipoEstado" [ngValue]="estado.idTipoEstado">{{ estado.tipoEstado  }}</option>
+                                            <select class="form-select" id="estadoProy" [(ngModel)]="proyecto.detalleProyectoResponse.estadoProy" (ngModelChange)="modelChangeEstado($event)">
+                                                <option *ngFor="let estado of listatipoEstado" [ngValue]="estado.tipoEstado">{{ estado.tipoEstado   | uppercase }}</option>
                                             </select>    
                                         </td>
                                         <td>
-                                            <select class="form-select" id="floatingSelect" [(ngModel)]="dependenciaProy" name="tipoOperacion">
-                                                <option [value]=" proyecto.detalleProyectoResponse.dependenciaProy  | uppercase ">{{ proyecto.detalleProyectoResponse.dependenciaProy  | uppercase }}</option>
-                                                <option *ngFor="let dependencia of listatipoDependencia" [ngValue]="dependencia.idDependencia">{{ dependencia.tipoDependencia }}</option>
+                                            <select class="form-select" id="dependenciaProy" [(ngModel)]="proyecto.detalleProyectoResponse.dependenciaProy" (ngModelChange)="modelChangeDependencia($event)" >
+                                                <option *ngFor="let dependencia of listatipoDependencia" [ngValue]="dependencia.tipoDependencia">{{ dependencia.tipoDependencia | uppercase  }}</option>
                                             </select>
                                         </td>
                                         <td>
-                                            <input type="text" class="form-control"  size="0" 
-                                                [value]="proyecto.detalleProyectoResponse.hrsAtencion" 
+                                            <input type="text" class="form-control"  size="0" [value]="proyecto.detalleProyectoResponse.avance" 
                                             />
                                         </td>
                                         <td>
-                                            <select name="" id="docProy" class="form-select" ngModel="{{listaProyectos[i].detalleProyectoResponse.docProy}}" >
-                                                <option value="" >{{ proyecto.detalleProyectoResponse.docProy }}</option>
-                                                <option *ngFor="let documentacion of listatipoDocumentacion" [ngValue]="documentacion.idDocumentacion">
-                                                    {{ documentacion.documentacion }}
-                                                </option>
+                                            <select class="form-select" id="documentacionProy" [(ngModel)]="proyecto.detalleProyectoResponse.docProy" (ngModelChange)="modelChangeDocumentacion($event)">
+                                                <option *ngFor="let docProy of listatipoDocumentacion" [ngValue]="docProy.documentacion">{{ docProy.documentacion | uppercase }}</option>
                                             </select>
                                         </td>
                                         <td>
                                             <button (click)="cerrarSemana()" class="btn btn-success" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
                                                 ...
                                             </button>
-                                            <button (click)="cerrarSemana()" class="btn btn-success mx-2" data-toggle="modal" data-target="#exampleModalComentariosSubdireccion">
-                                                ...
+                                            <button  (click)="guardarCambio(listaProyectos[i].detalleProyectoResponse)"  class="btn btn-success mx-2">
+                                                Guardar
                                             </button>
                                         </td>
                                     </tr>
-                                    <!--<tr *ngFor="let orden of listaProyectos; let i = index">
-                                        <td scope="row">
-                                            <input type="checkbox" value="{{ orden.row }}"
-                                                [(ngModel)]="listaProyectos[i].seleccion" />
-                                        </td>
-                                        <th scope="row">{{ orden.row }}</th>
-                                        <td>{{ orden.numero }}</td>
-                                        <td>{{ orden.tipoPago }}</td>
-                                        <td>
-                                            <input type="text" value="{{ orden.cantidad }}"
-                                                [(ngModel)]="listaProyectos[i].cantidad" size="5" />
-                                        </td>
-                                        <td>{{ orden.claveRastreo }}</td>
-                                        <td>{{ orden.conceptoPago }}</td>
-                                        <td>{{ orden.institucionEmisora }}</td>
-                                        <td>{{ orden.cuentaOrdenante }}</td>
-                                        <td>{{ orden.tipoCuentaOrdenante }}</td>
-                                        <td>{{ orden.institucionReceptora }}</td>
-                                        <td>{{ orden.cuentaBeneficiaria }}</td>
-                                        <td>{{ orden.tipoCuentaBeneficiaria }}</td>
-                                        <td>{{ orden.fecha }}</td>
-                                        <td>{{ orden.instancia }}</td>
-                                        <td>{{ orden.paquete }}</td>
-                                    </tr>-->
                                 </tbody>
                             </table>
                         </div>
                     </div>
                     <div class="col-2 ">
-                        <button (click)="guardarCambio()" class="btn btn-primary">
+                        <button  class="btn btn-primary" hidden>
                             Guardar Cambio
                         </button>
                         <button (click)="cerrarSemana()" class="btn btn-success buttonM" data-toggle="modal" data-target="#exampleModalComentarios">
