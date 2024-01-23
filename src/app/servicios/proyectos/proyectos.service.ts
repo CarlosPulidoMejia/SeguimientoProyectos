@@ -36,38 +36,11 @@ export class ProyectoBauService {
     return this.httpClient.get<listaTipoDependencia[]>(`${global.URL_API}tipoDependencia`)
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  //ELIMINAR//
-
-  getProyectos(devolucion:any):Observable<listaProyectos[]>{
-    return this.httpClient.post<listaProyectos[]>(`${global.URL_API}bim/mw/devoluciones/`,devolucion);
-  }
-
-  postListaProyectos(devoluciones:any){
-    return this.httpClient.post(`${global.URL_API}enviarDevoluciones`,devoluciones);
-  }
-
   postAgregarProyectos(proyecto:any){
     return this.httpClient.post(`${global.URL_API}guardarproyecto`,proyecto);
-  }
+  }  
 
-  getDevolucionesVarios(devolucion:any):Observable<listaProyectos[]>{
-    return this.httpClient.post<listaProyectos[]>(`${global.URL_API}api/bim/retornos/`,devolucion);
+  putEditrProyecto(proyecto:any,id:any){
+    return this.httpClient.put(`${global.URL_API}detalleProy/${id}`,proyecto);
   }
-  
-
 }

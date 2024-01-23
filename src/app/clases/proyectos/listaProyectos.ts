@@ -1,7 +1,7 @@
 export class listaProyectos{
     detalleProyectoResponse:any;
     proyectoResponse: any;
-    seleccion!:boolean;
+    seleccion:boolean;
 }
 export class listaTipoDocumentacion{
     idDocumentacion:any;

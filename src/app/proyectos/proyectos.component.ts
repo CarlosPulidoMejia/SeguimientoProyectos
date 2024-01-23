@@ -16,27 +16,10 @@ declare const $: any;
 })
 export class ProyectosBauComponent implements OnInit {
 
-  listaBase: Base[];
-  listaPago: TipoPago[];
-  listaPagoDev: TipoPago[];
-
-
-  /*********
-   * Datos
-   */
-  id_Data: number;
-  ip_Data: string;
-  port_Data: String;
-  name_Data: String;
-  catBases: any;
-
 
   /******
    * Parametros
    */
-
-  selectedtipo: string;
-  pago: string;
   habilitarFecha: boolean;
 
   /*******
@@ -67,10 +50,6 @@ export class ProyectosBauComponent implements OnInit {
   listatipoEstado: listaTipoEstado[];
   listatipoDependencia: listaTipoDependencia[];
 
-  selectedAct: any;
-  enviarListaDevolucion: listaProyectos[];
-  sendListaDevolucion: any;
-  selectedAll: any;
   //CPM
   ocultar: boolean;
   habilitarBoton: boolean;
@@ -88,6 +67,8 @@ export class ProyectosBauComponent implements OnInit {
   dependenciaProy: number;
   documentacionProy: any;
   hrsAtencion: any;
+  habilitarFechaTabla: boolean;
+  isChecked: boolean;
 
 
   constructor( private proyectoBauService: ProyectoBauService) {    }
@@ -110,6 +91,7 @@ export class ProyectosBauComponent implements OnInit {
     this.getTipoFase();
     this.getTipoEstado();
     this.getTipoDependencia();
+    this.isChecked = false
   }
 
   showData() {
@@ -196,9 +178,13 @@ export class ProyectosBauComponent implements OnInit {
     }
   }
   
-  guardarCambio(proyecto){
-    console.log(proyecto);
-    
+  onChecked() {
+    this.isChecked = true;
+  }
+
+  guardarCambio(proyecto,id){
+    //console.log(proyecto,id);
+      
     let filtroDoc = this.listatipoDocumentacion.filter( value => value.documentacion == proyecto.docProy ); 
     let filtroDep = this.listatipoDependencia.filter( value => value.tipoDependencia == proyecto.dependenciaProy);
     let filtroEst = this.listatipoEstado.filter( value => value.tipoEstado == proyecto.estadoProy );
@@ -214,8 +200,31 @@ export class ProyectosBauComponent implements OnInit {
       //fechaInicio: proyecto.fechaInicio,
       //fechaFin: proyecto.fechaFin
     }
-    console.log('Guardar Cambio', this.requestGuardar);
-    
+    console.log('Guardar Cambio', this.requestGuardar, id);
+
+    this.proyectoBauService.putEditrProyecto(this.requestGuardar, id).subscribe(
+      data => {
+        console.log("Complete function triggered.")
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Proyecto guardado correctamente',
+          showConfirmButton: false
+        })
+        this.getAllProyectos();
+      },
+      err => {
+        console.log(err)
+        console.log("Complete function triggered.")
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'No se pudo guardar el proyecto',
+          showConfirmButton: false
+        })
+      },
+      () => {}
+    );
   }
 
   cerrarSemana(){
