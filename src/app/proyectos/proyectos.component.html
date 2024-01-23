@@ -117,10 +117,7 @@
                         </div>
                     </div>
                 </div>
-                <!--Fin Conexion-->
-
                 <br />
-                <!--<input type="checkbox" [(ngModel)]="selectedAll" (change)="selectAll()" />Seleccionar todo-->
                 <!-- Inicio Tabla -->
                 <div class="row mt-5">
                     <div class="col-12">
@@ -140,6 +137,7 @@
                                         <th scope="col">% de Avance</th>
                                         <th scope="col">Documentación</th>
                                         <th scope="col">Comentarios</th>
+                                        <th scope="col">Guardar</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -148,50 +146,61 @@
                                         <td>{{ proyecto.detalleProyectoResponse.tipoProyecto  | uppercase}}</td>
                                         <td>MARCO RUIZ</td>
                                         <td>
-                                            <input type="text" class="form-control"  size="0" 
-                                                [value]="proyecto.detalleProyectoResponse.hrsAtencion" 
+                                            <input type="number" class="form-control"  value="{{ proyecto.detalleProyectoResponse.hrsAtencion }}"  [(ngModel)]="listaProyectos[i].detalleProyectoResponse.hrsAtencion">
+                                        </td>
+                                        <td>
+                                            <input type="date" class="form-control" size="1"
+                                                value="{{proyecto.detalleProyectoResponse.fechaInicio}}" [(ngModel)]="listaProyectos[i].detalleProyectoResponse.fechaInicio"
                                             />
                                         </td>
                                         <td>
                                             <input type="date" class="form-control" size="1"
-                                                [value]="proyecto.detalleProyectoResponse.fechaInicio "
+                                                value="{{proyecto.detalleProyectoResponse.fechaFin}}"  [(ngModel)]="listaProyectos[i].detalleProyectoResponse.fechaFin"
                                             />
                                         </td>
                                         <td>
-                                            <input type="date" class="form-control" size="1"
-                                                [value]="proyecto.detalleProyectoResponse.fechaFin"
-                                            />
-                                        </td>
-                                        <td>
-                                            <select class="form-select" id="faseProyecto"  [(ngModel)]="proyecto.detalleProyectoResponse.faseProy" (ngModelChange)="modelChangeFase($event)">
+                                            <!--Versión inicio<select hidden class="form-select" id="faseProyecto"  [(ngModel)]="proyecto.detalleProyectoResponse.faseProy" (ngModelChange)="modelChangeFase($event)">
                                                 <option *ngFor="let fase of listatipoFase" [ngValue]="fase.fase">{{ fase.fase | uppercase }}</option>
+                                            </select>-->
+                                            <select class="form-select" id="faseProyecto"  [(ngModel)]="proyecto.detalleProyectoResponse.faseProy">
+                                                <option *ngFor="let fase of listatipoFase" value="{{fase.fase}}">{{ fase.fase | uppercase }}</option>
                                             </select>
                                         </td>
                                         <td>    
-                                            <select class="form-select" id="estadoProy" [(ngModel)]="proyecto.detalleProyectoResponse.estadoProy" (ngModelChange)="modelChangeEstado($event)">
+                                            <!--<select class="form-select" id="estadoProy" [(ngModel)]="proyecto.detalleProyectoResponse.estadoProy" (ngModelChange)="modelChangeEstado($event)">
                                                 <option *ngFor="let estado of listatipoEstado" [ngValue]="estado.tipoEstado">{{ estado.tipoEstado   | uppercase }}</option>
-                                            </select>    
+                                            </select>-->
+                                            <select class="form-select" id="estadoProy" [(ngModel)]="proyecto.detalleProyectoResponse.estadoProy">
+                                                <option *ngFor="let estado of listatipoEstado" value="{{estado.tipoEstado}}">{{ estado.tipoEstado   | uppercase }}</option>
+                                            </select> 
                                         </td>
                                         <td>
-                                            <select class="form-select" id="dependenciaProy" [(ngModel)]="proyecto.detalleProyectoResponse.dependenciaProy" (ngModelChange)="modelChangeDependencia($event)" >
+                                            <!--<select class="form-select" id="dependenciaProy" [(ngModel)]="proyecto.detalleProyectoResponse.dependenciaProy" (ngModelChange)="modelChangeDependencia($event)" >
                                                 <option *ngFor="let dependencia of listatipoDependencia" [ngValue]="dependencia.tipoDependencia">{{ dependencia.tipoDependencia | uppercase  }}</option>
+                                            </select>-->
+                                            <select class="form-select" id="dependenciaProy" [(ngModel)]="proyecto.detalleProyectoResponse.dependenciaProy" >
+                                                <option *ngFor="let dependencia of listatipoDependencia" value="{{dependencia.tipoDependencia}}">{{ dependencia.tipoDependencia | uppercase  }}</option>
                                             </select>
                                         </td>
                                         <td>
-                                            <input type="text" class="form-control"  size="0" [value]="proyecto.detalleProyectoResponse.avance" 
-                                            />
+                                            <input type="number" class="form-control"  size="0" value="{{proyecto.detalleProyectoResponse.avance}}" [(ngModel)]="listaProyectos[i].detalleProyectoResponse.avance"/>
                                         </td>
                                         <td>
-                                            <select class="form-select" id="documentacionProy" [(ngModel)]="proyecto.detalleProyectoResponse.docProy" (ngModelChange)="modelChangeDocumentacion($event)">
+                                            <!--<select class="form-select" id="documentacionProy" [(ngModel)]="proyecto.detalleProyectoResponse.docProy" (ngModelChange)="modelChangeDocumentacion($event)">
                                                 <option *ngFor="let docProy of listatipoDocumentacion" [ngValue]="docProy.documentacion">{{ docProy.documentacion | uppercase }}</option>
+                                            </select>-->
+                                            <select class="form-select" id="documentacionProy" [(ngModel)]="proyecto.detalleProyectoResponse.docProy">
+                                                <option *ngFor="let docProy of listatipoDocumentacion" value="{{docProy.documentacion}}">{{ docProy.documentacion | uppercase }}</option>
                                             </select>
                                         </td>
                                         <td>
                                             <button (click)="cerrarSemana()" class="btn btn-success" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
                                                 ...
                                             </button>
+                                        </td>
+                                        <td>
                                             <button  (click)="guardarCambio(listaProyectos[i].detalleProyectoResponse)"  class="btn btn-success mx-2">
-                                                Guardar
+                                                Guardar 
                                             </button>
                                         </td>
                                     </tr>

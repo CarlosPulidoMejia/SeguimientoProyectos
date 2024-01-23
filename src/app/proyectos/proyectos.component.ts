@@ -203,11 +203,16 @@ export class ProyectosBauComponent implements OnInit {
     let filtroDep = this.listatipoDependencia.filter( value => value.tipoDependencia == proyecto.dependenciaProy);
     let filtroEst = this.listatipoEstado.filter( value => value.tipoEstado == proyecto.estadoProy );
     let filtroFas = this.listatipoFase.filter( value => value.fase == proyecto.faseProy );
+    
     this.requestGuardar = {
-      documentacion: filtroDoc[0].idDocumentacion,
-      dependencia: filtroDep[0].idDependencia,
+      hrsAtencion: proyecto.hrsAtencion,
+      fase: filtroFas[0].idFase,
       estado: filtroEst[0].idTipoEstado,
-      fase: filtroFas[0].idFase
+      dependencia: filtroDep[0].idDependencia,
+      porcentaje: proyecto.avance,
+      documentacion: filtroDoc[0].idDocumentacion,
+      //fechaInicio: proyecto.fechaInicio,
+      //fechaFin: proyecto.fechaFin
     }
     console.log('Guardar Cambio', this.requestGuardar);
     
@@ -303,6 +308,7 @@ export class ProyectosBauComponent implements OnInit {
     });
   }
 
+  /*  ELIMINAR SI NO SE OCUPA
   modelChangeDocumentacion(e) {
     //this.documentacionProy = e;
     let filtro = this.listatipoDocumentacion.filter( value => value.documentacion == e );
@@ -323,4 +329,8 @@ export class ProyectosBauComponent implements OnInit {
     let filtro = this.listatipoFase.filter( value => value.fase == e)
     this.faseProy = filtro[0].idFase
   }
+  
+  modelChangeHrs(e){
+    this.hrsAtencion = e
+  }*/
 }
