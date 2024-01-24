@@ -8,7 +8,7 @@ import { CertificacionesComponent } from './certificaciones/certificaciones.comp
 
 const routes: Routes = [
   { path: '', component: ProyectosBauComponent, pathMatch: 'full'},
-  { path: 'Certificaciones/Envio', component:  EnvioOrdenesComponent, pathMatch: 'full'},
+  { path: 'Tickets', component:  EnvioOrdenesComponent, pathMatch: 'full'},
   { path: 'Certificaciones/BIM', component: CertificacionesComponent },
   { path: '**',redirectTo:''}
 ];

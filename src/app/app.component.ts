@@ -16,7 +16,7 @@ export class AppComponent implements OnInit{
   clasetextoReporte: string;
 
   ngOnInit() {
-    this.clasetextoProyectos = 'nav-link';
+    this.clasetextoProyectos = 'nav-link negrita';
     this.clasetextoTicket = 'nav-link';
     this.clasetextoReporte = 'nav-link';
   }
