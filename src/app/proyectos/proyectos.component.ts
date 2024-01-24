@@ -235,7 +235,7 @@ export class ProyectosBauComponent implements OnInit {
   getTipoProyecto(){
     this.proyectoBauService.getTipoProyecto().subscribe(
       data => {
-        this.listatipoProyecto = data
+        this.listatipoProyecto = data.filter(data => data.tipoProyecto != '');
       },
       err => {
         console.log(err)
@@ -246,7 +246,7 @@ export class ProyectosBauComponent implements OnInit {
   getTipoDocumentacion(){
     this.proyectoBauService.getTipoDocumentacion().subscribe(
       data => {
-        this.listatipoDocumentacion = data;
+        this.listatipoDocumentacion = data.filter(data => data.documentacion != '');
       },
       err => {
         console.log(err)
@@ -257,7 +257,7 @@ export class ProyectosBauComponent implements OnInit {
   getTipoFase(){
     this.proyectoBauService.getTipoFase().subscribe(
       data => {
-        this.listatipoFase = data;
+        this.listatipoFase = data.filter(data => data.fase != '');;
       },
       err => {
         console.log(err)
@@ -268,7 +268,7 @@ export class ProyectosBauComponent implements OnInit {
   getTipoEstado(){
     this.proyectoBauService.getTipoEstado().subscribe(
       data => {
-        this.listatipoEstado = data;
+        this.listatipoEstado = data.filter(data => data.tipoEstado != '');;
       },
       err => {
         console.log(err)
@@ -279,7 +279,7 @@ export class ProyectosBauComponent implements OnInit {
   getTipoDependencia(){
     this.proyectoBauService.getTipoDependencia().subscribe(
       data => {
-        this.listatipoDependencia = data;
+        this.listatipoDependencia = data.filter(data => data.tipoDependencia != '');;
       },
       err => {
         console.log(err)
@@ -291,7 +291,6 @@ export class ProyectosBauComponent implements OnInit {
     this.proyectoBauService.getAllProyectos().subscribe({
       next: (data) => {
         this.listaProyectos = data;
-        console.log(this.listaProyectos);
         
         $('#tablaProyectos').dataTable().fnDestroy();
 
