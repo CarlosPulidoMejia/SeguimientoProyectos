@@ -10,6 +10,7 @@ export class AppComponent implements OnInit{
   title = 'app';
 
   constructor( private AppService: AppService ) {    }
+  
   clasetextoProyectos: string;
   clasetextoTicket: string;
   clasetextoReporte: string;
