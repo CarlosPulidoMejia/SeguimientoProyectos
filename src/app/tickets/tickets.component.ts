@@ -9,11 +9,11 @@ import { OrdenesService } from '../servicios/ordenes/ordenes.service';
 import { PagosService } from '../servicios/pagos/pagos.service';
 
 @Component({
-  selector: 'app-envio-ordenes',
-  templateUrl: './envio-ordenes.component.html',
-  styleUrls: ['./envio-ordenes.component.css']
+  selector: 'app-tickets',
+  templateUrl: './tickets.component.html',
+  styleUrls: ['./tickets.component.css']
 })
-export class EnvioOrdenesComponent implements OnInit {
+export class TicketsComponent implements OnInit {
 
   constructor(private escenariosService:EscenariosService,private pagosService:PagosService,private ordenesService:OrdenesService) { }
 /*********

@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CertificacionesModule } from './certificaciones/certificaciones.module';
 import { HttpClientModule } from '@angular/common/http';
-import { EnvioOrdenesModule } from './envio-ordenes/envio-ordenes.module';
+import { TicketsModule } from './tickets/tickets.module';
 import { ProyectosModule } from './proyectos/proyectos.module';
 import { CdaModule } from './cda/cda.module';
 
@@ -17,7 +17,7 @@ import { CdaModule } from './cda/cda.module';
     BrowserModule,
     AppRoutingModule,
     CertificacionesModule,
-    EnvioOrdenesModule,
+    TicketsModule,
     ProyectosModule,
     CdaModule,
     HttpClientModule

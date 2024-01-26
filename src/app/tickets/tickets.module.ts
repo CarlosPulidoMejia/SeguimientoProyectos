@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { EnvioOrdenesComponent } from './envio-ordenes.component';
+import { TicketsComponent } from './tickets.component';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [EnvioOrdenesComponent],
+  declarations: [TicketsComponent],
   imports: [
     FormsModule,
     CommonModule
   ]
 })
-export class EnvioOrdenesModule { }
+export class TicketsModule { }
