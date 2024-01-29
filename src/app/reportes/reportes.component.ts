@@ -18,11 +18,11 @@ import { DatosContingencia } from '../clases/contingencia/datosContingencia';
 declare const $: any;
 
 @Component({
-  selector: 'app-certificaciones',
-  templateUrl: 'certificaciones.component.html',
-  styleUrls: ['certificaciones.component.css']
+  selector: 'app-reportes',
+  templateUrl: 'reportes.component.html',
+  styleUrls: ['reportes.component.css']
 })
-export class CertificacionesComponent implements OnInit {
+export class ReportesComponent implements OnInit {
 
   /************
    * Modelos

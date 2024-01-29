@@ -3,13 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { CdaComponent } from './cda/cda.component';
 import { ProyectosBauComponent } from './proyectos/proyectos.component';
 import { TicketsComponent } from './tickets/tickets.component';
-import { CertificacionesComponent } from './certificaciones/certificaciones.component';
+import { ReportesComponent } from './reportes/reportes.component';
 
 
 const routes: Routes = [
   { path: '', component: ProyectosBauComponent, pathMatch: 'full'},
   { path: 'Tickets', component:  TicketsComponent, pathMatch: 'full'},
-  { path: 'Certificaciones/BIM', component: CertificacionesComponent },
+  { path: 'ReportesDC', component: ReportesComponent },
   { path: '**',redirectTo:''}
 ];
 

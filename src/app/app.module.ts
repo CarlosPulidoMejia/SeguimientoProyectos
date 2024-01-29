@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { CertificacionesModule } from './certificaciones/certificaciones.module';
+import { ReportesModule } from './reportes/reportes.module';
 import { HttpClientModule } from '@angular/common/http';
 import { TicketsModule } from './tickets/tickets.module';
 import { ProyectosModule } from './proyectos/proyectos.module';
@@ -16,7 +16,7 @@ import { CdaModule } from './cda/cda.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CertificacionesModule,
+    ReportesModule,
     TicketsModule,
     ProyectosModule,
     CdaModule,
