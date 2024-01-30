@@ -146,6 +146,11 @@ export class ReportesComponent implements OnInit {
 
   nombreFileTest: any
 
+  //CPM
+  proyectos: boolean;
+  tickets: boolean;
+  resumen: boolean;
+
   constructor(private datosService: DatosService, private contingenciaService: ContingenciaService, private matrizService: MatrizcuentasService, private pagosService: PagosService, private httpClient: HttpClient) { }
 
   /*Valores matriz de cuentas*/
@@ -153,6 +158,11 @@ export class ReportesComponent implements OnInit {
 
   /* fin valores matriz de cuentas*/
   ngOnInit() {
+    this.proyectos = false;
+    this.tickets = false;
+    this.resumen = true;
+
+
     this.listaBD();
     this.listaPagos();
     this.rgContingencia = false;
@@ -181,6 +191,22 @@ export class ReportesComponent implements OnInit {
     this.obtenerNombres()
 
 
+  }
+
+  showProyectos(){
+    this.proyectos = true;
+    this.tickets = false;
+    this.resumen = false;
+  }
+  showTickets(){
+    this.proyectos = false;
+    this.tickets = true;
+    this.resumen = false;
+  }
+  showReportes(){
+    this.proyectos = false;
+    this.tickets = false;
+    this.resumen = true;
   }
 
 

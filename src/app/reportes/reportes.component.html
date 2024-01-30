@@ -2,52 +2,88 @@
   <div class="col-12 mb-5">
     <div class="card">
       <div class="card-body">
-        <!--Conexion-->
+        <!--Filtro Recurso-->
         <div class="row">
           <div class="col-12">
             <div class="card">
               <div class="card-body">
-                <h6 class="card-title">CONEXION</h6>
+                <h6 class="card-title">Filtro de Recurso</h6>
                 <div class="row">
-                  <div class="col-4">
+                  <div class="col-3">
                     <div class="form-floating">
-                      <select class="form-select" (change)="selectBase()" id="floatingSelect" [(ngModel)]="catBases"
-                        name="datasource">
-                        <option *ngFor="let base of listaBase" [ngValue]="base.id_Datasource">
-                          {{base.nombre_Base}}</option>
+                      <select class="form-select" name="datasource">
+                        <option></option>
                       </select>
-                      <label for="floatingSelect">Conexion</label>
+                      <label for="floatingSelect">Recurso</label>
                     </div>
                   </div>
-
-                  <div class="col-3" hidden>
-                    <div class="form-floating">
-                      <input type="text" class="form-control" id="idDatasource" placeholder="ID" [(ngModel)]="id_Data">
-                      <label for="idDatasource">ID</label>
-                    </div>
+                  <div class="col-2 mt-3">
+                    <button type="button" class="btn btn-success">Buscar</button>
                   </div>
-
-                  <div class="col-3">
-                    <div class="form-floating">
-                      <input type="text" class="form-control" id="ipDatasource" placeholder="IP" [(ngModel)]="ip_Data"
-                        disabled>
-                      <label for="ipDatasource">IP</label>
-                    </div>
-                  </div>
-
-                  <div class="col-3">
-                    <div class="form-floating">
-                      <input type="text" class="form-control" id="baseDatasource" placeholder="base"
-                        [(ngModel)]="name_Data" disabled>
-                      <label for="baseDatasource">BASE</label>
-                    </div>
-                  </div>
-
-                  <div class="col-2">
-                    <div class="form-floating">
-                      <input type="text" class="form-control" id="puertoDatasource" placeholder="Puerto"
-                        [(ngModel)]="port_Data" disabled>
-                      <label for="puertoDatasource">Puerto</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--fin Filtro Recurso-->
+        <br>
+        <!-- Inicio Tabla Resumen -->
+        <div class="row" *ngIf="proyectos == true">
+          <div class="col-12">
+            <div class="">
+              <div class="card-body">
+                <h6 class="card-title">Resumen de gestión - Promedio Eficiencia 58% [Este es candidato a la evaluaciónd de desempeño]</h6>
+                <div class="row">
+                  <div class="col-12">
+                    <div class="table-responsive">
+                      <table class="table" id="tablaResume">
+                        <thead class="table-success">
+                          <tr>
+                            <th scope="col">Aspecto</th>
+                            <th scope="col">Eficiencia</th>
+                            <th scope="col">221123</th>
+                            <th scope="col">291123</th>
+                            <th scope="col">061223</th>
+                            <th scope="col">201223</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Se registra trabajo devengado de los recursos en 10 proyectos de 11</td>
+                            <td>19/12/23 12:00</td>
+                            <td>19:12:23 12:02</td>
+                            <td>Open</td>
+                            <td>Medio</td>
+                            <td>Individual BIM (Individual)</td>
+                          </tr>
+                          <tr>
+                            <td>Se registra 3 proyectos en tiempo o por iniciar de 11</td>
+                            <td>18/12/23 20:08</td>
+                            <td>19:12:23 13:40</td>
+                            <td>Open</td>
+                            <td>Medio</td>
+                            <td>Individual BIM (Individual)</td>
+                          </tr>
+                          <tr>
+                            <td>Se registra avance en 6 proyectos de 10</td>
+                            <td>18/12/2023 11:22</td>
+                            <td>18/12/2023 11:23</td>
+                            <td>Open</td>
+                            <td>Medio</td>
+                            <td>Individual BIM (Individual)</td>
+                          </tr>
+                          <tr>
+                            <td>Se registra 7 proyectos de 11 con documentación</td>
+                            <td>15/12/2023 16:17</td>
+                            <td>18/12/2023 13:37</td>
+                            <td>Resolved</td>
+                            <td>Medio</td>
+                          </tr>
+                          <tr>
+                            <td>Total</td>
+                          </tr>
+                        </tbody>
+                      </table>
                     </div>
                   </div>
                 </div>
@@ -55,469 +91,338 @@
             </div>
           </div>
         </div>
-        <!--fin conexion-->
-
-        <br>
-        
+        <!-- Fin Tabla Resumen -->
+        <!-- Inicio Detalles -->
         <div class="row">
           <div class="col-12">
-            <div class="card">
+            <div class="">
               <div class="card-body">
-                <h6 class="card-title">Matriz de cuentas POA</h6>
+                <h6 class="card-title">Detalles</h6>
                 <div class="row">
-
+                  <!-- Botones Detalles -->
                   <div class="col-3">
-                    <button type="button" class="btn btn-warning" data-toggle="modal"
-                      data-target="#exampleModalPOA">Generar archivos POA</button>
+                    <button type="button" class="btn btn-success" (click)="showProyectos()">Proyectos</button>
+                    <button type="button" class="btn btn-success mx-2" (click)="showTickets()">Tickets</button>
+                    <button type="button" class="btn btn-success" (click)="showReportes()">Resumen general</button>
                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      
-
-
-        <br>
-        
-        <div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-body">
-                <h6 class="card-title">Tipo de envio</h6>
-                <div class="row">
-                  <div class="col-2">
-
-                    <!--<div class="form-check col-4">
-                      <input class="form-check-input" type="radio" value="3" name="flexRadioDefault"
-                        id="flexRadioDefault0" [(ngModel)]="tipo_contingencia" (change)="changeStatus()">
-                      <label class="form-check-label" for="flexRadioDefault0">
-                        Normal
-                      </label>
-                    </div>-->
-
-                    <div class="form-check col-4">
-                      <input class="form-check-input" type="radio" value="1" name="flexRadioDefault"
-                        id="flexRadioDefault1" [(ngModel)]="modDatosContingencia.tipoContingencia" [disabled]="rgContingenciaAct">
-                      <label class="form-check-label" for="flexRadioDefault1">
-                        COAS
-                      </label>
+                  <!-- Tabla Proyectos -->
+                  <div class="row mt-2" *ngIf="proyectos == true">
+                    <h6 class="card-title">Proyectos</h6>
+                    <div class="col-12">
+                      <div class="table-responsive" style="overflow-x: hidden; overflow-y: auto; height: 16em;">
+                        <table class="table" id="tablaProyectos">
+                          <thead class="table-success" style="position: sticky; top: 0;">
+                            <tr>
+                              <th scope="col">ID</th>
+                              <th scope="col">Responsable</th>
+                              <th scope="col">Proyecto</th>
+                              <th scope="col">Hrs</th>
+                              <th scope="col">Fase</th>
+                              <th scope="col">Estado</th>
+                              <th scope="col">Tipo</th>
+                              <th scope="col">Dependencia</th>
+                              <th scope="col">% Avance</th>
+                              <th scope="col">Documentación</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>1</td>
+                              <th>Marco Ruiz</th>
+                              <td style="width:200px;">PROY-607 Migración de Cartea Propia al SAH</td>
+                              <td>4</td>
+                              <td>Desarrollo</td>
+                              <td>Desfasado</td>
+                              <td>Killer</td>
+                              <td>Espera de Recurso - T</td>
+                              <td>69 a 71 %</td>
+                              <td>Plan Proyecto</td>
+                            </tr>
+                            <tr>
+                              <td>2</td>
+                              <th>Hector Garcia</th>
+                              <td style="width:200px;">PROY-607 Migración de Cartea Propia al SAH</td>
+                              <td>4</td>
+                              <td>Desarrollo</td>
+                              <td>Desfasado</td>
+                              <td>Killer</td>
+                              <td>Espera de Recurso - T</td>
+                              <td>69 a 71 %</td>
+                              <td>Plan Proyecto</td>
+                            </tr>
+                            <tr>
+                              <td>3</td>
+                              <th>Marco Ruiz</th>
+                              <td style="width:200px;">PROY-607 Migración de Cartea Propia al SAH</td>
+                              <td>4</td>
+                              <td>Desarrollo</td>
+                              <td>Desfasado</td>
+                              <td>Killer</td>
+                              <td>Espera de Recurso - T</td>
+                              <td>69 a 71 %</td>
+                              <td>Plan Proyecto</td>
+                            </tr>
+                            <tr>
+                              <td>4</td>
+                              <th>Marco Ruiz</th>
+                              <td style="width:200px;">PROY-607 Migración de Cartea Propia al SAH</td>
+                              <td>4</td>
+                              <td>Desarrollo</td>
+                              <td>Desfasado</td>
+                              <td>Killer</td>
+                              <td>Espera de Recurso - T</td>
+                              <td>69 a 71 %</td>
+                              <td>Plan Proyecto</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                     </div>
-
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" value="2" name="flexRadioDefault"
-                        id="flexRadioDefault2" [(ngModel)]="modDatosContingencia.tipoContingencia" [disabled]="rgContingenciaAct">
-                      <label class="form-check-label" for="flexRadioDefault2">
-                        POA
-                      </label>
+                  </div>
+                  <!-- Tabla Tickets -->
+                  <div class="row mt-2" *ngIf="tickets == true">
+                    <h6 class="card-title">Ticket</h6>
+                    <div class="col-12">
+                      <div class="table-responsive" style="overflow-x: hidden; overflow-y: auto; height: 16em;">
+                        <table class="table" id="tablaProyectos">
+                          <thead class="table-success" style="position: sticky; top: 0;">
+                            <tr>
+                              <th scope="col">ID</th>
+                              <th scope="col">Responsable</th>
+                              <th scope="col">Tickets</th>
+                              <th scope="col">Hrs</th>
+                              <th scope="col">Tipo</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>1</td>
+                              <th>Marco Ruiz</th>
+                              <td>
+                                <p>Buena tarde  Solictando su apoyo para fijar
+                                  el valor de la UDI al día 10 de dic 23 en SAH 
+                                  para validar la apertura</p>
+                              </td>
+                              <td>2</td>
+                              <td>Incidente Controlado</td>
+                            </tr>
+                            <tr>
+                              <td>2</td>
+                              <th>Marco Ruiz</th>
+                              <td>
+                                <p>Buena noche Por favor de su apoyo con las
+                                  correcciones indicadas. Gracias
+                                </p>
+                              </td>
+                              <td>2</td>
+                              <td>Incidente Controlado</td>
+                            </tr>
+                            <tr>
+                              <td>3</td>
+                              <th>Marco Ruiz</th>
+                              <td>
+                                <p>Buena noche Por favor de su apoyo con las
+                                  correcciones indicadas. Gracias
+                                </p>
+                              </td>
+                              <td>2</td>
+                              <td>Incidente Controlado</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                     </div>
-
-
-
                   </div>
-
-
-            
-
-                  
-
-                  <div class="col-2">
-                    <button type="button" class="btn btn-warning" (click)="btnConsultContingencia()"
-                      [disabled]="rgContingencia">Consultar contingencia</button>
-                  </div>
-
-                  <div class="col-2">
-
-                    <button type="button" class="btn btn-success" (click)="btnActivarContingencia()"
-                      [disabled]="rgContingenciaAct">Activar contingencia</button>
-
-                  </div>
-
-                  <div class="col-2">
-
-                    <button type="button" class="btn btn-danger" (click)="btnOffContingencia()"
-                      [disabled]="rgContingenciaOff">Desactivar contingencia</button>
-
-                  </div>
-
-
-                  <div class="row mt-4">
-
-                    <div class="col-2">
+                  <!-- Tablas Resumen General -->
+                  <div class="row mt-2" *ngIf="resumen == true">
+                    <h6 class="card-title">Resumen General</h6>
+                    <!--Trabajo Devengado-->
+                    <div class="col-6">
                       <br>
-                      <div class="form-floating">
-                        <input type="date" class="form-control" id="fecInicio" placeholder="Fecha Inicio"
-                          [(ngModel)]="selectedDateInicio" [disabled]="rgContingenciaOff">
-                        <label for="fecInicio">Fecha Certificacion</label>
+                      <h6>Trabajo Devengado</h6> 
+                      <div class="table-responsive" style="overflow-x: hidden; overflow-y: auto; height: 12em;">
+                        <table class="table" id="tablaTrabajoDevengado">
+                          <thead class="table-success" style="position: sticky; top: 0;">
+                            <tr>
+                              <th scope="col">Recurso</th>
+                              <th scope="col">Hrs/Semana</th>
+                              <th scope="col">Hrs día</th>
+                              <th scope="col">Hrs Ticket</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr class="odd">
+                              <th class="">Marco Ruiz</th>
+                              <td class="">48.5</td>
+                              <td class="">7.9</td>
+                              <td class="">9</td>
+                            </tr>
+                            <tr class="odd">
+                              <th class="">Marco Ruiz</th>
+                              <td class="">48.5</td>
+                              <td class="">7.9</td>
+                              <td class="">9</td>
+                            </tr>
+                            <tr class="odd">
+                              <th class="">Marco Ruiz</th>
+                              <td class="">48.5</td>
+                              <td class="">7.9</td>
+                              <td class="">9</td>
+                            </tr>
+                            <tr class="odd">
+                              <th class="">Marco Ruiz</th>
+                              <td class="">48.5</td>
+                              <td class="">7.9</td>
+                              <td class="">9</td>
+                            </tr>
+                            <tr class="odd">
+                              <th class="">Marco Ruiz</th>
+                              <td class="">48.5</td>
+                              <td class="">7.9</td>
+                              <td class="">9</td>
+                            </tr>
+                            <tr class="odd">
+                              <th class="">Marco Ruiz</th>
+                              <td class="">48.5</td>
+                              <td class="">7.9</td>
+                              <td class="">9</td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </div>
-
-                    <div class="col-3">
-                      <label for="formFile" class="form-label"><i class="fa fa-certificate"
-                          style="--fa-primary-color: rgb(37, 80,81);"></i> Ingresar
-                        archivo</label>
-                      <input class="form-control" type="file" id="formFile" (change)="selectFile($event)"
-                        [disabled]="rgContingenciaOff">
-                        <!--<input class="form-control" type="file" id="formFile" (change)="selectFile($event)"
-                        [disabled]="rgContingenciaFileOff">-->
-                    </div>
-
-                    <div class="col-2">
-                      <div class="form-check form-switch mt-3">
-                        <br>
-                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault"
-                          [(ngModel)]="isCheckedArchivoEnv" [disabled]="rgContingenciaOff">
-
-                        <label class="form-check-label" for="flexSwitchCheckDefault">Generar .env</label>
-                      </div>
-                    </div>
-
-                    <div class="col-3">
+                    <!--Tipo-Proyecto | BAU-->
+                    <div class="col-6">
                       <br>
-                      <!--<button class="btn btn-success" (click)="btnCargaMasiva()" [disabled]="rgContingenciaOff">Generar
-                        archivos .env -
-                        Carga Masiva</button>-->
-
-
-                        <button class="btn btn-success" (click)="generarEnvTest()" [disabled]="rgContingenciaOff">Generar
-                          archivos .env -
-                          Carga Masiva</button>
-
-
-                          <!--<button class="btn btn-warning" (click)="obtenerArchivo()">Obtener archivoTest</button>-->
+                      <h6 class="card-title">Tipo-Proyecto | BAU</h6> 
+                      <div class="table-responsive">
+                        <table class="table" id="tablaProyectos">
+                          <thead class="table-success" style="position: sticky; top: 0;">
+                            <tr>
+                              <th scope="col">Proyectos|BAU</th>
+                              <th scope="col">BAU-Nuevo</th>
+                              <th scope="col">BAU-Mejora</th>
+                              <th scope="col">Proyecto</th>
+                              <th scope="col">Killer</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr class="odd">
+                              <th class="">6</th>
+                              <td class="">0</td>
+                              <td class="">4</td>
+                              <td class="">0</td>
+                              <td class="">2</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                     </div>
-
-                    <div class="col-2">
-                      <br>
-                      <!--<button class="btn btn-warning" (click)="btnGenerarEnv()" [disabled]="rgContingenciaOff">Generar
-                        .env</button>-->
-
-                        <!--<button class="btn btn-warning" (click)="btnGenerarEnvTest()" [disabled]="rgContingenciaOff">Generar
-                        .env TEST</button>-->
-                        
-                        <button class="btn btn-warning" (click)="btnGenerarEnvCoasPoa()" [disabled]="rgContingenciaOff">Generar
-                          .env COAS - POA</button>
+                    <!--Fase-Proyectos-->
+                    <div class="col-6 mt-4">
+                      <h6>Fase-Proyectos</h6> 
+                      <div class="table-responsive">
+                        <table class="table" id="tablaTrabajoDevengado">
+                          <thead class="table-success" style="position: sticky; top: 0;">
+                            <tr>
+                              <th scope="col">Análisis</th>
+                              <th scope="col">Desarrollo</th>
+                              <th scope="col">Pruebas</th>
+                              <th scope="col">Calidad</th>
+                              <th scope="col">Producción</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr class="odd">
+                              <td class="">3</td>
+                              <td class="">5</td>
+                              <td class="">0</td>
+                              <td class="">3</td>
+                              <td class="">0</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                     </div>
-
-
-
+                    <!--Estado-Proyectos-->
+                    <div class="col-6 mt-4">
+                      <h6>Estado-Proyectos</h6> 
+                      <div class="table-responsive">
+                        <table class="table" id="tablaTrabajoDevengado">
+                          <thead class="table-success" style="position: sticky; top: 0;">
+                            <tr>
+                              <th scope="col">Por Iniciar</th>
+                              <th scope="col">Tiempo</th>
+                              <th scope="col">Detenido</th>
+                              <th scope="col">Desfasado</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr class="odd">
+                              <td class="">0</td>
+                              <td class="">3</td>
+                              <td class="">0</td>
+                              <td class="">8</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <!--Documentación-->
+                    <div class="col-6 mt-4">
+                      <h6>Documentación</h6> 
+                      <div class="table-responsive">
+                        <table class="table" id="tablaTrabajoDevengado">
+                          <thead class="table-success" style="position: sticky; top: 0;">
+                            <tr>
+                              <th scope="col">RI | RD</th>
+                              <th scope="col">Ticket</th>
+                              <th scope="col">Plan Proyecto</th>
+                              <th scope="col">Sin gestión</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr class="odd">
+                              <td class="">4</td>
+                              <td class="">0</td>
+                              <td class="">3</td>
+                              <td class="">4</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <!--Tipo-Ticket-->
+                    <div class="col-6 mt-4">
+                      <h6>Tipo-Ticket</h6> 
+                      <div class="table-responsive">
+                        <table class="table" id="tablaTrabajoDevengado">
+                          <thead class="table-success" style="position: sticky; top: 0;">
+                            <tr>
+                              <th scope="col">Ticket</th>
+                              <th scope="col">Bloqueante</th>
+                              <th scope="col">Normal</th>
+                              <th scope="col">Recurente</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr class="odd">
+                              <td class="">10</td>
+                              <td class="">0</td>
+                              <td class="">0</td>
+                              <td class="">0</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
                   </div>
-
                 </div>
               </div>
             </div>
           </div>
         </div>
-
-      
-
-
-        <br>
-        <div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-body">
-                <h6 class="card-title">Validacion archivos Contingencia</h6>
-                <div class="row">
-
-                  <!--<div class="row mt-4">
-                    <div class="col-3">
-                        <label for="formFile" class="form-label"><i class="fa fa-certificate"
-                                style="--fa-primary-color: rgb(37, 80,81);"></i> Ingresar
-                            archivos (.env - .liq  - .req)</label>
-                        <input class="form-control" type="file" id="formFile" (change)="selectFile($event)">
-                    </div>
-
-                    <div class="col-3">
-                      <br>
-                      <button class="btn btn-success" (click)="btnValidacionContingencia()">Validar archivos</button>
-                  </div>
-
-                </div>-->
-
-                <br>
-                  <div class="row mt-3">
-                    <div class="col-3">
-                      <label class="btn btn-default p-0">
-                        <input class="form-control" type="file" multiple (change)="selectFiles($event)" />
-                      </label>
-                    </div>
-
-                    <div class="col-4">
-                      <button class="btn btn-success btn-sm" [disabled]="!selectedFiles" (click)="uploadFiles()">
-                        Validar archivos
-                      </button>
-                    </div>
-<!--
-                    <div class="col-4">
-                      <button class="btn btn-success btn-sm" [disabled]="!selectedFiles" (click)="uploadFilesTest()">
-                        Validar archivo TEST
-                      </button>
-                    </div>-->
-                  </div>
-
-                  <div *ngFor="let progressInfo of progressInfos" class="mb-2">
-                    <span>{{ progressInfo.fileName }}</span>
-                    <div class="progress">
-                      <div class="progress-bar progress-bar-info" role="progressbar"
-                        attr.aria-valuenow="{{ progressInfo.value }}" aria-valuemin="0" aria-valuemax="100"
-                        [ngStyle]="{ width: progressInfo.value + '%' }">
-                        {{ progressInfo.value }}%
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-          </div>
-          <!--Fin Conexion-->
-        </div>
-
-
-      </div>
-    </div>
-  </div>
-
-  <!--MODAL POA ,MATRIZ DE CUENTAS-->
-
-
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModalPOA" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Matriz de cuentas</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="col-4">
-            <div class="form-floating">
-              <select class="form-select" id="floatingSelect" [(ngModel)]="selectedTipo">
-                <option value="poa">POA</option>
-                <option value="cero">CERO</option>
-              </select>
-              <label for="floatingSelect">Certificacion</label>
-            </div>
-          </div>
-
-          <br>
-          <div *ngIf="this.selectedTipo!=''">
-            <!--HEADER Matriz cuentas-->
-            <div class="row mt-6">
-              <div class="col-12">
-                <div class="card">
-                  <div class="card-body">
-                    <h6 class="card-title">Header</h6>
-                    <div class="row">
-                      <div class="col-4">
-                        <div class="form-floating">
-                          <input type="text" class="form-control" id="idDatasource" placeholder="ID"
-                            [(ngModel)]="HNumCiclo" value="1">
-                          <label for="idDatasource">Numero Ciclos</label>
-                        </div>
-                      </div>
-                      <div class="col-4">
-                        <div class="form-floating">
-                          <input type="text" class="form-control" id="ipDatasource" placeholder="IP"
-                            [(ngModel)]="HSegundos" value="1">
-                          <label for="ipDatasource">Segundos</label>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!--Fin HEADER Matriz cuentas-->
-
-            <br>
-
-            <!--Ordenante Matriz cuentas-->
-            <div class="row mt-6">
-              <div class="col-12">
-                <div class="card">
-                  <div class="card-body">
-                    <h6 class="card-title">Ordenante</h6>
-                    <div class="row">
-                      <div class="col-3">
-                        <div class="form-floating">
-                          <input type="text" class="form-control" id="bBanco" placeholder="Banco" [(ngModel)]="HBanco"
-                            value="40150">
-                          <label for="bBanco">Banco</label>
-                        </div>
-                      </div>
-
-                      <div class="col-3">
-                        <div class="form-floating">
-                          <input type="text" class="form-control" id="bTipoCuenta" placeholder="Tipo Cuenta"
-                            [(ngModel)]="HTipoCuenta" value="40">
-                          <label for="bTipoCuenta">Tipo Cuenta</label>
-                        </div>
-                      </div>
-                      <div class="col-6">
-                        <div class="form-floating">
-                          <input type="text" class="form-control" id="bCuenta" placeholder="Cuenta"
-                            [(ngModel)]="HCuenta" value="150180019480800160">
-                          <label for="bCuenta">Cuenta</label>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row mt-2">
-                      <div class="col-6">
-                        <div class="form-floating">
-                          <input type="text" class="form-control" id="bNombre" placeholder="Nombre"
-                            [(ngModel)]="HNombre" value="VICTOR PINEDA VELAZQUEZ">
-                          <label for="bNombre">Nombre</label>
-                        </div>
-                      </div>
-                      <div class="col-6">
-                        <div class="form-floating">
-                          <input type="text" class="form-control" id="bRFC" placeholder="RFC" [(ngModel)]="HRFC"
-                            value="PIVV711223LN5">
-                          <label for="bRFC">RFC</label>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!--Fin Ordenante Matriz cuentas-->
-
-
-            <!--detalle-->
-            <div class="row mt-3">
-              <div class="col-12">
-                <div class="card">
-                  <div class="card-body">
-                    <h6 class="card-title">Detalle</h6>
-                    <div class="row">
-
-                      <div class="col-2">
-                        <div class="form-floating">
-                          <input type="number" class="form-control" id="cantidadOrdenes" placeholder="Cantidad"
-                            [(ngModel)]="HCantidad">
-                          <label for="cantidadOrdenes">Cantidad</label>
-                        </div>
-                      </div>
-                      <div class="col-3">
-                        <div class="form-floating">
-                          <select class="form-select" id="floatingSelect" [(ngModel)]="selectedTipoPago">
-                            <option *ngFor="let tpago of listaPago" [ngValue]="tpago">
-                              {{tpago.clave + "-" + tpago.descripcion}}</option>
-                            <!--<option [ngValue]="1">Pago 1</option>
-                            <option [ngValue]="3">Pago 3</option>
-                            <option [ngValue]="7">Pago 7</option>-->
-                          </select>
-                          <label for="floatingSelect">Tipo Pago</label>
-                        </div>
-                      </div>
-                      <div class="col-2">
-                        <div class="form-floating">
-                          <input type="number" class="form-control" id="montoOrden" placeholder="Monto"
-                            [(ngModel)]="HMonto">
-                          <label for="montoOrden">Monto</label>
-                        </div>
-                      </div>
-
-                      <div class="col-2">
-                        <div class="form-floating">
-                          <input type="text" class="form-control" id="cantidadOrdenes" placeholder="Cantidad"
-                            [(ngModel)]="HStatus">
-                          <label for="cantidadOrdenes">Status</label>
-                        </div>
-                      </div>
-
-                      <div class="col-2">
-                        <div class="form-floating">
-                          <input type="text" class="form-control" id="cantidadOrdenes" placeholder="Cantidad"
-                            [(ngModel)]="HModulo" required>
-                          <label for="cantidadOrdenes">Modulo</label>
-                        </div>
-                      </div>
-                    </div>
-
-
-                    <!--<div class="row mt-2">-->
-
-
-                    <!--</div>-->
-
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!--fin detalle -->
-
-
-
-
-            <!--archivo-->
-            <div class="row mt-3">
-              <div class="col-12">
-                <div class="card">
-                  <div class="card-body">
-                    <h6 class="card-title">Archivo</h6>
-                    <div class="mb-3">
-                      <label class="btn btn-default p-0">
-                        <input type="file" (change)="selectFile($event)" />
-                      </label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!--fin archivo-->
-
-            <br>
-            <button type="button" class="btn btn-primary" (click)="addRegistroPoa()"><i class="fas fa-plus"></i> Agregar
-              elemento</button>
-            <br>
-            <br>
-            <table class="table">
-              <thead class="table-success">
-                <tr>
-                  <th>Cantidad</th>
-                  <th>Tipo Pago</th>
-                  <th>Monto</th>
-                  <th>Status</th>
-                  <th>Modulo</th>
-                  <th>Acciones</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let detalle of empList">
-                  <td>{{detalle.cantidad}}</td>
-                  <td>{{detalle.tipoPago}}</td>
-                  <td>{{detalle.monto}}</td>
-                  <td>{{detalle.concepto}}</td>
-                  <td>{{detalle.modulo}}</td>
-                  <td><button class="btn btn-danger" (click)="eliminarRegistroPoa(detalle.id)"><i
-                        class="fas fa-trash-alt"></i>
-                      Eliminar</button></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <!--<button type="button" class="btn btn-primary" (click)="archivosPOA()">Generar archivo</button>
-
-          <button type="button" class="btn btn-primary" (click)="archivosNewPOA()">Generar archivo Nuevo</button>
-
-          <button type="button" class="btn btn-primary" (click)="descargarPOA()">Generar archivo Descarga</button>-->
-
-           <button type="button" class="btn btn-primary" (click)="descargarPOATest()">Generar archivo</button>
-
-          <!---<button type="button" class="btn btn-primary" (click)="archivosPOANew()">Generar archivos</button>-->
-
-        </div>
+        <!-- Fin Detalles -->
       </div>
     </div>
   </div>
