@@ -7,7 +7,7 @@ import { ReportesComponent } from './reportes/reportes.component';
 
 
 const routes: Routes = [
-  { path: '', component: ProyectosBauComponent, pathMatch: 'full'},
+  { path: 'Proyectos', component: ProyectosBauComponent, pathMatch: 'full'},
   { path: 'Tickets', component:  TicketsComponent, pathMatch: 'full'},
   { path: 'ReportesDC', component: ReportesComponent },
   { path: '**',redirectTo:''}

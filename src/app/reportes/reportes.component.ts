@@ -158,9 +158,9 @@ export class ReportesComponent implements OnInit {
 
   /* fin valores matriz de cuentas*/
   ngOnInit() {
-    this.proyectos = false;
+    this.proyectos = true;
     this.tickets = false;
-    this.resumen = true;
+    this.resumen = false;
 
 
     this.listaBD();
