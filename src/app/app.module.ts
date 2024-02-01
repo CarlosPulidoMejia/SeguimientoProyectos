@@ -8,10 +8,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { TicketsModule } from './tickets/tickets.module';
 import { ProyectosModule } from './proyectos/proyectos.module';
 import { CdaModule } from './cda/cda.module';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

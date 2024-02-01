@@ -35,9 +35,13 @@
     </ul>
   </div>
 </nav>
+<div hidden>
+  <app-footer></app-footer> 
+</div>
 
-<div class="m-4">
+<div class="m-4" >
   <router-outlet></router-outlet>
+  <app-footer hidden></app-footer> 
 </div>
 <style>
   .negrita {
