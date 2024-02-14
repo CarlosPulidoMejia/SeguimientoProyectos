@@ -14,15 +14,19 @@ export class AppComponent implements OnInit{
   clasetextoProyectos: string;
   clasetextoTicket: string;
   clasetextoReporte: string;
+  clasetextoConfig: string;
+  configuracion: boolean;
 
   ngOnInit() {
     window.location.href
     this.clasetextoProyectos = 'nav-link negrita';
     this.clasetextoTicket = 'nav-link';
     this.clasetextoReporte = 'nav-link';
+    this.clasetextoConfig = 'nav-link';
+    this.configuracion = false;
   }
   clickProyectos(){
-    this.clasetextoProyectos = 'nav-link negrita'
+    this.clasetextoProyectos = 'nav-link negrita';
     this.clasetextoReporte = 'nav-link';
     this.clasetextoTicket = 'nav-link';
   }
@@ -30,13 +34,20 @@ export class AppComponent implements OnInit{
   clickReporteDC(){
     this.clasetextoProyectos = 'nav-link';
     this.clasetextoTicket = 'nav-link';
-    this.clasetextoReporte = 'nav-link negrita'
+    this.clasetextoReporte = 'nav-link negrita';
   }
 
   clickTickets(){
     this.clasetextoProyectos = 'nav-link';
-    this.clasetextoTicket = 'nav-link negrita'
+    this.clasetextoTicket = 'nav-link negrita';
     this.clasetextoReporte = 'nav-link';
   }
 
+  clickConfig(){
+    this.clasetextoProyectos = 'nav-link';
+    this.clasetextoTicket = 'nav-link';
+    this.clasetextoReporte = 'nav-link';
+    this.clasetextoConfig = 'nav-link negrita';
+    this.configuracion = true;
+  }
 }

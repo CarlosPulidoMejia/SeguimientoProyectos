@@ -17,9 +17,45 @@ export class ConfigComponent implements OnInit {
 /*********
  * Listas
  */
-  listaConfig: [];
+  //listaConfig: [];
+  config: string;
+  usuarios: boolean;
+  perfiles: boolean;
+  catalgos: boolean;
+  mostrarAddUsr: boolean;
+  mostrarAddPrf: boolean;
+  mostrarAddCat: boolean;
+  usrActivo: boolean;
+  disabled: string;
   
   ngOnInit() {
+    this.config = "Usuarios";
+    this.usuarios = false;
+    this.perfiles = false;
+    this.catalgos = true;
+    this.mostrarAddUsr = false;
+    this.mostrarAddPrf = false;
+    this.mostrarAddCat = false;
+    this.usrActivo = false;
+    this.disabled = 'bg-black bg-opacity-10';
+  }
+
+  clickUsuarios(){
+    this.usuarios = true;
+    this.perfiles = false;
+    this.catalgos = false;
+  }
+
+  clickPerfiles(){
+    this.usuarios = false;
+    this.perfiles = true;
+    this.catalgos = false;
+  }
+
+  clickCatalogos(){
+    this.usuarios = false;
+    this.perfiles = false;
+    this.catalgos = true;
   }
 
   /*getAllTickets() {
@@ -27,15 +63,15 @@ export class ConfigComponent implements OnInit {
       next: (data) => {
         this.listaConfig = [];
         
-        $('#tablaProyectos').dataTable().fnDestroy();
+        $('#tablaUsuarios').dataTable().fnDestroy();
 
 
-        $('#tablaProyectos tbody').on('click', 'tr', function () {
+        $('#tablaUsuarios tbody').on('click', 'tr', function () {
           $(this).toggleClass('selected');
         });
 
         setTimeout(() => {
-          $('#tablaProyectos').DataTable({
+          $('#tablaUsuarios').DataTable({
             language: {
               url: '//cdn.datatables.net/plug-ins/1.11.3/i18n/es-mx.json'
             },

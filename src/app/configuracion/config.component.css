@@ -1,0 +1,16 @@
+.disabled {
+    background-color: #dddddd8d;
+    color: #6666666e;
+}
+.right {
+    justify-content: flex-end;
+    display: flex;
+    width: 150px;
+    position: absolute;
+    right: 0;
+    top: center;
+    margin-right: 10px;
+}
+.buttonM {
+    margin-left: 5px;
+}

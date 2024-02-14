@@ -2,201 +2,518 @@
   <div class="col-12 mb-5">
       <div class="card">
           <div class="card-body">
-              <!--Agregar Archivo-->
-              <div class="row">
-                  <div class="col-12">
-                      <div class="card">
-                          <div class="card-body">
-                              <h6 class="card-title">Agregar Información</h6>
-                              <div class="row">
-                                  <div class="col-2">
-                                      <div class="form-floating">
-                                          <input type="file" class="form-control" id="file"/>
-                                          <label for="file">Cargar Archivo</label>
-                                      </div>
-                                  </div>
-                                  <div class="col-1 mt-3">
-                                      <button class="btn btn-primary" >Agregar</button>
-                                  </div>
-                              </div>
-                          </div>
+            <h6>Configuración de {{config}}</h6>
+            <div class="col-3">
+              <button type="button" class="btn btn-success" (click)="clickUsuarios()">Usuarios</button>
+              <button type="button" class="btn btn-success mx-2" (click)="clickPerfiles()">Perfiles</button>
+              <button type="button" class="btn btn-success" (click)="clickCatalogos()">Catálogos</button>
+            </div>
+            <br>
+            <!--Agregar Usuario-->
+            <div class="row" *ngIf="usuarios">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-body">
+                    <h6 class="card-title">Agregar Usuario</h6>
+                    <div class="row" *ngIf="mostrarAddUsr">
+                      <div class="col-2">
+                        <div class="form-floating">
+                          <input type="text" class="form-control" id="nombreUsuarios" />
+                          <label for="fecFin">Nombre</label>
+                        </div>
                       </div>
-                  </div>
-              </div>
-              <br />
-              <div class="row">
-                <div class="col-12">
-                  <div class="table-responsive">
-                    <table class="table" id="tablaProyectos">
-                      <thead class="table-success">
-                        <tr>
-                          <th scope="col">Nombre del Archivo</th>
-                          <th scope="col">Fecha de carga</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th scope="row">Ticket_020124.xlsx</th>
-                          <td>02/01/24 12:00:28</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">Ticket_100124.xlsx</th>
-                          <td>10/01/24 20:08:15</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">Ticket_180124.xlsx</th>
-                          <td>18/01/2024 11:22:11</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">Ticket_280124.xlsx</th>
-                          <td>28/01/2024 16:17:16</td>
-                        </tr>
-                      </tbody>
-                    </table>
+                      <div class="col-2">
+                        <div class="form-floating">
+                          <input type="text" class="form-control" id="apellidoUsuarios" />
+                          <label for="fecFin">Apellido</label>
+                        </div>
+                      </div>
+                      <div class="col-2">
+                        <div class="form-floating">
+                          <input type="text" class="form-control" id="usuarioUsuarios" />
+                          <label for="fecFin">Usuario</label>
+                        </div>
+                      </div>
+                      <div class="col-2">
+                        <div class="form-floating">
+                          <select class="form-select" id="gerenciaUsuarios"name="gerenciaUsuarios">
+                            <!--<option *ngFor="let tipoDoc of listatipoDocumentacion" [ngValue]="tipoDoc.idDocumentacion">
+                            {{ tipoDoc.documentacion | uppercase }}
+                            </option>-->
+                          </select>
+                          <label for="documentacion">Gernecia</label>
+                        </div>
+                      </div>
+                      <div class="col-2">
+                        <div class="form-floating">
+                          <select class="form-select" id="tipoProyecto" name="tipoProyecto">
+                            <!--<option *ngFor="let tipoProyecto of listatipoProyecto" [ngValue]="tipoProyecto.idTipoProyecto">
+                                {{ tipoProyecto.tipoProyecto | uppercase }}
+                            </option>-->
+                            <option value=""></option>
+                          </select>
+                          <label for="tipoProyecto">Perfil</label>
+                        </div>
+                      </div>
+                      <div class="col-1 mt-3">
+                        <button class="btn btn-success" >
+                            Agregar
+                        </button>
+                      </div>
+                    </div>
+                    <div class="col-2 right" *ngIf="!mostrarAddUsr" (click)="mostrarAddUsr=true">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="23.616" height="13.503"
+                                  viewBox="0 0 23.616 13.503">
+                                  <path id="Icon_ionic-ios-arrow-down" data-name="Icon ionic-ios-arrow-down"
+                                      d="M18,20.679l8.93-8.937a1.681,1.681,0,0,1,2.384,0,1.7,1.7,0,0,1,0,2.391L19.2,24.258a1.685,1.685,0,0,1-2.327.049L6.68,14.14a1.688,1.688,0,0,1,2.384-2.391Z"
+                                      transform="translate(-6.188 -11.246)" fill="#024e4f" />
+                              </svg>
+                    </div>
+                    <div class="col-2 right" *ngIf="mostrarAddUsr" (click)="mostrarAddUsr=false">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="23.619" height="13.503"
+                                  viewBox="0 0 23.619 13.503">
+                                  <path id="Icon_ionic-ios-arrow-up" data-name="Icon ionic-ios-arrow-up"
+                                      d="M18,15.321l8.93,8.937a1.688,1.688,0,1,0,2.384-2.391L19.2,11.742a1.685,1.685,0,0,0-2.327-.049L6.68,21.86a1.688,1.688,0,0,0,2.384,2.391Z"
+                                      transform="translate(-6.188 -11.251)" fill="#024e4f" />
+                              </svg>
+                    </div>
                   </div>
                 </div>
               </div>
-              <!-- Fin Tabla -->
-          </div>
-      </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-12">
-    <div class="card">
-      <div class="card-body">
-        <!-- Inicio Tabla -->
-        <div class="row">
-          <div class="col-12">
-            <div class="table-responsive">
-              <table class="table" id="tablaProyectos">
-                <thead class="table-success">
-                  <tr>
-                    <th scope="col">No</th>
-                    <th scope="col">Fecha Inicio</th>
-                    <th scope="col">Fecha Fin</th>
-                    <th scope="col">Estado</th>
-                    <th scope="col">Prioridad</th>
-                    <th scope="col">Tech/Gerencia</th>
-                    <th scope="col">Área Usuaria</th>
-                    <th scope="col">Tipo de Solicitud</th>
-                    <th scope="col">Descripción</th>
-                    <th scope="col">Usuario</th>
-                    <th scope="col">Tipo Ticket</th>
-                    <th scope="col">Recurso</th>
-                    <th scope="col">Hrs</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">3128</th>
-                    <td>19/12/23 12:00</td>
-                    <td>19:12:23 12:02</td>
-                    <td>Open</td>
-                    <td>Medio</td>
-                    <td>Individual BIM (Individual)</td>
-                    <td></td>
-                    <td>Mesa de Sistema: PeticionesAplicaciones</td>
-                    <td style="width:210px;">
-                      <p>Buena tarde  Solictando su apoyo para fijar
-                        el valor de la UDI al día 10 de dic 23 en SAH 
-                        para validar la apertura</p>
-                    </td>
-                    <td>Manuel Ortiz Avila (Manuel Ortiz)</td>
-                    <td style="width:150px;">
-                      <select class="form-select" id="documentacionProy" ></select>
-                    </td>
-                    <td style="width:150px;">
-                      <select class="form-select" id="documentacionProy"></select>
-                    </td>
-                    <td>
-                      <input type="text" class="form-control" size="1">
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3102</th>
-                    <td>18/12/23 20:08</td>
-                    <td>19:12:23 13:40</td>
-                    <td>Open</td>
-                    <td>Medio</td>
-                    <td>Individual BIM (Individual)</td>
-                    <td></td>
-                    <td>Mesa de Sistema: PeticionesAplicaciones</td>
-                    <td style="width:210px;">
-                      <p>Buena noche Por favor de su apoyo con las
-                        correcciones indicadas. Gracias
-                      </p>
-                    </td>
-                    <td>Flor Patricia Garduño Hernández (Flor.Garduño)</td>
-                    <td style="width:150px;">
-                      <select class="form-select" id="documentacionProy" ></select>
-                    </td>
-                    <td style="width:150px;">
-                      <select class="form-select" id="documentacionProy"></select>
-                    </td>
-                    <td>
-                      <input type="text" class="form-control" size="1">
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3054</th>
-                    <td>18/12/2023 11:22</td>
-                    <td>18/12/2023 11:23</td>
-                    <td>Open</td>
-                    <td>Medio</td>
-                    <td>Individual BIM (Individual)</td>
-                    <td></td>
-                    <td>Mesa de Sistema: PeticionesAplicaciones</td>
-                    <td style="width:210px;">
-                      <p>Buena tarde 
-                        Por favor de su apoyo con la aplicación de los excedentes como abono a capital. 
-                        Saludos                         
-                      </p>
-                    </td>
-                    <td>Flor Patricia Garduño Hernández (Flor.Garduño)</td>
-                    <td style="width:150px;">
-                      <select class="form-select" id="documentacionProy" ></select>
-                    </td>
-                    <td style="width:150px;">
-                      <select class="form-select" id="documentacionProy"></select>
-                    </td>
-                    <td>
-                      <input type="text" class="form-control" size="1">
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3027</th>
-                    <td>15/12/2023 16:17</td>
-                    <td>18/12/2023 13:37</td>
-                    <td>Resolved</td>
-                    <td>Medio</td>
-                    <td>Individual BIM (Individual)</td>
-                    <td></td>
-                    <td>Mesa de Sistemas : Accesos</td>
-                    <td style="width:210px;">
-                      <p>   Buenas Tardes.
-                        Anexo el calendario mensual de cierre de SIBA para el 2024.
-                        Saludos
-                      </p>
-                    </td>
-                    <td>Carlos Alberto Resen (Carlos.Resendiz)</td>
-                    <td style="width:150px;">
-                      <select class="form-select" id="documentacionProy" ></select>
-                    </td>
-                    <td style="width:150px;">
-                      <select class="form-select" id="documentacionProy"></select>
-                    </td>
-                    <td>
-                      <input type="text" class="form-control" size="1">
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+            </div>
+            <!--Agregar Perfil-->
+            <div class="row" *ngIf="perfiles" hidden>
+                          <div class="col-12">
+                            <div class="card">
+                              <div class="card-body">
+                                <h6 class="card-title">Agregar Perfil</h6>
+                                <div class="row" *ngIf="mostrarAddPrf">
+                                  <div class="col-2">
+                                    <div class="form-floating">
+                                      <input type="text" class="form-control" id="nombrePerfil" />
+                                      <label for="fecFin">Nombre</label>
+                                    </div>
+                                  </div>
+                                  <div class="col-2">
+                                    <div class="form-floating">
+                                      <select class="form-select" id="gerenciaUsuarios"name="gerenciaUsuarios">
+                                        <!--<option *ngFor="let tipoDoc of listatipoDocumentacion" [ngValue]="tipoDoc.idDocumentacion">
+                                        {{ tipoDoc.documentacion | uppercase }}
+                                        </option>-->
+                                      </select>
+                                      <label for="documentacion">Permisos</label>
+                                    </div>
+                                  </div>
+                                  <div class="col-1 mt-3">
+                                    <button class="btn btn-success" >
+                                        Agregar
+                                    </button>
+                                  </div>
+                                </div>
+                                <div class="col-2 right" *ngIf="!mostrarAddPrf" (click)="mostrarAddPrf=true">
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="23.616" height="13.503"
+                                              viewBox="0 0 23.616 13.503">
+                                              <path id="Icon_ionic-ios-arrow-down" data-name="Icon ionic-ios-arrow-down"
+                                                  d="M18,20.679l8.93-8.937a1.681,1.681,0,0,1,2.384,0,1.7,1.7,0,0,1,0,2.391L19.2,24.258a1.685,1.685,0,0,1-2.327.049L6.68,14.14a1.688,1.688,0,0,1,2.384-2.391Z"
+                                                  transform="translate(-6.188 -11.246)" fill="#024e4f" />
+                                          </svg>
+                                </div>
+                                <div class="col-2 right" *ngIf="mostrarAddPrf" (click)="mostrarAddPrf=false">
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="23.619" height="13.503"
+                                              viewBox="0 0 23.619 13.503">
+                                              <path id="Icon_ionic-ios-arrow-up" data-name="Icon ionic-ios-arrow-up"
+                                                  d="M18,15.321l8.93,8.937a1.688,1.688,0,1,0,2.384-2.391L19.2,11.742a1.685,1.685,0,0,0-2.327-.049L6.68,21.86a1.688,1.688,0,0,0,2.384,2.391Z"
+                                                  transform="translate(-6.188 -11.251)" fill="#024e4f" />
+                                          </svg>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+            </div>
+            <!--Agregar Catalogo-->
+            <div class="row" *ngIf="catalgos" hidden>
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-body">
+                    <h6 class="card-title">Agregar Catálogo</h6>
+                    <div class="row" *ngIf="mostrarAddCat">
+                      <div class="col-2">
+                        <div class="form-floating">
+                          <input type="text" class="form-control" id="nombreCatalogo" />
+                          <label for="fecFin">Nombre</label>
+                        </div>
+                      </div>
+                      <div class="col-2">
+                        <div class="form-floating">
+                          <select class="form-select" id="opcionesCatalogo"name="opcionesCatalogo">
+                            <!--<option *ngFor="let tipoDoc of listatipoDocumentacion" [ngValue]="tipoDoc.idDocumentacion">
+                            {{ tipoDoc.documentacion | uppercase }}
+                            </option>-->
+                          </select>
+                          <label for="opcionesCatalogo">Permisos</label>
+                        </div>
+                      </div>
+                      <div class="col-1 mt-3">
+                        <button class="btn btn-success" >
+                            Agregar
+                        </button>
+                      </div>
+                    </div>
+                    <div class="col-2 right" *ngIf="!mostrarAddCat" (click)="mostrarAddCat=true">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="23.616" height="13.503"
+                                  viewBox="0 0 23.616 13.503">
+                                  <path id="Icon_ionic-ios-arrow-down" data-name="Icon ionic-ios-arrow-down"
+                                      d="M18,20.679l8.93-8.937a1.681,1.681,0,0,1,2.384,0,1.7,1.7,0,0,1,0,2.391L19.2,24.258a1.685,1.685,0,0,1-2.327.049L6.68,14.14a1.688,1.688,0,0,1,2.384-2.391Z"
+                                      transform="translate(-6.188 -11.246)" fill="#024e4f" />
+                              </svg>
+                    </div>
+                    <div class="col-2 right" *ngIf="mostrarAddCat" (click)="mostrarAddCat=false">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="23.619" height="13.503"
+                                  viewBox="0 0 23.619 13.503">
+                                  <path id="Icon_ionic-ios-arrow-up" data-name="Icon ionic-ios-arrow-up"
+                                      d="M18,15.321l8.93,8.937a1.688,1.688,0,1,0,2.384-2.391L19.2,11.742a1.685,1.685,0,0,0-2.327-.049L6.68,21.86a1.688,1.688,0,0,0,2.384,2.391Z"
+                                      transform="translate(-6.188 -11.251)" fill="#024e4f" />
+                              </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br>
+            <!--Tabla Usuarios-->
+            <div class="row mt-2" *ngIf="usuarios">
+              <h6 class="card-title">Usuarios</h6>
+              <div class="col-12">
+                <div class="table-responsive" style="overflow-x: hidden; overflow-y: auto; height: auto;">
+                  <table class="table" id="tablaUsuarios">
+                    <thead class="table-success" style="position: sticky; top: 0;">
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre Completo</th>
+                        <th scope="col">Usuario</th>
+                        <th scope="col">Gerencia/Área</th>
+                        <th scope="col">Perfil</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Acción</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <th>Victor Pineda</th>
+                        <td>v.pineda@bim.mx</td>
+                        <td>Medios de Pago</td>
+                        <td>Subdirector</td>
+                        <td>Activo</td>
+                        <td>
+                          <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
+                            ...
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <th>Luis Lozano</th>
+                        <td>l.lozano@bim.mx</td>
+                        <td>Medios de Pago</td>
+                        <td>Gerente</td>
+                        <td>Activo</td>
+                        <td>
+                          <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
+                            ...
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <th>Marco Ruiz</th>
+                        <td>m.ruiz@bim.mx</td>
+                        <td>Individual BIM</td>
+                        <td>Gerente</td>
+                        <td>Activo</td>
+                        <td>
+                          <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
+                            ...
+                          </button>
+                        </td>
+                      </tr>
+                      <tr [ngClass]="{'disabled': !usrActivo}">
+                        <td>4</td>
+                        <th>Carlos Pulido</th>
+                        <td>c.pulido@bim.mx</td>
+                        <td>Medios de Pago</td>
+                        <td>Desarrollador</td>
+                        <td>Desactivado</td>
+                        <td>
+                          <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
+                            ...
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <!--Tabla Perfiles-->
+            <div class="row mt-2" *ngIf="perfiles">
+              <h6 class="card-title">Perfiles</h6>
+              <div class="col-12">
+                <div class="table-responsive" style="overflow-x: hidden; overflow-y: auto; height: auto;">
+                  <table class="table" id="tablaUsuarios">
+                    <thead class="table-success" style="position: sticky; top: 0;">
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Responsable</th>
+                        <th scope="col">Proyecto</th>
+                        <th scope="col">Hrs</th>
+                        <th scope="col">Fase</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Dependencia</th>
+                        <th scope="col">% Avance</th>
+                        <th scope="col">Documentación</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <th>Marco Ruiz</th>
+                        <td style="width:200px;">PROY-607 Migración de Cartea Propia al SAH</td>
+                        <td>4</td>
+                        <td>Desarrollo</td>
+                        <td>Desfasado</td>
+                        <td>Killer</td>
+                        <td>Espera de Recurso - T</td>
+                        <td>69 a 71 %</td>
+                        <td>Plan Proyecto</td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <th>Hector Garcia</th>
+                        <td style="width:200px;">PROY-607 Migración de Cartea Propia al SAH</td>
+                        <td>4</td>
+                        <td>Desarrollo</td>
+                        <td>Desfasado</td>
+                        <td>Killer</td>
+                        <td>Espera de Recurso - T</td>
+                        <td>69 a 71 %</td>
+                        <td>Plan Proyecto</td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <th>Marco Ruiz</th>
+                        <td style="width:200px;">PROY-607 Migración de Cartea Propia al SAH</td>
+                        <td>4</td>
+                        <td>Desarrollo</td>
+                        <td>Desfasado</td>
+                        <td>Killer</td>
+                        <td>Espera de Recurso - T</td>
+                        <td>69 a 71 %</td>
+                        <td>Plan Proyecto</td>
+                      </tr>
+                      <tr>
+                        <td>4</td>
+                        <th>Marco Ruiz</th>
+                        <td style="width:200px;">PROY-607 Migración de Cartea Propia al SAH</td>
+                        <td>4</td>
+                        <td>Desarrollo</td>
+                        <td>Desfasado</td>
+                        <td>Killer</td>
+                        <td>Espera de Recurso - T</td>
+                        <td>69 a 71 %</td>
+                        <td>Plan Proyecto</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <!--Catálogos-->
+            <div class="row mt-2" *ngIf="catalgos">
+              <h6 class="card-title">Catálogos</h6>
+              <!--Trabajo Devengado-->
+              <div class="col-6">
+                <br>
+                <h6>Trabajo Devengado</h6> 
+                <div class="table-responsive" style="overflow-x: hidden; overflow-y: auto; height: 12em;">
+                  <table class="table" id="tablaTrabajoDevengado">
+                    <thead class="table-success" style="position: sticky; top: 0;">
+                      <tr>
+                        <th scope="col">Recurso</th>
+                        <th scope="col">Hrs/Semana</th>
+                        <th scope="col">Hrs día</th>
+                        <th scope="col">Hrs Ticket</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="odd">
+                        <th class="">Marco Ruiz</th>
+                        <td class="">48.5</td>
+                        <td class="">7.9</td>
+                        <td class="">9</td>
+                      </tr>
+                      <tr class="odd">
+                        <th class="">Marco Ruiz</th>
+                        <td class="">48.5</td>
+                        <td class="">7.9</td>
+                        <td class="">9</td>
+                      </tr>
+                      <tr class="odd">
+                        <th class="">Marco Ruiz</th>
+                        <td class="">48.5</td>
+                        <td class="">7.9</td>
+                        <td class="">9</td>
+                      </tr>
+                      <tr class="odd">
+                        <th class="">Marco Ruiz</th>
+                        <td class="">48.5</td>
+                        <td class="">7.9</td>
+                        <td class="">9</td>
+                      </tr>
+                      <tr class="odd">
+                        <th class="">Marco Ruiz</th>
+                        <td class="">48.5</td>
+                        <td class="">7.9</td>
+                        <td class="">9</td>
+                      </tr>
+                      <tr class="odd">
+                        <th class="">Marco Ruiz</th>
+                        <td class="">48.5</td>
+                        <td class="">7.9</td>
+                        <td class="">9</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <!--Tipo-Proyecto | BAU-->
+              <div class="col-6">
+                <br>
+                <h6 class="card-title">Tipo-Proyecto | BAU</h6> 
+                <div class="table-responsive">
+                  <table class="table" id="tablaProyectos">
+                    <thead class="table-success" style="position: sticky; top: 0;">
+                      <tr>
+                        <th scope="col">Proyectos|BAU</th>
+                        <th scope="col">BAU-Nuevo</th>
+                        <th scope="col">BAU-Mejora</th>
+                        <th scope="col">Proyecto</th>
+                        <th scope="col">Killer</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="odd">
+                        <th class="">11</th>
+                        <td class="">0</td>
+                        <td class="">6</td>
+                        <td class="">0</td>
+                        <td class="">5</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <!--Fase-Proyectos-->
+              <div class="col-6 mt-4">
+                <h6>Fase-Proyectos</h6> 
+                <div class="table-responsive">
+                  <table class="table" id="tablaTrabajoDevengado">
+                    <thead class="table-success" style="position: sticky; top: 0;">
+                      <tr>
+                        <th scope="col">Análisis</th>
+                        <th scope="col">Desarrollo</th>
+                        <th scope="col">Pruebas</th>
+                        <th scope="col">Calidad</th>
+                        <th scope="col">Producción</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="odd">
+                        <td class="">3</td>
+                        <td class="">5</td>
+                        <td class="">0</td>
+                        <td class="">3</td>
+                        <td class="">0</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <!--Estado-Proyectos-->
+              <div class="col-6 mt-4">
+                <h6>Estado-Proyectos</h6> 
+                <div class="table-responsive">
+                  <table class="table" id="tablaTrabajoDevengado">
+                    <thead class="table-success" style="position: sticky; top: 0;">
+                      <tr>
+                        <th scope="col">Por Iniciar</th>
+                        <th scope="col">Tiempo</th>
+                        <th scope="col">Detenido</th>
+                        <th scope="col">Desfasado</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="odd">
+                        <td class="">0</td>
+                        <td class="">3</td>
+                        <td class="">0</td>
+                        <td class="">8</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <!--Documentación-->
+              <div class="col-6 mt-4">
+                <h6>Documentación</h6> 
+                <div class="table-responsive">
+                  <table class="table" id="tablaTrabajoDevengado">
+                    <thead class="table-success" style="position: sticky; top: 0;">
+                      <tr>
+                        <th scope="col">RI | RD</th>
+                        <th scope="col">Ticket</th>
+                        <th scope="col">Plan Proyecto</th>
+                        <th scope="col">Sin gestión</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="odd">
+                        <td class="">4</td>
+                        <td class="">0</td>
+                        <td class="">3</td>
+                        <td class="">4</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <!--Tipo-Ticket-->
+              <div class="col-6 mt-4">
+                <h6>Tipo-Ticket</h6> 
+                <div class="table-responsive">
+                  <table class="table" id="tablaTrabajoDevengado">
+                    <thead class="table-success" style="position: sticky; top: 0;">
+                      <tr>
+                        <th scope="col">Ticket</th>
+                        <th scope="col">Bloqueante</th>
+                        <th scope="col">Normal</th>
+                        <th scope="col">Recurente</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="odd">
+                        <td class="">10</td>
+                        <td class="">0</td>
+                        <td class="">0</td>
+                        <td class="">0</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <!-- Fin Tabla -->
       </div>
-    </div>
   </div>
 </div>
