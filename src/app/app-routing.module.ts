@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CdaComponent } from './cda/cda.component';
 import { ProyectosBauComponent } from './proyectos/proyectos.component';
 import { TicketsComponent } from './tickets/tickets.component';
 import { ReportesComponent } from './reportes/reportes.component';
