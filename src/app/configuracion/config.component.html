@@ -206,7 +206,7 @@
                         <td>Subdirector</td>
                         <td>Activo</td>
                         <td>
-                          <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
+                          <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
                             ...
                           </button>
                         </td>
@@ -219,7 +219,7 @@
                         <td>Gerente</td>
                         <td>Activo</td>
                         <td>
-                          <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
+                          <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
                             ...
                           </button>
                         </td>
@@ -232,7 +232,7 @@
                         <td>Gerente</td>
                         <td>Activo</td>
                         <td>
-                          <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
+                          <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
                             ...
                           </button>
                         </td>
@@ -245,7 +245,7 @@
                         <td>Desarrollador</td>
                         <td>Desactivado</td>
                         <td>
-                          <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
+                          <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
                             ...
                           </button>
                         </td>
@@ -264,65 +264,20 @@
                     <thead class="table-success" style="position: sticky; top: 0;">
                       <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">Responsable</th>
-                        <th scope="col">Proyecto</th>
-                        <th scope="col">Hrs</th>
-                        <th scope="col">Fase</th>
-                        <th scope="col">Estado</th>
-                        <th scope="col">Tipo</th>
-                        <th scope="col">Dependencia</th>
-                        <th scope="col">% Avance</th>
-                        <th scope="col">Documentación</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Estatus</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
                         <td>1</td>
-                        <th>Marco Ruiz</th>
-                        <td style="width:200px;">PROY-607 Migración de Cartea Propia al SAH</td>
-                        <td>4</td>
-                        <td>Desarrollo</td>
-                        <td>Desfasado</td>
-                        <td>Killer</td>
-                        <td>Espera de Recurso - T</td>
-                        <td>69 a 71 %</td>
-                        <td>Plan Proyecto</td>
+                        <th>Subdirección</th>
+                        <td>Activo</td>
                       </tr>
                       <tr>
                         <td>2</td>
-                        <th>Hector Garcia</th>
-                        <td style="width:200px;">PROY-607 Migración de Cartea Propia al SAH</td>
-                        <td>4</td>
-                        <td>Desarrollo</td>
-                        <td>Desfasado</td>
-                        <td>Killer</td>
-                        <td>Espera de Recurso - T</td>
-                        <td>69 a 71 %</td>
-                        <td>Plan Proyecto</td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <th>Marco Ruiz</th>
-                        <td style="width:200px;">PROY-607 Migración de Cartea Propia al SAH</td>
-                        <td>4</td>
-                        <td>Desarrollo</td>
-                        <td>Desfasado</td>
-                        <td>Killer</td>
-                        <td>Espera de Recurso - T</td>
-                        <td>69 a 71 %</td>
-                        <td>Plan Proyecto</td>
-                      </tr>
-                      <tr>
-                        <td>4</td>
-                        <th>Marco Ruiz</th>
-                        <td style="width:200px;">PROY-607 Migración de Cartea Propia al SAH</td>
-                        <td>4</td>
-                        <td>Desarrollo</td>
-                        <td>Desfasado</td>
-                        <td>Killer</td>
-                        <td>Espera de Recurso - T</td>
-                        <td>69 a 71 %</td>
-                        <td>Plan Proyecto</td>
+                        <th>Gerente</th>
+                        <td>Activo</td>
                       </tr>
                     </tbody>
                   </table>
@@ -332,181 +287,187 @@
             <!--Catálogos-->
             <div class="row mt-2" *ngIf="catalgos">
               <h6 class="card-title">Catálogos</h6>
-              <!--Trabajo Devengado-->
+              <!--Dependencias-->
               <div class="col-6">
                 <br>
-                <h6>Trabajo Devengado</h6> 
+                <h6>Dependencias</h6> 
                 <div class="table-responsive" style="overflow-x: hidden; overflow-y: auto; height: 12em;">
                   <table class="table" id="tablaTrabajoDevengado">
                     <thead class="table-success" style="position: sticky; top: 0;">
                       <tr>
-                        <th scope="col">Recurso</th>
-                        <th scope="col">Hrs/Semana</th>
-                        <th scope="col">Hrs día</th>
-                        <th scope="col">Hrs Ticket</th>
+                        <th scope="col">Dependencia</th>
+                        <th scope="col">Estatus</th>
+                        <th scope="col">Editar</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr class="odd">
-                        <th class="">Marco Ruiz</th>
-                        <td class="">48.5</td>
-                        <td class="">7.9</td>
-                        <td class="">9</td>
+                        <th class="">Espera de recurso - T</th>
+                        <td class="">Activo</td>
+                        <td class="">
+                          <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
+                          ...
+                          </button>
+                        </td>
                       </tr>
                       <tr class="odd">
-                        <th class="">Marco Ruiz</th>
-                        <td class="">48.5</td>
-                        <td class="">7.9</td>
-                        <td class="">9</td>
-                      </tr>
-                      <tr class="odd">
-                        <th class="">Marco Ruiz</th>
-                        <td class="">48.5</td>
-                        <td class="">7.9</td>
-                        <td class="">9</td>
-                      </tr>
-                      <tr class="odd">
-                        <th class="">Marco Ruiz</th>
-                        <td class="">48.5</td>
-                        <td class="">7.9</td>
-                        <td class="">9</td>
-                      </tr>
-                      <tr class="odd">
-                        <th class="">Marco Ruiz</th>
-                        <td class="">48.5</td>
-                        <td class="">7.9</td>
-                        <td class="">9</td>
-                      </tr>
-                      <tr class="odd">
-                        <th class="">Marco Ruiz</th>
-                        <td class="">48.5</td>
-                        <td class="">7.9</td>
-                        <td class="">9</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <!--Tipo-Proyecto | BAU-->
-              <div class="col-6">
-                <br>
-                <h6 class="card-title">Tipo-Proyecto | BAU</h6> 
-                <div class="table-responsive">
-                  <table class="table" id="tablaProyectos">
-                    <thead class="table-success" style="position: sticky; top: 0;">
-                      <tr>
-                        <th scope="col">Proyectos|BAU</th>
-                        <th scope="col">BAU-Nuevo</th>
-                        <th scope="col">BAU-Mejora</th>
-                        <th scope="col">Proyecto</th>
-                        <th scope="col">Killer</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr class="odd">
-                        <th class="">11</th>
-                        <td class="">0</td>
-                        <td class="">6</td>
-                        <td class="">0</td>
-                        <td class="">5</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <!--Fase-Proyectos-->
-              <div class="col-6 mt-4">
-                <h6>Fase-Proyectos</h6> 
-                <div class="table-responsive">
-                  <table class="table" id="tablaTrabajoDevengado">
-                    <thead class="table-success" style="position: sticky; top: 0;">
-                      <tr>
-                        <th scope="col">Análisis</th>
-                        <th scope="col">Desarrollo</th>
-                        <th scope="col">Pruebas</th>
-                        <th scope="col">Calidad</th>
-                        <th scope="col">Producción</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr class="odd">
-                        <td class="">3</td>
-                        <td class="">5</td>
-                        <td class="">0</td>
-                        <td class="">3</td>
-                        <td class="">0</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <!--Estado-Proyectos-->
-              <div class="col-6 mt-4">
-                <h6>Estado-Proyectos</h6> 
-                <div class="table-responsive">
-                  <table class="table" id="tablaTrabajoDevengado">
-                    <thead class="table-success" style="position: sticky; top: 0;">
-                      <tr>
-                        <th scope="col">Por Iniciar</th>
-                        <th scope="col">Tiempo</th>
-                        <th scope="col">Detenido</th>
-                        <th scope="col">Desfasado</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr class="odd">
-                        <td class="">0</td>
-                        <td class="">3</td>
-                        <td class="">0</td>
-                        <td class="">8</td>
+                        <th class="">Espera e recurso - CH</th>
+                        <td class="">Activo</td>
+                        <td class="">
+                          <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
+                            ...
+                          </button>
+                        </td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
               </div>
               <!--Documentación-->
-              <div class="col-6 mt-4">
-                <h6>Documentación</h6> 
-                <div class="table-responsive">
-                  <table class="table" id="tablaTrabajoDevengado">
+              <div class="col-6">
+                <br>
+                <h6 class="card-title">Documentación</h6> 
+                <div class="table-responsive" style="overflow-x: hidden; overflow-y: auto; height: 12em;">
+                  <table class="table" id="tablaProyectos">
                     <thead class="table-success" style="position: sticky; top: 0;">
                       <tr>
-                        <th scope="col">RI | RD</th>
-                        <th scope="col">Ticket</th>
-                        <th scope="col">Plan Proyecto</th>
-                        <th scope="col">Sin gestión</th>
+                        <th scope="col">Documentación</th>
+                        <th scope="col">Estatus</th>
+                        <th scope="col">Editar</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr class="odd">
-                        <td class="">4</td>
-                        <td class="">0</td>
-                        <td class="">3</td>
-                        <td class="">4</td>
+                        <th class="">RI | RD</th>
+                        <td class="">Activo</td>
+                        <td class="">
+                          <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
+                            ...
+                          </button>
+                        </td>
+                      </tr>
+                      <tr class="odd"[ngClass]="{'disabled': !usrActivo}">
+                        <th class="">Tikcet</th>
+                        <td class="">Desactivado</td>
+                        <td class="">
+                          <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
+                            ...
+                          </button>
+                        </td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
               </div>
-              <!--Tipo-Ticket-->
+              <!--Estado Proyecto-->
               <div class="col-6 mt-4">
-                <h6>Tipo-Ticket</h6> 
-                <div class="table-responsive">
+                <h6>Estado Proyecto</h6> 
+                <div class="table-responsive" style="overflow-x: hidden; overflow-y: auto; height: 12em;">
                   <table class="table" id="tablaTrabajoDevengado">
                     <thead class="table-success" style="position: sticky; top: 0;">
                       <tr>
-                        <th scope="col">Ticket</th>
-                        <th scope="col">Bloqueante</th>
-                        <th scope="col">Normal</th>
-                        <th scope="col">Recurente</th>
+                        <th scope="col">Estado Proyecto</th>
+                        <th scope="col">Estatus</th>
+                        <th scope="col">Editar</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr class="odd">
-                        <td class="">10</td>
-                        <td class="">0</td>
-                        <td class="">0</td>
-                        <td class="">0</td>
+                        <td class="">Por iniciar</td>
+                        <td class="">Activo</td>
+                        <td class="">
+                          <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
+                            ...
+                          </button>
+                        </td>
+                      </tr>
+                      <tr class="odd">
+                        <td class="">Tiempo</td>
+                        <td class="">Activo</td>
+                        <td class="">
+                          <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
+                            ...
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <!--Fase-->
+              <div class="col-6 mt-4">
+                <h6>Fase</h6> 
+                <div class="table-responsive" style="overflow-x: hidden; overflow-y: auto; height: 12em;">
+                  <table class="table" id="tablaTrabajoDevengado">
+                    <thead class="table-success" style="position: sticky; top: 0;">
+                      <tr>
+                        <th scope="col">Fase</th>
+                        <th scope="col">Estatus</th>
+                        <th scope="col">Editar</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="odd">
+                        <td class="">Tiempo</td>
+                        <td class="">Activo</td>
+                        <td class="">
+                          <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
+                            ...
+                          </button>
+                        </td>
+                      </tr>
+                      <tr class="odd">
+                        <td class="">Desarrollo</td>
+                        <td class="">Activo</td>
+                        <td class="">
+                          <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
+                            ...
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <!--Tipo Proyecto-->
+              <div class="col-6 mt-4">
+                <h6>Tipo Proyecto</h6> 
+                <div class="table-responsive" style="overflow-x: hidden; overflow-y: auto; height: 12em;">
+                  <table class="table" id="tablaTrabajoDevengado">
+                    <thead class="table-success" style="position: sticky; top: 0;">
+                      <tr>
+                        <th scope="col">Tipo Proyecto</th>
+                        <th scope="col">Estatus</th>
+                        <th scope="col">Editar</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="odd">
+                        <th scope="col">BAU - Nuevo</th>
+                        <td>Activo</td>
+                        <td>
+                          <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
+                            ...
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="col">BAU - Mejora</th>
+                        <td>Activo</td>
+                        <td>
+                          <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
+                            ...
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="col">Proyecto</th>
+                        <td>Activo</td>
+                        <td>
+                          <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
+                            ...
+                          </button>
+                        </td>
                       </tr>
                     </tbody>
                   </table>
