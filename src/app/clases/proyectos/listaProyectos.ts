@@ -22,12 +22,14 @@ export class listaTipoEstado{
     tipoEstado: any;
 }
 
-export class listaTipoProyecto{
-    idTipoProyecto: any;
-    tipoProyecto: any;
-}
-
 export class listaTipoFase{
     idFase: any;
+    status: any;
     fase: any;
+}
+
+export class listaTipoProyecto{
+    idTipoProyecto: any;
+    status: any;
+    tipoProyecto: any;
 }

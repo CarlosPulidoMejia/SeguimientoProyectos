@@ -2,7 +2,7 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import Swal from 'sweetalert2';
-import { listaDependencia, listaDocumentacion, listaEstado } from '../clases/configuracion/listaConfig';
+import { listaDependencia, listaDocumentacion, listaEstado, listaFase, listaTipoProyecto } from '../clases/configuracion/listaConfig';
 import { ConfigService } from '../servicios/config/config.service';
 import { ProyectoBauService } from '../servicios/proyectos/proyectos.service';
 
@@ -21,8 +21,11 @@ export class ConfigComponent implements OnInit {
   listaDependencia: listaDependencia[];
   listaDocumentacion: listaDocumentacion[];
   listaEstadoProyecto: listaEstado[];
-
-  //listaConfig: [];
+  listaFaseProyecto: listaFase[];
+  listaTipoProyecto: listaTipoProyecto[];
+/*********
+ * Variables
+ */
   config: string;
   usuarios: boolean;
   perfiles: boolean;
@@ -43,10 +46,7 @@ export class ConfigComponent implements OnInit {
     this.mostrarAddCat = false;
     this.usrActivo = false;
     this.disabled = 'bg-black bg-opacity-10';
-
-    this.getListaDpe();
-    this.getListaDoc();
-    this.getListaEst();
+    this.getAllConfig();
   }
 
   clickUsuarios(){
@@ -97,32 +97,33 @@ export class ConfigComponent implements OnInit {
     )
   }
 
-  /*getAllTickets() {
-    this.ConfigService.getAll().subscribe({
-      next: (data) => {
-        this.listaConfig = [];
+  getListaFas(){
+    this.ProyectoBauService.getTipoFase().subscribe(
+      data =>{
+        this.listaFaseProyecto = data.filter(data => data.fase != '')
+      },err =>{
+        console.log(err);
         
-        $('#tablaUsuarios').dataTable().fnDestroy();
-
-
-        $('#tablaUsuarios tbody').on('click', 'tr', function () {
-          $(this).toggleClass('selected');
-        });
-
-        setTimeout(() => {
-          $('#tablaUsuarios').DataTable({
-            language: {
-              url: '//cdn.datatables.net/plug-ins/1.11.3/i18n/es-mx.json'
-            },
-            pageLength: 10,
-            responsive: true
-          });
-        }, 1);
-      },
-      error: (e) => {
-
-        console.log(e)
       }
-    });
-    }*/
+    )
+  }
+
+  getListaTip(){
+    this.ProyectoBauService.getTipoProyecto().subscribe(
+      data =>{
+        this.listaTipoProyecto = data.filter(data => data.tipoProyecto != '')
+      },err =>{
+        console.log(err);
+        
+      }
+    )
+  }
+
+  getAllConfig() {
+    this.getListaDpe();
+    this.getListaDoc();
+    this.getListaEst();
+    this.getListaFas();
+    this.getListaTip();
+  }
 }

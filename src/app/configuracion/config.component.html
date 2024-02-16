@@ -400,18 +400,9 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr class="odd">
-                        <td class="">Tiempo</td>
-                        <td class="">Activo</td>
-                        <td class="">
-                          <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
-                            ...
-                          </button>
-                        </td>
-                      </tr>
-                      <tr class="odd">
-                        <td class="">Desarrollo</td>
-                        <td class="">Activo</td>
+                      <tr class="odd" *ngFor="let fase of listaFaseProyecto; let i = index">
+                        <th class="">{{ fase.fase }}</th>
+                        <td class="">{{ fase.status }}</td>
                         <td class="">
                           <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
                             ...
@@ -435,27 +426,9 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr class="odd">
-                        <th scope="col">BAU - Nuevo</th>
-                        <td>Activo</td>
-                        <td>
-                          <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
-                            ...
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="col">BAU - Mejora</th>
-                        <td>Activo</td>
-                        <td>
-                          <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
-                            ...
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="col">Proyecto</th>
-                        <td>Activo</td>
+                      <tr class="odd" *ngFor="let tipoProy of listaTipoProyecto; let i = index">
+                        <th scope="col">{{ tipoProy.tipoProyecto }}</th>
+                        <td>{{ tipoProy.status }}</td>
                         <td>
                           <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
                             ...

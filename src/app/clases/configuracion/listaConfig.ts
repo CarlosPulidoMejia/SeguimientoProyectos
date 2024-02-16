@@ -15,3 +15,15 @@ export class listaEstado{
     status: any;
     tipoEstado: any;
 }
+
+export class listaFase{
+    idFase: any;
+    status: any;
+    fase: any;
+}
+
+export class listaTipoProyecto{
+    idTipoProyecto: any;
+    status: any;
+    tipoProyecto: any;
+}
