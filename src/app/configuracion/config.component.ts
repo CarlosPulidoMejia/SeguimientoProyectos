@@ -2,9 +2,9 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import Swal from 'sweetalert2';
-import { listaDependencia } from '../clases/configuracion/listaConfig';
+import { listaDependencia, listaDocumentacion, listaEstado } from '../clases/configuracion/listaConfig';
 import { ConfigService } from '../servicios/config/config.service';
-
+import { ProyectoBauService } from '../servicios/proyectos/proyectos.service';
 
 declare const $: any;
 @Component({
@@ -14,11 +14,13 @@ declare const $: any;
 })
 export class ConfigComponent implements OnInit {
 
-  constructor(private ConfigService:ConfigService ) { }
+  constructor( private ConfigService:ConfigService, private ProyectoBauService:ProyectoBauService ) { }
 /*********
  * Listas
  */
   listaDependencia: listaDependencia[];
+  listaDocumentacion: listaDocumentacion[];
+  listaEstadoProyecto: listaEstado[];
 
   //listaConfig: [];
   config: string;
@@ -43,6 +45,8 @@ export class ConfigComponent implements OnInit {
     this.disabled = 'bg-black bg-opacity-10';
 
     this.getListaDpe();
+    this.getListaDoc();
+    this.getListaEst();
   }
 
   clickUsuarios(){
@@ -64,13 +68,31 @@ export class ConfigComponent implements OnInit {
   }
 
   getListaDpe(){
-    this.ConfigService.getDependencia().subscribe(
+    this.ProyectoBauService.getTipoDependencia().subscribe(
       data =>{
-        console.log(data);
-        
         this.listaDependencia = data.filter(data => data.tipoDependencia != '')
       },err => {
-        console.log(err)
+        console.log(err);
+      }
+    )
+  }
+
+  getListaDoc(){
+    this.ProyectoBauService.getTipoDocumentacion().subscribe(
+      data =>{
+        this.listaDocumentacion = data.filter(data => data.documentacion != '')
+      },err =>{
+        console.log(err);
+      }
+    )
+  }
+
+  getListaEst(){
+    this.ProyectoBauService.getTipoEstado().subscribe(
+      data =>{
+        this.listaEstadoProyecto = data.filter(data => data.tipoEstado != '')
+      },err =>{
+        console.log(err);
       }
     )
   }

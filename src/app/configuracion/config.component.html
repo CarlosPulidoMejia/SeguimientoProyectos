@@ -312,7 +312,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr class="odd" *ngFor="let dependencia of listaDependencia; let i= index">
+                      <tr class="odd" *ngFor="let dependencia of listaDependencia; let i = index">
                         <th class="">{{ dependencia.tipoDependencia }}</th>
                         <td class="">{{ dependencia.status }}</td>
                         <td class="">
@@ -339,9 +339,9 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr class="odd">
-                        <th class="">RI | RD</th>
-                        <td class="">Activo</td>
+                      <tr class="odd" *ngFor="let doc of listaDocumentacion; let i = index">
+                        <th class="">{{ doc.documentacion }}</th>
+                        <td class="">{{ doc.status }}</td>
                         <td class="">
                           <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
                             ...
@@ -374,18 +374,9 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr class="odd">
-                        <td class="">Por iniciar</td>
-                        <td class="">Activo</td>
-                        <td class="">
-                          <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
-                            ...
-                          </button>
-                        </td>
-                      </tr>
-                      <tr class="odd">
-                        <td class="">Tiempo</td>
-                        <td class="">Activo</td>
+                      <tr class="odd" *ngFor="let estado of listaEstadoProyecto; let i = index">
+                        <th class="">{{ estado.tipoEstado }}</th>
+                        <td class="">{{ estado.status }}</td>
                         <td class="">
                           <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
                             ...

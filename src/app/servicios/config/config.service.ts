@@ -14,8 +14,4 @@ export class ConfigService {
     getAll(){
         
     }
-
-    getDependencia(): Observable<listaDependencia[]>{
-        return this.httpClient.get<listaDependencia[]>(`${global.URL_API}tipoDependencia`)
-    }
 }

@@ -3,3 +3,15 @@ export class listaDependencia{
     status: any;
     tipoDependencia: any;
 }
+
+export class listaDocumentacion{
+    idDocumentacion: any;
+    status: any;
+    documentacion: any;
+}
+
+export class listaEstado{
+    idTipoEstado: any;
+    status: any;
+    tipoEstado: any;
+}

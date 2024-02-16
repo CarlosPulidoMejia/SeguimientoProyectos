@@ -3,9 +3,23 @@ export class listaProyectos{
     proyectoResponse: any;
     seleccion:boolean;
 }
+
+export class listaTipoDependencia{
+    idDependencia: any;
+    status: any;
+    tipoDependencia: any;
+}
+
 export class listaTipoDocumentacion{
     idDocumentacion:any;
+    status: any;
     documentacion:any;
+}
+
+export class listaTipoEstado{
+    idTipoEstado: any;
+    status: any;
+    tipoEstado: any;
 }
 
 export class listaTipoProyecto{
@@ -16,14 +30,4 @@ export class listaTipoProyecto{
 export class listaTipoFase{
     idFase: any;
     fase: any;
-}
-
-export class listaTipoEstado{
-    idTipoEstado: any;
-    tipoEstado: any;
-}
-
-export class listaTipoDependencia{
-    idDependencia: any;
-    tipoDependencia: any;
 }
