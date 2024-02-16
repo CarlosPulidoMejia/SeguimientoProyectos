@@ -179,35 +179,38 @@ export class ProyectosBauComponent implements OnInit {
   }
 
   guardarCambio(proyecto,id){
-    //console.log(proyecto,id);
-      
     let filtroDoc = this.listatipoDocumentacion.filter( value => value.documentacion == proyecto.docProy ); 
     let filtroDep = this.listatipoDependencia.filter( value => value.tipoDependencia == proyecto.dependenciaProy);
     let filtroEst = this.listatipoEstado.filter( value => value.tipoEstado == proyecto.estadoProy );
     let filtroFas = this.listatipoFase.filter( value => value.fase == proyecto.faseProy );
-    
+
+    let docRequest = filtroDoc.length > 0 ? filtroDoc[0].idDocumentacion : 1 ;
+    let depRequest = filtroDep.length > 0 ? filtroDep[0].idDependencia : 1;
+    let estRequest = filtroEst.length > 0 ? filtroEst[0].idTipoEstado : 1;
+    let fasRequest = filtroFas.length > 0 ? filtroFas[0].idFase : 1;
+
     this.requestGuardar = {
       hrsAtencion: proyecto.hrsAtencion,
-      fase: filtroFas[0].idFase,
-      estado: filtroEst[0].idTipoEstado,
-      dependencia: filtroDep[0].idDependencia,
+      fase: fasRequest,
+      estado: estRequest,
+      dependencia: depRequest,
       porcentaje: proyecto.avance,
-      documentacion: filtroDoc[0].idDocumentacion,
+      documentacion: docRequest,
       //fechaInicio: proyecto.fechaInicio,
       //fechaFin: proyecto.fechaFin
     }
-    console.log('Guardar Cambio', this.requestGuardar, id);
-
+    console.log(this.requestGuardar, id);
+    
     this.proyectoBauService.putEditrProyecto(this.requestGuardar, id).subscribe(
       data => {
-        console.log("Complete function triggered.")
+        /*console.log("Complete function triggered.")
         Swal.fire({
           position: 'center',
           icon: 'success',
           title: 'Proyecto guardado correctamente',
           showConfirmButton: false
         })
-        this.getAllProyectos();
+        this.getAllProyectos();*/
       },
       err => {
         console.log(err)
@@ -310,6 +313,12 @@ export class ProyectosBauComponent implements OnInit {
         console.log(e)
       }
     });
+  }
+
+  change(e){
+    console.log(e.detalleProyectoResponse,e.proyectoResponse.idProyecto);
+    //listaProyectos[i].detalleProyectoResponse, listaProyectos[i].proyectoResponse.idProyecto
+    this.guardarCambio(e.detalleProyectoResponse, e.proyectoResponse.idProyecto);
   }
 
   /*  ELIMINAR SI NO SE OCUPA
