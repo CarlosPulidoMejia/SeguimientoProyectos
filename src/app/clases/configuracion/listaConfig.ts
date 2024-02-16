@@ -1,28 +1,22 @@
-export class listaProyectos{
-    detalleProyectoResponse:any;
-    proyectoResponse: any;
-    seleccion:boolean;
-}
-
-export class listaTipoDependencia{
+export class listaDependencia{
     idDependencia: any;
     status: any;
     tipoDependencia: any;
 }
 
-export class listaTipoDocumentacion{
-    idDocumentacion:any;
+export class listaDocumentacion{
+    idDocumentacion: any;
     status: any;
-    documentacion:any;
+    documentacion: any;
 }
 
-export class listaTipoEstado{
+export class listaEstado{
     idTipoEstado: any;
     status: any;
     tipoEstado: any;
 }
 
-export class listaTipoFase{
+export class listaFase{
     idFase: any;
     status: any;
     fase: any;

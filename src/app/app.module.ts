@@ -6,12 +6,11 @@ import { ReportesModule } from './reportes/reportes.module';
 import { HttpClientModule } from '@angular/common/http';
 import { TicketsModule } from './tickets/tickets.module';
 import { ProyectosModule } from './proyectos/proyectos.module';
-import { FooterComponent } from './footer/footer.component';
+import { ConfigModule } from './configuracion/config.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    FooterComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -19,6 +18,7 @@ import { FooterComponent } from './footer/footer.component';
     ReportesModule,
     TicketsModule,
     ProyectosModule,
+    ConfigModule,
     HttpClientModule
   ],
   providers: [],

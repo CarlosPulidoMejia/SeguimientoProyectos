@@ -1,0 +1,519 @@
+<div class="row">
+  <div class="col-12 mb-5">
+      <div class="card">
+          <div class="card-body">
+            <h6>Configuración de {{config}}</h6>
+            <div class="col-3">
+              <button type="button" class="btn btn-success" (click)="clickUsuarios()">Usuarios</button>
+              <button type="button" class="btn btn-success mx-2" (click)="clickPerfiles()">Perfiles</button>
+              <button type="button" class="btn btn-success" (click)="clickCatalogos()">Catálogos</button>
+            </div>
+            <br>
+            <!--Agregar Usuario-->
+            <div class="row" *ngIf="usuarios">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-body">
+                    <h6 class="card-title">Agregar Usuario</h6>
+                    <div class="row" *ngIf="mostrarAddUsr">
+                      <div class="col-2">
+                        <div class="form-floating">
+                          <input type="text" class="form-control" id="nombreUsuarios" />
+                          <label for="fecFin">Nombre</label>
+                        </div>
+                      </div>
+                      <div class="col-2">
+                        <div class="form-floating">
+                          <input type="text" class="form-control" id="apellidoUsuarios" />
+                          <label for="fecFin">Apellido</label>
+                        </div>
+                      </div>
+                      <div class="col-2">
+                        <div class="form-floating">
+                          <input type="text" class="form-control" id="usuarioUsuarios" />
+                          <label for="fecFin">Usuario</label>
+                        </div>
+                      </div>
+                      <div class="col-2">
+                        <div class="form-floating">
+                          <select class="form-select" id="gerenciaUsuarios"name="gerenciaUsuarios">
+                            <!--<option *ngFor="let tipoDoc of listatipoDocumentacion" [ngValue]="tipoDoc.idDocumentacion">
+                            {{ tipoDoc.documentacion | uppercase }}
+                            </option>-->
+                          </select>
+                          <label for="documentacion">Gernecia</label>
+                        </div>
+                      </div>
+                      <div class="col-2">
+                        <div class="form-floating">
+                          <select class="form-select" id="tipoProyecto" name="tipoProyecto">
+                            <!--<option *ngFor="let tipoProyecto of listatipoProyecto" [ngValue]="tipoProyecto.idTipoProyecto">
+                                {{ tipoProyecto.tipoProyecto | uppercase }}
+                            </option>-->
+                            <option value=""></option>
+                          </select>
+                          <label for="tipoProyecto">Perfil</label>
+                        </div>
+                      </div>
+                      <div class="col-1 mt-3">
+                        <button class="btn btn-success" >
+                            Agregar
+                        </button>
+                      </div>
+                    </div>
+                    <div class="col-2 right" *ngIf="!mostrarAddUsr" (click)="mostrarAddUsr=true">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="23.616" height="13.503"
+                                  viewBox="0 0 23.616 13.503">
+                                  <path id="Icon_ionic-ios-arrow-down" data-name="Icon ionic-ios-arrow-down"
+                                      d="M18,20.679l8.93-8.937a1.681,1.681,0,0,1,2.384,0,1.7,1.7,0,0,1,0,2.391L19.2,24.258a1.685,1.685,0,0,1-2.327.049L6.68,14.14a1.688,1.688,0,0,1,2.384-2.391Z"
+                                      transform="translate(-6.188 -11.246)" fill="#024e4f" />
+                              </svg>
+                    </div>
+                    <div class="col-2 right" *ngIf="mostrarAddUsr" (click)="mostrarAddUsr=false">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="23.619" height="13.503"
+                                  viewBox="0 0 23.619 13.503">
+                                  <path id="Icon_ionic-ios-arrow-up" data-name="Icon ionic-ios-arrow-up"
+                                      d="M18,15.321l8.93,8.937a1.688,1.688,0,1,0,2.384-2.391L19.2,11.742a1.685,1.685,0,0,0-2.327-.049L6.68,21.86a1.688,1.688,0,0,0,2.384,2.391Z"
+                                      transform="translate(-6.188 -11.251)" fill="#024e4f" />
+                              </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--Agregar Perfil-->
+            <div class="row" *ngIf="perfiles" hidden>
+                          <div class="col-12">
+                            <div class="card">
+                              <div class="card-body">
+                                <h6 class="card-title">Agregar Perfil</h6>
+                                <div class="row" *ngIf="mostrarAddPrf">
+                                  <div class="col-2">
+                                    <div class="form-floating">
+                                      <input type="text" class="form-control" id="nombrePerfil" />
+                                      <label for="fecFin">Nombre</label>
+                                    </div>
+                                  </div>
+                                  <div class="col-2">
+                                    <div class="form-floating">
+                                      <select class="form-select" id="gerenciaUsuarios"name="gerenciaUsuarios">
+                                        <!--<option *ngFor="let tipoDoc of listatipoDocumentacion" [ngValue]="tipoDoc.idDocumentacion">
+                                        {{ tipoDoc.documentacion | uppercase }}
+                                        </option>-->
+                                      </select>
+                                      <label for="documentacion">Permisos</label>
+                                    </div>
+                                  </div>
+                                  <div class="col-1 mt-3">
+                                    <button class="btn btn-success" >
+                                        Agregar
+                                    </button>
+                                  </div>
+                                </div>
+                                <div class="col-2 right" *ngIf="!mostrarAddPrf" (click)="mostrarAddPrf=true">
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="23.616" height="13.503"
+                                              viewBox="0 0 23.616 13.503">
+                                              <path id="Icon_ionic-ios-arrow-down" data-name="Icon ionic-ios-arrow-down"
+                                                  d="M18,20.679l8.93-8.937a1.681,1.681,0,0,1,2.384,0,1.7,1.7,0,0,1,0,2.391L19.2,24.258a1.685,1.685,0,0,1-2.327.049L6.68,14.14a1.688,1.688,0,0,1,2.384-2.391Z"
+                                                  transform="translate(-6.188 -11.246)" fill="#024e4f" />
+                                          </svg>
+                                </div>
+                                <div class="col-2 right" *ngIf="mostrarAddPrf" (click)="mostrarAddPrf=false">
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="23.619" height="13.503"
+                                              viewBox="0 0 23.619 13.503">
+                                              <path id="Icon_ionic-ios-arrow-up" data-name="Icon ionic-ios-arrow-up"
+                                                  d="M18,15.321l8.93,8.937a1.688,1.688,0,1,0,2.384-2.391L19.2,11.742a1.685,1.685,0,0,0-2.327-.049L6.68,21.86a1.688,1.688,0,0,0,2.384,2.391Z"
+                                                  transform="translate(-6.188 -11.251)" fill="#024e4f" />
+                                          </svg>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+            </div>
+            <!--Agregar Catalogo-->
+            <div class="row" *ngIf="catalgos" hidden>
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-body">
+                    <h6 class="card-title">Agregar Catálogo</h6>
+                    <div class="row" *ngIf="mostrarAddCat">
+                      <div class="col-2">
+                        <div class="form-floating">
+                          <input type="text" class="form-control" id="nombreCatalogo" />
+                          <label for="fecFin">Nombre</label>
+                        </div>
+                      </div>
+                      <div class="col-2">
+                        <div class="form-floating">
+                          <select class="form-select" id="opcionesCatalogo"name="opcionesCatalogo">
+                            <!--<option *ngFor="let tipoDoc of listatipoDocumentacion" [ngValue]="tipoDoc.idDocumentacion">
+                            {{ tipoDoc.documentacion | uppercase }}
+                            </option>-->
+                          </select>
+                          <label for="opcionesCatalogo">Permisos</label>
+                        </div>
+                      </div>
+                      <div class="col-1 mt-3">
+                        <button class="btn btn-success" >
+                            Agregar
+                        </button>
+                      </div>
+                    </div>
+                    <div class="col-2 right" *ngIf="!mostrarAddCat" (click)="mostrarAddCat=true">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="23.616" height="13.503"
+                                  viewBox="0 0 23.616 13.503">
+                                  <path id="Icon_ionic-ios-arrow-down" data-name="Icon ionic-ios-arrow-down"
+                                      d="M18,20.679l8.93-8.937a1.681,1.681,0,0,1,2.384,0,1.7,1.7,0,0,1,0,2.391L19.2,24.258a1.685,1.685,0,0,1-2.327.049L6.68,14.14a1.688,1.688,0,0,1,2.384-2.391Z"
+                                      transform="translate(-6.188 -11.246)" fill="#024e4f" />
+                              </svg>
+                    </div>
+                    <div class="col-2 right" *ngIf="mostrarAddCat" (click)="mostrarAddCat=false">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="23.619" height="13.503"
+                                  viewBox="0 0 23.619 13.503">
+                                  <path id="Icon_ionic-ios-arrow-up" data-name="Icon ionic-ios-arrow-up"
+                                      d="M18,15.321l8.93,8.937a1.688,1.688,0,1,0,2.384-2.391L19.2,11.742a1.685,1.685,0,0,0-2.327-.049L6.68,21.86a1.688,1.688,0,0,0,2.384,2.391Z"
+                                      transform="translate(-6.188 -11.251)" fill="#024e4f" />
+                              </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br>
+            <!--Tabla Usuarios-->
+            <div class="row mt-2" *ngIf="usuarios">
+              <h6 class="card-title">Usuarios</h6>
+              <div class="col-12">
+                <div class="table-responsive" style="overflow-x: hidden; overflow-y: auto; height: auto;">
+                  <table class="table" id="tablaUsuarios">
+                    <thead class="table-success" style="position: sticky; top: 0;">
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre Completo</th>
+                        <th scope="col">Usuario</th>
+                        <th scope="col">Gerencia/Área</th>
+                        <th scope="col">Perfil</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Acción</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <th>Victor Pineda</th>
+                        <td>v.pineda@bim.mx</td>
+                        <td>Medios de Pago</td>
+                        <td>Subdirector</td>
+                        <td>Activo</td>
+                        <td>
+                          <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
+                            ...
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <th>Luis Lozano</th>
+                        <td>l.lozano@bim.mx</td>
+                        <td>Medios de Pago</td>
+                        <td>Gerente</td>
+                        <td>Activo</td>
+                        <td>
+                          <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
+                            ...
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <th>Marco Ruiz</th>
+                        <td>m.ruiz@bim.mx</td>
+                        <td>Individual BIM</td>
+                        <td>Gerente</td>
+                        <td>Activo</td>
+                        <td>
+                          <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
+                            ...
+                          </button>
+                        </td>
+                      </tr>
+                      <tr [ngClass]="{'disabled': !usrActivo}">
+                        <td>4</td>
+                        <th>Carlos Pulido</th>
+                        <td>c.pulido@bim.mx</td>
+                        <td>Medios de Pago</td>
+                        <td>Desarrollador</td>
+                        <td>Desactivado</td>
+                        <td>
+                          <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
+                            ...
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <!--Tabla Perfiles-->
+            <div class="row mt-2" *ngIf="perfiles">
+              <h6 class="card-title">Perfiles</h6>
+              <div class="col-12">
+                <div class="table-responsive" style="overflow-x: hidden; overflow-y: auto; height: auto;">
+                  <table class="table" id="tablaUsuarios">
+                    <thead class="table-success" style="position: sticky; top: 0;">
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Estatus</th>
+                        <th scope="col">Editar</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <th>Subdirección</th>
+                        <td>Activo</td>
+                        <td>
+                          <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
+                            ...
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <th>Gerente</th>
+                        <td>Activo</td>
+                        <td>
+                          <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
+                            ...
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <!--Catálogos-->
+            <div class="row mt-2" *ngIf="catalgos">
+              <h6 class="card-title">Catálogos</h6>
+              <!--Dependencias-->
+              <div class="col-6">
+                <br>
+                <h6>Dependencias</h6> 
+                <div class="table-responsive" style="overflow-x: hidden; overflow-y: auto; height: 12em;">
+                  <table class="table" id="tablaTrabajoDevengado">
+                    <thead class="table-success" style="position: sticky; top: 0;">
+                      <tr>
+                        <th scope="col">Dependencia</th>
+                        <th scope="col">Estatus</th>
+                        <th scope="col">Editar</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="odd" *ngFor="let dependencia of listaDependencia; let i = index">
+                        <th class="">{{ dependencia.tipoDependencia }}</th>
+                        <td class="">{{ dependencia.status }}</td>
+                        <td class="">
+                          <button class="btn btn-sm btn-primary" (click)="clickEditar('Dependencias', listaDependencia[i])" data-toggle="modal" data-target="#exampleModalEditar">
+                          ...
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <!--Documentación-->
+              <div class="col-6">
+                <br>
+                <h6 class="card-title">Documentación</h6> 
+                <div class="table-responsive" style="overflow-x: hidden; overflow-y: auto; height: 12em;">
+                  <table class="table" id="tablaProyectos">
+                    <thead class="table-success" style="position: sticky; top: 0;">
+                      <tr>
+                        <th scope="col">Documentación</th>
+                        <th scope="col">Estatus</th>
+                        <th scope="col">Editar</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="odd" *ngFor="let doc of listaDocumentacion; let i = index">
+                        <th class="">{{ doc.documentacion }}</th>
+                        <td class="">{{ doc.status }}</td>
+                        <td class="">
+                          <button class="btn btn-sm btn-primary" (click)="clickEditar('Documentación', listaDocumentacion[i])" data-toggle="modal" data-target="#exampleModalEditar">
+                            ...
+                          </button>
+                        </td>
+                      </tr>
+                      <tr class="odd"[ngClass]="{'disabled': !usrActivo}" hidden>
+                        <th class="">Tikcet</th>
+                        <td class="">Desactivado</td>
+                        <td class="">
+                          <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
+                            ...
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <!--Estado Proyecto-->
+              <div class="col-6 mt-4">
+                <h6>Estado Proyecto</h6> 
+                <div class="table-responsive" style="overflow-x: hidden; overflow-y: auto; height: 12em;">
+                  <table class="table" id="tablaTrabajoDevengado">
+                    <thead class="table-success" style="position: sticky; top: 0;">
+                      <tr>
+                        <th scope="col">Estado Proyecto</th>
+                        <th scope="col">Estatus</th>
+                        <th scope="col">Editar</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="odd" *ngFor="let estado of listaEstadoProyecto; let i = index">
+                        <th class="">{{ estado.tipoEstado }}</th>
+                        <td class="">{{ estado.status }}</td>
+                        <td class="">
+                          <button class="btn btn-sm btn-primary" (click)="clickEditar('Estado', listaEstadoProyecto[i])" data-toggle="modal" data-target="#exampleModalEditar">
+                            ...
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <!--Fase-->
+              <div class="col-6 mt-4">
+                <h6>Fase</h6> 
+                <div class="table-responsive" style="overflow-x: hidden; overflow-y: auto; height: 12em;">
+                  <table class="table" id="tablaTrabajoDevengado">
+                    <thead class="table-success" style="position: sticky; top: 0;">
+                      <tr>
+                        <th scope="col">Fase</th>
+                        <th scope="col">Estatus</th>
+                        <th scope="col">Editar</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="odd" *ngFor="let fase of listaFaseProyecto; let i = index">
+                        <th class="">{{ fase.fase }}</th>
+                        <td class="">{{ fase.status }}</td>
+                        <td class="">
+                          <button class="btn btn-sm btn-primary" (click)="clickEditar('Fase', listaFaseProyecto[i])"  data-toggle="modal" data-target="#exampleModalEditar">
+                            ...
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <!--Tipo Proyecto-->
+              <div class="col-6 mt-4">
+                <h6>Tipo Proyecto</h6> 
+                <div class="table-responsive" style="overflow-x: hidden; overflow-y: auto; height: 12em;">
+                  <table class="table" id="tablaTrabajoDevengado">
+                    <thead class="table-success" style="position: sticky; top: 0;">
+                      <tr>
+                        <th scope="col">Tipo Proyecto</th>
+                        <th scope="col">Estatus</th>
+                        <th scope="col">Editar</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="odd" *ngFor="let tipoProy of listaTipoProyecto; let i = index">
+                        <th scope="col">{{ tipoProy.tipoProyecto }}</th>
+                        <td>{{ tipoProy.status }}</td>
+                        <td>
+                          <button class="btn btn-sm btn-primary" (click)="clickEditar('Tipo', listaTipoProyecto[i])" data-toggle="modal" data-target="#exampleModalEditar">
+                            ...
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!--Editar-->
+<div class="modal fade" id="exampleModalEditar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="modalEditar">
+  <div class="modal-dialog modal-lg" role="document" >
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 id="exampleModalLabel" class="modal-title">Editar {{ tituloEditar }}</h5>
+              <button type="button" data-dismiss="modal" aria-label="Close" class="close border">
+                  <span aria-hidden="true">×</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <br>
+              <div>
+                  <div  class="row mt-6">
+                    <div class="col-6">
+                      <div class="card">
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col-12">
+                              <div class="form-floating">
+                                <input type="text" value="{{ nombreEditar }}" class="form-control" id="nombreDependencia" />
+                                <label for="fecFin">Nombre</label> 
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="card">
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col-12">
+                              <div class="form-floating">
+                                <input type="text" value="{{ nombreEditar }}" class="form-control" id="nombreDependencia" />
+                                <label for="fecFin">Apellido</label> 
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="card">
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col-12">
+                              <div class="form-floating">
+                                <select class="form-select" id="opcionesCatalogo"name="opcionesCatalogo">
+                                  <option value="" selected disabled>{{ statusEditar }}</option>
+                                  <option value="1">Activo</option>
+                                  <option value="0">Desactivado</option>
+                                </select>
+                                <label for="fecFin">Status</label> 
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <br>
+              </div>
+              <button type="button" data-dismiss="modal" class="btn btn-secondary" >
+                  Cerrar
+              </button>
+              <button type="button" class="btn btn-primary mx-2">
+                  Guardar Tarea
+              </button>
+          </div>
+      </div>
+  </div>
+</div>
