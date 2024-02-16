@@ -34,17 +34,22 @@ export class ConfigComponent implements OnInit {
   mostrarAddPrf: boolean;
   mostrarAddCat: boolean;
   usrActivo: boolean;
+  modalEditar: boolean;
   disabled: string;
+  tituloEditar: string;
+  nombreEditar: string;
+  statusEditar: string;
   
   ngOnInit() {
     this.config = "Usuarios";
-    this.usuarios = false;
+    this.usuarios = true;
     this.perfiles = false;
-    this.catalgos = true;
+    this.catalgos = false;
     this.mostrarAddUsr = false;
     this.mostrarAddPrf = false;
     this.mostrarAddCat = false;
     this.usrActivo = false;
+    this.modalEditar = false;
     this.disabled = 'bg-black bg-opacity-10';
     this.getAllConfig();
   }
@@ -125,5 +130,36 @@ export class ConfigComponent implements OnInit {
     this.getListaEst();
     this.getListaFas();
     this.getListaTip();
+  }
+
+  clickEditar(editar,detalles){
+    this.modalEditar = true;
+    this.tituloEditar = editar;
+    if(editar == 'Dependencias'){
+      this.nombreEditar = detalles.tipoDependencia;
+      this.statusEditar = 'Activo'
+    }if(editar == 'Documentación'){
+      this.nombreEditar = detalles.documentacion;
+      this.statusEditar = 'Activo'
+    }if(editar == 'Estado'){
+      this.nombreEditar = detalles.tipoEstado;
+      this.statusEditar = 'Activo'
+    }if(editar == 'Fase'){
+      this.nombreEditar = detalles.fase;
+      this.statusEditar = 'Activo'
+    }if(editar == 'Tipo'){
+      this.nombreEditar = detalles.tipoProyecto;
+      this.statusEditar = 'Activo'
+    }
+    if(editar == 'Usuarios'){
+
+    }
+    
+  }
+
+  cerrarEditar(){
+    this.nombreEditar = '';
+    this.statusEditar = '';
+    this.modalEditar = false;
   }
 }

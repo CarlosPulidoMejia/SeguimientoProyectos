@@ -316,7 +316,7 @@
                         <th class="">{{ dependencia.tipoDependencia }}</th>
                         <td class="">{{ dependencia.status }}</td>
                         <td class="">
-                          <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
+                          <button class="btn btn-sm btn-primary" (click)="clickEditar('Dependencias', listaDependencia[i])" data-toggle="modal" data-target="#exampleModalEditar">
                           ...
                           </button>
                         </td>
@@ -343,12 +343,12 @@
                         <th class="">{{ doc.documentacion }}</th>
                         <td class="">{{ doc.status }}</td>
                         <td class="">
-                          <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
+                          <button class="btn btn-sm btn-primary" (click)="clickEditar('Documentación', listaDocumentacion[i])" data-toggle="modal" data-target="#exampleModalEditar">
                             ...
                           </button>
                         </td>
                       </tr>
-                      <tr class="odd"[ngClass]="{'disabled': !usrActivo}">
+                      <tr class="odd"[ngClass]="{'disabled': !usrActivo}" hidden>
                         <th class="">Tikcet</th>
                         <td class="">Desactivado</td>
                         <td class="">
@@ -378,7 +378,7 @@
                         <th class="">{{ estado.tipoEstado }}</th>
                         <td class="">{{ estado.status }}</td>
                         <td class="">
-                          <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
+                          <button class="btn btn-sm btn-primary" (click)="clickEditar('Estado', listaEstadoProyecto[i])" data-toggle="modal" data-target="#exampleModalEditar">
                             ...
                           </button>
                         </td>
@@ -404,7 +404,7 @@
                         <th class="">{{ fase.fase }}</th>
                         <td class="">{{ fase.status }}</td>
                         <td class="">
-                          <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
+                          <button class="btn btn-sm btn-primary" (click)="clickEditar('Fase', listaFaseProyecto[i])"  data-toggle="modal" data-target="#exampleModalEditar">
                             ...
                           </button>
                         </td>
@@ -430,7 +430,7 @@
                         <th scope="col">{{ tipoProy.tipoProyecto }}</th>
                         <td>{{ tipoProy.status }}</td>
                         <td>
-                          <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
+                          <button class="btn btn-sm btn-primary" (click)="clickEditar('Tipo', listaTipoProyecto[i])" data-toggle="modal" data-target="#exampleModalEditar">
                             ...
                           </button>
                         </td>
@@ -440,6 +440,79 @@
                 </div>
               </div>
             </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!--Editar-->
+<div class="modal fade" id="exampleModalEditar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="modalEditar">
+  <div class="modal-dialog modal-lg" role="document" >
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 id="exampleModalLabel" class="modal-title">Editar {{ tituloEditar }}</h5>
+              <button type="button" data-dismiss="modal" aria-label="Close" class="close border">
+                  <span aria-hidden="true">×</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <br>
+              <div>
+                  <div  class="row mt-6">
+                    <div class="col-6">
+                      <div class="card">
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col-12">
+                              <div class="form-floating">
+                                <input type="text" value="{{ nombreEditar }}" class="form-control" id="nombreDependencia" />
+                                <label for="fecFin">Nombre</label> 
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="card">
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col-12">
+                              <div class="form-floating">
+                                <input type="text" value="{{ nombreEditar }}" class="form-control" id="nombreDependencia" />
+                                <label for="fecFin">Apellido</label> 
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="card">
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col-12">
+                              <div class="form-floating">
+                                <select class="form-select" id="opcionesCatalogo"name="opcionesCatalogo">
+                                  <option value="" selected disabled>{{ statusEditar }}</option>
+                                  <option value="1">Activo</option>
+                                  <option value="0">Desactivado</option>
+                                </select>
+                                <label for="fecFin">Status</label> 
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <br>
+              </div>
+              <button type="button" data-dismiss="modal" class="btn btn-secondary" >
+                  Cerrar
+              </button>
+              <button type="button" class="btn btn-primary mx-2">
+                  Guardar Tarea
+              </button>
           </div>
       </div>
   </div>
