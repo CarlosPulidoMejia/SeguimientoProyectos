@@ -312,21 +312,12 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr class="odd">
-                        <th class="">Espera de recurso - T</th>
-                        <td class="">Activo</td>
+                      <tr class="odd" *ngFor="let dependencia of listaDependencia; let i= index">
+                        <th class="">{{ dependencia.tipoDependencia }}</th>
+                        <td class="">{{ dependencia.status }}</td>
                         <td class="">
                           <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
                           ...
-                          </button>
-                        </td>
-                      </tr>
-                      <tr class="odd">
-                        <th class="">Espera e recurso - CH</th>
-                        <td class="">Activo</td>
-                        <td class="">
-                          <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
-                            ...
                           </button>
                         </td>
                       </tr>

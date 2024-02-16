@@ -2,6 +2,7 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import Swal from 'sweetalert2';
+import { listaDependencia } from '../clases/configuracion/listaConfig';
 import { ConfigService } from '../servicios/config/config.service';
 
 
@@ -17,6 +18,8 @@ export class ConfigComponent implements OnInit {
 /*********
  * Listas
  */
+  listaDependencia: listaDependencia[];
+
   //listaConfig: [];
   config: string;
   usuarios: boolean;
@@ -38,6 +41,8 @@ export class ConfigComponent implements OnInit {
     this.mostrarAddCat = false;
     this.usrActivo = false;
     this.disabled = 'bg-black bg-opacity-10';
+
+    this.getListaDpe();
   }
 
   clickUsuarios(){
@@ -56,6 +61,18 @@ export class ConfigComponent implements OnInit {
     this.usuarios = false;
     this.perfiles = false;
     this.catalgos = true;
+  }
+
+  getListaDpe(){
+    this.ConfigService.getDependencia().subscribe(
+      data =>{
+        console.log(data);
+        
+        this.listaDependencia = data.filter(data => data.tipoDependencia != '')
+      },err => {
+        console.log(err)
+      }
+    )
   }
 
   /*getAllTickets() {
