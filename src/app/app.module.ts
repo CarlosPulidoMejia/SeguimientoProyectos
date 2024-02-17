@@ -8,6 +8,7 @@ import { TicketsModule } from './tickets/tickets.module';
 import { ProyectosModule } from './proyectos/proyectos.module';
 import { ConfigModule } from './configuracion/config.module';
 
+
 @NgModule({
   declarations: [
     AppComponent
@@ -19,7 +20,8 @@ import { ConfigModule } from './configuracion/config.module';
     TicketsModule,
     ProyectosModule,
     ConfigModule,
-    HttpClientModule
+    HttpClientModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

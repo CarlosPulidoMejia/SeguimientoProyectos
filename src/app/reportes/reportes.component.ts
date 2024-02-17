@@ -13,7 +13,9 @@ declare const $: any;
   styleUrls: ['reportes.component.css']
 })
 export class ReportesComponent implements OnInit {
-
+/**
+ * 
+ */
   message: string[] = [];
 
   fileInfos?: Observable<any>;
@@ -50,7 +52,6 @@ export class ReportesComponent implements OnInit {
     this.tickets = false;
     this.resumen = true;
   }
-
 }
 
 
