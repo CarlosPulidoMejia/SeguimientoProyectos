@@ -7,6 +7,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { TicketsModule } from './tickets/tickets.module';
 import { ProyectosModule } from './proyectos/proyectos.module';
 import { ConfigModule } from './configuracion/config.module';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -21,7 +23,8 @@ import { ConfigModule } from './configuracion/config.module';
     ProyectosModule,
     ConfigModule,
     HttpClientModule,
-    
+    NgxChartsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
