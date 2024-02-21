@@ -1,7 +1,7 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+//import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import Swal from 'sweetalert2';
+//import Swal from 'sweetalert2';
 import { listaDependencia, listaDocumentacion, listaEstado, listaFase, listaTipoProyecto } from '../clases/configuracion/listaConfig';
 import { ConfigService } from '../servicios/config/config.service';
 import { ProyectoBauService } from '../servicios/proyectos/proyectos.service';

@@ -1,7 +1,7 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+//import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import Swal from 'sweetalert2';
+//import Swal from 'sweetalert2';
 import { TicketsService } from '../servicios/tickets/ticket.service';
 import { listaTickets } from '../clases/tickets/listaTickets';
 

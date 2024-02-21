@@ -3,7 +3,7 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-@import '~bootstrap/dist/css/bootstrap.min.css';
+/*@import '~bootstrap/dist/css/bootstrap.min.css';
 @import '~open-iconic/font/css/open-iconic-bootstrap.css';
 
 .btn-circle.btn-xl {
@@ -23,4 +23,4 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     text-align: center;
     font-size: 12px;
     line-height: 1.42857;
-}
+}*/

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import Swal from 'sweetalert2';
+//import Swal from 'sweetalert2';
 import { map, Observable, zip } from 'rxjs';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+//import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { HttpClient } from '@angular/common/http';
 
 declare const $: any;
