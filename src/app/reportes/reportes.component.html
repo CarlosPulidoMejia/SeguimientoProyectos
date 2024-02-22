@@ -106,11 +106,11 @@
                 <h6 class="card-title">Detalles</h6>
                 <div class="row">
                   <!-- Botones Detalles -->
-                  <div class="col-4">
-                    <button type="button" class="btn btn-success" (click)="showProyectos()">Proyectos</button>
-                    <button type="button" class="btn btn-success mx-2" (click)="showTickets()">Tickets</button>
-                    <button type="button" class="btn btn-success" (click)="showReportes()">Resumen general</button>
-                    <button type="button" class="btn btn-success mx-2" (click)="showGrafica()">Gráficas</button>
+                  <div class="col-6">
+                    <button type="button" [ngClass]="classBotonProyecto" (click)="showProyectos()">Proyectos</button>
+                    <button type="button" [ngClass]="classBotonTickets" (click)="showTickets()">Tickets</button>
+                    <button type="button" [ngClass]="classBotonResumen" (click)="showReportes()">Resumen general</button>
+                    <button type="button" [ngClass]="classBotonGrafica" (click)="showGrafica()">Gráficas</button>
                   </div>
                   <!-- Tabla Proyectos -->
                   <div class="row mt-2" *ngIf="proyectos == true">
@@ -424,6 +424,7 @@
                       </div>
                     </div>
                   </div>
+                  <!-- Gráficas -->
                   <div class="row mt-2"  *ngIf="grafica == true">
                     <h6 class="">Gráficas</h6>
                     <div class="col-6">

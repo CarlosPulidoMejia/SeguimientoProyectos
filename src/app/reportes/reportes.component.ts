@@ -35,6 +35,11 @@ yAxis: boolean = true;
   grafica: boolean;
   proyecto: any;
 
+  classBotonProyecto: string;
+  classBotonTickets: string;
+  classBotonResumen: string;
+  classBotonGrafica: string;
+
   constructor(private httpClient: HttpClient) { }
 
   multi = []
@@ -45,6 +50,10 @@ yAxis: boolean = true;
 
   /* fin valores matriz de cuentas*/
   ngOnInit() {
+    this.classBotonProyecto = 'btn btn-success'
+    this.classBotonTickets = 'btn btn-success mx-2'
+    this.classBotonResumen = 'btn btn-success'
+    this.classBotonGrafica = 'btn btn-success mx-2'
     this.proyectos = false;
     this.tickets = false;
     this.resumen = false;
@@ -108,22 +117,38 @@ yAxis: boolean = true;
   }
 
   showProyectos(){
+    this.classBotonProyecto = 'btn btn-success shadow'
+    this.classBotonTickets = 'btn btn-success mx-2'
+    this.classBotonResumen = 'btn btn-success'
+    this.classBotonGrafica = 'btn btn-success mx-2'
     this.proyectos = true;
     this.tickets = false;
     this.resumen = false;
   }
   showTickets(){
+    this.classBotonTickets = 'btn btn-success mx-2 shadow'
+    this.classBotonProyecto = 'btn btn-success'
+    this.classBotonResumen = 'btn btn-success'
+    this.classBotonGrafica = 'btn btn-success mx-2'
     this.proyectos = false;
     this.tickets = true;
     this.resumen = false;
   }
   showReportes(){
+    this.classBotonResumen = 'btn btn-success shadow'
+    this.classBotonProyecto = 'btn btn-success'
+    this.classBotonTickets = 'btn btn-success mx-2'
+    this.classBotonGrafica = 'btn btn-success mx-2'
     this.proyectos = false;
     this.tickets = false;
     this.resumen = true;
   }
 
   showGrafica(){
+    this.classBotonGrafica = 'btn btn-success mx-2 shadow'
+    this.classBotonProyecto = 'btn btn-success'
+    this.classBotonTickets = 'btn btn-success mx-2'
+    this.classBotonResumen = 'btn btn-success'
     this.proyectos = false;
     this.tickets = false;
     this.resumen = false;
