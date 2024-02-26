@@ -194,11 +194,27 @@
                         <th scope="col">Gerencia/Área</th>
                         <th scope="col">Perfil</th>
                         <th scope="col">Estado</th>
-                        <th scope="col">Acción</th>
+                        <th scope="col">Editar</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
+                      <tr class="" *ngFor="let usuarios of listaUsuario; let i = index">
+                        <th class="">{{ usuarios.idUsuario }}</th>
+                        <td class="">{{ usuarios.nombre + " " + usuarios.apellido }}</td>
+                        <td class="">{{ usuarios.correo }}</td>
+                        <td class="">{{ usuarios.gerencia[0].gerencia }}</td>
+                        <td class="">{{ usuarios.rol[0].permiso }}</td>
+                        <td [ngClass]="{'disabled': !usuarios.status}">
+                          <span *ngIf="usuarios.status">Activo</span>
+                          <span *ngIf="!usuarios.status">Desactivado</span>
+                        </td>
+                        <td>
+                          <button class="btn btn-sm btn-primary" (click)="clickEditar('Usuario', listaUsuario[i])" data-toggle="modal" data-target="#exampleModalEditar">
+                            ...
+                          </button>
+                        </td>
+                      </tr>
+                      <!--<tr>
                         <td>1</td>
                         <th>Victor Pineda</th>
                         <td>v.pineda&#64;bim.mx</td>
@@ -249,7 +265,7 @@
                             ...
                           </button>
                         </td>
-                      </tr>
+                      </tr>-->
                     </tbody>
                   </table>
                 </div>

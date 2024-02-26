@@ -27,3 +27,13 @@ export class listaTipoProyecto{
     status: any;
     tipoProyecto: any;
 }
+
+export class listaUsuarios{
+    idUsuario: any;
+    nombre: any;
+    apellido: any;
+    correo: any;
+    status: any;
+    gerencia: any;
+    rol: any;
+}

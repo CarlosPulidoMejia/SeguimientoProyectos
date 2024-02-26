@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 //import Swal from 'sweetalert2';
-import { listaDependencia, listaDocumentacion, listaEstado, listaFase, listaTipoProyecto } from '../clases/configuracion/listaConfig';
+import { listaDependencia, listaDocumentacion, listaEstado, listaFase, listaTipoProyecto, listaUsuarios } from '../clases/configuracion/listaConfig';
 import { ConfigService } from '../servicios/config/config.service';
 import { ProyectoBauService } from '../servicios/proyectos/proyectos.service';
 
@@ -23,6 +23,7 @@ export class ConfigComponent implements OnInit {
   listaEstadoProyecto: listaEstado[];
   listaFaseProyecto: listaFase[];
   listaTipoProyecto: listaTipoProyecto[];
+  listaUsuario: listaUsuarios[];
 /*********
  * Variables
  */
@@ -58,6 +59,30 @@ export class ConfigComponent implements OnInit {
     this.usuarios = true;
     this.perfiles = false;
     this.catalgos = false;
+  }
+
+  getListaUsuarios(){
+    this.ConfigService.getAllUsuario().subscribe({
+      next: (data) => {
+        this.listaUsuario = data;
+        $('#tablaUsuarios').dataTable().fnDestroy();
+        $('#tablaUsuarios tbody').on('click', 'tr', function () {
+          $(this).toggleClass('selected');
+        });
+        setTimeout(() => {
+          $('#tablaUsuarios').DataTable({
+            language: {
+              url: '//cdn.datatables.net/plug-ins/1.11.3/i18n/es-mx.json'
+            },
+            pageLength: 10,
+            responsive: true
+          });
+        }, 1);
+      },
+      error: (e) => {
+        console.log(e)
+      }
+    })
   }
 
   clickPerfiles(){
@@ -130,9 +155,12 @@ export class ConfigComponent implements OnInit {
     this.getListaEst();
     this.getListaFas();
     this.getListaTip();
+    this.getListaUsuarios();
   }
 
   clickEditar(editar,detalles){
+    console.log(detalles);
+    
     this.modalEditar = true;
     this.tituloEditar = editar;
     if(editar == 'Dependencias'){
