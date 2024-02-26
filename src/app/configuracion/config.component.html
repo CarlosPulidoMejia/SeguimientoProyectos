@@ -308,7 +308,7 @@
                       <tr>
                         <th scope="col">Dependencia</th>
                         <th scope="col">Estatus</th>
-                        <th scope="col">Editar</th>
+                        <th hidden scope="col">Editar</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -316,7 +316,7 @@
                         <th class="">{{ dependencia.tipoDependencia }}</th>
                         <td class="">{{ dependencia.status }}</td>
                         <td class="">
-                          <button class="btn btn-sm btn-primary" (click)="clickEditar('Dependencias', listaDependencia[i])" data-toggle="modal" data-target="#exampleModalEditar">
+                          <button hidden class="btn btn-sm btn-primary" (click)="clickEditar('Dependencias', listaDependencia[i])" data-toggle="modal" data-target="#exampleModalEditar">
                           ...
                           </button>
                         </td>

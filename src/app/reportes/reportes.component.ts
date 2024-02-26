@@ -54,10 +54,10 @@ yAxis: boolean = true;
     this.classBotonTickets = 'btn btn-success mx-2'
     this.classBotonResumen = 'btn btn-success'
     this.classBotonGrafica = 'btn btn-success mx-2'
-    this.proyectos = false;
+    this.proyectos = true;
     this.tickets = false;
     this.resumen = false;
-    this.grafica = true;
+    this.grafica = false;
     this.proyecto = [
       {
         nombre:'Hrs Semana',

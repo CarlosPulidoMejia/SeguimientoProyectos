@@ -17,8 +17,8 @@
       <li class="nav-item border-end">
         <a  [ngClass]="clasetextoReporte" (click)="clickReporteDC()" routerLink='ReportesDC' style="color:#ffffff">Reporte DC</a>
       </li>
-      <li class="nav-item border-end" *ngIf="configuracion == true">
-        <a  [ngClass]="clasetextoConfig" style="color:#ffffff">Configuración</a>
+      <li class="nav-item border-end"  *ngIf="configuracion == true">
+        <a  [ngClass]="clasetextoConfig" (click)="clickConfig()" routerLink='Configuracion' style="color:#ffffff">Configuración</a>
       </li>
     </ul>
     <ul class="navbar-nav  ms-auto">

@@ -228,7 +228,6 @@ export class ProyectosBauComponent implements OnInit {
 
   cerrarSemana(){
     console.log('Cerrar Semana');
-    
   }
 
   getTipoProyecto(){
