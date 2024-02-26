@@ -37,3 +37,8 @@ export class listaUsuarios{
     gerencia: any;
     rol: any;
 }
+
+export class listaGerencias{
+    idGerencia: any;
+    gerencia: any;
+}

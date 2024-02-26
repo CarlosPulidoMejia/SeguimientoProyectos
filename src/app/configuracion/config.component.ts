@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 //import Swal from 'sweetalert2';
-import { listaDependencia, listaDocumentacion, listaEstado, listaFase, listaTipoProyecto, listaUsuarios } from '../clases/configuracion/listaConfig';
+import { listaDependencia, listaDocumentacion, listaEstado, listaFase, listaTipoProyecto, listaUsuarios, listaGerencias } from '../clases/configuracion/listaConfig';
 import { ConfigService } from '../servicios/config/config.service';
 import { ProyectoBauService } from '../servicios/proyectos/proyectos.service';
 
@@ -24,6 +24,7 @@ export class ConfigComponent implements OnInit {
   listaFaseProyecto: listaFase[];
   listaTipoProyecto: listaTipoProyecto[];
   listaUsuario: listaUsuarios[];
+  listaGerencia: listaGerencias[];
 /*********
  * Variables
  */
@@ -149,6 +150,18 @@ export class ConfigComponent implements OnInit {
     )
   }
 
+  getListaGer(){
+    this.ConfigService.getAllGerencias().subscribe({
+        next: (data) =>{
+          this.listaGerencia = data
+        },
+        error: (e) => {
+          console.log(e)
+        }
+      }
+    )
+  }
+
   getAllConfig() {
     this.getListaDpe();
     this.getListaDoc();
@@ -156,6 +169,7 @@ export class ConfigComponent implements OnInit {
     this.getListaFas();
     this.getListaTip();
     this.getListaUsuarios();
+    this.getListaGer();
   }
 
   clickEditar(editar,detalles){
