@@ -41,12 +41,10 @@
                                                     {{ base.nombre_Base }}
                                                 </option>
                                             </select>-->
-                                            <select class="form-select" id="responsable" [(ngModel)]="responsable"
-                                                name="responsable">
-                                                <option value="1">Responsable 1</option>
-                                                <option value="2">Responsable 2</option>
-                                                <option value="3">Responsable 3</option>
-                                                <option value="4">Responsable 4</option>
+                                            <select class="form-select" id="responsable" [(ngModel)]="responsable" name="responsable">
+                                                <option value="1" *ngFor="let usuario of listaResponsables" [ngValue]="usuario.idUsuario">
+                                                    {{ usuario.nombre + " " + usuario.apellido }}
+                                                </option>
                                             </select>
                                             <label for="responsable">Responsable(s)</label>
                                         </div>
@@ -147,7 +145,7 @@
                                         </td>-->
                                         <th scope="row">{{ proyecto.proyectoResponse.proyecto  | uppercase }}</th>
                                         <td>{{ proyecto.detalleProyectoResponse.tipoProyecto  | uppercase}}</td>
-                                        <td>MARCO RUIZ</td>
+                                        <td>{{ proyecto.detalleProyectoResponse.tipoProyecto }}</td>
                                         <td>
                                             <input type="number" min="0" class="form-control"  value="{{ proyecto.detalleProyectoResponse.hrsAtencion }}"  [(ngModel)]="listaProyectos[i].detalleProyectoResponse.hrsAtencion" (ngModelChange)="change(listaProyectos[i])">
                                         </td>

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { listaProyectos,listaTipoDocumentacion, listaTipoProyecto,listaTipoFase,listaTipoEstado,listaTipoDependencia } from '../clases/proyectos/listaProyectos';
+import { listaUsuarios } from '../clases/configuracion/listaConfig';
 import { ProyectoBauService } from '../servicios/proyectos/proyectos.service';
+import { ConfigService } from '../servicios/config/config.service';
 
 declare const $: any;
 
@@ -45,7 +47,7 @@ export class ProyectosBauComponent implements OnInit {
   listatipoFase: listaTipoFase[];
   listatipoEstado: listaTipoEstado[];
   listatipoDependencia: listaTipoDependencia[];
-
+  listaResponsables: listaUsuarios[];
   //CPM
   ocultar: boolean;
   habilitarBoton: boolean;
@@ -67,7 +69,7 @@ export class ProyectosBauComponent implements OnInit {
   isChecked: boolean;
 
 
-  constructor( private proyectoBauService: ProyectoBauService) {    }
+  constructor( private proyectoBauService: ProyectoBauService, private configService: ConfigService) {    }
   
   ngOnInit() {
     this.nombreProyecto = "";
@@ -87,6 +89,7 @@ export class ProyectosBauComponent implements OnInit {
     this.getTipoFase();
     this.getTipoEstado();
     this.getTipoDependencia();
+    this.getListaUsuario();
     this.isChecked = false
   }
 
@@ -196,12 +199,12 @@ export class ProyectosBauComponent implements OnInit {
       dependencia: depRequest,
       porcentaje: proyecto.avance,
       documentacion: docRequest,
-      //fechaInicio: proyecto.fechaInicio,
-      //fechaFin: proyecto.fechaFin
+      fechaInicio: proyecto.fechaInicio,
+      fechaFin: proyecto.fechaFin
     }
     console.log(this.requestGuardar, id);
     
-    this.proyectoBauService.putEditrProyecto(this.requestGuardar, id).subscribe(
+    /*this.proyectoBauService.putEditrProyecto(this.requestGuardar, id).subscribe(
       data => {
         /*console.log("Complete function triggered.")
         Swal.fire({
@@ -210,7 +213,7 @@ export class ProyectosBauComponent implements OnInit {
           title: 'Proyecto guardado correctamente',
           showConfirmButton: false
         })
-        this.getAllProyectos();*/
+        this.getAllProyectos();
       },
       err => {
         console.log(err)
@@ -223,11 +226,22 @@ export class ProyectosBauComponent implements OnInit {
         })
       },
       () => {}
-    );
+    );*/
   }
 
   cerrarSemana(){
     console.log('Cerrar Semana');
+  }
+
+  getListaUsuario(){
+    this.configService.getAllUsuario().subscribe(
+      data => {
+        this.listaResponsables = data
+      },
+      err => {
+        console.log(err)
+      }
+    )
   }
 
   getTipoProyecto(){

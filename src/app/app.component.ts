@@ -29,18 +29,21 @@ export class AppComponent implements OnInit{
     this.clasetextoProyectos = 'nav-link negrita';
     this.clasetextoReporte = 'nav-link';
     this.clasetextoTicket = 'nav-link';
+    this.configuracion = false;
   }
 
   clickReporteDC(){
     this.clasetextoProyectos = 'nav-link';
     this.clasetextoTicket = 'nav-link';
     this.clasetextoReporte = 'nav-link negrita';
+    this.configuracion = false;
   }
 
   clickTickets(){
     this.clasetextoProyectos = 'nav-link';
     this.clasetextoTicket = 'nav-link negrita';
     this.clasetextoReporte = 'nav-link';
+    this.configuracion = false;
   }
 
   clickConfig(){
