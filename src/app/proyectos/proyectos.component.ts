@@ -204,7 +204,7 @@ export class ProyectosBauComponent implements OnInit {
     }
     console.log(this.requestGuardar, id);
     
-    /*this.proyectoBauService.putEditrProyecto(this.requestGuardar, id).subscribe(
+    this.proyectoBauService.putEditrProyecto(this.requestGuardar, id).subscribe(
       data => {
         /*console.log("Complete function triggered.")
         Swal.fire({
@@ -213,7 +213,7 @@ export class ProyectosBauComponent implements OnInit {
           title: 'Proyecto guardado correctamente',
           showConfirmButton: false
         })
-        this.getAllProyectos();
+        this.getAllProyectos();*/
       },
       err => {
         console.log(err)
@@ -226,7 +226,7 @@ export class ProyectosBauComponent implements OnInit {
         })
       },
       () => {}
-    );*/
+    );
   }
 
   cerrarSemana(){
