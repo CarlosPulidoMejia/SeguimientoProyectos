@@ -40,6 +40,7 @@ export class ConfigComponent implements OnInit {
   disabled: string;
   tituloEditar: string;
   nombreEditar: string;
+  apellidoEditar: string;
   statusEditar: string;
   
   ngOnInit() {
@@ -194,7 +195,9 @@ export class ConfigComponent implements OnInit {
       this.statusEditar = 'Activo'
     }
     if(editar == 'Usuarios'){
-
+      this.nombreEditar = detalles.nombre;
+      this.apellidoEditar = detalles.apellido;
+      this.statusEditar = detalles.status == true ? 'Activo' : 'Desactivado';
     }
     
   }
