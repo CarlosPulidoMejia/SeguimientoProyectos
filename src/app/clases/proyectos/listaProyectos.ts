@@ -1,7 +1,8 @@
 export class listaProyectos{
     detalleProyectoResponse:any;
     proyectoResponse: any;
-    seleccion:boolean;
+    recursos: any [];
+    //seleccion:boolean; 
 }
 
 export class listaTipoDependencia{

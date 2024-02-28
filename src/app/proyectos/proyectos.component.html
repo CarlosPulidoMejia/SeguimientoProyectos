@@ -144,8 +144,8 @@
                                             <input type="checkbox" (change)="onChecked()">
                                         </td>-->
                                         <th scope="row">{{ proyecto.proyectoResponse.proyecto  | uppercase }}</th>
-                                        <td>{{ proyecto.detalleProyectoResponse.tipoProyecto  | uppercase}}</td>
-                                        <td>{{ proyecto.detalleProyectoResponse.tipoProyecto }}</td>
+                                        <td>{{ proyecto.detalleProyectoResponse.tipoProyecto  | uppercase }}</td>
+                                        <td>{{ proyecto.recursos[0].nombre + " " + proyecto.recursos[0].apellido }}</td>
                                         <td>
                                             <input type="number" min="0" class="form-control"  value="{{ proyecto.detalleProyectoResponse.hrsAtencion }}"  [(ngModel)]="listaProyectos[i].detalleProyectoResponse.hrsAtencion" (ngModelChange)="change(listaProyectos[i])">
                                         </td>

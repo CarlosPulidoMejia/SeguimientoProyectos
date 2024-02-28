@@ -302,15 +302,12 @@ export class ProyectosBauComponent implements OnInit {
   getAllProyectos(){
     this.proyectoBauService.getAllProyectos().subscribe({
       next: (data) => {
-        this.listaProyectos = data;
-        
-        $('#tablaProyectos').dataTable().fnDestroy();
-
-
+        this.listaProyectos = data;   
+        console.log(this.listaProyectos);  
+        $('#tablaProyectos').dataTable().fnDestroy(); 
         $('#tablaProyectos tbody').on('click', 'tr', function () {
           $(this).toggleClass('selected');
         });
-
         setTimeout(() => {
           $('#tablaProyectos').DataTable({
             language: {
@@ -320,9 +317,7 @@ export class ProyectosBauComponent implements OnInit {
             responsive: true
           });
         }, 1);
-      },
-      error: (e) => {
-
+      },error: (e) => {
         console.log(e)
       }
     });
