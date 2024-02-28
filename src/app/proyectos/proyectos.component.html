@@ -11,7 +11,7 @@
                                 <div class="row"  *ngIf="ocultar == false">
                                     <div class="col-2">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" id="proyectobau"
+                                            <input type="text" class="form-control" id="proyectobau" maxlength="50"
                                                 [(ngModel)]="nombreProyecto" />
                                             <label for="fecFin">Proyecto - BAU</label>
                                         </div>
@@ -63,11 +63,8 @@
 
                                     <div class="col-1">
                                         <div class="form-floating">
-                                            <!--<input type="date" class="form-control" id="fecInicio"
-                                            placeholder="Fecha Inicio" [(ngModel)]="selectedDateInicio" [disabled]="habilitarFecha ? true : null">-->
                                             <input type="date" class="form-control" id="fecInicio" placeholder="Fecha Inicio" 
-                                            [(ngModel)]="fechaInicioProyecto" [disabled]="tipoDocumentacion == 1 || tipoDocumentacion == 2"
-                                            [ngClass]="{'border-danger': bordeFechas}"/>
+                                            [(ngModel)]="fechaInicioProyecto" [ngClass]="{'border-danger': bordeFechas}"/>
                                             <label for="fecInicio">Fecha Inicio</label>
                                             <p *ngIf="bordeFechas" class="text-sm-center text-danger">Campo obligatorio</p>
                                         </div>
@@ -75,12 +72,8 @@
 
                                     <div class="col-1">
                                         <div class="form-floating">
-                                            <!--<input type="date" class="form-control" id="fecFin" placeholder="Fecha Fin"
-                                                [(ngModel)]="selectedDateFin"
-                                                [disabled]="habilitarFecha ? true : false" />-->
                                             <input type="date" id="fecFin" class="form-control" placeholder="Fecha Fin"
-                                                [(ngModel)]="fechaFinProyecto" [disabled]="tipoDocumentacion == 1 || tipoDocumentacion == 2"
-                                                [ngClass]="{'border-danger': bordeFechas}"/>
+                                                [(ngModel)]="fechaFinProyecto" [ngClass]="{'border-danger': bordeFechas}"/>
                                             <label for="fecFin">Fecha Fin</label>
                                             <p *ngIf="bordeFechas" class="text-sm-center text-danger">Campo obligatorio</p>
                                             <p *ngIf="fechasMal" class="text-sm-start text-danger">Fecha Fin no puede ser menor a Fecha Inicio</p>

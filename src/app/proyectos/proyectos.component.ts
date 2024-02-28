@@ -116,8 +116,7 @@ export class ProyectosBauComponent implements OnInit {
   }
   
   agregarProyecto(){
-    console.log( this.nombreProyecto, this.tipoProyecto, this.responsable, this.tipoDocumentacion, this.fechaInicioProyecto, this.fechaFinProyecto );
-    if(this.tipoDocumentacion > 2  && this.fechaInicioProyecto == undefined  && this.fechaFinProyecto == undefined )
+    if(this.tipoDocumentacion == 3 || this.tipoDocumentacion == 4 && this.fechaInicioProyecto == undefined  && this.fechaFinProyecto == undefined )
     {
       this.bordeFechas = true;
     }else{
@@ -159,6 +158,8 @@ export class ProyectosBauComponent implements OnInit {
             this.tipoProyecto = "";
             this.responsable = "";
             this.tipoDocumentacion = 1;
+            this.fechaInicioProyecto = "";
+            this.fechaFinProyecto = "";
             this.getAllProyectos();
           },
           err => {
@@ -324,9 +325,12 @@ export class ProyectosBauComponent implements OnInit {
   }
 
   change(e){
-    console.log(e.detalleProyectoResponse,e.proyectoResponse.idProyecto);
-    //listaProyectos[i].detalleProyectoResponse, listaProyectos[i].proyectoResponse.idProyecto
     this.guardarCambio(e.detalleProyectoResponse, e.proyectoResponse.idProyecto);
+  }
+
+  changeAdd(){
+    console.log('cambio');
+    
   }
 
   /*  ELIMINAR SI NO SE OCUPA
