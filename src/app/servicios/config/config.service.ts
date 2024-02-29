@@ -22,6 +22,10 @@ export class ConfigService {
     putEditarDependencia(id:any,dependencia:any){
         return this.httpClient.put(`${global.URL_API}modificarDependencia/${id}`,dependencia);
     }
+
+    putEditarDocumentacion(id:any,documentacion:any){
+        return this.httpClient.put(`${global.URL_API}modificarDocumentacion/${id}`, documentacion);
+    }
     /**
      *   
     putEditrProyecto(proyecto:any,id:any){

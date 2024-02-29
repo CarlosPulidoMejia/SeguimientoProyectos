@@ -485,7 +485,7 @@
                             <div class="col-12">
                               <div class="form-floating">
                                 <input type="text" value="{{ nombreEditar }}" [(ngModel)]="nombreEditar" 
-                                  (ngModelChange)="change('dep', idEditar, nombreEditar, apellidoEditar, statusEditar)"
+                                  (ngModelChange)="change(tipoEdit, idEditar, nombreEditar, apellidoEditar, statusEditar)"
                                   class="form-control" id="nombreDependencia" />
                                 <label for="fecFin">Nombre</label> 
                               </div>

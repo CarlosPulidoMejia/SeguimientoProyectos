@@ -188,6 +188,7 @@ export class ConfigComponent implements OnInit {
       this.statusEditar = 'Activo'
     }if(editar == 'Documentación'){
       this.tipoEdit = 'doc'
+      this.idEditar = detalles.idDocumentacion
       this.nombreEditar = detalles.documentacion;
       this.statusEditar = 'Activo'
     }if(editar == 'Estado'){
@@ -225,6 +226,28 @@ export class ConfigComponent implements OnInit {
       this.ConfigService.putEditarDependencia(id, this.requestEditar).subscribe(
         data => {
           this.getListaDpe();
+        },
+        err => {
+          console.log(err)
+          console.log("Complete function triggered.")
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'No se pudo guardar la dependencia',
+            showConfirmButton: false
+          })
+        },
+      )
+    }
+    if(tipo == 'doc'){
+      this.requestEditar = {
+        id_documentacion: id,
+        status: true,
+        tipo_documentacion_vch: nombre
+      }
+      this.ConfigService.putEditarDocumentacion(id, this.requestEditar).subscribe(
+        data => {
+          this.getListaDoc();
         },
         err => {
           console.log(err)
