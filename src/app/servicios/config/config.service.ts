@@ -18,7 +18,16 @@ export class ConfigService {
     getAllGerencias():Observable<listaGerencias[]>{
         return this.httpClient.get<listaGerencias[]>(`${global.URL_API}recursos/listarGerencias`)
     }
+
+    putEditarDependencia(id:any,dependencia:any){
+        return this.httpClient.put(`${global.URL_API}modificarDependencia/${id}`,dependencia);
+    }
     /**
+     *   
+    putEditrProyecto(proyecto:any,id:any){
+        return this.httpClient.put(`${global.URL_API}detalleProy/${id}`,proyecto);
+    }
+     * 
     getAllProyectos(): Observable<listaProyectos[]>{
         return this.httpClient.get<listaProyectos[]>(`${global.URL_API}listaproyectos`)
     } 

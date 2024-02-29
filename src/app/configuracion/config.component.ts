@@ -1,7 +1,7 @@
 //import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-//import Swal from 'sweetalert2';
+import Swal from 'sweetalert2';
 import { listaDependencia, listaDocumentacion, listaEstado, listaFase, listaTipoProyecto, listaUsuarios, listaGerencias } from '../clases/configuracion/listaConfig';
 import { ConfigService } from '../servicios/config/config.service';
 import { ProyectoBauService } from '../servicios/proyectos/proyectos.service';
@@ -39,10 +39,13 @@ export class ConfigComponent implements OnInit {
   modalEditar: boolean;
   disabled: string;
   tituloEditar: string;
+  idEditar: number;
   nombreEditar: string;
   apellidoEditar: string;
   statusEditar: string;
-  
+  requestEditar: any;
+  tipoEdit:any;
+
   ngOnInit() {
     this.config = "Usuarios";
     this.usuarios = true;
@@ -179,18 +182,24 @@ export class ConfigComponent implements OnInit {
     this.modalEditar = true;
     this.tituloEditar = editar;
     if(editar == 'Dependencias'){
+      this.tipoEdit = 'dep'
+      this.idEditar = detalles.idDependencia
       this.nombreEditar = detalles.tipoDependencia;
       this.statusEditar = 'Activo'
     }if(editar == 'Documentación'){
+      this.tipoEdit = 'doc'
       this.nombreEditar = detalles.documentacion;
       this.statusEditar = 'Activo'
     }if(editar == 'Estado'){
+      this.tipoEdit = 'est'
       this.nombreEditar = detalles.tipoEstado;
       this.statusEditar = 'Activo'
     }if(editar == 'Fase'){
+      this.tipoEdit = 'fas'
       this.nombreEditar = detalles.fase;
       this.statusEditar = 'Activo'
     }if(editar == 'Tipo'){
+      this.tipoEdit = 'tip'
       this.nombreEditar = detalles.tipoProyecto;
       this.statusEditar = 'Activo'
     }
@@ -199,7 +208,36 @@ export class ConfigComponent implements OnInit {
       this.apellidoEditar = detalles.apellido;
       this.statusEditar = detalles.status == true ? 'Activo' : 'Desactivado';
     }
-    
+  }
+
+  change(tipo, id, nombre, apellido, estatus){
+    this.guardarEdicion(tipo, id, nombre, apellido, estatus);
+  }
+
+  guardarEdicion(tipo, id, nombre, apellido, estatus){
+    console.log(tipo, id, nombre, apellido, estatus);
+    if(tipo == 'dep'){
+      this.requestEditar = {
+        id_dependencia: id,
+        status: true,
+        tipo_dependencia_vch: nombre
+      }
+      this.ConfigService.putEditarDependencia(id, this.requestEditar).subscribe(
+        data => {
+          this.getListaDpe();
+        },
+        err => {
+          console.log(err)
+          console.log("Complete function triggered.")
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'No se pudo guardar la dependencia',
+            showConfirmButton: false
+          })
+        },
+      )
+    }
   }
 
   cerrarEditar(){
