@@ -44,7 +44,10 @@ export class ConfigComponent implements OnInit {
   apellidoEditar: string;
   statusEditar: string;
   requestEditar: any;
+  requestAgregar: any;
+  nombreCatAdd:any;
   tipoEdit:any;
+  tipoCatalogo: number;
 
   ngOnInit() {
     this.config = "Usuarios";
@@ -334,5 +337,39 @@ export class ConfigComponent implements OnInit {
     this.nombreEditar = '';
     this.statusEditar = '';
     this.modalEditar = false;
+  }
+
+  agregarCatalogo(tipoCat,nombreCatAdd){
+    console.log(tipoCat);
+    if(tipoCat == 1){
+      this.requestAgregar = {
+        status: true,
+        tipo_dependencia_vch: nombreCatAdd
+      }
+      console.log(this.requestAgregar);
+      this.ConfigService.postAgregarDependencia(this.requestAgregar).subscribe(
+        data => {
+          console.log("Complete function triggered.")
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Dependencia agregada correctamente',
+            showConfirmButton: false
+          })
+          this.tipoCatalogo = 0;
+          this.nombreCatAdd = '';
+          this.getListaDpe();
+        },err => {
+          console.log(err)
+          console.log("Complete function triggered.")
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'No se pudo agregar la dependencia',
+            showConfirmButton: false
+          })
+        },
+      )
+    }
   }
 }

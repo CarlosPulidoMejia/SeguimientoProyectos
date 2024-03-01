@@ -38,7 +38,15 @@ export class ConfigService {
     putEditarTipo(id:any, tipo:any){
         return this.httpClient.put(`${global.URL_API}modificarTipoProyecto/${id}`, tipo)
     }
+
+    postAgregarDependencia(dependencia:any){
+        return this.httpClient.post(`${global.URL_API}crearDependencia`, dependencia)
+    }
     /**
+     * 
+    postAgregarProyectos(proyecto:any){
+        return this.httpClient.post(`${global.URL_API}guardarproyecto`,proyecto);
+    }
      *   
     putEditrProyecto(proyecto:any,id:any){
         return this.httpClient.put(`${global.URL_API}detalleProy/${id}`,proyecto);

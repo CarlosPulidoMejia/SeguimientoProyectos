@@ -143,22 +143,27 @@
                     <div class="row" *ngIf="mostrarAddCat">
                       <div class="col-2">
                         <div class="form-floating">
-                          <input type="text" class="form-control" id="nombreCatalogo" />
+                          <input type="text" class="form-control" id="nombreCatalogo" [(ngModel)]="nombreCatAdd"/>
                           <label for="fecFin">Nombre</label>
                         </div>
                       </div>
                       <div class="col-2">
                         <div class="form-floating">
-                          <select class="form-select" id="opcionesCatalogo"name="opcionesCatalogo">
+                          <select class="form-select" id="opcionesCatalogo"name="opcionesCatalogo"  [(ngModel)]="tipoCatalogo">
                             <!--<option *ngFor="let tipoDoc of listatipoDocumentacion" [ngValue]="tipoDoc.idDocumentacion">
                             {{ tipoDoc.documentacion | uppercase }}
                             </option>-->
+                            <option value="1" id="">Dependencia</option>
+                            <option value="2" id="">Documentación</option>
+                            <option value="3" id="">Estado</option>
+                            <option value="4" id="">Fase</option>
+                            <option value="5" id="">Tipo de Proyecto</option>
                           </select>
                           <label for="opcionesCatalogo">Cátalogo</label>
                         </div>
                       </div>
                       <div class="col-1 mt-3">
-                        <button class="btn btn-success" >
+                        <button class="btn btn-success" (click)="agregarCatalogo(tipoCatalogo,nombreCatAdd)">
                             Agregar
                         </button>
                       </div>
