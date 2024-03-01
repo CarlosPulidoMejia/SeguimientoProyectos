@@ -34,6 +34,10 @@ export class ConfigService {
     putEditarFase(id:any, fase:any){
         return this.httpClient.put(`${global.URL_API}modificarFase/${id}`,fase);
     }
+
+    putEditarTipo(id:any, tipo:any){
+        return this.httpClient.put(`${global.URL_API}modificarTipoProyecto/${id}`, tipo)
+    }
     /**
      *   
     putEditrProyecto(proyecto:any,id:any){

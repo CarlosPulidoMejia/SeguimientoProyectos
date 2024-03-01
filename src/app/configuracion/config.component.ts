@@ -203,6 +203,7 @@ export class ConfigComponent implements OnInit {
       this.statusEditar = 'Activo'
     }if(editar == 'Tipo'){
       this.tipoEdit = 'tip'
+      this.idEditar = detalles.idTipoProyecto;
       this.nombreEditar = detalles.tipoProyecto;
       this.statusEditar = 'Activo'
     }
@@ -301,6 +302,27 @@ export class ConfigComponent implements OnInit {
             position: 'center',
             icon: 'error',
             title: 'No se pudo guardar la fase',
+            showConfirmButton: false
+          })
+        },
+      )
+    }
+    if(tipo == 'tip'){
+      this.requestEditar = {
+        id_tipo_proyecto: id,
+        status: true,
+        tipo_proyecto_vch: nombre
+      }
+      this.ConfigService.putEditarTipo(id, this.requestEditar).subscribe(
+        data => {
+          this.getListaTip();
+        },err => {
+          console.log(err)
+          console.log("Complete function triggered.")
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'No se pudo guardar el tipo de proyecto',
             showConfirmButton: false
           })
         },
