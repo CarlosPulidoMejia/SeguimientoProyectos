@@ -34,3 +34,10 @@ export class listaTipoProyecto{
     status: any;
     tipoProyecto: any;
 }
+
+export class listaObjetivos{
+    idProyecto:any;
+    objetivo: any;
+    detalleObjetivo: any;
+    status: any;
+}

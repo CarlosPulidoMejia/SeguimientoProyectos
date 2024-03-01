@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
-import { listaProyectos,listaTipoDocumentacion, listaTipoProyecto,listaTipoFase,listaTipoEstado,listaTipoDependencia } from '../clases/proyectos/listaProyectos';
+import { listaProyectos,listaTipoDocumentacion, listaTipoProyecto,listaTipoFase,listaTipoEstado,listaTipoDependencia, listaObjetivos } from '../clases/proyectos/listaProyectos';
 import { listaUsuarios } from '../clases/configuracion/listaConfig';
 import { ProyectoBauService } from '../servicios/proyectos/proyectos.service';
 import { ConfigService } from '../servicios/config/config.service';
@@ -48,6 +48,7 @@ export class ProyectosBauComponent implements OnInit {
   listatipoEstado: listaTipoEstado[];
   listatipoDependencia: listaTipoDependencia[];
   listaResponsables: listaUsuarios[];
+  listaObjetivos: listaObjetivos[];
   //CPM
   ocultar: boolean;
   habilitarBoton: boolean;
@@ -328,9 +329,17 @@ export class ProyectosBauComponent implements OnInit {
     this.guardarCambio(e.detalleProyectoResponse, e.proyectoResponse.idProyecto);
   }
 
-  changeAdd(){
-    console.log('cambio');
-    
+  getComentarios(idProyecto){
+    console.log(idProyecto);
+    this.proyectoBauService.getObjetivos(idProyecto).subscribe(
+      data => {
+        this.listaObjetivos = data
+        console.log(this.listaObjetivos);
+        
+      },err => {
+        console.log(err)
+      }
+    )
   }
 
   /*  ELIMINAR SI NO SE OCUPA
