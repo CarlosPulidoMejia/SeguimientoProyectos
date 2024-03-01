@@ -399,6 +399,92 @@ export class ConfigComponent implements OnInit {
         },
       )
     }
-
+    if(tipoCat == 3){
+      this.requestAgregar = {
+        status: true,
+        tipo_estado_vch: nombreCatAdd
+      }
+      this.ConfigService.postAgregarEstado(this.requestAgregar).subscribe(
+        data => {
+          console.log("Complete function triggered.")
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Estado agregado correctamente',
+            showConfirmButton: false
+          })
+          this.tipoCatalogo = 0;
+          this.nombreCatAdd = '';
+          this.getListaEst();
+        },err => {
+          console.log(err)
+          console.log("Complete function triggered.")
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'No se pudo agregar el estado',
+            showConfirmButton: false
+          })
+        },
+      )
+    }
+    if(tipoCat == 4){
+      this.requestAgregar = {
+        status: true,
+        tipo_fase_vch: nombreCatAdd
+      }
+      this.ConfigService.postAgregarFase(this.requestAgregar).subscribe(
+        data => {
+          console.log("Complete function triggered.")
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Fase agregada correctamente',
+            showConfirmButton: false
+          })
+          this.tipoCatalogo = 0;
+          this.nombreCatAdd = '';
+          this.getListaFas();
+        },err => {
+          console.log(err)
+          console.log("Complete function triggered.")
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'No se pudo agregar la fase',
+            showConfirmButton: false
+          })
+        },
+      )
+    }
+    if(tipoCat == 5){
+      this.requestAgregar = {
+        status:true,
+        tipo_proyecto_vch: nombreCatAdd
+      }
+      this.ConfigService.postAgregarTipoProy(this.requestAgregar).subscribe(
+        data => {
+          console.log("Complete function triggered.")
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Tipo Proyecto agregado correctamente',
+            showConfirmButton: false
+          })
+          this.tipoCatalogo = 0;
+          this.nombreCatAdd = '';
+          this.getListaTip();
+        },err => {
+          console.log(err)
+          console.log("Complete function triggered.")
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'No se pudo agregar el tipo proyecto',
+            showConfirmButton: false
+          })
+        },
+      )
+    }
   }
 }

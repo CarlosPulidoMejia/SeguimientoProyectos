@@ -46,6 +46,18 @@ export class ConfigService {
     postAgregarDocumentacion(documentacion:any){
         return this.httpClient.post(`${global.URL_API}crearDocumentacion`,documentacion)
     }
+
+    postAgregarEstado(estado:any){
+        return this.httpClient.post(`${global.URL_API}crearEstado`,estado)
+    }
+
+    postAgregarFase(fase:any){
+        return this.httpClient.post(`${global.URL_API}crearFase`,fase)
+    }
+
+    postAgregarTipoProy(tipoProy:any){
+        return this.httpClient.post(`${global.URL_API}crearTipoProyecto`,tipoProy)
+    }
     /**
      * 
     postAgregarProyectos(proyecto:any){
