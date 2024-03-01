@@ -26,6 +26,10 @@ export class ConfigService {
     putEditarDocumentacion(id:any,documentacion:any){
         return this.httpClient.put(`${global.URL_API}modificarDocumentacion/${id}`, documentacion);
     }
+
+    putEditarEstado(id:any,estado:any){
+        return this.httpClient.put(`${global.URL_API}modificarEstado/${id}`,estado);
+    }
     /**
      *   
     putEditrProyecto(proyecto:any,id:any){
