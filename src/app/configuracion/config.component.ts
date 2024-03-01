@@ -183,21 +183,22 @@ export class ConfigComponent implements OnInit {
     this.tituloEditar = editar;
     if(editar == 'Dependencias'){
       this.tipoEdit = 'dep'
-      this.idEditar = detalles.idDependencia
+      this.idEditar = detalles.idDependencia;
       this.nombreEditar = detalles.tipoDependencia;
       this.statusEditar = 'Activo'
     }if(editar == 'Documentación'){
       this.tipoEdit = 'doc'
-      this.idEditar = detalles.idDocumentacion
+      this.idEditar = detalles.idDocumentacion;
       this.nombreEditar = detalles.documentacion;
       this.statusEditar = 'Activo'
     }if(editar == 'Estado'){
       this.tipoEdit = 'est'
-      this.idEditar = detalles.idTipoEstado
+      this.idEditar = detalles.idTipoEstado;
       this.nombreEditar = detalles.tipoEstado;
       this.statusEditar = 'Activo'
     }if(editar == 'Fase'){
       this.tipoEdit = 'fas'
+      this.idEditar = detalles.idFase;
       this.nombreEditar = detalles.fase;
       this.statusEditar = 'Activo'
     }if(editar == 'Tipo'){
@@ -279,6 +280,27 @@ export class ConfigComponent implements OnInit {
             position: 'center',
             icon: 'error',
             title: 'No se pudo guardar el estado',
+            showConfirmButton: false
+          })
+        },
+      )
+    }
+    if(tipo == 'fas'){
+      this.requestEditar = {
+        id_fase: id,
+        status: true,
+        tipo_fase_vch: nombre
+      }
+      this.ConfigService.putEditarFase(id, this.requestEditar).subscribe(
+        data => {
+          this.getListaFas();
+        },err => {
+          console.log(err)
+          console.log("Complete function triggered.")
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'No se pudo guardar la fase',
             showConfirmButton: false
           })
         },
