@@ -42,6 +42,10 @@ export class ConfigService {
     postAgregarDependencia(dependencia:any){
         return this.httpClient.post(`${global.URL_API}crearDependencia`, dependencia)
     }
+
+    postAgregarDocumentacion(documentacion:any){
+        return this.httpClient.post(`${global.URL_API}crearDocumentacion`,documentacion)
+    }
     /**
      * 
     postAgregarProyectos(proyecto:any){

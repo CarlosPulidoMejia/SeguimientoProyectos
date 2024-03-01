@@ -346,7 +346,6 @@ export class ConfigComponent implements OnInit {
         status: true,
         tipo_dependencia_vch: nombreCatAdd
       }
-      console.log(this.requestAgregar);
       this.ConfigService.postAgregarDependencia(this.requestAgregar).subscribe(
         data => {
           console.log("Complete function triggered.")
@@ -371,5 +370,35 @@ export class ConfigComponent implements OnInit {
         },
       )
     }
+    if(tipoCat == 2){
+      this.requestAgregar = {
+        status: true,
+        tipo_documentacion_vch: nombreCatAdd
+      }
+      this.ConfigService.postAgregarDocumentacion(this.requestAgregar).subscribe(
+        data => {
+          console.log("Complete function triggered.")
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Documentación agregada correctamente',
+            showConfirmButton: false
+          })
+          this.tipoCatalogo = 0;
+          this.nombreCatAdd = '';
+          this.getListaDoc();
+        },err => {
+          console.log(err)
+          console.log("Complete function triggered.")
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'No se pudo agregar la documentación',
+            showConfirmButton: false
+          })
+        },
+      )
+    }
+
   }
 }
