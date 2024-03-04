@@ -191,7 +191,7 @@
                                             </select>
                                         </td>
                                         <td class="text-center">
-                                            <button (click)="getComentarios(proyecto.proyectoResponse.idProyecto)" class="btn btn-sm btn-success" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
+                                            <button (click)="getDocumentacion(proyecto.proyectoResponse.idProyecto)" class="btn btn-sm btn-success" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
                                                 ...
                                             </button>
                                         </td>
@@ -346,8 +346,8 @@
                                     <h6  class="card-title">ToDo</h6>
                                     <div  class="row">
                                         <div  class="col-12"class="form-floating" style="overflow-x: hidden; overflow-y: auto; height: 6em;">
-                                            <div *ngFor="let ToDo of listaObjetivos">
-                                                <input [(ngModel)]="ToDo.detalleObjetivo" type="text" disabled id="idDatasource" placeholder="ID" class="form-control ng-valid ng-dirty ng-touched">
+                                            <div *ngFor="let ToDo of listaToDo">
+                                                <input [(ngModel)]="ToDo.objetivo" type="text" disabled id="idDatasource" placeholder="ID" class="form-control ng-valid ng-dirty ng-touched">
                                             </div>
                                         </div>
                                     </div>

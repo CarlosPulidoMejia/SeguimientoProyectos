@@ -35,10 +35,18 @@ export class listaTipoProyecto{
     tipoProyecto: any;
 }
 
-export class listaObjetivos{
+export class listaDocumetnacionAvance{
     idProyecto:any;
     idObjetivo:any;
     objetivo: any;
     detalleObjetivo: any;
     status: any;
+}
+
+export class listaToDo{
+    idProyecto:any;
+    idObjetivo:any;
+    objetivo:any;
+    detalleObjetivo:any;
+    status:any;
 }

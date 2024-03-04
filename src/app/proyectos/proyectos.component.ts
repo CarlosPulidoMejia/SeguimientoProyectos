@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
-import { listaProyectos,listaTipoDocumentacion, listaTipoProyecto,listaTipoFase,listaTipoEstado,listaTipoDependencia, listaObjetivos } from '../clases/proyectos/listaProyectos';
+import { listaProyectos,listaTipoDocumentacion, listaTipoProyecto,listaTipoFase,listaTipoEstado,listaTipoDependencia, listaDocumetnacionAvance, listaToDo } from '../clases/proyectos/listaProyectos';
 import { listaUsuarios } from '../clases/configuracion/listaConfig';
 import { ProyectoBauService } from '../servicios/proyectos/proyectos.service';
 import { ConfigService } from '../servicios/config/config.service';
@@ -48,7 +48,8 @@ export class ProyectosBauComponent implements OnInit {
   listatipoEstado: listaTipoEstado[];
   listatipoDependencia: listaTipoDependencia[];
   listaResponsables: listaUsuarios[];
-  listaObjetivos: listaObjetivos[];
+  listaObjetivos: listaDocumetnacionAvance[];
+  listaToDo: listaToDo[];
   //CPM
   ocultar: boolean;
   habilitarBoton: boolean;
@@ -329,12 +330,23 @@ export class ProyectosBauComponent implements OnInit {
     this.guardarCambio(e.detalleProyectoResponse, e.proyectoResponse.idProyecto);
   }
 
-  getComentarios(idProyecto){
-    console.log(idProyecto);
-    this.proyectoBauService.getObjetivos(idProyecto).subscribe(
+  getDocumentacion(idProyecto){
+    this.proyectoBauService.getDocumentacionAvance(idProyecto).subscribe(
       data => {
         this.listaObjetivos = data
         console.log(this.listaObjetivos);
+        this.getToDo(idProyecto)
+      },err => {
+        console.log(err)
+      }
+    )
+  }
+
+  getToDo(idProyecto){
+    this.proyectoBauService.getListaToDo(idProyecto).subscribe(
+      data => {
+        this.listaToDo = data
+        console.log(this.listaToDo);
         
       },err => {
         console.log(err)
@@ -343,7 +355,7 @@ export class ProyectosBauComponent implements OnInit {
   }
 
   guardarComentarioObjetivo(){
-    
+
   }
 
   /*  ELIMINAR SI NO SE OCUPA

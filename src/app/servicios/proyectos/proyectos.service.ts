@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { listaProyectos,listaTipoDocumentacion,listaTipoProyecto, listaTipoFase, listaTipoEstado, listaTipoDependencia, listaObjetivos } from 'src/app/clases/proyectos/listaProyectos';
+import { listaProyectos,listaTipoDocumentacion,listaTipoProyecto, listaTipoFase, listaTipoEstado, listaTipoDependencia, listaDocumetnacionAvance, listaToDo } from 'src/app/clases/proyectos/listaProyectos';
 
 import * as global from '../../globals';
 
@@ -36,8 +36,12 @@ export class ProyectoBauService {
     return this.httpClient.get<listaTipoDependencia[]>(`${global.URL_API}tipoDependencia`)
   }
 
-  getObjetivos(id:any):Observable<listaObjetivos[]>{
-    return this.httpClient.get<listaObjetivos[]>(`${global.URL_API}objetivo/listar/${id}`)
+  getDocumentacionAvance(idProyecto:any):Observable<listaDocumetnacionAvance[]>{
+    return this.httpClient.get<listaDocumetnacionAvance[]>(`${global.URL_API}objetivo/listarDocumentacion/${idProyecto}`)
+  }
+
+  getListaToDo(idProyecto:any):Observable<listaToDo[]>{
+    return this.httpClient.get<listaToDo[]>(`${global.URL_API}objetivo/listarToDo/${idProyecto}`)
   }
 
   postAgregarProyectos(proyecto:any){
