@@ -47,4 +47,8 @@ export class ProyectoBauService {
   putEditrProyecto(proyecto:any,id:any){
     return this.httpClient.put(`${global.URL_API}detalleProy/${id}`,proyecto);
   }
+
+  putComentarioObjetivo(objetivo:any,id:any){
+    return this.httpClient.put(`${global.URL_API}objetivo/detalleObj/${id}`,objetivo);
+  }
 }

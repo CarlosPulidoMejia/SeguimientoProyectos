@@ -209,7 +209,7 @@
                         <button  class="btn btn-primary" hidden>
                             Guardar Cambio
                         </button>
-                        <button (click)="cerrarSemana()" class="btn btn-success buttonM" hidden data-toggle="modal" data-target="#exampleConfirmacion">
+                        <button (click)="cerrarSemana()" class="btn btn-success buttonM" data-toggle="modal" data-target="#exampleConfirmacion">
                             Cerrar Seman
                         </button>
                     </div>
@@ -301,13 +301,13 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr *ngFor="let comentarios of listaObjetivos; let i = index">
+                                                        <tr *ngFor="let documentar of listaObjetivos; let i = index">
                                                             <td>
                                                                 <input type="checkbox">
                                                             </td>
-                                                            <td>{{ comentarios.objetivo }}</td>
+                                                            <td>{{ documentar.objetivo }}</td>
                                                             <td>
-                                                                <input type="text" min="0" class="form-control"  value="{{ comentarios.detalleObjetivo }}"  [(ngModel)]="listaObjetivos[i].detalleObjetivo">
+                                                                <input type="text" min="0" class="form-control"  value="{{ documentar.detalleObjetivo }}"  [(ngModel)]="listaObjetivos[i].detalleObjetivo">
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -345,15 +345,10 @@
                                 <div  class="card-body">
                                     <h6  class="card-title">ToDo</h6>
                                     <div  class="row">
-                                        <div  class="col-12">
-                                            <div  class="form-floating"
-                                                style="overflow-x: hidden; overflow-y: auto; height: 5em;"><input 
-                                                    type="text" id="idDatasource" placeholder="ID" value="1"
-                                                    class="form-control ng-valid ng-dirty ng-touched"><input 
-                                                    type="text" id="idDatasource" placeholder="ID" value="1"
-                                                    class="form-control ng-valid ng-dirty ng-touched"><input 
-                                                    type="text" id="idDatasource" placeholder="ID" value="1"
-                                                    class="form-control ng-valid ng-dirty ng-touched"></div>
+                                        <div  class="col-12"class="form-floating" style="overflow-x: hidden; overflow-y: auto; height: 6em;">
+                                            <div *ngFor="let ToDo of listaObjetivos">
+                                                <input [(ngModel)]="ToDo.detalleObjetivo" type="text" disabled id="idDatasource" placeholder="ID" class="form-control ng-valid ng-dirty ng-touched">
+                                            </div>
                                         </div>
                                     </div>
                                     <button data-toggle="modal" data-target="#exampleModalAddTarea"  type="button" data-dismiss="modal" class="btn btn-success mt-2">

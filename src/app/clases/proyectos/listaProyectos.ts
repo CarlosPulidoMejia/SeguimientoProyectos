@@ -37,6 +37,7 @@ export class listaTipoProyecto{
 
 export class listaObjetivos{
     idProyecto:any;
+    idObjetivo:any;
     objetivo: any;
     detalleObjetivo: any;
     status: any;

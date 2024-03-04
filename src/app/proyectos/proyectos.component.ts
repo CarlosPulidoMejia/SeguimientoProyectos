@@ -342,6 +342,10 @@ export class ProyectosBauComponent implements OnInit {
     )
   }
 
+  guardarComentarioObjetivo(){
+    
+  }
+
   /*  ELIMINAR SI NO SE OCUPA
   modelChangeDocumentacion(e) {
     //this.documentacionProy = e;
