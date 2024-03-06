@@ -349,8 +349,13 @@ export class ProyectosBauComponent implements OnInit {
     )
   }
 
-  guardarComentarioObjetivo(){
-
+  guardarComentarioDocumentacion(idObjetivo, detallesObjetivos){
+    this.proyectoBauService.putComentarioDocumentacion(idObjetivo, detallesObjetivos).subscribe(
+      data =>{
+      }, err => {
+        console.log(err)
+      }
+    )
   }
 
   /*  ELIMINAR SI NO SE OCUPA
