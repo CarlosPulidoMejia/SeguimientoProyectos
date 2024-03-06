@@ -60,6 +60,7 @@ export class ConfigComponent implements OnInit {
     this.usrActivo = false;
     this.modalEditar = false;
     this.disabled = 'bg-black bg-opacity-10';
+    this.clickUsuarios();
   }
 
   clickUsuarios(){
@@ -210,7 +211,7 @@ export class ConfigComponent implements OnInit {
       this.statusEditar = detalles.status == true ? 'Activo' : 'Desactivado';
     }
   }
-  
+
   guardarEdicion(tipo, id, nombre, apellido, estatus){
     if(tipo == 'dep'){
       this.requestEditar = {
