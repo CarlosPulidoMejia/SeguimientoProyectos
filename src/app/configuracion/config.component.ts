@@ -60,13 +60,31 @@ export class ConfigComponent implements OnInit {
     this.usrActivo = false;
     this.modalEditar = false;
     this.disabled = 'bg-black bg-opacity-10';
-    this.getAllConfig();
   }
 
   clickUsuarios(){
     this.usuarios = true;
     this.perfiles = false;
     this.catalgos = false;
+    this.getListaUsuarios();
+  }
+
+  clickPerfiles(){
+    this.usuarios = false;
+    this.perfiles = true;
+    this.catalgos = false;
+    this.getListaGer();
+  }
+
+  clickCatalogos(){
+    this.usuarios = false;
+    this.perfiles = false;
+    this.catalgos = true;
+    this.getListaDpe();
+    this.getListaDoc();
+    this.getListaEst();
+    this.getListaFas();
+    this.getListaTip();
   }
 
   getListaUsuarios(){
@@ -91,18 +109,6 @@ export class ConfigComponent implements OnInit {
         console.log(e)
       }
     })
-  }
-
-  clickPerfiles(){
-    this.usuarios = false;
-    this.perfiles = true;
-    this.catalgos = false;
-  }
-
-  clickCatalogos(){
-    this.usuarios = false;
-    this.perfiles = false;
-    this.catalgos = true;
   }
 
   getListaDpe(){
@@ -169,16 +175,6 @@ export class ConfigComponent implements OnInit {
     )
   }
 
-  getAllConfig() {
-    this.getListaDpe();
-    this.getListaDoc();
-    this.getListaEst();
-    this.getListaFas();
-    this.getListaTip();
-    this.getListaUsuarios();
-    this.getListaGer();
-  }
-
   clickEditar(editar,detalles){
     this.modalEditar = true;
     this.tituloEditar = editar;
@@ -214,13 +210,8 @@ export class ConfigComponent implements OnInit {
       this.statusEditar = detalles.status == true ? 'Activo' : 'Desactivado';
     }
   }
-
-  change(tipo, id, nombre, apellido, estatus){
-    this.guardarEdicion(tipo, id, nombre, apellido, estatus);
-  }
-
+  
   guardarEdicion(tipo, id, nombre, apellido, estatus){
-    console.log(tipo, id, nombre, apellido, estatus);
     if(tipo == 'dep'){
       this.requestEditar = {
         id_dependencia: id,
