@@ -180,8 +180,6 @@ export class ConfigComponent implements OnInit {
   }
 
   clickEditar(editar,detalles){
-    console.log(detalles);
-    
     this.modalEditar = true;
     this.tituloEditar = editar;
     if(editar == 'Dependencias'){

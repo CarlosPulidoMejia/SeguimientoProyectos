@@ -149,7 +149,6 @@ export class ProyectosBauComponent implements OnInit {
         }
         this.proyectoBauService.postAgregarProyectos(this.requestAgregar).subscribe(
           data => {
-            console.log(data)
             console.log("Complete function triggered.")
             Swal.fire({
               position: 'center',
@@ -205,9 +204,7 @@ export class ProyectosBauComponent implements OnInit {
       documentacion: docRequest,
       fechaInicio: proyecto.fechaInicio,
       fechaFin: proyecto.fechaFin
-    }
-    console.log(this.requestGuardar, id);
-    
+    }    
     this.proyectoBauService.putEditrProyecto(this.requestGuardar, id).subscribe(
       data => {
         /*console.log("Complete function triggered.")
@@ -307,7 +304,6 @@ export class ProyectosBauComponent implements OnInit {
     this.proyectoBauService.getAllProyectos().subscribe({
       next: (data) => {
         this.listaProyectos = data;   
-        console.log(this.listaProyectos);  
         $('#tablaProyectos').dataTable().fnDestroy(); 
         $('#tablaProyectos tbody').on('click', 'tr', function () {
           $(this).toggleClass('selected');
@@ -336,7 +332,6 @@ export class ProyectosBauComponent implements OnInit {
     this.proyectoBauService.getDocumentacionAvance(idProyecto).subscribe(
       data => {
         this.listaObjetivos = data
-        console.log(this.listaObjetivos);
         this.getToDo(idProyecto)
       },err => {
         console.log(err)
@@ -347,9 +342,7 @@ export class ProyectosBauComponent implements OnInit {
   getToDo(idProyecto){
     this.proyectoBauService.getListaToDo(idProyecto).subscribe(
       data => {
-        this.listaToDo = data
-        console.log(this.listaToDo);
-        
+        this.listaToDo = data        
       },err => {
         console.log(err)
       }
