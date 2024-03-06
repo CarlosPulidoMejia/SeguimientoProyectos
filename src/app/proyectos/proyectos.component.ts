@@ -69,6 +69,7 @@ export class ProyectosBauComponent implements OnInit {
   hrsAtencion: any;
   habilitarFechaTabla: boolean;
   isChecked: boolean;
+  comentario: any;
 
 
   constructor( private proyectoBauService: ProyectoBauService, private configService: ConfigService) {    }
@@ -180,8 +181,8 @@ export class ProyectosBauComponent implements OnInit {
     }
   }
   
-  onChecked() {
-    this.isChecked = true;
+  guardarDocumentarAvanceEdit(id,detalles) {
+    console.log(id,detalles);
   }
 
   guardarCambio(proyecto,id){
@@ -330,7 +331,8 @@ export class ProyectosBauComponent implements OnInit {
     this.guardarCambio(e.detalleProyectoResponse, e.proyectoResponse.idProyecto);
   }
 
-  getDocumentacion(idProyecto){
+  getDocumentacion(idProyecto, comentarioProyecto){
+    this.comentario = comentarioProyecto
     this.proyectoBauService.getDocumentacionAvance(idProyecto).subscribe(
       data => {
         this.listaObjetivos = data
