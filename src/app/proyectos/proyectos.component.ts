@@ -53,7 +53,8 @@ export class ProyectosBauComponent implements OnInit {
   //CPM
   ocultar: boolean;
   habilitarBoton: boolean;
-  bordeFechas: boolean;
+  bordeFechaInicio: boolean;
+  bordeFechaFin:boolean;
   fechasMal: boolean;
   nombreProyecto: string;
   tipoProyecto: string;
@@ -82,10 +83,11 @@ export class ProyectosBauComponent implements OnInit {
     this.habilitarFecha = true;
     this.ocultar = true;
     this.habilitarBoton = false;
-    this.bordeFechas = false;
+    this.bordeFechaInicio = false;
+    this.bordeFechaFin = false;
     this.fechasMal = false;
     this.habilitar();
-    this.Repetir();
+    //this.Repetir();
     this.getAllProyectos();
     this.getTipoDocumentacion();
     this.getTipoProyecto();
@@ -107,7 +109,7 @@ export class ProyectosBauComponent implements OnInit {
   habilitar(){
     this.habilitarBoton = false;
     this.claseBoton = 'btn btn-secondary mt-3';
-    if(this.nombreProyecto != "" && this.tipoProyecto != "" && this.responsable != "" && this.tipoDocumentacion != 1)
+    if(this.nombreProyecto != "" && this.tipoProyecto != "" && this.responsable != "" && this.tipoDocumentacion != 1 && this.bordeFechaInicio == false && this.bordeFechaFin == false && this.fechasMal == false)
     {
       this.claseBoton = 'btn btn-success mt-3';
       this.habilitarBoton = true;     
@@ -118,16 +120,44 @@ export class ProyectosBauComponent implements OnInit {
     setInterval(() => this.habilitar(), 1000);
   }
   
-  agregarProyecto(){
-    if(this.tipoDocumentacion == 3 || this.tipoDocumentacion == 4 && this.fechaInicioProyecto == undefined  && this.fechaFinProyecto == undefined )
+  cambiosDocumentacion(tipoDocumentacion){   
+    this.bordeFechaInicio = false;
+    this.bordeFechaFin = false;
+    this.fechasMal = false;
+    if(tipoDocumentacion != 2 && tipoDocumentacion != 5)
     {
-      this.bordeFechas = true;
+      if(this.fechaInicioProyecto == undefined  && this.fechaFinProyecto == undefined || this.fechaInicioProyecto == ''  && this.fechaFinProyecto == ''){
+        this.bordeFechaInicio = true;
+        this.bordeFechaFin = true;
+      }
+      else if(this.fechaInicioProyecto != undefined  && this.fechaFinProyecto == undefined || this.fechaInicioProyecto != ''  && this.fechaFinProyecto == ''){
+        this.bordeFechaFin = true;
+      }
+      else if(this.fechaInicioProyecto == undefined  && this.fechaFinProyecto != undefined || this.fechaInicioProyecto == ''  && this.fechaFinProyecto != ''){
+        this.bordeFechaInicio = true;
+      }
+      else if(this.fechaInicioProyecto > this.fechaFinProyecto && this.fechaInicioProyecto != undefined && this.fechaInicioProyecto != undefined )
+      {
+        this.fechasMal = true;
+      }
     }else{
-      this.bordeFechas = false;
       if(this.fechaInicioProyecto > this.fechaFinProyecto)
       {
         this.fechasMal = true;
-      }else{
+      }
+      this.bordeFechaInicio = false;
+      this.bordeFechaFin = false;
+    }
+  }
+
+  agregarProyecto(){
+    //if(this.tipoDocumentacion != 2 && this.tipoDocumentacion != 5) {
+      /*if(this.fechaInicioProyecto == undefined  || this.fechaFinProyecto == undefined || this.fechaInicioProyecto == ''  || this.fechaFinProyecto == '' ){
+        this.bordeFechaInicio = true;
+        this.bordeFechaFin = true;
+      }else{*/
+        this.bordeFechaInicio = false;
+        this.bordeFechaFin = false;
         this.fechasMal = false;
         Swal.fire({
           title: "Agregando Proyecto...",
@@ -138,7 +168,6 @@ export class ProyectosBauComponent implements OnInit {
           showConfirmButton: false,
           allowOutsideClick: false
         });
-      
         this.requestAgregar = {
           proyecto: this.nombreProyecto,
           tipoProyecto: this.tipoProyecto,
@@ -176,8 +205,8 @@ export class ProyectosBauComponent implements OnInit {
           },
           () => {}
         );
-      }
-    }
+      //}
+    //}
   }
   
   guardarDocumentarAvanceEdit(id,detalles) {

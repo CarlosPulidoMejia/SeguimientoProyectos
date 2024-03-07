@@ -337,9 +337,12 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr class="odd" *ngFor="let dependencia of listaDependencia; let i = index">
+                      <tr class="odd" *ngFor="let dependencia of listaDependencia; let i = index" [ngClass]="{'disabled': !dependencia.status}" >
                         <th class="">{{ dependencia.tipoDependencia }}</th>
-                        <td class="">{{ dependencia.status }}</td>
+                        <td class="">
+                          <span *ngIf="dependencia.status">Activo</span>
+                          <span *ngIf="!dependencia.status">Desactivado</span>
+                        </td>
                         <td class="text-center">
                           <button  class="btn btn-sm btn-primary" (click)="clickEditar('Dependencias', listaDependencia[i])" data-toggle="modal" data-target="#exampleModalEditar">
                           ...
@@ -366,7 +369,10 @@
                     <tbody>
                       <tr class="odd" *ngFor="let doc of listaDocumentacion; let i = index">
                         <th class="">{{ doc.documentacion }}</th>
-                        <td class="">{{ doc.status }}</td>
+                        <td class="">
+                          <span *ngIf="doc.status">Activo</span>
+                          <span *ngIf="!doc.status">Desactivado</span>
+                        </td>
                         <td class="">
                           <button class="btn btn-sm btn-primary" (click)="clickEditar('Documentación', listaDocumentacion[i])" data-toggle="modal" data-target="#exampleModalEditar">
                             ...
@@ -401,7 +407,10 @@
                     <tbody>
                       <tr class="odd" *ngFor="let estado of listaEstadoProyecto; let i = index">
                         <th class="">{{ estado.tipoEstado }}</th>
-                        <td class="">{{ estado.status }}</td>
+                        <td class="">
+                          <span *ngIf="estado.status">Activo</span>
+                          <span *ngIf="!estado.status">Desactivado</span>
+                        </td>
                         <td class="text-center">
                           <button class="btn btn-sm btn-primary" (click)="clickEditar('Estado', listaEstadoProyecto[i])" data-toggle="modal" data-target="#exampleModalEditar">
                             ...
@@ -427,7 +436,10 @@
                     <tbody>
                       <tr class="odd" *ngFor="let fase of listaFaseProyecto; let i = index">
                         <th class="">{{ fase.fase }}</th>
-                        <td class="">{{ fase.status }}</td>
+                        <td class="">
+                          <span *ngIf="fase.status">Activo</span>
+                          <span *ngIf="!fase.status">Desactivado</span>
+                        </td>
                         <td class="text-center">
                           <button class="btn btn-sm btn-primary" (click)="clickEditar('Fase', listaFaseProyecto[i])"  data-toggle="modal" data-target="#exampleModalEditar">
                             ...
@@ -453,7 +465,10 @@
                     <tbody>
                       <tr class="odd" *ngFor="let tipoProy of listaTipoProyecto; let i = index">
                         <th scope="col">{{ tipoProy.tipoProyecto }}</th>
-                        <td>{{ tipoProy.status }}</td>
+                        <td>
+                          <span *ngIf="tipoProy.status">Activo</span>
+                          <span *ngIf="!tipoProy.status">Desactivado</span>
+                        </td>
                         <td class="text-center">
                           <button class="btn btn-sm btn-primary" (click)="clickEditar('Tipo', listaTipoProyecto[i])" data-toggle="modal" data-target="#exampleModalEditar">
                             ...

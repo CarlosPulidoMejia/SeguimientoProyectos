@@ -12,7 +12,7 @@ export class ConfigService {
     constructor(private httpClient: HttpClient) { }
 
     getAllUsuario():Observable<listaUsuarios[]>{
-        return this.httpClient.get<listaUsuarios[]>(`${global.URL_API}recursos/listarUsuarios`)
+        return this.httpClient.get<listaUsuarios[]>(`${global.URL_APIA}recursos/listarUsuarios`)
     }
 
     getAllGerencias():Observable<listaGerencias[]>{

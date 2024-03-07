@@ -12,7 +12,7 @@
                                     <div class="col-2">
                                         <div class="form-floating">
                                             <input type="text" class="form-control" id="proyectobau" maxlength="50"
-                                                [(ngModel)]="nombreProyecto" />
+                                                [(ngModel)]="nombreProyecto"  (ngModelChange)="habilitar()" />
                                             <label for="fecFin">Proyecto - BAU</label>
                                         </div>
                                     </div>
@@ -24,7 +24,7 @@
                                                     {{ base.nombre_Base }}
                                                 </option>
                                             </select>-->
-                                            <select class="form-select" id="tipoProyecto" [(ngModel)]="tipoProyecto" name="tipoProyecto">
+                                            <select class="form-select" id="tipoProyecto" [(ngModel)]="tipoProyecto" name="tipoProyecto"  (ngModelChange)="habilitar()">
                                                 <option *ngFor="let tipoProyecto of listatipoProyecto" [ngValue]="tipoProyecto.idTipoProyecto">
                                                     {{ tipoProyecto.tipoProyecto | uppercase }}
                                                 </option>
@@ -41,7 +41,7 @@
                                                     {{ base.nombre_Base }}
                                                 </option>
                                             </select>-->
-                                            <select class="form-select" id="responsable" [(ngModel)]="responsable" name="responsable">
+                                            <select class="form-select" id="responsable" [(ngModel)]="responsable" name="responsable"  (ngModelChange)="habilitar()">
                                                 <option value="1" *ngFor="let usuario of listaResponsables" [ngValue]="usuario.idUsuario">
                                                     {{ usuario.nombre + " " + usuario.apellido }}
                                                 </option>
@@ -52,7 +52,7 @@
 
                                     <div class="col-2">
                                         <div class="form-floating">
-                                            <select class="form-select" id="documentacion" [(ngModel)]="tipoDocumentacion" name="documentacion">
+                                            <select class="form-select" id="documentacion" [(ngModel)]="tipoDocumentacion" name="documentacion" (ngModelChange)="cambiosDocumentacion(tipoDocumentacion)" (ngModelChange)="habilitar()">
                                                 <option *ngFor="let tipoDoc of listatipoDocumentacion" [ngValue]="tipoDoc.idDocumentacion">
                                                 {{ tipoDoc.documentacion | uppercase }}
                                                 </option>
@@ -63,19 +63,19 @@
 
                                     <div class="col-1">
                                         <div class="form-floating">
-                                            <input type="date" class="form-control" id="fecInicio" placeholder="Fecha Inicio" 
-                                            [(ngModel)]="fechaInicioProyecto" [ngClass]="{'border-danger': bordeFechas}"/>
+                                            <input type="date" class="form-control" id="fecInicio" placeholder="Fecha Inicio"
+                                            [(ngModel)]="fechaInicioProyecto" [ngClass]="{'border-danger': bordeFechaInicio}"(ngModelChange)="cambiosDocumentacion(tipoDocumentacion)" (ngModelChange)="habilitar()"/>
                                             <label for="fecInicio">Fecha Inicio</label>
-                                            <p *ngIf="bordeFechas" class="text-sm-center text-danger">Campo obligatorio</p>
+                                            <p *ngIf="bordeFechaInicio" class="text-sm-center text-danger">Campo obligatorio</p>
                                         </div>
                                     </div>
 
                                     <div class="col-1">
                                         <div class="form-floating">
                                             <input type="date" id="fecFin" class="form-control" placeholder="Fecha Fin"
-                                                [(ngModel)]="fechaFinProyecto" [ngClass]="{'border-danger': bordeFechas}"/>
+                                                [(ngModel)]="fechaFinProyecto" [ngClass]="{'border-danger': bordeFechaFin}"(ngModelChange)="cambiosDocumentacion(tipoDocumentacion)" (ngModelChange)="habilitar()"/>
                                             <label for="fecFin">Fecha Fin</label>
-                                            <p *ngIf="bordeFechas" class="text-sm-center text-danger">Campo obligatorio</p>
+                                            <p *ngIf="bordeFechaFin" class="text-sm-center text-danger">Campo obligatorio</p>
                                             <p *ngIf="fechasMal" class="text-sm-start text-danger">Fecha Fin no puede ser menor a Fecha Inicio</p>
                                         </div>
                                     </div>
@@ -209,7 +209,7 @@
                         <button  class="btn btn-primary" hidden>
                             Guardar Cambio
                         </button>
-                        <button (click)="cerrarSemana()" class="btn btn-success buttonM" data-toggle="modal" data-target="#exampleConfirmacion">
+                        <button (click)="cerrarSemana()" hidden class="btn btn-success buttonM" data-toggle="modal" data-target="#exampleConfirmacion">
                             Cerrar Seman
                         </button>
                     </div>
