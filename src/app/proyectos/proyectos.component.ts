@@ -87,7 +87,6 @@ export class ProyectosBauComponent implements OnInit {
     this.bordeFechaFin = false;
     this.fechasMal = false;
     this.habilitar();
-    //this.Repetir();
     this.getAllProyectos();
     this.getTipoDocumentacion();
     this.getTipoProyecto();
@@ -114,10 +113,6 @@ export class ProyectosBauComponent implements OnInit {
       this.claseBoton = 'btn btn-success mt-3';
       this.habilitarBoton = true;     
     }
-  }
-
-  Repetir() {
-    setInterval(() => this.habilitar(), 1000);
   }
   
   cambiosDocumentacion(tipoDocumentacion){   
