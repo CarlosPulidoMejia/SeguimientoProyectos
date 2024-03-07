@@ -327,6 +327,8 @@ export class ProyectosBauComponent implements OnInit {
   getAllProyectos(){
     this.proyectoBauService.getAllProyectos().subscribe({
       next: (data) => {
+        console.log(data);
+        
         this.listaProyectos = data;   
         $('#tablaProyectos').dataTable().fnDestroy(); 
         $('#tablaProyectos tbody').on('click', 'tr', function () {

@@ -534,8 +534,8 @@
                     <div class="row">
                       <div class="col-12">
                         <div class="form-floating">
-                          <select class="form-select" id="opcionesCatalogo"name="opcionesCatalogo">
-                            <option value="" selected disabled>{{ statusEditar }}</option>
+                          <select class="form-select" id="opcionesCatalogo"name="opcionesCatalogo"  [(ngModel)]="statusEditar" (ngModelChange)="guardarEdicion(tipoEdit, idEditar, nombreEditar, apellidoEditar, statusEditar)">
+                              <option selected disabled> {{ 'Activo' ? statusEditar : 'Desactivado' }} </option>
                             <option value="true">Activo</option>
                             <option value="false">Desactivado</option>
                           </select>

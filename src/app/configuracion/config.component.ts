@@ -216,7 +216,7 @@ export class ConfigComponent implements OnInit {
     if(tipo == 'dep'){
       this.requestEditar = {
         id_dependencia: id,
-        status: true,
+        status: estatus,
         tipo_dependencia_vch: nombre
       }
       this.ConfigService.putEditarDependencia(id, this.requestEditar).subscribe(
