@@ -20,32 +20,28 @@ export class TicketsComponent implements OnInit {
   listaTickets: listaTickets[];
   
   ngOnInit() {
+    this.getAllTickets();
   }
 
   getAllTickets() {
     this.TicketsService.getAllTickets().subscribe({
       next: (data) => {
-        this.listaTickets = data;
-        
-        $('#tablaProyectos').dataTable().fnDestroy();
-
-
-        $('#tablaProyectos tbody').on('click', 'tr', function () {
+        this.listaTickets = data;       
+        $('#tablaTickets').dataTable().fnDestroy();
+        $('#tablaTickets tbody').on('click', 'tr', function () {
           $(this).toggleClass('selected');
         });
-
         setTimeout(() => {
-          $('#tablaProyectos').DataTable({
+          $('#tablaTickets').DataTable({
             language: {
               url: '//cdn.datatables.net/plug-ins/1.11.3/i18n/es-mx.json'
             },
-            pageLength: 10,
+            pageLength: 5,
             responsive: true
           });
         }, 1);
       },
       error: (e) => {
-
         console.log(e)
       }
     });

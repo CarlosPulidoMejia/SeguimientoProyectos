@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" hidden>
   <div class="col-12 mb-5">
       <div class="card">
           <div class="card-body">
@@ -27,7 +27,7 @@
               <div class="row">
                 <div class="col-12">
                   <div class="table-responsive">
-                    <table class="table" id="tablaProyectos">
+                    <table class="table" id="">
                       <thead class="table-success">
                         <tr>
                           <th scope="col">Nombre del Archivo</th>
@@ -69,7 +69,7 @@
         <div class="row">
           <div class="col-12">
             <div class="table-responsive">
-              <table class="table" id="tablaProyectos">
+              <table class="table" id="tablaTickets">
                 <thead class="table-success">
                   <tr>
                     <th scope="col">No</th>
@@ -88,107 +88,20 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">3128</th>
-                    <td>19/12/23 12:00</td>
-                    <td>19:12:23 12:02</td>
-                    <td>Open</td>
-                    <td>Medio</td>
-                    <td>Individual BIM (Individual)</td>
-                    <td></td>
-                    <td>Mesa de Sistema: PeticionesAplicaciones</td>
-                    <td style="width:210px;">
-                      <p>Buena tarde  Solictando su apoyo para fijar
-                        el valor de la UDI al día 10 de dic 23 en SAH 
-                        para validar la apertura</p>
-                    </td>
-                    <td>Manuel Ortiz Avila (Manuel Ortiz)</td>
-                    <td style="width:150px;">
-                      <select class="form-select" id="documentacionProy" ></select>
-                    </td>
-                    <td style="width:150px;">
-                      <select class="form-select" id="documentacionProy"></select>
-                    </td>
-                    <td>
-                      <input type="text" class="form-control" size="1">
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3102</th>
-                    <td>18/12/23 20:08</td>
-                    <td>19:12:23 13:40</td>
-                    <td>Open</td>
-                    <td>Medio</td>
-                    <td>Individual BIM (Individual)</td>
-                    <td></td>
-                    <td>Mesa de Sistema: PeticionesAplicaciones</td>
-                    <td style="width:210px;">
-                      <p>Buena noche Por favor de su apoyo con las
-                        correcciones indicadas. Gracias
-                      </p>
-                    </td>
-                    <td>Flor Patricia Garduño Hernández (Flor.Garduño)</td>
-                    <td style="width:150px;">
-                      <select class="form-select" id="documentacionProy" ></select>
-                    </td>
-                    <td style="width:150px;">
-                      <select class="form-select" id="documentacionProy"></select>
-                    </td>
-                    <td>
-                      <input type="text" class="form-control" size="1">
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3054</th>
-                    <td>18/12/2023 11:22</td>
-                    <td>18/12/2023 11:23</td>
-                    <td>Open</td>
-                    <td>Medio</td>
-                    <td>Individual BIM (Individual)</td>
-                    <td></td>
-                    <td>Mesa de Sistema: PeticionesAplicaciones</td>
-                    <td style="width:210px;">
-                      <p>Buena tarde 
-                        Por favor de su apoyo con la aplicación de los excedentes como abono a capital. 
-                        Saludos                         
-                      </p>
-                    </td>
-                    <td>Flor Patricia Garduño Hernández (Flor.Garduño)</td>
-                    <td style="width:150px;">
-                      <select class="form-select" id="documentacionProy" ></select>
-                    </td>
-                    <td style="width:150px;">
-                      <select class="form-select" id="documentacionProy"></select>
-                    </td>
-                    <td>
-                      <input type="text" class="form-control" size="1">
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3027</th>
-                    <td>15/12/2023 16:17</td>
-                    <td>18/12/2023 13:37</td>
-                    <td>Resolved</td>
-                    <td>Medio</td>
-                    <td>Individual BIM (Individual)</td>
-                    <td></td>
-                    <td>Mesa de Sistemas : Accesos</td>
-                    <td style="width:210px;">
-                      <p>   Buenas Tardes.
-                        Anexo el calendario mensual de cierre de SIBA para el 2024.
-                        Saludos
-                      </p>
-                    </td>
-                    <td>Carlos Alberto Resen (Carlos.Resendiz)</td>
-                    <td style="width:150px;">
-                      <select class="form-select" id="documentacionProy" ></select>
-                    </td>
-                    <td style="width:150px;">
-                      <select class="form-select" id="documentacionProy"></select>
-                    </td>
-                    <td>
-                      <input type="text" class="form-control" size="1">
-                    </td>
+                  <tr *ngFor="let ticket of listaTickets; let i = index">
+                    <th scope="row">{{ ticket.numero }}</th>
+                    <td>{{ ticket.fechaInicio }}</td>
+                    <td>{{ ticket.fechaFin }}</td>
+                    <td>{{ ticket.estado }}</td>
+                    <td>{{ ticket.prioridad }}</td>
+                    <td>{{ ticket.gerencia }}</td>
+                    <td>area usuaria</td>
+                    <td>{{ ticket.tipoSolicitud }}</td>
+                    <td style="width:200px;">{{ ticket.descripcion }}</td>
+                    <td>{{ ticket.usuario }}</td>
+                    <td>tipo ticket</td>
+                    <td>recurso</td>
+                    <td>horass</td>
                   </tr>
                 </tbody>
               </table>

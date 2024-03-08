@@ -13,7 +13,7 @@ export class TicketsService {
     constructor(private httpClient: HttpClient) { }
 
     getAllTickets(): Observable<listaTickets[]>{
-        return this.httpClient.get<listaTickets[]>(`${global.URL_API}listaproyectos`)
+        return this.httpClient.get<listaTickets[]>(`${global.URL_API}ticket/listar`)
     } 
 
     postAgregarTicket(proyecto:any){

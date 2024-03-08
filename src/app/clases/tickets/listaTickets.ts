@@ -1,5 +1,12 @@
 export class listaTickets{
-    detalleProyectoResponse:any;
-    proyectoResponse: any;
-    seleccion:boolean;
+    idTicket:any;
+    numero: any;
+    fechaInicio:any;
+    fechaFin:any;
+    estado:any;
+    prioridad:any;
+    tipoSolicitud:any;
+    descripcion:any;
+    usuario:any;
+    gerencia:any;
 }
