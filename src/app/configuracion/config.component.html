@@ -18,25 +18,25 @@
                     <div class="row" *ngIf="mostrarAddUsr">
                       <div class="col-2">
                         <div class="form-floating">
-                          <input type="text" class="form-control" id="nombreUsuarios" />
+                          <input type="text" class="form-control" id="nombreUsuarios" [(ngModel)]="nombreUsuario"/>
                           <label for="fecFin">Nombre</label>
                         </div>
                       </div>
                       <div class="col-2">
                         <div class="form-floating">
-                          <input type="text" class="form-control" id="apellidoUsuarios" />
+                          <input type="text" class="form-control" id="apellidoUsuarios" [(ngModel)]="apellidoUsuario"/>
                           <label for="fecFin">Apellido</label>
                         </div>
                       </div>
                       <div class="col-2">
                         <div class="form-floating">
-                          <input type="text" class="form-control" id="usuarioUsuarios" />
+                          <input type="text" class="form-control" id="usuarioUsuarios" [(ngModel)]="correoUsuario"/>
                           <label for="fecFin">Usuario</label>
                         </div>
                       </div>
                       <div class="col-2">
                         <div class="form-floating">
-                          <select class="form-select" id="gerenciaUsuarios"name="gerenciaUsuarios">
+                          <select class="form-select" id="gerenciaUsuarios"name="gerenciaUsuarios" [(ngModel)]="gerenciaUsuario" >
                             <option value="" selected disabled>Seleccione una opción</option>
                             <option value="" *ngFor="let gerencia of listaGerencia">
                               {{ gerencia.gerencia }}
@@ -60,7 +60,7 @@
                         </div>
                       </div>
                       <div class="col-1 mt-3">
-                        <button class="btn btn-success" >
+                        <button class="btn btn-success" (click)="agregarUsuario()">
                             Agregar
                         </button>
                       </div>
@@ -528,6 +528,20 @@
                   </div>
                 </div>
               </div>
+              <div class="col-6"  *ngIf="usuarios">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="form-floating">
+                          <input type="text" value="{{ usuarioEditar }}" class="form-control" id="nombreDependencia" />
+                          <label for="fecFin">Usuario</label> 
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <div class="col-6">
                 <div class="card">
                   <div class="card-body">
@@ -540,6 +554,29 @@
                             <option value="false">Desactivado</option>
                           </select>
                           <label for="fecFin">Status</label> 
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12" *ngIf="usuarios">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-6">
+                        <div class="form-floating">
+                          <input type="text" disabled value="{{ gerenciaEditar }}" class="form-control" id="nombreDependencia" />
+                          <label for="fecFin">Gerencia Actual</label> 
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="form-floating">
+                          <select class="form-select" id="opcionesCatalogo"name="opcionesCatalogo"  [(ngModel)]="gerenciaEditar" (ngModelChange)="guardarEdicion(tipoEdit, idEditar, nombreEditar, apellidoEditar, statusEditar)">
+                            <option selected disabled [ngValue]="{gerenciaEditar}"> {{ gerenciaEditar }} </option>
+                            <option value="">Gernecia 1</option>
+                          </select>
+                          <label for="fecFin">Gerencia Nueva</label> 
                         </div>
                       </div>
                     </div>

@@ -45,5 +45,6 @@ export class TicketsComponent implements OnInit {
         console.log(e)
       }
     });
-    }
+  }
+  
 }

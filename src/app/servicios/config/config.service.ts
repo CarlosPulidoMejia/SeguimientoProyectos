@@ -39,6 +39,10 @@ export class ConfigService {
         return this.httpClient.put(`${global.URL_API}modificarTipoProyecto/${id}`, tipo)
     }
 
+    putEditarUsuario(id:any,detallesUsuario:any){
+        return this.httpClient.put(`${global.URL_API}recursos/modificar/${id}`,detallesUsuario)
+    }
+
     postAgregarDependencia(dependencia:any){
         return this.httpClient.post(`${global.URL_API}crearDependencia`, dependencia)
     }
@@ -57,6 +61,10 @@ export class ConfigService {
 
     postAgregarTipoProy(tipoProy:any){
         return this.httpClient.post(`${global.URL_API}crearTipoProyecto`,tipoProy)
+    }
+
+    postAgregarUsuario(nuevoUsuario:any){
+        return this.httpClient.post(`${global.URL_API}recursos/crearUsuario`, nuevoUsuario)
     }
     /**
      * 

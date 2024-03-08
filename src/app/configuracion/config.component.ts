@@ -42,12 +42,18 @@ export class ConfigComponent implements OnInit {
   idEditar: number;
   nombreEditar: string;
   apellidoEditar: string;
+  usuarioEditar:string;
+  gerenciaEditar:string;
   statusEditar: string;
   requestEditar: any;
   requestAgregar: any;
   nombreCatAdd:any;
   tipoEdit:any;
   tipoCatalogo: number;
+  nombreUsuario:any;
+  apellidoUsuario:any;
+  correoUsuario:any;
+  gerenciaUsuario:any;
 
   ngOnInit() {
     this.config = "Usuarios";
@@ -206,8 +212,12 @@ export class ConfigComponent implements OnInit {
       this.statusEditar = 'Activo'
     }
     if(editar == 'Usuarios'){
+      console.log(detalles);
+      
       this.nombreEditar = detalles.nombre;
       this.apellidoEditar = detalles.apellido;
+      this.usuarioEditar = detalles.correo;
+      this.gerenciaEditar = detalles.gerencia[0].gerencia;
       this.statusEditar = detalles.status == true ? 'Activo' : 'Desactivado';
     }
   }
@@ -330,7 +340,6 @@ export class ConfigComponent implements OnInit {
   }
 
   agregarCatalogo(tipoCat,nombreCatAdd){
-    console.log(tipoCat);
     if(tipoCat == 1){
       this.requestAgregar = {
         status: true,
@@ -476,5 +485,39 @@ export class ConfigComponent implements OnInit {
         },
       )
     }
+  }
+
+  agregarUsuario(){
+    this.requestAgregar={
+      idGerencia: 1,
+      apellido: this.apellidoUsuario,
+      nombre: this.nombreUsuario,
+      correo: this.correoUsuario,
+      status: true
+    }
+    this.ConfigService.postAgregarUsuario(this.requestAgregar).subscribe(
+      data => {
+        console.log("Complete function triggered.")
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Dependencia agregada correctamente',
+          showConfirmButton: false
+        })
+        this.apellidoUsuario = '';
+        this.nombreUsuario = '';
+        this.correoUsuario = '';
+        this.getListaUsuarios();
+      },err => {
+        console.log(err)
+        console.log("Complete function triggered.")
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'No se pudo agregar la dependencia',
+          showConfirmButton: false
+        })
+      },
+    )
   }
 }
