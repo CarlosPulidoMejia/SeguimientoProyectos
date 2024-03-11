@@ -67,6 +67,7 @@ export class ConfigComponent implements OnInit {
     this.modalEditar = false;
     this.disabled = 'bg-black bg-opacity-10';
     this.clickUsuarios();
+    this.getListaGer();
   }
 
   clickUsuarios(){

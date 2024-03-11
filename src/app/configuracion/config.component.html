@@ -560,21 +560,16 @@
                   </div>
                 </div>
               </div>
-              <div class="col-12" *ngIf="usuarios">
+              <div class="col-16" *ngIf="usuarios">
                 <div class="card">
                   <div class="card-body">
                     <div class="row">
                       <div class="col-6">
                         <div class="form-floating">
-                          <input type="text" disabled value="{{ gerenciaEditar }}" class="form-control" id="nombreDependencia" />
-                          <label for="fecFin">Gerencia Actual</label> 
-                        </div>
-                      </div>
-                      <div class="col-6">
-                        <div class="form-floating">
-                          <select class="form-select" id="opcionesCatalogo"name="opcionesCatalogo"  [(ngModel)]="gerenciaEditar" (ngModelChange)="guardarEdicion(tipoEdit, idEditar, nombreEditar, apellidoEditar, statusEditar)">
-                            <option selected disabled [ngValue]="{gerenciaEditar}"> {{ gerenciaEditar }} </option>
-                            <option value="">Gernecia 1</option>
+                          <select class="form-select" id="gerenciaEditar"  name="gerenciaEditar" [(ngModel)]="gerenciaEditar">
+                            <option *ngFor="let gerencia of listaGerencia" [ngValue]="gerencia.gerencia">
+                              {{ gerencia.gerencia }}
+                            </option>
                           </select>
                           <label for="fecFin">Gerencia Nueva</label> 
                         </div>
