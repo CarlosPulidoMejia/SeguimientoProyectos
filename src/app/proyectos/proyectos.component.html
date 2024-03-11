@@ -309,7 +309,7 @@
                                                             </td>
                                                             <td>{{ documentar.objetivo }}</td>
                                                             <td>
-                                                                <input type="text" min="0" class="form-control"  value="{{ documentar.detalleObjetivo }}"  [(ngModel)]="listaObjetivos[i].detalleObjetivo">
+                                                                <input type="text" min="0" class="form-control"  value="{{ documentar.detalleObjetivo }}"  [(ngModel)]="listaObjetivos[i].detalleObjetivo" (ngModelChange)="guardarDocumentarAvanceEdit(documentar.idObjetivo, listaObjetivos[i])">
                                                             </td>
                                                         </tr>
                                                     </tbody>
