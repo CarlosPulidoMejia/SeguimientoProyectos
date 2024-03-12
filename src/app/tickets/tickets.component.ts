@@ -1,7 +1,7 @@
 //import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-//import Swal from 'sweetalert2';
+import Swal from 'sweetalert2';
 import { TicketsService } from '../servicios/tickets/ticket.service';
 import { listaTickets } from '../clases/tickets/listaTickets';
 
@@ -18,7 +18,9 @@ export class TicketsComponent implements OnInit {
  * Listas
  */
   listaTickets: listaTickets[];
-  
+  selectedFiles?: FileList;
+  currentFile?: File;
+
   ngOnInit() {
     this.getAllTickets();
   }
@@ -47,4 +49,37 @@ export class TicketsComponent implements OnInit {
     });
   }
   
+  selectFiles(event:any): void {
+    this.selectedFiles = event.target.files;
+  }
+
+  cargaTickets(){
+    const file: File | null = this.selectedFiles.item(0);
+    Swal.fire({
+      title: "Enviando carga masiva...",
+      text: "Espere un momento",
+      imageUrl: "../../assets/progress.gif",
+      imageWidth: 160,
+      imageHeight: 160,
+      showConfirmButton: false,
+      allowOutsideClick: false
+    });
+    this.TicketsService.postAgregarTicket(this.currentFile).subscribe(
+      data => {
+        console.log(data)
+      },
+      err => {
+        console.log(err)
+      },
+      () => {
+        console.log("Complete function triggered.")
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Archivo enviado correctamente',
+          showConfirmButton: false
+        })
+      }
+    )
+  }
 }

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { listaTickets } from 'src/app/clases/tickets/listaTickets';
@@ -16,8 +16,15 @@ export class TicketsService {
         return this.httpClient.get<listaTickets[]>(`${global.URL_API}ticket/listar`)
     } 
 
-    postAgregarTicket(proyecto:any){
-        return this.httpClient.post(`${global.URL_API}guardarproyecto`,proyecto);
+    postAgregarTicket(file:File){
+        const formData: FormData = new FormData();
+        formData.append('file', file);
+        
+        const req = new HttpRequest('POST',`${global.URL_API}ticket/cargar`, formData,{
+            reportProgress:true,
+            responseType: 'json'
+        });
+        return this.httpClient.request(req);
     }  
 
     putEditrTicket(proyecto:any,id:any){
