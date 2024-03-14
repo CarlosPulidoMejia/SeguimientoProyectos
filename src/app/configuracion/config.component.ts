@@ -55,6 +55,7 @@ export class ConfigComponent implements OnInit {
   nombreUsuario:any;
   apellidoUsuario:any;
   correoUsuario:any;
+  gerenciaInicial:any;
   gerenciaUsuario:any;
   perfilUsuario:any;
 
@@ -238,19 +239,19 @@ export class ConfigComponent implements OnInit {
       this.idEditar = detalles.idTipoProyecto;
       this.nombreEditar = detalles.tipoProyecto;
       this.statusEditar = 'Activo'
-    }
-    if(editar == 'Usuarios'){
-      console.log(detalles);
-      
+    }if(editar == 'Usuarios'){
+      this.tipoEdit = 'usu';
+      this.idEditar = detalles.idUsuario
       this.nombreEditar = detalles.nombre;
       this.apellidoEditar = detalles.apellido;
       this.usuarioEditar = detalles.correo;
+      this.gerenciaInicial = detalles.gerencia[0].gerencia;
       this.gerenciaEditar = detalles.gerencia[0].gerencia;
       this.statusEditar = detalles.status == true ? 'Activo' : 'Desactivado';
     }
   }
 
-  guardarEdicion(tipo, id, nombre, apellido, estatus){
+  guardarEdicion(tipo, id, nombre, apellido, usuario, estatus, gerencia){
     if(tipo == 'dep'){
       this.requestEditar = {
         id_dependencia: id,
@@ -354,6 +355,32 @@ export class ConfigComponent implements OnInit {
             position: 'center',
             icon: 'error',
             title: 'No se pudo guardar el tipo de proyecto',
+            showConfirmButton: false
+          })
+        },
+      )
+    }
+    if(tipo == 'usu'){
+      let gerNueva = this.listaGerencia.filter(value => value.gerencia == gerencia)[0];
+      let gerAntes = this.listaGerencia.filter( value => value.gerencia == this.gerenciaInicial)[0];
+      this.requestAgregar = {
+        idGerencia:gerNueva.idGerencia,
+        idGerenciaAntes: gerAntes.idGerencia,
+        apellido: apellido,
+        correo: usuario,
+        nombre:nombre,
+        status: estatus == 'Activo' ? true : false
+      }
+      this.ConfigService.putEditarUsuario(this.idEditar, this.requestAgregar).subscribe(
+        data => {
+          this.getListaUsuarios();
+        },err => {
+          console.log(err)
+          console.log("Complete function triggered.")
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'No se pudo guardar los cambios',
             showConfirmButton: false
           })
         },

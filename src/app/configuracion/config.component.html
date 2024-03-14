@@ -448,8 +448,8 @@
                     <div class="row">
                       <div class="col-12">
                         <div class="form-floating">
-                          <input type="text" value="{{ nombreEditar }}" [(ngModel)]="nombreEditar" 
-                            (ngModelChange)="guardarEdicion(tipoEdit, idEditar, nombreEditar, apellidoEditar, statusEditar)"
+                          <input type="text" value="{{ nombreEditar }}" [(ngModel)]="nombreEditar" [disabled]="statusEditar == 'Desactivado'"
+                            (ngModelChange)="guardarEdicion(tipoEdit, idEditar, nombreEditar, apellidoEditar, usuarioEditar, statusEditar, gerenciaEditar)"
                             class="form-control" id="nombreDependencia" />
                           <label for="fecFin">Nombre</label> 
                         </div>
@@ -464,7 +464,9 @@
                     <div class="row">
                       <div class="col-12">
                         <div class="form-floating">
-                          <input type="text" value="{{ apellidoEditar }}" class="form-control" id="nombreDependencia" />
+                          <input type="text" value="{{ apellidoEditar }}" [disabled]="statusEditar == 'Desactivado'"
+                          (ngModelChange)="guardarEdicion(tipoEdit, idEditar, nombreEditar, apellidoEditar, usuarioEditar, statusEditar, gerenciaEditar)"
+                          class="form-control" id="nombreDependencia" />
                           <label for="fecFin">Apellido</label> 
                         </div>
                       </div>
@@ -478,7 +480,9 @@
                     <div class="row">
                       <div class="col-12">
                         <div class="form-floating">
-                          <input type="text" value="{{ usuarioEditar }}" class="form-control" id="nombreDependencia" />
+                          <input type="text" value="{{ usuarioEditar }}" [disabled]="statusEditar == 'Desactivado'"
+                          (ngModelChange)="guardarEdicion(tipoEdit, idEditar, nombreEditar, apellidoEditar, usuarioEditar, statusEditar, gerenciaEditar)"
+                          class="form-control" id="nombreDependencia"  />
                           <label for="fecFin">Usuario</label> 
                         </div>
                       </div>
@@ -492,10 +496,11 @@
                     <div class="row">
                       <div class="col-12">
                         <div class="form-floating">
-                          <select class="form-select" id="opcionesCatalogo"name="opcionesCatalogo"  [(ngModel)]="statusEditar" (ngModelChange)="guardarEdicion(tipoEdit, idEditar, nombreEditar, apellidoEditar, statusEditar)">
-                              <option selected disabled> {{ 'Activo' ? statusEditar : 'Desactivado' }} </option>
-                            <option value="true">Activo</option>
-                            <option value="false">Desactivado</option>
+                          <select class="form-select" id="opcionesCatalogo"name="opcionesCatalogo"  [(ngModel)]="statusEditar" 
+                          (ngModelChange)="guardarEdicion(tipoEdit, idEditar, nombreEditar, apellidoEditar, usuarioEditar, statusEditar, gerenciaEditar)">
+                            <option selected disabled> {{ 'Activo' ? statusEditar : 'Desactivado' }} </option>
+                            <option value="Activo">Activo</option>
+                            <option value="Desactivado">Desactivado</option>
                           </select>
                           <label for="fecFin">Status</label> 
                         </div>
@@ -510,12 +515,13 @@
                     <div class="row">
                       <div class="col-6">
                         <div class="form-floating">
-                          <select class="form-select" id="gerenciaEditar"  name="gerenciaEditar" [(ngModel)]="gerenciaEditar">
+                          <select class="form-select" id="gerenciaEditar"  name="gerenciaEditar" [(ngModel)]="gerenciaEditar"  [disabled]="statusEditar == 'Desactivado'"
+                          (ngModelChange)="guardarEdicion(tipoEdit, idEditar, nombreEditar, apellidoEditar, usuarioEditar, statusEditar, gerenciaEditar)" >
                             <option *ngFor="let gerencia of listaGerencia" [ngValue]="gerencia.gerencia">
                               {{ gerencia.gerencia }}
                             </option>
                           </select>
-                          <label for="fecFin">Gerencia Nueva</label> 
+                          <label for="fecFin">Gerencia</label> 
                         </div>
                       </div>
                     </div>
