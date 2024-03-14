@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import * as global from '../../globals';
-import { listaUsuarios, listaGerencias } from 'src/app/clases/configuracion/listaConfig';
+import { listaUsuarios, listaGerencias, listaRoles } from 'src/app/clases/configuracion/listaConfig';
 
 @Injectable({
     providedIn: 'root'
@@ -17,6 +17,10 @@ export class ConfigService {
 
     getAllGerencias():Observable<listaGerencias[]>{
         return this.httpClient.get<listaGerencias[]>(`${global.URL_API}recursos/listarGerencias`)
+    }
+
+    getRoles():Observable<listaRoles[]>{
+        return this.httpClient.get<listaRoles[]>(`${global.URL_API}rol/listar`)
     }
 
     putEditarDependencia(id:any,dependencia:any){

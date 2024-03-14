@@ -38,7 +38,7 @@
                         <div class="form-floating">
                           <select class="form-select" id="gerenciaUsuarios"name="gerenciaUsuarios" [(ngModel)]="gerenciaUsuario" >
                             <option value="" selected disabled>Seleccione una opción</option>
-                            <option value="" *ngFor="let gerencia of listaGerencia">
+                            <option [ngValue]="gerencia.idGerencia" *ngFor="let gerencia of listaGerencia">
                               {{ gerencia.gerencia }}
                             </option>
                             <!--<option *ngFor="let tipoDoc of listatipoDocumentacion" [ngValue]="tipoDoc.idDocumentacion">
@@ -50,11 +50,14 @@
                       </div>
                       <div class="col-2">
                         <div class="form-floating">
-                          <select class="form-select" id="tipoProyecto" name="tipoProyecto">
+                          <select class="form-select" id="perfil" name="perfil" [(ngModel)]="perfilUsuario">
                             <!--<option *ngFor="let tipoProyecto of listatipoProyecto" [ngValue]="tipoProyecto.idTipoProyecto">
                                 {{ tipoProyecto.tipoProyecto | uppercase }}
                             </option>-->
-                            <option value=""></option>
+                            <option value="" selected disabled>Seleccione una opción</option>
+                            <option [ngValue]="perfil.idRol" *ngFor="let perfil of listaRoles">
+                              {{ perfil.permiso }}
+                            </option>
                           </select>
                           <label for="tipoProyecto">Perfil</label>
                         </div>

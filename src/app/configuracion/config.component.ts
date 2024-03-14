@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import Swal from 'sweetalert2';
-import { listaDependencia, listaDocumentacion, listaEstado, listaFase, listaTipoProyecto, listaUsuarios, listaGerencias } from '../clases/configuracion/listaConfig';
+import { listaDependencia, listaDocumentacion, listaEstado, listaFase, listaTipoProyecto, listaUsuarios, listaGerencias, listaRoles } from '../clases/configuracion/listaConfig';
 import { ConfigService } from '../servicios/config/config.service';
 import { ProyectoBauService } from '../servicios/proyectos/proyectos.service';
 
@@ -25,6 +25,7 @@ export class ConfigComponent implements OnInit {
   listaTipoProyecto: listaTipoProyecto[];
   listaUsuario: listaUsuarios[];
   listaGerencia: listaGerencias[];
+  listaRoles: listaRoles[];
 /*********
  * Variables
  */
@@ -54,6 +55,7 @@ export class ConfigComponent implements OnInit {
   apellidoUsuario:any;
   correoUsuario:any;
   gerenciaUsuario:any;
+  perfilUsuario:any;
 
   ngOnInit() {
     this.config = "Usuarios";
@@ -68,6 +70,7 @@ export class ConfigComponent implements OnInit {
     this.disabled = 'bg-black bg-opacity-10';
     this.clickUsuarios();
     this.getListaGer();
+    this.getListaRol();
   }
 
   clickUsuarios(){
@@ -181,6 +184,16 @@ export class ConfigComponent implements OnInit {
         }
       }
     )
+  }
+
+  getListaRol(){
+    this.ConfigService.getRoles().subscribe({
+      next: (data) =>{
+        this.listaRoles = data
+      },error: (e) => {
+        console.log(e)
+      }
+    })
   }
 
   clickEditar(editar,detalles){
@@ -490,11 +503,12 @@ export class ConfigComponent implements OnInit {
 
   agregarUsuario(){
     this.requestAgregar={
-      idGerencia: 1,
+      idGerencia: this.gerenciaUsuario,
       apellido: this.apellidoUsuario,
       nombre: this.nombreUsuario,
       correo: this.correoUsuario,
-      status: true
+      status: true,
+      idRol: this.perfilUsuario
     }
     this.ConfigService.postAgregarUsuario(this.requestAgregar).subscribe(
       data => {

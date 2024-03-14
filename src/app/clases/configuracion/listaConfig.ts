@@ -42,3 +42,9 @@ export class listaGerencias{
     idGerencia: any;
     gerencia: any;
 }
+
+export class listaRoles {
+    idRol: any;
+    permiso: any;
+    status: any;
+}
