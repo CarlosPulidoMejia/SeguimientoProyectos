@@ -12,7 +12,7 @@ export class ConfigService {
     constructor(private httpClient: HttpClient) { }
 
     getAllUsuario():Observable<listaUsuarios[]>{
-        return this.httpClient.get<listaUsuarios[]>(`${global.URL_APIA}recursos/listarUsuarios`)
+        return this.httpClient.get<listaUsuarios[]>(`${global.URL_API}recursos/listarUsuarios`)
     }
 
     getAllGerencias():Observable<listaGerencias[]>{
@@ -66,18 +66,4 @@ export class ConfigService {
     postAgregarUsuario(nuevoUsuario:any){
         return this.httpClient.post(`${global.URL_API}recursos/crearUsuario`, nuevoUsuario)
     }
-    /**
-     * 
-    postAgregarProyectos(proyecto:any){
-        return this.httpClient.post(`${global.URL_API}guardarproyecto`,proyecto);
-    }
-     *   
-    putEditrProyecto(proyecto:any,id:any){
-        return this.httpClient.put(`${global.URL_API}detalleProy/${id}`,proyecto);
-    }
-     * 
-    getAllProyectos(): Observable<listaProyectos[]>{
-        return this.httpClient.get<listaProyectos[]>(`${global.URL_API}listaproyectos`)
-    } 
-     */
 }

@@ -71,6 +71,7 @@ export class ProyectosBauComponent implements OnInit {
   habilitarFechaTabla: boolean;
   isChecked: boolean;
   comentario: any;
+  idProyecto:any;
 
 
   constructor( private proyectoBauService: ProyectoBauService, private configService: ConfigService) {    }
@@ -355,6 +356,7 @@ export class ProyectosBauComponent implements OnInit {
 
   getDocumentacion(idProyecto, comentarioProyecto){
     this.comentario = comentarioProyecto
+    this.idProyecto = idProyecto
     this.proyectoBauService.getDocumentacionAvance(idProyecto).subscribe(
       data => {
         this.listaObjetivos = data
@@ -380,6 +382,30 @@ export class ProyectosBauComponent implements OnInit {
       data =>{
       }, err => {
         console.log(err)
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'No se pudo agregar el comentario',
+          showConfirmButton: false
+        })
+      }
+    )
+  }
+
+  guardarComentarioProyecto(comentario){ 
+    this.requestAgregar = {
+      comentarioProyecto: comentario
+    }
+    this.proyectoBauService.putEditarComentarioProyecto(this.idProyecto,this.requestAgregar).subscribe(
+      data => {
+      }, err => {
+        console.log(err)
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'No se pudo agregar el comentario',
+          showConfirmButton: false
+        })
       }
     )
   }

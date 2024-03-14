@@ -242,9 +242,14 @@
                                         <div  class="col-12">
                                             <div  class="form-floating">
                                                 <textarea  type="text" id="idDatasource" placeholder="ID"  value="{{ comentario }}"
-                                                    class="form-control ng-valid ng-dirty ng-touched" style="height: 120px;" >
+                                                    class="form-control ng-valid ng-dirty ng-touched" style="height: 120px;" [(ngModel)]="comentario">
                                                 </textarea>
                                             </div>
+                                        </div>
+                                        <div class="modal-footer boder border-0 -mb-5">
+                                            <button  type="button" class="btn btn-primary" (click)="guardarComentarioProyecto(comentario)">
+                                                Guardar Comentarios
+                                            </button>
                                         </div>
                                     </div>
                                 </div>

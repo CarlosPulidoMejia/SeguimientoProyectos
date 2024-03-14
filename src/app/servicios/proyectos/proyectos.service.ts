@@ -55,4 +55,8 @@ export class ProyectoBauService {
   putComentarioDocumentacion(objetivo:any,id:any){
     return this.httpClient.put(`${global.URL_API}objetivo/modificarDocumentacion/${id}`,objetivo);
   }
+
+  putEditarComentarioProyecto(idProyecto:any,comentarioProyecto:any){
+    return this.httpClient.put(`${global.URL_API}objetivo/editarComentario/${idProyecto}`,comentarioProyecto);
+  }
 }
