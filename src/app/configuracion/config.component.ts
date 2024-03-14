@@ -26,6 +26,7 @@ export class ConfigComponent implements OnInit {
   listaUsuario: listaUsuarios[];
   listaGerencia: listaGerencias[];
   listaRoles: listaRoles[];
+  tablaRol:listaRoles[];
 /*********
  * Variables
  */
@@ -84,7 +85,7 @@ export class ConfigComponent implements OnInit {
     this.usuarios = false;
     this.perfiles = true;
     this.catalgos = false;
-    this.getListaGer();
+    this.getListaRol();
   }
 
   clickCatalogos(){
@@ -189,7 +190,20 @@ export class ConfigComponent implements OnInit {
   getListaRol(){
     this.ConfigService.getRoles().subscribe({
       next: (data) =>{
-        this.listaRoles = data
+        this.tablaRol = data
+        $('#tablaRoles').dataTable().fnDestroy(); 
+        $('#tablaRoles tbody').on('click', 'tr', function () {
+          $(this).toggleClass('selected');
+        });
+        setTimeout(() => {
+          $('#tablaRoles').DataTable({
+            language: {
+              url: '//cdn.datatables.net/plug-ins/1.11.3/i18n/es-mx.json'
+            },
+            pageLength: 10,
+            responsive: true
+          });
+        }, 1);
       },error: (e) => {
         console.log(e)
       }

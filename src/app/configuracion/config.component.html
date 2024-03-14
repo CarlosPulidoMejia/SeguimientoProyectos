@@ -90,11 +90,11 @@
             </div>
             <!--Agregar Perfil-->
             <div class="row" *ngIf="perfiles" hidden>
-                          <div class="col-12">
-                            <div class="card">
-                              <div class="card-body">
-                                <h6 class="card-title">Agregar Perfil</h6>
-                                <div class="row" *ngIf="mostrarAddPrf">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-body">
+                    <h6 class="card-title">Agregar Perfil</h6>
+                    <div class="row" *ngIf="mostrarAddPrf">
                                   <div class="col-2">
                                     <div class="form-floating">
                                       <input type="text" class="form-control" id="nombrePerfil" />
@@ -116,26 +116,26 @@
                                         Agregar
                                     </button>
                                   </div>
-                                </div>
-                                <div class="col-2 right" *ngIf="!mostrarAddPrf" (click)="mostrarAddPrf=true">
+                    </div>
+                    <div class="col-2 right" *ngIf="!mostrarAddPrf" (click)="mostrarAddPrf=true">
                                           <svg xmlns="http://www.w3.org/2000/svg" width="23.616" height="13.503"
                                               viewBox="0 0 23.616 13.503">
                                               <path id="Icon_ionic-ios-arrow-down" data-name="Icon ionic-ios-arrow-down"
                                                   d="M18,20.679l8.93-8.937a1.681,1.681,0,0,1,2.384,0,1.7,1.7,0,0,1,0,2.391L19.2,24.258a1.685,1.685,0,0,1-2.327.049L6.68,14.14a1.688,1.688,0,0,1,2.384-2.391Z"
                                                   transform="translate(-6.188 -11.246)" fill="#024e4f" />
                                           </svg>
-                                </div>
-                                <div class="col-2 right" *ngIf="mostrarAddPrf" (click)="mostrarAddPrf=false">
+                    </div>
+                    <div class="col-2 right" *ngIf="mostrarAddPrf" (click)="mostrarAddPrf=false">
                                           <svg xmlns="http://www.w3.org/2000/svg" width="23.619" height="13.503"
                                               viewBox="0 0 23.619 13.503">
                                               <path id="Icon_ionic-ios-arrow-up" data-name="Icon ionic-ios-arrow-up"
                                                   d="M18,15.321l8.93,8.937a1.688,1.688,0,1,0,2.384-2.391L19.2,11.742a1.685,1.685,0,0,0-2.327-.049L6.68,21.86a1.688,1.688,0,0,0,2.384,2.391Z"
                                                   transform="translate(-6.188 -11.251)" fill="#024e4f" />
                                           </svg>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             <!--Agregar Catalogo-->
             <div class="row" *ngIf="catalgos">
@@ -226,58 +226,6 @@
                           </button>
                         </td>
                       </tr>
-                      <!--<tr>
-                        <td>1</td>
-                        <th>Victor Pineda</th>
-                        <td>v.pineda&#64;bim.mx</td>
-                        <td>Medios de Pago</td>
-                        <td>Subdirector</td>
-                        <td>Activo</td>
-                        <td>
-                          <button class="btn btn-sm btn-primary" (click)="clickEditar('Usuario', [])" data-toggle="modal" data-target="#exampleModalEditar">
-                            ...
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>2</td>
-                        <th>Luis Lozano</th>
-                        <td>l.lozano&#64;bim.mx</td>
-                        <td>Medios de Pago</td>
-                        <td>Gerente</td>
-                        <td>Activo</td>
-                        <td>
-                          <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModalEditar">
-                            ...
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <th>Marco Ruiz</th>
-                        <td>m.ruiz&#64;bim.mx</td>
-                        <td>Individual BIM</td>
-                        <td>Gerente</td>
-                        <td>Activo</td>
-                        <td>
-                          <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModalEditar">
-                            ...
-                          </button>
-                        </td>
-                      </tr>
-                      <tr [ngClass]="{'disabled': !usrActivo}">
-                        <td>4</td>
-                        <th>Carlos Pulido</th>
-                        <td>c.pulido&#64;bim.mx</td>
-                        <td>Medios de Pago</td>
-                        <td>Desarrollador</td>
-                        <td>Desactivado</td>
-                        <td>
-                          <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModalEditar">
-                            ...
-                          </button>
-                        </td>
-                      </tr>-->
                     </tbody>
                   </table>
                 </div>
@@ -288,31 +236,24 @@
               <h6 class="card-title">Perfiles</h6>
               <div class="col-12">
                 <div class="table-responsive" style="overflow-x: hidden; overflow-y: auto; height: auto;">
-                  <table class="table" id="tablaUsuarios">
+                  <table class="table" id="tablaRoles">
                     <thead class="table-success" style="position: sticky; top: 0;">
                       <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Estatus</th>
-                        <th hidden scope="col">Editar</th>
+                        <th scope="col">Editar</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>1</td>
-                        <th>Subdirección</th>
-                        <td>Activo</td>
-                        <td hidden>
-                          <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
-                            ...
-                          </button>
+                      <tr *ngFor="let perfil of tablaRol; let i = index" [ngClass]="{'disabled': !perfil.status}">
+                        <td>{{ perfil.idRol }}</td>
+                        <th>{{ perfil.permiso }}</th>
+                        <td>
+                          <span *ngIf="perfil.status">Activo</span>
+                          <span *ngIf="!perfil.status">Desactivado</span>
                         </td>
-                      </tr>
-                      <tr>
-                        <td>2</td>
-                        <th>Gerente</th>
-                        <td>Activo</td>
-                        <td hidden>
+                        <td>
                           <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
                             ...
                           </button>
