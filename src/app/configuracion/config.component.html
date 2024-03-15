@@ -311,7 +311,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr class="odd" *ngFor="let doc of listaDocumentacion; let i = index">
+                      <tr class="odd" *ngFor="let doc of listaDocumentacion; let i = index" [ngClass]="{'disabled': !doc.status}">
                         <th class="">{{ doc.documentacion }}</th>
                         <td class="">
                           <span *ngIf="doc.status">Activo</span>
@@ -349,7 +349,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr class="odd" *ngFor="let estado of listaEstadoProyecto; let i = index">
+                      <tr class="odd" *ngFor="let estado of listaEstadoProyecto; let i = index" [ngClass]="{'disabled': !estado.status}">
                         <th class="">{{ estado.tipoEstado }}</th>
                         <td class="">
                           <span *ngIf="estado.status">Activo</span>
@@ -378,7 +378,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr class="odd" *ngFor="let fase of listaFaseProyecto; let i = index">
+                      <tr class="odd" *ngFor="let fase of listaFaseProyecto; let i = index" [ngClass]="{'disabled': !fase.status}">
                         <th class="">{{ fase.fase }}</th>
                         <td class="">
                           <span *ngIf="fase.status">Activo</span>
@@ -407,7 +407,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr class="odd" *ngFor="let tipoProy of listaTipoProyecto; let i = index">
+                      <tr class="odd" *ngFor="let tipoProy of listaTipoProyecto; let i = index" [ngClass]="{'disabled': !tipoProy.status}">
                         <th scope="col">{{ tipoProy.tipoProyecto }}</th>
                         <td>
                           <span *ngIf="tipoProy.status">Activo</span>

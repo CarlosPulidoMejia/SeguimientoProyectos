@@ -218,27 +218,27 @@ export class ConfigComponent implements OnInit {
       this.tipoEdit = 'dep'
       this.idEditar = detalles.idDependencia;
       this.nombreEditar = detalles.tipoDependencia;
-      this.statusEditar = 'Activo'
+      this.statusEditar = detalles.status == true ? 'Activo' : 'Desactivado'
     }if(editar == 'Documentación'){
       this.tipoEdit = 'doc'
       this.idEditar = detalles.idDocumentacion;
       this.nombreEditar = detalles.documentacion;
-      this.statusEditar = 'Activo'
+      this.statusEditar = detalles.status == true ? 'Activo' : 'Desactivado'
     }if(editar == 'Estado'){
       this.tipoEdit = 'est'
       this.idEditar = detalles.idTipoEstado;
       this.nombreEditar = detalles.tipoEstado;
-      this.statusEditar = 'Activo'
+      this.statusEditar = detalles.status == true ? 'Activo' : 'Desactivado'
     }if(editar == 'Fase'){
       this.tipoEdit = 'fas'
       this.idEditar = detalles.idFase;
       this.nombreEditar = detalles.fase;
-      this.statusEditar = 'Activo'
+      this.statusEditar = detalles.status == true ? 'Activo' : 'Desactivado'
     }if(editar == 'Tipo'){
       this.tipoEdit = 'tip'
       this.idEditar = detalles.idTipoProyecto;
       this.nombreEditar = detalles.tipoProyecto;
-      this.statusEditar = 'Activo'
+      this.statusEditar = detalles.status == true ? 'Activo' : 'Desactivado'
     }if(editar == 'Usuarios'){
       this.tipoEdit = 'usu';
       this.idEditar = detalles.idUsuario
@@ -255,7 +255,7 @@ export class ConfigComponent implements OnInit {
     if(tipo == 'dep'){
       this.requestEditar = {
         id_dependencia: id,
-        status: estatus,
+        status: estatus == 'Activo' ? true : false,
         tipo_dependencia_vch: nombre
       }
       this.ConfigService.putEditarDependencia(id, this.requestEditar).subscribe(
@@ -277,7 +277,7 @@ export class ConfigComponent implements OnInit {
     if(tipo == 'doc'){
       this.requestEditar = {
         id_documentacion: id,
-        status: true,
+        status: estatus == 'Activo' ? true : false,
         tipo_documentacion_vch: nombre
       }
       this.ConfigService.putEditarDocumentacion(id, this.requestEditar).subscribe(
@@ -299,7 +299,7 @@ export class ConfigComponent implements OnInit {
     if(tipo == 'est'){
       this.requestEditar = {
         id_estado: id,
-        status: true,
+        status: estatus == 'Activo' ? true : false,
         tipo_estado_vch: nombre
       }
       this.ConfigService.putEditarEstado(id, this.requestEditar).subscribe(
@@ -321,7 +321,7 @@ export class ConfigComponent implements OnInit {
     if(tipo == 'fas'){
       this.requestEditar = {
         id_fase: id,
-        status: true,
+        status: estatus == 'Activo' ? true : false,
         tipo_fase_vch: nombre
       }
       this.ConfigService.putEditarFase(id, this.requestEditar).subscribe(
@@ -342,7 +342,7 @@ export class ConfigComponent implements OnInit {
     if(tipo == 'tip'){
       this.requestEditar = {
         id_tipo_proyecto: id,
-        status: true,
+        status: estatus == 'Activo' ? true : false,
         tipo_proyecto_vch: nombre
       }
       this.ConfigService.putEditarTipo(id, this.requestEditar).subscribe(
