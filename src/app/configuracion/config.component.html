@@ -254,7 +254,7 @@
                           <span *ngIf="!perfil.status">Desactivado</span>
                         </td>
                         <td>
-                          <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
+                          <button class="btn btn-sm btn-primary" (click)="clickEditar('Perfiles', tablaRol[i])" data-toggle="modal" data-target="#exampleModalEditar">
                             ...
                           </button>
                         </td>
