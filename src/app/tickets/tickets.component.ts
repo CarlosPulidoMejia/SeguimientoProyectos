@@ -55,6 +55,7 @@ export class TicketsComponent implements OnInit {
 
   cargaTickets(){
     const file: File | null = this.selectedFiles.item(0);
+    this.currentFile = file;
     Swal.fire({
       title: "Enviando carga masiva...",
       text: "Espere un momento",

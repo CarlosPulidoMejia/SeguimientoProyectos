@@ -48,23 +48,31 @@
                           </tr>
                         </thead>
                         <tbody>
+                          <!--Recursos-->
                           <tr>
-                            <td>Se registra trabajo devengado de los recursos en 10 proyectos de 11</td>
+                            <td>Se registra trabajo devengado de los recursos en 
+                              <span>{{ infoGestionAspecto.recursos.variableUno }}</span> proyectos de
+                              <span>{{ infoGestionAspecto.recursos.variableDos }}</span>
+                            </td>
                             <td >Gestión de recurso</td>
                             <td >100 %</td>
                             <td class="amarillo">100 %</td>
                             <td class="rojo">91 %</td>
                             <td class="rojo">82</td>
                           </tr>
+                          <!--Planeación-->
                           <tr>
-                            <td>Se registra 3 proyectos en tiempo o por iniciar de 11</td>
+                            <td>Se registra <span>{{ infoGestionAspecto.planeacion.variableUno }}</span> proyectos en tiempo o por iniciar de
+                              {{ infoGestionAspecto.planeacion.variableDos }}
+                            </td>
                             <td>Gestión de planeación</td>
                             <td >27 %</td>
                             <td class="amarillo">27 %</td>
                             <td class="amarillo">27 %</td>
                             <td class="amarillo">27 %</td>
                           </tr>
-                          <tr>
+                          <!--Avance-->
+                          <tr >
                             <td>Se registra avance en 6 proyectos de 10</td>
                             <td>Gestión de avance</td>
                             <td>72 %</td>
@@ -72,15 +80,18 @@
                             <td class="rojo">60 %</td>
                             <td class="amarillo">60 %</td>
                           </tr>
-                          <tr>
-                            <td>Se registra 7 proyectos de 11 con documentación</td>
+                          <!--Documental-->
+                          <tr >
+                            <td>Se registra {{ infoGestionAspecto.documentacion.variableUno }} proyectos de 
+                              <span>{{ infoGestionAspecto.documentacion.variableDos }}</span> con documentación</td>
                             <td>Gestión de soporte documental</td>
                             <td>63 %</td>
                             <td class="amarillo">63 %</td>
                             <td class="amarillo">63 %</td>
                             <td class="amarillo">63 %</td>
                           </tr>
-                          <tr>
+                          <!--Total-->
+                          <tr >
                             <th>Total</th>
                             <td></td>
                             <th>65.5 %</th>
@@ -109,7 +120,7 @@
                   <div class="col-6">
                     <button type="button" [ngClass]="classBotonProyecto" (click)="showProyectos()">Proyectos</button>
                     <button type="button" [ngClass]="classBotonTickets" (click)="showTickets()">Tickets</button>
-                    <button type="button" [ngClass]="classBotonResumen" (click)="showReportes()">Resumen general</button>
+                    <button type="button" [ngClass]="classBotonResumen" (click)="showResumenGeneral()">Resumen general</button>
                     <button type="button" [ngClass]="classBotonGrafica" (click)="showGrafica()">Gráficas</button>
                   </div>
                   <!-- Tabla Proyectos -->
@@ -305,7 +316,7 @@
                       <div class="table-responsive">
                         <table class="table" id="tablaProyectos">
                           <thead class="table-success" style="position: sticky; top: 0;">
-                            <tr>
+                            <tr class="text-center">
                               <th scope="col">Proyectos|BAU</th>
                               <th scope="col">BAU-Nuevo</th>
                               <th scope="col">BAU-Mejora</th>
@@ -314,12 +325,12 @@
                             </tr>
                           </thead>
                           <tbody>
-                            <tr class="odd">
-                              <th class="">11</th>
-                              <td class="">0</td>
-                              <td class="">6</td>
-                              <td class="">0</td>
-                              <td class="">5</td>
+                            <tr class="odd text-center">
+                              <th class="">{{ infoGestionAspecto.recursos.variableDos }}</th>
+                              <td class="">{{ infoResumenGeneral.proyectoResponse.bauNuevo }}</td>
+                              <td class="">{{ infoResumenGeneral.proyectoResponse.bauMejora }}</td>
+                              <td class="">{{ infoResumenGeneral.proyectoResponse.proyecto }}</td>
+                              <td class="">{{ infoResumenGeneral.proyectoResponse.killer }}</td>
                             </tr>
                           </tbody>
                         </table>
@@ -331,7 +342,7 @@
                       <div class="table-responsive">
                         <table class="table" id="tablaTrabajoDevengado">
                           <thead class="table-success" style="position: sticky; top: 0;">
-                            <tr>
+                            <tr class="text-center">
                               <th scope="col">Análisis</th>
                               <th scope="col">Desarrollo</th>
                               <th scope="col">Pruebas</th>
@@ -340,12 +351,12 @@
                             </tr>
                           </thead>
                           <tbody>
-                            <tr class="odd">
-                              <td class="">3</td>
-                              <td class="">5</td>
-                              <td class="">0</td>
-                              <td class="">3</td>
-                              <td class="">0</td>
+                            <tr class="odd text-center">
+                              <td class="">{{ infoResumenGeneral.faseProyectoResponse.analisis }}</td>
+                              <td class="">{{ infoResumenGeneral.faseProyectoResponse.desarrollo }}</td>
+                              <td class="">{{ infoResumenGeneral.faseProyectoResponse.pruebas }}</td>
+                              <td class="">{{ infoResumenGeneral.faseProyectoResponse.calidad }}</td>
+                              <td class="">{{ infoResumenGeneral.faseProyectoResponse.producion }}</td>
                             </tr>
                           </tbody>
                         </table>
@@ -357,7 +368,7 @@
                       <div class="table-responsive">
                         <table class="table" id="tablaTrabajoDevengado">
                           <thead class="table-success" style="position: sticky; top: 0;">
-                            <tr>
+                            <tr class="text-center">
                               <th scope="col">Por Iniciar</th>
                               <th scope="col">Tiempo</th>
                               <th scope="col">Detenido</th>
@@ -365,11 +376,11 @@
                             </tr>
                           </thead>
                           <tbody>
-                            <tr class="odd">
-                              <td class="">0</td>
-                              <td class="">3</td>
-                              <td class="">0</td>
-                              <td class="">8</td>
+                            <tr class="odd text-center">
+                              <td class="">{{ infoResumenGeneral.estadoProyectoResponse.inciar }}</td>
+                              <td class="">{{ infoResumenGeneral.estadoProyectoResponse.tiempo }}</td>
+                              <td class="">{{ infoResumenGeneral.estadoProyectoResponse.detenido }}</td>
+                              <td class="">{{ infoResumenGeneral.estadoProyectoResponse.desfado }}</td>
                             </tr>
                           </tbody>
                         </table>
@@ -381,7 +392,7 @@
                       <div class="table-responsive">
                         <table class="table" id="tablaTrabajoDevengado">
                           <thead class="table-success" style="position: sticky; top: 0;">
-                            <tr>
+                            <tr class="text-center">
                               <th scope="col">RI | RD</th>
                               <th scope="col">Ticket</th>
                               <th scope="col">Plan Proyecto</th>
@@ -389,11 +400,11 @@
                             </tr>
                           </thead>
                           <tbody>
-                            <tr class="odd">
-                              <td class="">4</td>
-                              <td class="">0</td>
-                              <td class="">3</td>
-                              <td class="">4</td>
+                            <tr class="odd text-center">
+                              <td class="">{{ infoResumenGeneral.documentacionResponse.rird }}</td>
+                              <td class="">{{ infoResumenGeneral.documentacionResponse.ticket }}</td>
+                              <td class="">{{ infoResumenGeneral.documentacionResponse.planProyecto }}</td>
+                              <td class="">{{ infoResumenGeneral.documentacionResponse.sinGestion }}</td>
                             </tr>
                           </tbody>
                         </table>
@@ -405,7 +416,7 @@
                       <div class="table-responsive">
                         <table class="table" id="tablaTrabajoDevengado">
                           <thead class="table-success" style="position: sticky; top: 0;">
-                            <tr>
+                            <tr class="text-center">
                               <th scope="col">Ticket</th>
                               <th scope="col">Bloqueante</th>
                               <th scope="col">Normal</th>
@@ -413,7 +424,7 @@
                             </tr>
                           </thead>
                           <tbody>
-                            <tr class="odd">
+                            <tr class="odd text-center">
                               <td class="">10</td>
                               <td class="">0</td>
                               <td class="">0</td>

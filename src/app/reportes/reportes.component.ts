@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-//import Swal from 'sweetalert2';
+import Swal from 'sweetalert2';
 import { map, Observable, zip } from 'rxjs';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 //import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { HttpClient } from '@angular/common/http';
-
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-
+import { ReporteService } from '../servicios/reportes/reportes.service';
+import { listaGestion, listaResumenGeneral } from '../clases/reportes/listaReportes';
 
 declare const $: any;
 
@@ -17,17 +17,19 @@ declare const $: any;
   styleUrls: ['reportes.component.css']
 })
 export class ReportesComponent implements OnInit {
-/**
+  /**
  * Grafica
  */
-view: [number,number] = [600,500];
-// options
-xAxis: boolean = true;
-yAxis: boolean = true;
+  view: [number,number] = [600,500];
+  // options
+  xAxis: boolean = true;
+  yAxis: boolean = true;
   message: string[] = [];
 
   fileInfos?: Observable<any>;
 
+  infoGestionAspecto: listaGestion;
+  infoResumenGeneral: listaResumenGeneral;
   //CPM
   proyectos: boolean;
   tickets: boolean;
@@ -40,7 +42,7 @@ yAxis: boolean = true;
   classBotonResumen: string;
   classBotonGrafica: string;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private ReporteService:ReporteService) { }
 
   multi = []
 
@@ -54,9 +56,9 @@ yAxis: boolean = true;
     this.classBotonTickets = 'btn btn-success mx-2'
     this.classBotonResumen = 'btn btn-success'
     this.classBotonGrafica = 'btn btn-success mx-2'
-    this.proyectos = true;
+    this.proyectos = false;
     this.tickets = false;
-    this.resumen = false;
+    this.resumen = true;
     this.grafica = false;
     this.proyecto = [
       {
@@ -114,6 +116,8 @@ yAxis: boolean = true;
         ],
       },
     ]
+    this.getDatosGestion();
+    this.getResumen();
   }
 
   showProyectos(){
@@ -124,6 +128,7 @@ yAxis: boolean = true;
     this.proyectos = true;
     this.tickets = false;
     this.resumen = false;
+    this.grafica = false;
   }
   showTickets(){
     this.classBotonTickets = 'btn btn-success mx-2 shadow'
@@ -133,8 +138,9 @@ yAxis: boolean = true;
     this.proyectos = false;
     this.tickets = true;
     this.resumen = false;
+    this.grafica = false;
   }
-  showReportes(){
+  showResumenGeneral(){
     this.classBotonResumen = 'btn btn-success shadow'
     this.classBotonProyecto = 'btn btn-success'
     this.classBotonTickets = 'btn btn-success mx-2'
@@ -142,8 +148,9 @@ yAxis: boolean = true;
     this.proyectos = false;
     this.tickets = false;
     this.resumen = true;
+    this.grafica = false;
+    this.getResumen();
   }
-
   showGrafica(){
     this.classBotonGrafica = 'btn btn-success mx-2 shadow'
     this.classBotonProyecto = 'btn btn-success'
@@ -153,6 +160,26 @@ yAxis: boolean = true;
     this.tickets = false;
     this.resumen = false;
     this.grafica = true;
+  }
+  getDatosGestion(){
+    this.ReporteService.getGestion().subscribe({
+      next: (data)=>{
+        this.infoGestionAspecto = data;
+      },
+      error: (e) => {
+        console.log(e)
+      }
+    });
+  }
+  getResumen(){
+    this.ReporteService.getResumen().subscribe({
+      next: (data) =>{
+        this.infoResumenGeneral = data;
+      },
+      error: (e) => {
+        console.log(e)
+      }
+    })
   }
 }
 
