@@ -4,6 +4,7 @@ import { listaProyectos,listaTipoDocumentacion, listaTipoProyecto,listaTipoFase,
 import { listaUsuarios } from '../clases/configuracion/listaConfig';
 import { ProyectoBauService } from '../servicios/proyectos/proyectos.service';
 import { ConfigService } from '../servicios/config/config.service';
+import { AppComponent } from '../app.component';
 
 declare const $: any;
 
@@ -72,9 +73,11 @@ export class ProyectosBauComponent implements OnInit {
   isChecked: boolean;
   comentario: any;
   idProyecto:any;
+  usuario: any;
+  observacionesSD: any;
 
 
-  constructor( private proyectoBauService: ProyectoBauService, private configService: ConfigService) {    }
+  constructor( private proyectoBauService: ProyectoBauService, private configService: ConfigService, private AppComponent: AppComponent) {    }
   
   ngOnInit() {
     this.nombreProyecto = "";
@@ -96,6 +99,8 @@ export class ProyectosBauComponent implements OnInit {
     this.getTipoDependencia();
     this.getListaUsuario();
     this.isChecked = false
+    this.usuario = this.AppComponent.usuarioLogin;   
+    
   }
 
   showData() {
@@ -354,9 +359,10 @@ export class ProyectosBauComponent implements OnInit {
     this.guardarCambio(e.detalleProyectoResponse, e.proyectoResponse.idProyecto);
   }
 
-  getDocumentacion(idProyecto, comentarioProyecto){
+  getDocumentacion(idProyecto, comentarioProyecto, observacionesSD){
     this.comentario = comentarioProyecto
     this.idProyecto = idProyecto
+    this.observacionesSD = observacionesSD
     this.proyectoBauService.getDocumentacionAvance(idProyecto).subscribe(
       data => {
         this.listaObjetivos = data

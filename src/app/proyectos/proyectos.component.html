@@ -191,7 +191,10 @@
                                             </select>
                                         </td>
                                         <td class="text-center">
-                                            <button (click)="getDocumentacion(proyecto.proyectoResponse.idProyecto, listaProyectos[i].detalleProyectoResponse.comentario)" class="btn btn-sm btn-success" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
+                                            <button *ngIf="usuario== 'l.lozano'" (click)="getDocumentacion(proyecto.proyectoResponse.idProyecto, listaProyectos[i].detalleProyectoResponse.comentario, listaProyectos[i].detalleProyectoResponse.observacionesSD)" class="btn btn-sm btn-success" data-toggle="modal" data-target="#exampleModalComentariosGerencia">
+                                                ...
+                                            </button>
+                                            <button *ngIf="usuario== 'v.pineda'" (click)="getDocumentacion(proyecto.proyectoResponse.idProyecto, listaProyectos[i].detalleProyectoResponse.comentario, listaProyectos[i].detalleProyectoResponse.observacionesSD)" class="btn btn-sm btn-success" data-toggle="modal" data-target="#exampleModalComentariosSubdireccion">
                                                 ...
                                             </button>
                                         </td>
@@ -375,7 +378,7 @@
                                     <div  class="row">
                                         <div  class="col-12">
                                             <div  class="form-floating">
-                                                <textarea  type="text" id="idDatasource" placeholder="ID" value="1"
+                                                <textarea  type="text" id="idDatasource" placeholder="ID" value="{{ observacionesSD }}"
                                                     class="form-control ng-valid ng-dirty ng-touched" style="height: 120px;" disabled>
                                                 </textarea>
                                             </div>
@@ -421,7 +424,7 @@
                                     <div  class="row">
                                         <div  class="col-12">
                                             <div  class="form-floating">
-                                                <textarea  type="text" id="idDatasource" placeholder="ID" value="1"
+                                                <textarea  type="text" id="idDatasource" placeholder="ID"  value="{{ comentario }}"
                                                     class="form-control ng-valid ng-dirty ng-touched" style="height: 120px;" disabled="">
                                                 </textarea>
                                             </div>
@@ -480,16 +483,10 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td>Tarea 1</td>
+                                                        <tr  *ngFor="let documentar of listaObjetivos; let i = index">
+                                                            <td>{{ documentar.objetivo }}</td>
                                                             <td  ><input disabled  type="text"
-                                                                    id="idDatasource" placeholder="ID" value="1"
-                                                                    class="form-control ng-valid ng-dirty ng-touched"></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Tarea 1</td>
-                                                            <td  ><input disabled  type="text"
-                                                                    id="idDatasource" placeholder="ID" value="1"
+                                                                    id="idDatasource" placeholder="ID" value="{{ documentar.detalleObjetivo }}"
                                                                     class="form-control ng-valid ng-dirty ng-touched"></td>
                                                         </tr>
                                                     </tbody>
@@ -528,17 +525,13 @@
                                     <h6  class="card-title">ToDo</h6>
                                     <div  class="row">
                                         <div  class="col-12">
-                                            <div  class="form-floating"
-                                                style="overflow-x: hidden; overflow-y: auto; height: 5em;"><input disabled 
-                                                    type="text" id="idDatasource" placeholder="ID" value="1"
-                                                    class="form-control ng-valid ng-dirty ng-touched"><input disabled 
-                                                    type="text" id="idDatasource" placeholder="ID" value="1"
-                                                    class="form-control ng-valid ng-dirty ng-touched"><input disabled 
-                                                    type="text" id="idDatasource" placeholder="ID" value="1"
-                                                    class="form-control ng-valid ng-dirty ng-touched"></div>
+                                            <div  class="form-floating" style="overflow-x: hidden; overflow-y: auto; height: 5em;">
+                                                <div *ngFor="let ToDo of listaToDo">
+                                                    <input [(ngModel)]="ToDo.objetivo" type="text" disabled id="idDatasource" placeholder="ID" class="form-control ng-valid ng-dirty ng-touched">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <button  type="button" data-dismiss="modal" class="btn btn-success mt-2">+</button>
                                 </div>
                             </div>
                         </div>
@@ -554,7 +547,7 @@
                                         <!-- Semana Anterior -->
                                         <div  class="col-6">
                                             <div  class="form-floating">
-                                                <textarea type="text" id="idDatasource" placeholder="ID" value="1"
+                                                <textarea type="text" id="idDatasource" placeholder="ID" value="{{ observacionesSD }}"
                                                     class="form-control ng-valid ng-dirty ng-touched" style="height: 120px;" disabled="">
                                                 </textarea>
                                             </div>
@@ -582,7 +575,7 @@
                                     <div  class="row">
                                         <div  class="col-12">
                                             <div  class="form-floating"><textarea 
-                                                    type="text" id="idDatasource" placeholder="ID" value="1"
+                                                    type="text" id="idDatasource" placeholder="ID" value="{{ observacionesSD }}"
                                                     class="form-control ng-valid ng-dirty ng-touched"
                                                     style="height: 120px;"></textarea></div>
                                         </div>
