@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-sm" style="background-color: #024e4f;">
+<nav class="navbar navbar-expand-sm" style="background-color: #024e4f;" *ngIf="iniciarSesion == false">
   <a class="navbar-brand mx-3" routerLink='Proyectos'  (click)="clickProyectos()"><img
       src="src/resources/img/logo-bim-reduced-03.png"
       srcset="https://www.bim.mx/wp-content/uploads/2020/05/logo-bim-reduced-03.png 1x, https://www.bim.mx/wp-content/uploads/2020/05/xlogo-bim-reduced-03-retina.png.pagespeed.ic.msn_4wlMS0.webp 2x"
@@ -38,6 +38,31 @@
     </ul>
   </div>
 </nav>
+<!--Login-->
+<section class="vh-100" style="background-color: #024e4f;"    *ngIf="iniciarSesion == true">
+  <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div class="card shadow-2-strong" style="border-radius: 1rem;">
+          <div class="card-body p-5">
+              <img src="../resources/img/bimlogo.png" class="mb-4" alt=""  width="100%" height="50%" >
+              <div class="form-group mb-2">
+                  <label>Usuario</label>
+                  <input type="email" class="form-control" placeholder="Ingresa usuario valido">
+              </div>
+              <div class="form-group ">
+                  <label for="exampleInputPassword1">Contraseña</label>
+                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña">
+              </div>
+          </div>
+          <div class="text-center mb-4">
+              <button class="btn btn-primary btn-lg btn-block " (click)="IniciarSesion()" [routerLink]='paginaInicio' type="submit">Iniciar Sesión</button>
+          </div>
+          </div>
+      </div>
+      </div>
+  </div>
+</section>
 
 <div class="m-4" >
   <router-outlet></router-outlet>

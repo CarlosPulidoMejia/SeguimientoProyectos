@@ -16,6 +16,10 @@ export class AppComponent implements OnInit{
   clasetextoReporte: string;
   clasetextoConfig: string;
   configuracion: boolean;
+  iniciarSesion:boolean;
+  paginaInicio: string;
+  usuarioLogin: string;
+  passwordLogin: string;
 
   ngOnInit() {
     window.location.href
@@ -24,6 +28,7 @@ export class AppComponent implements OnInit{
     this.clasetextoReporte = 'nav-link';
     this.clasetextoConfig = 'nav-link';
     this.configuracion = false;
+    this.iniciarSesion = true;
   }
   clickProyectos(){
     this.clasetextoProyectos = 'nav-link negrita';
@@ -52,5 +57,22 @@ export class AppComponent implements OnInit{
     this.clasetextoReporte = 'nav-link';
     this.clasetextoConfig = 'nav-link negrita';
     this.configuracion = true;
+  }
+
+  IniciarSesion(){
+    this.iniciarSesion = false;
+    if(this.usuarioLogin == 'v.pineda'){
+      this.paginaInicio = 'Proyectos';
+    }
+    if(this.usuarioLogin == 'l.lozano'){
+      this.paginaInicio = 'Proyectos';
+    }
+    if(this.usuarioLogin == 'admin'){
+      this.paginaInicio = 'Configuracion';
+    }
+  }
+
+  cerrarSesion(){
+    this.iniciarSesion = true;
   }
 }
