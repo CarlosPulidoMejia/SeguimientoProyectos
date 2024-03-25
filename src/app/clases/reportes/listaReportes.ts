@@ -16,3 +16,10 @@ export class listaTrabajoDevengado{
     dia:any;
     semana:any;
 }
+
+export class listaPorcentajesGestion{
+    fechaCierre:any;
+    datoRecurso: any;
+    datoPlaneacion: any;
+    datoDocumentacion: any;
+}

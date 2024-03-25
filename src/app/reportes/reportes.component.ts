@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { ReporteService } from '../servicios/reportes/reportes.service';
-import { listaGestion, listaResumenGeneral, listaTrabajoDevengado } from '../clases/reportes/listaReportes';
+import { listaGestion, listaResumenGeneral, listaTrabajoDevengado, listaPorcentajesGestion } from '../clases/reportes/listaReportes';
 
 declare const $: any;
 
@@ -31,6 +31,7 @@ export class ReportesComponent implements OnInit {
   infoGestionAspecto: listaGestion;
   infoResumenGeneral: listaResumenGeneral;
   listaTrabajoDevengado: listaTrabajoDevengado[];
+  listaPorcentajes: listaPorcentajesGestion;
   //CPM
   proyectos: boolean;
   tickets: boolean;
@@ -166,12 +167,25 @@ export class ReportesComponent implements OnInit {
     this.ReporteService.getGestion().subscribe({
       next: (data)=>{
         this.infoGestionAspecto = data;
+        this.getPorcentajesGestion()
       },
       error: (e) => {
         console.log(e)
       }
     });
   }
+
+  getPorcentajesGestion(){
+    this.ReporteService.getPorcentajes().subscribe({
+      next: (data)=>{
+        this.listaPorcentajes = data
+      },
+      error: (e) => {
+        console.log(e)
+      }
+    })
+  }
+
   getResumen(){
     this.ReporteService.getResumen().subscribe({
       next: (data) =>{

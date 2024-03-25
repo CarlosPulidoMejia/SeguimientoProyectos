@@ -41,10 +41,7 @@
                           <tr>
                             <th scope="col">Aspecto</th>
                             <th scope="col">Eficiencia</th>
-                            <th scope="col">221123</th>
-                            <th scope="col">291123</th>
-                            <th scope="col">061223</th>
-                            <th scope="col">201223</th>
+                            <th scope="col">{{ listaPorcentajes.fechaCierre }}</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -55,10 +52,7 @@
                               <span>{{ infoGestionAspecto.recursos.variableDos }}</span>
                             </td>
                             <td >Gestión de recurso</td>
-                            <td >100 %</td>
-                            <td class="amarillo">100 %</td>
-                            <td class="rojo">91 %</td>
-                            <td class="rojo">82</td>
+                            <td >{{ listaPorcentajes.datoRecurso }} %</td>
                           </tr>
                           <!--Planeación-->
                           <tr>
@@ -66,38 +60,26 @@
                               {{ infoGestionAspecto.planeacion.variableDos }}
                             </td>
                             <td>Gestión de planeación</td>
-                            <td >27 %</td>
-                            <td class="amarillo">27 %</td>
-                            <td class="amarillo">27 %</td>
-                            <td class="amarillo">27 %</td>
+                            <td >{{ listaPorcentajes.datoPlaneacion }}%</td>
                           </tr>
                           <!--Avance-->
                           <tr >
                             <td>Se registra avance en 6 proyectos de 10</td>
                             <td>Gestión de avance</td>
                             <td>72 %</td>
-                            <td class="amarillo">72 %</td>
-                            <td class="rojo">60 %</td>
-                            <td class="amarillo">60 %</td>
                           </tr>
                           <!--Documental-->
                           <tr >
                             <td>Se registra {{ infoGestionAspecto.documentacion.variableUno }} proyectos de 
                               <span>{{ infoGestionAspecto.documentacion.variableDos }}</span> con documentación</td>
                             <td>Gestión de soporte documental</td>
-                            <td>63 %</td>
-                            <td class="amarillo">63 %</td>
-                            <td class="amarillo">63 %</td>
-                            <td class="amarillo">63 %</td>
+                            <td>{{ listaPorcentajes.datoDocumentacion }} %</td>
                           </tr>
                           <!--Total-->
                           <tr >
                             <th>Total</th>
                             <td></td>
                             <th>65.5 %</th>
-                            <th class="amarillo">65.5 %</th>
-                            <th class="rojo">60.25 %</th>
-                            <th class="rojo">58 %</th>
                           </tr>
                         </tbody>
                       </table>

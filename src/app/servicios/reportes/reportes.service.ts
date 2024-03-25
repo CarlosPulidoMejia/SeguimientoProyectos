@@ -1,7 +1,7 @@
 import { HttpClient, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { listaGestion, listaResumenGeneral } from 'src/app/clases/reportes/listaReportes';
+import { listaGestion, listaResumenGeneral, listaPorcentajesGestion } from 'src/app/clases/reportes/listaReportes';
 
 import * as global from '../../globals';
 
@@ -18,5 +18,9 @@ export class ReporteService {
 
     getResumen():Observable<listaResumenGeneral>{
         return this.httpClient.get<listaResumenGeneral>(`${global.URL_API}reporte/resumen`)
+    }
+
+    getPorcentajes():Observable<listaPorcentajesGestion>{
+        return this.httpClient.get<listaPorcentajesGestion>(`${global.URL_API}reporte/detalle`)
     }
 }
