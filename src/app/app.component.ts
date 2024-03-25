@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../app/servicios/app/app.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,7 @@ import { AppService } from '../app/servicios/app/app.service';
 export class AppComponent implements OnInit{
   title = 'app';
 
-  constructor( private AppService: AppService ) {    }
+  constructor( private AppService: AppService, private router: Router ) {    }
   
   clasetextoProyectos: string;
   clasetextoTicket: string;
@@ -17,9 +18,13 @@ export class AppComponent implements OnInit{
   clasetextoConfig: string;
   configuracion: boolean;
   iniciarSesion:boolean;
-  paginaInicio: string;
+  ocultarOpciones: boolean;
   usuarioLogin: string;
   passwordLogin: string;
+  nombreUsuario: string;
+  bordeUsuario: boolean;
+  bordePassword: boolean;
+  bordeUsuarioI: boolean;
 
   ngOnInit() {
     window.location.href
@@ -60,19 +65,55 @@ export class AppComponent implements OnInit{
   }
 
   IniciarSesion(){
-    this.iniciarSesion = false;
-    if(this.usuarioLogin == 'v.pineda'){
-      this.paginaInicio = 'Proyectos';
+    console.log(this.usuarioLogin, this.passwordLogin);
+    
+    if(this.usuarioLogin != undefined && this.passwordLogin != undefined){
+      if(this.usuarioLogin === 'v.pineda' || this.usuarioLogin === 'l.lozano' || this.usuarioLogin === 'admin'){
+        this.iniciarSesion = false;
+        if(this.usuarioLogin == 'v.pineda'){
+          this.ocultarOpciones = false;
+          this.nombreUsuario = 'Victor Pineda';
+          let targetRoute = ['Proyectos'];
+          this.router.navigate(targetRoute);
+          this.clickProyectos()
+        }
+        if(this.usuarioLogin == 'l.lozano'){
+          this.ocultarOpciones = false;
+          this.nombreUsuario = 'Luis Lozano'
+          let targetRoute = ['Proyectos'];
+          this.router.navigate(targetRoute);
+          this.clickProyectos()
+        }
+        if(this.usuarioLogin == 'admin'){
+          this.ocultarOpciones = true;
+          this.nombreUsuario = 'Administrador';
+          let targetRoute = ['Configuracion'];
+          this.router.navigate(targetRoute);
+          this.clickConfig();
+        }
+      }else{
+        this.bordeUsuarioI = true
+        this.bordeUsuario = false;
+        this.bordePassword = false;
+      }
+    }else{
+      if(this.usuarioLogin == undefined){
+        this.bordeUsuario = true;
+        this.bordeUsuarioI = false;
+      }
+      if(this.passwordLogin == undefined){
+        this.bordePassword = true;
+        this.bordeUsuarioI = false;
+      }
     }
-    if(this.usuarioLogin == 'l.lozano'){
-      this.paginaInicio = 'Proyectos';
-    }
-    if(this.usuarioLogin == 'admin'){
-      this.paginaInicio = 'Configuracion';
-    }
+
   }
 
   cerrarSesion(){
     this.iniciarSesion = true;
+    this.usuarioLogin = undefined;
+    this.passwordLogin = undefined;
+    let targetRoute = [''];
+    this.router.navigate(targetRoute);
   }
 }

@@ -8,13 +8,13 @@
   <!--Navbar links-->
   <div class="collapse navbar-collapse" id="navbarResponsive">
     <ul class="navbar-nav ">
-      <li class="nav-item border-end">
+      <li class="nav-item border-end" [hidden]="ocultarOpciones == true">
         <a class="nav-link" [ngClass]="clasetextoProyectos" (click)="clickProyectos()" routerLink='Proyectos' style="color:#ffffff">Proyectos | BAU</a>
       </li>
-      <li class="nav-item border-end">
+      <li class="nav-item border-end"  [hidden]="ocultarOpciones == true">
         <a [ngClass]="clasetextoTicket" (click)="clickTickets()"  routerLink='Tickets' style="color:#ffffff">Tickets</a>
       </li>
-      <li class="nav-item border-end">
+      <li class="nav-item border-end"  [hidden]="ocultarOpciones == true">
         <a  [ngClass]="clasetextoReporte" (click)="clickReporteDC()" routerLink='ReportesDC' style="color:#ffffff">Reporte DC</a>
       </li>
       <li class="nav-item border-end"  *ngIf="configuracion == true">
@@ -23,14 +23,14 @@
     </ul>
     <ul class="navbar-nav  ms-auto">
       <li>
-        <a class="nav-link mx-4 " style="font-size:larger; color:#ffffff">Luis Angel Lozano Rosales</a>
+        <a class="nav-link mx-4 " style="font-size:larger; color:#ffffff">{{ nombreUsuario }}</a>
       </li>
-      <li>
+      <li [hidden]="ocultarOpciones == false">
         <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" (click)="clickConfig()" routerLink='Configuracion'>
           <path id="Icon_simple-coderwall" data-name="Icon simple-coderwall" d="M32.031,28.062a3.969,3.969,0,1,1-3.969,3.969,3.971,3.971,0,0,1,3.969-3.969ZM18,14.031A3.969,3.969,0,1,1,14.031,18,3.972,3.972,0,0,1,18,14.031Zm14.031,0A3.969,3.969,0,1,1,28.062,18a3.972,3.972,0,0,1,3.969-3.969ZM18,0a3.969,3.969,0,1,1-3.969,3.969A3.971,3.971,0,0,1,18,0ZM3.969,0A3.969,3.969,0,1,1,0,3.969,3.971,3.971,0,0,1,3.969,0ZM32.031,0a3.969,3.969,0,1,1-3.969,3.969A3.971,3.971,0,0,1,32.031,0Z" fill="#fff"/>
         </svg>
       </li>
-      <li class="ms-auto mx-lg-3">
+      <li class="ms-auto mx-lg-3" (click)="cerrarSesion()">
         <svg xmlns="http://www.w3.org/2000/svg" width="28.921" height="30.849" viewBox="0 0 28.921 30.849">
           <path id="Icon_metro-exit" data-name="Icon metro-exit" d="M25.707,21.208V17.352h-9.64V13.5h9.64V9.64l5.784,5.784ZM23.779,19.28v7.712h-9.64v5.784L2.571,26.992V1.928H23.779v9.64H21.851V3.856H6.427l7.712,3.856V25.064h7.712V19.28Z" transform="translate(-2.571 -1.928)" fill="#fffdfd"/>
         </svg>
@@ -39,30 +39,33 @@
   </div>
 </nav>
 <!--Login-->
-<section class="vh-100" style="background-color: #024e4f;"    *ngIf="iniciarSesion == true">
+<div class="vh-100" style="background-color: #024e4f;" *ngIf="iniciarSesion == true">
   <div class="container py-5 h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
           <div class="card shadow-2-strong" style="border-radius: 1rem;">
           <div class="card-body p-5">
-              <img src="../resources/img/bimlogo.png" class="mb-4" alt=""  width="100%" height="50%" >
+              <img src="../../resources/img/logo-bim-reduced-03.png" class="mb-4" alt=""  width="100%" height="100%" >
               <div class="form-group mb-2">
                   <label>Usuario</label>
-                  <input type="email" class="form-control" placeholder="Ingresa usuario valido">
+                  <input type="email" class="form-control"  [ngClass]="{'border-danger': bordeUsuario}" [(ngModel)]="usuarioLogin"  placeholder="Ingresa usuario valido">
+                  <p *ngIf="bordeUsuario" class="text-sm-center text-danger">Campo obligatorio</p>
+                  <p *ngIf="bordeUsuarioI" class="text-sm-center text-danger">Usuario inexistente</p>
               </div>
               <div class="form-group ">
                   <label for="exampleInputPassword1">Contraseña</label>
-                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña">
+                  <input type="password" class="form-control" [ngClass]="{'border-danger': bordePassword}" [ngClass]="{'border-danger': bordeUsuario}"  [(ngModel)]="passwordLogin" id="exampleInputPassword1" placeholder="Contraseña">
+                  <p *ngIf="bordePassword" class="text-sm-center text-danger">Campo obligatorio</p>
               </div>
           </div>
           <div class="text-center mb-4">
-              <button class="btn btn-primary btn-lg btn-block " (click)="IniciarSesion()" [routerLink]='paginaInicio' type="submit">Iniciar Sesión</button>
+              <button class="btn btn-primary btn-lg btn-block " (click)="IniciarSesion()"  type="submit">Iniciar Sesión</button>
           </div>
           </div>
       </div>
       </div>
   </div>
-</section>
+</div>
 
 <div class="m-4" >
   <router-outlet></router-outlet>
