@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { ReporteService } from '../servicios/reportes/reportes.service';
-import { listaGestion, listaResumenGeneral } from '../clases/reportes/listaReportes';
+import { listaGestion, listaResumenGeneral, listaTrabajoDevengado } from '../clases/reportes/listaReportes';
 
 declare const $: any;
 
@@ -30,6 +30,7 @@ export class ReportesComponent implements OnInit {
 
   infoGestionAspecto: listaGestion;
   infoResumenGeneral: listaResumenGeneral;
+  listaTrabajoDevengado: listaTrabajoDevengado[];
   //CPM
   proyectos: boolean;
   tickets: boolean;
@@ -174,7 +175,9 @@ export class ReportesComponent implements OnInit {
   getResumen(){
     this.ReporteService.getResumen().subscribe({
       next: (data) =>{
+        console.log(data);
         this.infoResumenGeneral = data;
+        this.listaTrabajoDevengado = data.trabajaResponse
       },
       error: (e) => {
         console.log(e)

@@ -269,41 +269,11 @@
                             </tr>
                           </thead>
                           <tbody>
-                            <tr class="odd">
-                              <th class="">Marco Ruiz</th>
-                              <td class="">48.5</td>
-                              <td class="">7.9</td>
-                              <td class="">9</td>
-                            </tr>
-                            <tr class="odd">
-                              <th class="">Marco Ruiz</th>
-                              <td class="">48.5</td>
-                              <td class="">7.9</td>
-                              <td class="">9</td>
-                            </tr>
-                            <tr class="odd">
-                              <th class="">Marco Ruiz</th>
-                              <td class="">48.5</td>
-                              <td class="">7.9</td>
-                              <td class="">9</td>
-                            </tr>
-                            <tr class="odd">
-                              <th class="">Marco Ruiz</th>
-                              <td class="">48.5</td>
-                              <td class="">7.9</td>
-                              <td class="">9</td>
-                            </tr>
-                            <tr class="odd">
-                              <th class="">Marco Ruiz</th>
-                              <td class="">48.5</td>
-                              <td class="">7.9</td>
-                              <td class="">9</td>
-                            </tr>
-                            <tr class="odd">
-                              <th class="">Marco Ruiz</th>
-                              <td class="">48.5</td>
-                              <td class="">7.9</td>
-                              <td class="">9</td>
+                            <tr class="odd" *ngFor="let trabajoD of listaTrabajoDevengado; let i = index">
+                              <th class="">{{ trabajoD.nombre }}</th>
+                              <td class="">{{ trabajoD.semana }}</td>
+                              <td class="">{{ trabajoD.dia }}</td>
+                              <td class="">0</td>
                             </tr>
                           </tbody>
                         </table>

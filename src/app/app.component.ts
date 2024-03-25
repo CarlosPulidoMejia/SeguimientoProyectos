@@ -106,7 +106,6 @@ export class AppComponent implements OnInit{
         this.bordeUsuarioI = false;
       }
     }
-
   }
 
   cerrarSesion(){
