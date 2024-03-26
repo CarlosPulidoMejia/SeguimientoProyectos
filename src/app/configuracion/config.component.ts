@@ -104,6 +104,8 @@ export class ConfigComponent implements OnInit {
     this.ConfigService.getAllUsuario().subscribe({
       next: (data) => {
         this.listaUsuario = data;
+        console.log(this.listaUsuario);
+        
         $('#tablaUsuarios').dataTable().fnDestroy();
         $('#tablaUsuarios tbody').on('click', 'tr', function () {
           $(this).toggleClass('selected');
@@ -212,6 +214,8 @@ export class ConfigComponent implements OnInit {
   }
 
   clickEditar(editar,detalles){
+    console.log(editar,detalles);
+    
     this.modalEditar = true;
     this.tituloEditar = editar;
     if(editar == 'Dependencias'){
@@ -246,7 +250,7 @@ export class ConfigComponent implements OnInit {
       this.apellidoEditar = detalles.apellido;
       this.usuarioEditar = detalles.correo;
       this.gerenciaInicial = detalles.gerencia[0].gerencia;
-      this.gerenciaEditar = detalles.gerencia[0].gerencia;
+      //this.gerenciaEditar = detalles.gerencia[0].gerencia;
       this.statusEditar = detalles.status == true ? 'Activo' : 'Desactivado';
     }if(editar == 'Perfiles'){
       this.nombreEditar = detalles.permiso;
@@ -368,7 +372,7 @@ export class ConfigComponent implements OnInit {
       let gerAntes = this.listaGerencia.filter( value => value.gerencia == this.gerenciaInicial)[0];
       this.requestAgregar = {
         idGerencia:gerNueva.idGerencia,
-        idGerenciaAntes: gerAntes.idGerencia,
+        //idGerenciaAntes: gerAntes.idGerencia,
         apellido: apellido,
         correo: usuario,
         nombre:nombre,
