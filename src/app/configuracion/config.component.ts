@@ -252,7 +252,6 @@ export class ConfigComponent implements OnInit {
       this.gerenciaInicial = detalles.gerencia[0].gerencia;
       //this.gerenciaEditar = detalles.gerencia[0].gerencia;
       this.statusEditar = detalles.status == true ? 'Activo' : 'Desactivado';
-      
     }if(editar == 'Perfiles'){
       this.nombreEditar = detalles.permiso;
       this.statusEditar = detalles.status == true ? 'Activo' : 'Desactivado';
