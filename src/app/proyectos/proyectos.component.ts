@@ -76,8 +76,6 @@ export class ProyectosBauComponent implements OnInit {
   usuario: any;
   observacionesSD: any;
   
-
-
   constructor( private proyectoBauService: ProyectoBauService, private configService: ConfigService, private AppComponent: AppComponent) {    }
   
   ngOnInit() {
@@ -419,12 +417,27 @@ export class ProyectosBauComponent implements OnInit {
     )
   }
 
-  guardarComentarioProyecto(comentario){ 
+  guardarComentarioProyecto(comentario){
+    Swal.fire({
+      title: "Agregando Proyecto...",
+      text: "Espere un momento",
+      imageUrl: "../../assets/progress.gif",
+      imageWidth: 160,
+      imageHeight: 160,
+      showConfirmButton: false,
+      allowOutsideClick: false
+    });
     this.requestAgregar = {
       comentarioProyecto: comentario
     }
     this.proyectoBauService.putEditarComentarioProyecto(this.idProyecto,this.requestAgregar).subscribe(
       data => {
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Comentario agregado correctamente',
+          showConfirmButton: false
+        }) 
       }, err => {
         console.log(err)
         Swal.fire({
@@ -435,6 +448,10 @@ export class ProyectosBauComponent implements OnInit {
         })
       }
     )
+  }
+
+  agregarToDo(){
+    
   }
 
   /*  ELIMINAR SI NO SE OCUPA
