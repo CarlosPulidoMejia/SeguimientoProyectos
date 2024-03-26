@@ -25,6 +25,7 @@ export class AppComponent implements OnInit{
   bordeUsuario: boolean;
   bordePassword: boolean;
   bordeUsuarioI: boolean;
+  bordePasswordM: boolean;
 
   ngOnInit() {
     window.location.href
@@ -71,25 +72,37 @@ export class AppComponent implements OnInit{
       if(this.usuarioLogin === 'v.pineda' || this.usuarioLogin === 'l.lozano' || this.usuarioLogin === 'admin'){
         this.iniciarSesion = false;
         if(this.usuarioLogin == 'v.pineda'){
-          this.ocultarOpciones = false;
-          this.nombreUsuario = 'Victor Pineda';
-          let targetRoute = ['Proyectos'];
-          this.router.navigate(targetRoute);
-          this.clickProyectos()
+          if(this.passwordLogin == '123456'){
+            this.ocultarOpciones = false;
+            this.nombreUsuario = 'Victor Pineda';
+            let targetRoute = ['Proyectos'];
+            this.router.navigate(targetRoute);
+            this.clickProyectos()
+          }else{
+            this.bordePasswordM = true
+          }
         }
         if(this.usuarioLogin == 'l.lozano'){
-          this.ocultarOpciones = false;
-          this.nombreUsuario = 'Luis Lozano'
-          let targetRoute = ['Proyectos'];
-          this.router.navigate(targetRoute);
-          this.clickProyectos()
+          if(this.passwordLogin == '123456'){
+            this.ocultarOpciones = false;
+            this.nombreUsuario = 'Luis Lozano'
+            let targetRoute = ['Proyectos'];
+            this.router.navigate(targetRoute);
+            this.clickProyectos()
+          }else{
+            this.bordePasswordM = true
+          }
         }
         if(this.usuarioLogin == 'admin'){
-          this.ocultarOpciones = true;
-          this.nombreUsuario = 'Administrador';
-          let targetRoute = ['Configuracion'];
-          this.router.navigate(targetRoute);
-          this.clickConfig();
+          if(this.passwordLogin == '123456'){
+            this.ocultarOpciones = true;
+            this.nombreUsuario = 'Administrador';
+            let targetRoute = ['Configuracion'];
+            this.router.navigate(targetRoute);
+            this.clickConfig();
+          }else{
+            this.bordePasswordM = true
+          }
         }
       }else{
         this.bordeUsuarioI = true

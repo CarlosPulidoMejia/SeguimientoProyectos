@@ -55,6 +55,7 @@
                   <label for="exampleInputPassword1">Contraseña</label>
                   <input type="password" class="form-control" [ngClass]="{'border-danger': bordePassword}" [ngClass]="{'border-danger': bordeUsuario}"  [(ngModel)]="passwordLogin" id="exampleInputPassword1" placeholder="Contraseña">
                   <p *ngIf="bordePassword" class="text-sm-center text-danger">Campo obligatorio</p>
+                  <p *ngIf="bordePasswordM" class="text-sm-center text-danger">Password Incorrecta</p>
               </div>
           </div>
           <div class="text-center mb-4">
