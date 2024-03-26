@@ -63,4 +63,8 @@ export class ProyectoBauService {
   putEditarComentarioProyecto(idProyecto:any,comentarioProyecto:any){
     return this.httpClient.put(`${global.URL_API}objetivo/editarComentario/${idProyecto}`,comentarioProyecto);
   }
+
+  postToDo(detalleToDo:any){
+    return this.httpClient.post(`${global.URL_API}guardarToDo`,detalleToDo)
+  }
 }

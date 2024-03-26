@@ -75,6 +75,7 @@ export class ProyectosBauComponent implements OnInit {
   idProyecto:any;
   usuario: any;
   observacionesSD: any;
+  nuevoToDo: any;
   
   constructor( private proyectoBauService: ProyectoBauService, private configService: ConfigService, private AppComponent: AppComponent) {    }
   
@@ -450,8 +451,34 @@ export class ProyectosBauComponent implements OnInit {
     )
   }
 
-  agregarToDo(){
-    
+  modalAgregarToDo(){
+    this.requestAgregar = {
+      idProyecto: this.idProyecto,
+      objetivo: [{
+        detalle:this.nuevoToDo
+      }]
+    }
+    console.log(this.idProyecto, this.nuevoToDo);
+    this.proyectoBauService.postToDo(this.requestAgregar).subscribe(
+      data => {
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'ToDo agregado correctamente',
+          showConfirmButton: false
+        }) 
+        this.nuevoToDo = undefined
+        this.getToDo(this.idProyecto)
+      }, err => {
+        console.log(err)
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'No se pudo agregar el objetivo',
+          showConfirmButton: false
+        })
+      }
+    )
   }
 
   /*  ELIMINAR SI NO SE OCUPA

@@ -361,9 +361,16 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <button data-toggle="modal" data-target="#exampleModalAddTarea"  type="button" data-dismiss="modal" class="btn btn-success mt-2">
-                                        +
-                                    </button>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <input [(ngModel)]="nuevoToDo" type="text"  id="idDatasource" placeholder="Detalle ToDo" class="form-control mt-2">
+                                        </div>
+                                        <div class="col-2">
+                                            <button (click)="modalAgregarToDo()" type="button" class="btn btn-success mt-2">
+                                                +
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -620,7 +627,7 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="form-floating">
-                                                <textarea type="text" id="idDatasource" placeholder="ID" value="1"
+                                                <textarea type="text" id="idDatasource" placeholder="Detalle ToDo" value="1"  [(ngModel)]="nuevoToDo"
                                                     class="form-control ng-valid ng-dirty ng-touched" style="height: 120px;">
                                                 </textarea>
                                             </div>
@@ -635,7 +642,7 @@
                 <button type="button" data-dismiss="modal" class="btn btn-secondary">
                     Cerrar
                 </button>
-                <button type="button" class="btn btn-primary mx-2">
+                <button type="button" class="btn btn-primary mx-2" (click)="modalAgregarToDo()">
                     Guardar Tarea
                 </button>
             </div>
