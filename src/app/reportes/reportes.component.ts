@@ -82,15 +82,15 @@ export class ReportesComponent implements OnInit {
         series: [
           {
             name: 'Hrs Semana',
-            value: this.proyecto[0].value,
+            value: 112,
           },
           {
             name: 'En Tiempo',
-            value: this.proyecto[1].value,
+            value: 89,
           },
           {
             name: 'Documentación',
-            value: this.proyecto[2].value,
+            value: 100,
           },
         ],
       },
