@@ -71,6 +71,13 @@ export class TicketsComponent implements OnInit {
       },
       err => {
         console.log(err)
+            console.log("Complete function triggered.")
+            Swal.fire({
+              position: 'center',
+              icon: 'error',
+              title: 'No se pudo agregar el proyecto',
+              showConfirmButton: false
+            })
       },
       () => {
         console.log("Complete function triggered.")
