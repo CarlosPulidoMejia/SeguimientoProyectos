@@ -481,6 +481,34 @@ export class ProyectosBauComponent implements OnInit {
     )
   }
 
+  guardarComentariosSD(){
+    this.requestAgregar = {
+      observacionSD: this.observacionesSD
+    }
+    console.log(this.idProyecto,this.requestAgregar);
+    
+    this.proyectoBauService.putEditarComentariosSD(this.idProyecto,this.requestAgregar).subscribe(
+      data => {
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Observación agregada correctamente',
+          showConfirmButton: false
+        }) 
+        this.nuevoToDo = undefined
+        this.getToDo(this.idProyecto)
+      }, err => {
+        console.log(err)
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'No se pudo agregar las observaciones',
+          showConfirmButton: false
+        })
+      }
+    )
+  }
+
   /*  ELIMINAR SI NO SE OCUPA
   modelChangeDocumentacion(e) {
     //this.documentacionProy = e;

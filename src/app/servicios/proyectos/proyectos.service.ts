@@ -64,6 +64,12 @@ export class ProyectoBauService {
     return this.httpClient.put(`${global.URL_API}objetivo/editarComentario/${idProyecto}`,comentarioProyecto);
   }
 
+  putEditarComentariosSD(idProyecto:any, comentarioSD:any){
+    console.log(`${global.URL_API}objetivo/observacionesSD/${idProyecto}`, comentarioSD);
+    
+    return this.httpClient.put(`${global.URL_API}objetivo/observacionesSD/${idProyecto}`, comentarioSD)
+  }
+
   postToDo(detalleToDo:any){
     return this.httpClient.post(`${global.URL_API}guardarToDo`,detalleToDo)
   }
