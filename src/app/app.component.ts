@@ -67,42 +67,33 @@ export class AppComponent implements OnInit{
 
   IniciarSesion(){
     console.log(this.usuarioLogin, this.passwordLogin);
-    
     if(this.usuarioLogin != undefined && this.passwordLogin != undefined){
       if(this.usuarioLogin === 'v.pineda' || this.usuarioLogin === 'l.lozano' || this.usuarioLogin === 'admin'){
-        this.iniciarSesion = false;
-        if(this.usuarioLogin == 'v.pineda'){
-          if(this.passwordLogin == '123456'){
-            this.ocultarOpciones = false;
-            this.nombreUsuario = 'Victor Pineda';
-            let targetRoute = ['Proyectos'];
-            this.router.navigate(targetRoute);
-            this.clickProyectos()
-          }else{
-            this.bordePasswordM = true
-          }
+        if(this.usuarioLogin == 'v.pineda' && this.passwordLogin == '123456'){
+          this.iniciarSesion = false;
+          this.ocultarOpciones = false;
+          this.nombreUsuario = 'Victor Pineda';
+          let targetRoute = ['Proyectos'];
+          this.router.navigate(targetRoute);
+          this.clickProyectos()
         }
-        if(this.usuarioLogin == 'l.lozano'){
-          if(this.passwordLogin == '123456'){
-            this.ocultarOpciones = false;
-            this.nombreUsuario = 'Luis Lozano'
-            let targetRoute = ['Proyectos'];
-            this.router.navigate(targetRoute);
-            this.clickProyectos()
-          }else{
-            this.bordePasswordM = true
-          }
+        if(this.usuarioLogin == 'l.lozano' && this.passwordLogin == '123456'){
+          this.iniciarSesion = false;
+          this.ocultarOpciones = false;
+          this.nombreUsuario = 'Luis Lozano'
+          let targetRoute = ['Proyectos'];
+          this.router.navigate(targetRoute);
+          this.clickProyectos()
         }
-        if(this.usuarioLogin == 'admin'){
-          if(this.passwordLogin == '123456'){
-            this.ocultarOpciones = true;
-            this.nombreUsuario = 'Administrador';
-            let targetRoute = ['Configuracion'];
-            this.router.navigate(targetRoute);
-            this.clickConfig();
-          }else{
-            this.bordePasswordM = true
-          }
+        if(this.usuarioLogin == 'admin' && this.passwordLogin == '123456'){
+          this.iniciarSesion = false;
+          this.ocultarOpciones = true;
+          this.nombreUsuario = 'Administrador';
+          let targetRoute = ['Configuracion'];
+          this.router.navigate(targetRoute);
+          this.clickConfig();
+        }else{
+          this.bordePasswordM = true
         }
       }else{
         this.bordeUsuarioI = true
@@ -125,6 +116,7 @@ export class AppComponent implements OnInit{
     this.iniciarSesion = true;
     this.usuarioLogin = undefined;
     this.passwordLogin = undefined;
+    this.bordePasswordM = false;
     let targetRoute = [''];
     this.router.navigate(targetRoute);
   }
