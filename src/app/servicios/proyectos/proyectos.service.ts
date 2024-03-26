@@ -44,6 +44,10 @@ export class ProyectoBauService {
     return this.httpClient.get<listaToDo[]>(`${global.URL_API}objetivo/listarToDo/${idProyecto}`)
   }
 
+  getCerrarSemana(){
+    return this.httpClient.get(`${global.URL_API}cerrar/semana`)
+  }
+
   postAgregarProyectos(proyecto:any){
     return this.httpClient.post(`${global.URL_API}guardarproyecto`,proyecto);
   }  

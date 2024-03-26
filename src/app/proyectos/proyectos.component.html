@@ -212,7 +212,7 @@
                         <button  class="btn btn-primary" hidden>
                             Guardar Cambio
                         </button>
-                        <button (click)="cerrarSemana()" hidden class="btn btn-success buttonM" data-toggle="modal" data-target="#exampleConfirmacion">
+                        <button class="btn btn-success buttonM" data-toggle="modal" data-target="#exampleConfirmacion">
                             Cerrar Seman
                         </button>
                     </div>
@@ -643,7 +643,7 @@
     </div>
 </div>
 <!-- Modal Confirmación-->
-<div class="modal fade  ms-auto" id="exampleConfirmacion"  tabindex="-1" role="dialog" aria-labelledby="exampleConfirmacion" aria-hidden="true">
+<div class="modal fade  ms-auto" id="exampleConfirmacion"   tabindex="-1" role="dialog" aria-labelledby="exampleConfirmacion" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document" >
         <div class="modal-content">
             <div class="modal-header">
@@ -665,11 +665,11 @@
                     </span>
                 </div>
             </div>
-            <div class="">
+            <div class="m-2">
                 <button type="button" data-dismiss="modal" class="btn btn-secondary">
                     Cerrar
                 </button>
-                <button type="button" class="btn btn-primary mx-2">
+                <button type="button" class="btn btn-primary mx-2" (click)="cerrarSemana()" >
                     Confirmar Cierre de Semana
                 </button>
             </div>

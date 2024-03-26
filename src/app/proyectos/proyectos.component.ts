@@ -75,6 +75,7 @@ export class ProyectosBauComponent implements OnInit {
   idProyecto:any;
   usuario: any;
   observacionesSD: any;
+  
 
 
   constructor( private proyectoBauService: ProyectoBauService, private configService: ConfigService, private AppComponent: AppComponent) {    }
@@ -261,7 +262,27 @@ export class ProyectosBauComponent implements OnInit {
   }
 
   cerrarSemana(){
-    console.log('Cerrar Semana');
+    this.proyectoBauService.getCerrarSemana().subscribe(
+      data => {
+        console.log("Complete function triggered.")
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Semana Cerrada',
+          showConfirmButton: false
+        })
+      },
+      err => {
+        console.log(err)
+        console.log("Complete function triggered.")
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'No se pudo cerrar la semana',
+          showConfirmButton: false
+        })
+      },
+    )
   }
 
   getListaUsuario(){
