@@ -583,6 +583,4 @@ export class ConfigComponent implements OnInit {
       },
     )
   }
-
-
 }
